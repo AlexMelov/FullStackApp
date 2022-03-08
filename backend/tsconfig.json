@@ -1,3 +1,7 @@
 {
-  "extends": "../frontend/tsconfig.json"
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./build",
+    "allowSyntheticDefaultImports": true
+  }
 }

@@ -1,32 +1,18 @@
-// const express = require("express");
-//
-//
-// import todoRoutes from './routes/todos'
-// let bodyParser = require('body-parser')
-//
-// const app = express();
-//
-// app.use(todoRoutes)
-// app.use(bodyParser.json())
-//
-// app.listen(8000)
-//
-
-
-const express = require("express")
-const mongoose = require('mongoose')
-const app = express();
-const bodyParser = require('body-parser');
-
-app.use(bodyParser.json());
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
 const PORT = 8000;
-const postRoute = require('./routes/posts')
+const server = express();
 
-app.use('/posts', postRoute)
+server.use(bodyParser.json());
 
-app.get('/', (req, res) => res.send('On Homepage'));
+// todo: that was not working for me
+//import routes from './routes/posts';
+//server.use('/posts', routes)
+
+server.get('/', (req, res) => res.send('On Homepage'));
 mongoose.connect("mongodb+srv://alex:Ma1802989483008@cluster0.r00ao.mongodb.net/todo-list?retryWrites=true&w=majority",()=>console.log('Connected to mongo'))
 
-app.listen(8000);
+server.listen(PORT);
 
