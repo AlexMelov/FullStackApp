@@ -26,7 +26,7 @@ const postRoute = require('./routes/posts')
 app.use('/posts', postRoute)
 
 app.get('/', (req, res) => res.send('On Homepage'));
-mongoose.connect("mongodb+srv://alex:Ma1802989483008@cluster0.r00ao.mongodb.net/todo-list?retryWrites=true&w=majority",()=>console.log('Connected to mongo'))
+mongoose.connect("mongodb+srv://alex:XnZYw4wMyepnrFNK@cluster0.r00ao.mongodb.net/todo-list?retryWrites=true&w=majority",()=>console.log('Connected to mongo'))
 
 app.listen(8000);
 
