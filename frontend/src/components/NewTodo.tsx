@@ -3,7 +3,6 @@ import classes from "./NewTodo.module.css";
 import { TodosContext } from "../store/todos-context";
 
 const NewTodo: React.FC = () => {
-  //
   const todosContext = useContext(TodosContext);
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
