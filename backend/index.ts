@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // const express = require("express");
 //
 //
@@ -17,37 +16,25 @@ import express from "express";
 import mongoose from "mongoose";
 
 import bodyParser from "body-parser";
-const app = express();
+const server = express();
 require("dotenv/config");
 
-app.use(bodyParser.json());
+server.use(bodyParser.json());
 
 // const PORT = 8000;
-const postRoute = require("./routes/posts");
-app.use("/posts", postRoute);
+const PORT = 8000;
 
-app.get("/", (req, res) => res.send("On Homepage"));
+const postRoute = require("./routes/posts");
+
+server.use(bodyParser.json());
+server.use("/posts", postRoute);
+
+server.get("/", (req, res) => res.send("On Homepage"));
 mongoose.connect(process.env.DB_CONNECTION, () =>
   console.log("Connected to mongo")
 );
-app.listen(8000);
-=======
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-
-const PORT = 8000;
-const server = express();
-
-server.use(bodyParser.json());
+server.listen(8000);
 
 // todo: that was not working for me
 //import routes from './routes/posts';
 //server.use('/posts', routes)
-
-server.get('/', (req, res) => res.send('On Homepage'));
-mongoose.connect("mongodb+srv://alex:Ma1802989483008@cluster0.r00ao.mongodb.net/todo-list?retryWrites=true&w=majority",()=>console.log('Connected to mongo'))
-
-server.listen(PORT);
-
->>>>>>> c9db7ee366135ff51cd586e529b929cb7c44253e
