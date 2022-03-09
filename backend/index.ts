@@ -12,21 +12,21 @@
 // app.listen(8000)
 //
 
+import express from "express";
+import mongoose from "mongoose";
 
-const express = require("express")
-const mongoose = require('mongoose')
+import bodyParser from "body-parser";
 const app = express();
-const bodyParser = require('body-parser');
+require("dotenv/config");
 
 app.use(bodyParser.json());
 
-const PORT = 8000;
-const postRoute = require('./routes/posts')
+// const PORT = 8000;
+const postRoute = require("./routes/posts");
+app.use("/posts", postRoute);
 
-app.use('/posts', postRoute)
-
-app.get('/', (req, res) => res.send('On Homepage'));
-mongoose.connect("mongodb+srv://alex:XnZYw4wMyepnrFNK@cluster0.r00ao.mongodb.net/todo-list?retryWrites=true&w=majority",()=>console.log('Connected to mongo'))
-
+app.get("/", (req, res) => res.send("On Homepage"));
+mongoose.connect(process.env.DB_CONNECTION, () =>
+  console.log("Connected to mongo")
+);
 app.listen(8000);
-
