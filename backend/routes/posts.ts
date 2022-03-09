@@ -1,18 +1,20 @@
-import { Router } from "express"
+import { Router } from 'express'
 
-const router = Router();
-const Post = require('../models/post')
+const router = Router()
+import Posts from '../models/post'
 
-router.get("/", (req, res) => res.send("Post + TypeScript Server"));
-router.post('/',(req,res)=>{
-    const post = new Post({
-        title:req.body.title,
-        description: req.body.description
+router.get('/', (req, res) => res.send('Post + TypeScript Server'))
+router.post('/', (req, res) => {
+    const post = new Posts({
+        title: req.body.title,
+        description: req.body.description,
     })
-    post.save().then(data=>{
+    post.save()
+        .then((data: any) => {
             res.json(data)
-        }).catch(err=>{
-            res.json({message:err})
-    })
+        })
+        .catch((err: any) => {
+            res.json({ message: err })
+        })
 })
-module.exports = router;
+export default router

@@ -1,11 +1,10 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const PostSchema = mongoose.Schema({
-    todo:{
+const PostSchema = new mongoose.Schema({
+    todo: {
         type: String,
-        required:true,
+        required: true,
     },
-
 })
-
-module.exports = mongoose.model('Posts',PostSchema)
+let module: any
+export default mongoose.model('Posts', PostSchema)
