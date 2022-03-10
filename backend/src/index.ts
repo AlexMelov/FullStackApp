@@ -1,23 +1,10 @@
-import * as express from 'express';
-import * as mongoose from 'mongoose';
-import * as bodyParser from 'body-parser';
+import express, { Express, Request, Response } from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
-const server = express();
-
-import postRoute from './routes/posts';
-
-require('dotenv/config');
-
-// const PORT = 8000;
+const server: Express = express();
 
 server.use(bodyParser.json());
-server.use('/posts', postRoute);
-
-server.get('/', (req: any, res: any) => res.send('On Homepage'));
-mongoose.connect(process.env.DB_CONNECTION, () =>
-	console.log('Connected to mongo')
-);
+server.get('/', (request: Request, response: Response) => response.send('NOTHING HERE'));
+mongoose.connect(process.env.DB_URL, () => console.log('CONNECTED TO DATABASE'));
 server.listen(8000);
-
-// console.log(process.env.EXPRESS_APP_ENV);
-// process.exit(0);

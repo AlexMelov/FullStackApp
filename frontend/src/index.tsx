@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { environment } from './environments/environment.js';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
