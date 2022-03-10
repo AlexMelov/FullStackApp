@@ -18,3 +18,6 @@ mongoose.connect(process.env.DB_CONNECTION, () =>
 	console.log('Connected to mongo')
 );
 server.listen(8000);
+
+// console.log(process.env.EXPRESS_APP_ENV);
+// process.exit(0);
