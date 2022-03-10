@@ -12,7 +12,7 @@
 	"scripts": {
 		"start": "node --loader ts-node/esm index.ts",
 		"build": "tsc",
-		"lint": "eslint src/**/*.ts",
+		"lint": "eslint src/**/*.ts --cache",
 		"fix": "eslint src/**/*.ts --fix"
 	},
 	"devDependencies": {

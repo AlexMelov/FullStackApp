@@ -28,7 +28,7 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"lint": "eslint src/**/*.ts && stylelint src/**/*.css",
+		"lint": "eslint src/**/*.ts --cache && stylelint src/**/*.css --cache",
 		"fix": "eslint src/**/*.ts --fix && stylelint src/**/*.css --fix"
 	}
 }
