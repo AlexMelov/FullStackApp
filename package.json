@@ -9,7 +9,8 @@
   "type": "module",
   "dependencies": {},
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start": "node backend/index"
   },
   "devDependencies": {
     "husky": "^7.0.4"

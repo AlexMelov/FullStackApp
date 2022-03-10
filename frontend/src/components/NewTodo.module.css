@@ -1,28 +1,32 @@
-.form {
-    width: 40rem;
-    margin: 2rem auto;
+.form
+ {
+	margin: 2rem auto;
+	width: 40rem;
 
 }
 
-.form label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+.form label
+ {
+	display: block;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
 }
 
-.form input {
-    display: block;
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 4px;
+.form input
+ {
+	border-radius: 4px;
+	display: block;
+	padding: 0.5rem;
+	width: 100%;
 }
 
-.form button {
-    display: block;
-    padding: 0.5rem 1rem;
-    margin-top: 1rem;
-    border-radius: 4px;
-    border: none;
-    background-color: royalblue;
-    color: white;
+.form button
+ {
+	background-color: #118fd8;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	display: block;
+	margin-top: 1rem;
+	padding: 0.5rem 1rem;
 }
