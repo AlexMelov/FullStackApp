@@ -1,28 +1,27 @@
 import mongoose from 'mongoose';
-import { Response } from 'express';
+import e, { Response } from 'express';
 
-const todoSchema: any = new mongoose.Schema({
+const TodosSchema = mongoose.model('Todos', new mongoose.Schema({
 	title: {
 		type: String,
 		required: true
 	}
-});
-const TodosSchema = mongoose.model('Todos', todoSchema);
+}));
 
-export function getHandler(response: Response): void 
+export async function getHandler(response: Response): Promise<void>
 {
-	const allTodos = TodosSchema.find();
+	const allTodos = await TodosSchema.find();
 
 	response.send(allTodos);
 }
-//@ts-ignore
-export function postHandler(request: Request, response: Response): void 
+
+export async function postHandler(request: e.Request, response: e.Response): Promise<void>
 {
 	const todo = new TodosSchema({
 		title: request.body.title
 	});
 
-	todo.save()
-		.then((data: any) => response.json(data))
-		.catch((err: any) => response.json({ message: err }));
+	await todo.save()
+		.then(data => response.json(data))
+		.catch(error => response.json({ message: error }));
 }
