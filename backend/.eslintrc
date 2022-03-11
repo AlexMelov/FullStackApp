@@ -4,6 +4,7 @@
 		"@typescript-eslint/typedef": "warn",
 		"@typescript-eslint/type-annotation-spacing": "off",
 		"@typescript-eslint/no-require-imports": "warn",
-		"no-console": "warn"
+		"no-console": "warn",
+		"jsdoc/require-jsdoc": "off"
 	}
 }
