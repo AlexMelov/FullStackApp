@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import e, { Response } from 'express';
+import e from 'express';
 
 const TodosSchema = mongoose.model('Todos', new mongoose.Schema({
 	title: {
@@ -8,11 +8,18 @@ const TodosSchema = mongoose.model('Todos', new mongoose.Schema({
 	}
 }));
 
-export async function getHandler(response: Response): Promise<void>
+export async function getHandler(request: e.Request, response: e.Response): Promise<void>
 {
-	const allTodos = await TodosSchema.find();
+	try
+	{
+		const allTodos = await TodosSchema.find();
 
-	response.send(allTodos);
+		response.send(allTodos);
+	}
+	catch
+	{
+		response.sendStatus(404);
+	}
 }
 
 export async function postHandler(request: e.Request, response: e.Response): Promise<void>

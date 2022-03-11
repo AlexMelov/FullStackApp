@@ -8,8 +8,8 @@ const server: Express = express();
 
 server.use(bodyParser.json());
 server.get('/', (request: Request, response: Response) => response.sendStatus(404));
-server.get('/todos', (request: Request, response: Response) => getHandler(response));
-server.post('/todos', (request: Request, response: Response) => postHandler(request, response));
+server.get('/todos', getHandler);
+server.post('/todos', postHandler);
 
 mongoose.connect(process.env.DB_URL, () =>
 	server.listen(8000, () => console.log('Connected to database'))
