@@ -14,6 +14,4 @@ export const environmentHelper = environment =>
 	}
 };
 
-export const environment = environmentHelper(process.env.REACT_APP_ENV);
-
-export default environment;
+export default environmentHelper(process.env.REACT_APP_ENV);
