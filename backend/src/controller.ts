@@ -1,14 +1,17 @@
 import mongoose from 'mongoose';
 import { Request, Response } from 'express';
 
-const todoSchema: any = new mongoose.Schema({
-	title: {
-		type: String,
-		required: true
-	}
-});
+const TodosSchema: any = mongoose.model(
+	'Todos',
+	new mongoose.Schema({
+		title: {
+			type: String,
+			required: true
+		}
+	})
+);
 
-const TodosSchema = mongoose.model('Todos', todoSchema);
+const TodosSchema: any = mongoose.model('Todos', todoSchema);
 
 export function getHandler(request: Request, response: Response): any 
 {
@@ -31,5 +34,5 @@ export function postHandler(request: Request, response: Response): void
 
 	todo.save()
 		.then((data: any) => response.json(data))
-		.catch((err: any) => response.json({ message: err }));
+		.catch((error: string) => response.json({ message: error }));
 }

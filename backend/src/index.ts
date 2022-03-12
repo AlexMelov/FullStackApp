@@ -2,7 +2,6 @@ import express, { Express, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
-//import { environment } from './environments/environment';
 const server: Express = express();
 
 server.use(bodyParser.json());
