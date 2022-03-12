@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 
 const todoSchema: any = new mongoose.Schema({
 	title: {
@@ -7,15 +7,22 @@ const todoSchema: any = new mongoose.Schema({
 		required: true
 	}
 });
+
 const TodosSchema = mongoose.model('Todos', todoSchema);
 
-export function getHandler(response: Response): void 
+export function getHandler(request: Request, response: Response): any 
 {
-	const allTodos = TodosSchema.find();
-
-	response.send(allTodos);
+	TodosSchema.find()
+		.then((data: any) => 
+		{
+			response.send(data);
+		})
+		.catch((error: any) => 
+		{
+			response.json({ message: error });
+		});
 }
-//@ts-ignore
+
 export function postHandler(request: Request, response: Response): void 
 {
 	const todo = new TodosSchema({
