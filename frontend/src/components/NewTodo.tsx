@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 import classes from './NewTodo.module.css';
 import { TodosContext } from '../store/todos-context';
 import environment from '../environments/environment.dev.js';
@@ -15,19 +15,15 @@ const NewTodo: React.FC = () => {
 		}
 		todosContext.addTodo(enteredText);
 		todoTextInputRef.current!.value = '';
-
-		const url = environment.apiUrl + environment.apiRoutes.todos;
-
-		fetch(url, {
-			method: 'POST',
-			body: JSON.stringify({
-				title: enteredText
-			}),
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
 	};
+	const url = 'https://jsonplaceholder.typicode.com/posts';
+
+	const fetchPost = async () => {
+		const response = await fetch('http//localhost:8000/todos');
+		const responseData = await response.json();
+		console.log(response, responseData);
+	};
+	fetchPost();
 
 	return (
 		<form className={classes.form} onSubmit={submitHandler}>
