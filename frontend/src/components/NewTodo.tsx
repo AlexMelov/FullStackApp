@@ -1,7 +1,8 @@
-import React, { useRef, useContext, useEffect } from 'react';
+import React, { useRef, useContext, useEffect, useState } from 'react';
 import classes from './NewTodo.module.css';
 import { TodosContext } from '../store/todos-context';
 import environment from '../environments/environment.dev.js';
+import axios from 'axios';
 
 const NewTodo: React.FC = () => {
 	const todosContext = useContext(TodosContext);
@@ -16,6 +17,14 @@ const NewTodo: React.FC = () => {
 		todosContext.addTodo(enteredText);
 		todoTextInputRef.current!.value = '';
 	};
+	const [todos, setTodos] = useState([]);
+	useEffect(() => {
+		const fetchTodos = async () => {
+			const { data } = await axios.get('/todos');
+			console.log(data);
+		};
+		fetchTodos();
+	}, []);
 
 	return (
 		<form className={classes.form} onSubmit={submitHandler}>
