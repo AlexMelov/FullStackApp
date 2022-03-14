@@ -18,8 +18,8 @@
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
-    "eslint": "^8.0.0",
-    "eslint-config-redaxmedia": "3.4.0",
+    "eslint": "8.11.0",
+    "eslint-config-redaxmedia": "4.1.1",
     "stylelint": "14.5.3",
     "stylelint-config-redaxmedia": "3.2.0"
   },
@@ -31,8 +31,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.ts --cache && stylelint src/**/*.css --cache",
-    "fix": "eslint src/**/*.ts --fix && stylelint src/**/*.css --fix"
+    "lint": "eslint 'src/**/*.ts' --cache && stylelint 'src/**/*.css' --cache",
+    "fix": "eslint 'src/**/*.ts' --fix && stylelint 'src/**/*.css' --fix"
   },
   "browserslist": {
     "production": [

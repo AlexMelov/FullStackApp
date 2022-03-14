@@ -8,10 +8,9 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"prepare": "husky install",
-		"start": "node backend/index"
+		"prepare": "husky install"
 	},
 	"devDependencies": {
-		"husky": "^7.0.4"
+		"husky": "7.0.4"
 	}
 }
