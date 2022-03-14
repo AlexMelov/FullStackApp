@@ -22,6 +22,18 @@ server.get('/todos', getHandler);
 
 server.post('/todos', postHandler);
 
+server.delete('/todos/:todoId', (req, res) => 
+{
+	try 
+	{
+		todoSchema.find();
+	}
+	catch (error) 
+	{
+		res.json({ message: error });
+	}
+});
+
 mongoose.connect(process.env.DB_URL, () =>
 	server.listen(8000, () => console.log('Connected to database'))
 );

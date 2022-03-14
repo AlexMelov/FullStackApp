@@ -7,12 +7,13 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "dependencies": {},
   "scripts": {
     "prepare": "husky install",
     "start": "node backend/index"
   },
   "devDependencies": {
+    "eslint-plugin-jsdoc": "^38.0.3",
+    "eslint-plugin-promise": "^6.0.0",
     "husky": "^7.0.4"
   }
 }
