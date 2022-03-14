@@ -11,11 +11,12 @@ const TodosSchema: any = mongoose.model(
 	})
 );
 
-const TodosSchema: any = mongoose.model('Todos', todoSchema);
+const todosSchema: any = mongoose.model('Todos', TodosSchema);
 
 export function getHandler(request: Request, response: Response): any 
 {
-	TodosSchema.find()
+	todosSchema
+		.find()
 		.then((data: any) => 
 		{
 			response.send(data);
@@ -28,7 +29,7 @@ export function getHandler(request: Request, response: Response): any
 
 export function postHandler(request: Request, response: Response): void 
 {
-	const todo = new TodosSchema({
+	const todo: any = new TodosSchema({
 		title: request.body.title
 	});
 

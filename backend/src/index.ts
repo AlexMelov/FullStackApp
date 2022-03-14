@@ -12,7 +12,8 @@ const todoSchema: any = new mongoose.Schema({
 		required: true
 	}
 });
-const TodosSchema = mongoose.model('Todos', todoSchema);
+
+const TodosSchema: any = mongoose.model('Todos', todoSchema);
 
 server.get('/', (request: Request, response: Response) =>
 	response.sendStatus(404)
@@ -24,9 +25,7 @@ server.post('/todos', postHandler);
 
 server.delete('/todos/:todoId', deleteHandler);
 
-mongoose.connect(process.env.DB_URL, () =>
-	server.listen(8000, () => console.log('Connected to database'))
-);
+mongoose.connect(process.env.DB_URL, () => server.listen(8000));
 
 function getHandler(request: Request, response: Response): any 
 {
@@ -43,7 +42,7 @@ function getHandler(request: Request, response: Response): any
 
 function postHandler(request: Request, response: Response): void 
 {
-	const todo = new TodosSchema({
+	const todo: any = new TodosSchema({
 		title: request.body.title
 	});
 
