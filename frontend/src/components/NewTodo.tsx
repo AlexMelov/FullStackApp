@@ -16,14 +16,6 @@ const NewTodo: React.FC = () => {
 		todosContext.addTodo(enteredText);
 		todoTextInputRef.current!.value = '';
 	};
-	const url = 'https://jsonplaceholder.typicode.com/posts';
-
-	const fetchPost = async () => {
-		const response = await fetch('http//localhost:8000/todos');
-		const responseData = await response.json();
-		console.log(response, responseData);
-	};
-	fetchPost();
 
 	return (
 		<form className={classes.form} onSubmit={submitHandler}>

@@ -22,30 +22,27 @@ server.get('/todos', getHandler);
 
 server.post('/todos', postHandler);
 
-// server.delete('/todo:todoId', (req, res) => {
-// 	todoSchema
-// 		.remove(req.params.todoId)
-// 		.then((data: any) => console.log(data))
-// 		.catch((error: any) => {
-// 			res.json({ message: error });
-// 		});
-// });
+server.delete('/todos/:todoId', deleteHandler);
 
 mongoose.connect(process.env.DB_URL, () =>
 	server.listen(8000, () => console.log('Connected to database'))
 );
 
-function getHandler(request: Request, response: Response): any {
+function getHandler(request: Request, response: Response): any 
+{
 	TodosSchema.find()
-		.then((data: any) => {
+		.then((data: any) => 
+		{
 			response.json(data);
 		})
-		.catch((error: any) => {
+		.catch((error: any) => 
+		{
 			response.json({ message: error });
 		});
 }
 
-function postHandler(request: Request, response: Response): void {
+function postHandler(request: Request, response: Response): void 
+{
 	const todo = new TodosSchema({
 		title: request.body.title
 	});
@@ -53,4 +50,14 @@ function postHandler(request: Request, response: Response): void {
 	todo.save()
 		.then((data: any) => response.json(data))
 		.catch((err: any) => response.json({ message: err }));
+}
+
+function deleteHandler(request: Request, response: Response) 
+{
+	TodosSchema.remove({ _id: request.params.todoId })
+		.then((data: any) => response.json(data))
+		.catch((error: any) => 
+		{
+			response.json({ message: error });
+		});
 }
