@@ -1,11 +1,11 @@
 class Todo 
 {
-	text: string;
-	id: number;
+	title: string;
+	_id: number;
 	constructor(todoText: string) 
 	{
-    this.id = Math.floor(Math.random() * 50);
-    this.text = todoText;
+		this._id = Math.floor(Math.random() * 50);
+		this.title = todoText;
 	}
 }
 

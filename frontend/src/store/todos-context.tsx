@@ -1,43 +1,65 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Todo from "../components/models/Todo";
 
 type TodosContextObj = {
-  items: Todo[];
-  addTodo: (text: string) => void;
-  removeTodo: (id: number) => void;
+    items: Todo[];
+    addTodo: (title: string) => void;
+    removeTodo: (_id: number) => void;
+    todoList: (data: Todo[]) => void;
+    fetchedItems: Todo[];
 };
 
 export const TodosContext = React.createContext<TodosContextObj>({
-  items: [],
-  addTodo: () => {},
-  removeTodo: (id: number) => {},
+    items: [],
+    addTodo: () => {},
+    removeTodo: (_id: number) => {},
+    todoList: () => {},
+    fetchedItems: [],
 });
 
 const TodosContextProvider: React.FC = (props) => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+    const [todos, setTodos] = useState<Todo[]>([]);
+    const [fetchedItems, setFetchedItems] = useState<Todo[]>([]);
 
-  const addTodoHandler = (text: string) => {
-    const newTodo = new Todo(text);
+    const addTodoHandler = (title: string) => {
+        const newTodo = new Todo(title);
 
-    setTodos((prevState) => {
-      return prevState.concat(newTodo);
-    });
-  };
-  const removeTodoHandler = (id: number) => {
-    setTodos((prevState) => {
-      return prevState.filter((todo) => todo.id !== id);
-    });
-  };
-  const contextValue: TodosContextObj = {
-    items: todos,
-    addTodo: addTodoHandler,
-    removeTodo: removeTodoHandler,
-  };
-  return (
-    <TodosContext.Provider value={contextValue}>
-      {props.children}
-    </TodosContext.Provider>
-  );
+        setTodos((prevState) => {
+            return prevState.concat(newTodo);
+        });
+    };
+    const removeTodoHandler = (_id: number) => {
+        // setFetchedItems((prevState) => {
+        //     return prevState.filter((todo) => todo._id !== _id);
+        // });
+        const deletedItem = fetchedItems.filter((item) => item._id === _id);
+        console.log(deletedItem);
+
+        const deleteRequest = async () => {
+            const todos = await axios.delete(`/todos/${_id}`, {
+                data: { deletedItem },
+            });
+        };
+        deleteRequest();
+    };
+
+    const todoList = (todos: Todo[]) => {
+        setFetchedItems(todos);
+    };
+
+    const contextValue: TodosContextObj = {
+        items: todos,
+        addTodo: addTodoHandler,
+        removeTodo: removeTodoHandler,
+        todoList: todoList,
+        fetchedItems,
+    };
+    return (
+        <TodosContext.Provider value={contextValue}>
+            {props.children}
+        </TodosContext.Provider>
+    );
 };
 
 export default TodosContextProvider;
