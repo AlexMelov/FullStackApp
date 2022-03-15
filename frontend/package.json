@@ -23,7 +23,7 @@
 		"@types/react-dom": "^17.0.13",
 		"cypress": "^9.5.2",
 		"eslint": "7.32.0",
-		"eslint-config-redaxmedia": "4.1.1",
+		"eslint-config-redaxmedia": "4.2.0",
 		"stylelint": "14.5.3",
 		"stylelint-config-redaxmedia": "3.2.0"
 	},
@@ -35,8 +35,8 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"lint": "eslint \"src/**/*.ts\" --cache && stylelint \"src/**/*.css\" --cache",
-		"fix": "eslint \"src/**/*.ts\" --fix && stylelint \"src/**/*.css\" --fix"
+		"lint": "eslint \"src/**/*.{ts,tsx}\" --cache && stylelint \"src/**/*.css\" --cache",
+		"fix": "eslint \"src/**/*.{ts,tsx}\" --fix && stylelint \"src/**/*.css\" --fix"
 	},
 	"browserslist": {
 		"production": [
