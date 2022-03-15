@@ -1,6 +1,6 @@
-import axios from "axios";
-import React, { useState } from "react";
-import Todo from "../components/models/Todo";
+import axios from 'axios';
+import React, { useState } from 'react';
+import Todo from '../components/models/Todo';
 
 type TodosContextObj = {
     items: Todo[];
@@ -13,53 +13,66 @@ type TodosContextObj = {
 
 export const TodosContext = React.createContext<TodosContextObj>({
     items: [],
-    addTodo: () => {},
-    removeTodo: (_id: number) => {},
-    todoList: () => {},
-    fetchedItems: [],
+    addTodo: () =>
+    {},
+    removeTodo: () =>
+    {},
+    todoList: () =>
+    {},
+    fetchedItems: []
 
 });
 
-const TodosContextProvider: React.FC = (props) => {
-    const [todos, setTodos] = useState<Todo[]>([]);
-    const [fetchedItems, setFetchedItems] = useState<Todo[]>([]);
+const TodosContextProvider: React.FC = props =>
+{
+	const [todos, setTodos] = useState<Todo[]>([]);
+	const [fetchedItems, setFetchedItems] = useState<Todo[]>([]);
 
 
-    const addTodoHandler = (title: string) => {
-        const newTodo = new Todo(title);
-        setTodos((prevState) => {
-            return prevState.concat(newTodo);
-        });
-    };
-    const removeTodoHandler = (_id: number) => {
-    	const nonDeletedItems = fetchedItems.filter((item) => item._id !== _id);
-    	setTodos(nonDeletedItems)
-        const deletedItem = fetchedItems.filter((item) => item._id === _id);
-        const deleteRequest = async () => {
-            const todos = await axios.delete(`/todos/${_id}`, {
-                data: { deletedItem },
+	const addTodoHandler = (title: string) =>
+	{
+		const newTodo = new Todo(title);
+
+		setTodos(prevState =>
+		{
+			return prevState.concat(newTodo);
+		});
+	};
+	const removeTodoHandler = (_id: number) =>
+	{
+    	const nonDeletedItems = fetchedItems.filter(item => item._id !== _id);
+
+    	setTodos(nonDeletedItems);
+		const deletedItem = fetchedItems.filter(item => item._id === _id);
+		const deleteRequest = async () =>
+		{
+			 await axios.delete(`/todos/${_id}`, {
+                data: { deletedItem }
             });
-        };
-        deleteRequest();
-    };
+		};
 
-    const todoList = (todos: Todo[]) => {
-        setFetchedItems(todos);
-    };
+		deleteRequest();
+	};
 
-    const contextValue: TodosContextObj = {
+	const todoList = (todos: Todo[]) =>
+	{
+		setFetchedItems(todos);
+	};
+
+	const contextValue: TodosContextObj = {
         items: todos,
         addTodo: addTodoHandler,
         removeTodo: removeTodoHandler,
-        todoList: todoList,
-        fetchedItems,
+        todoList,
+        fetchedItems
 
     };
-    return (
-        <TodosContext.Provider value={contextValue}>
-            {props.children}
-        </TodosContext.Provider>
-    );
+
+	return (
+		<TodosContext.Provider value={contextValue}>
+			{props.children}
+		</TodosContext.Provider>
+	);
 };
 
 export default TodosContextProvider;

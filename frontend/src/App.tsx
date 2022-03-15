@@ -2,15 +2,16 @@ import TodosContextProvider from './store/todos-context';
 import NewTodo from './components/NewTodo';
 import List from './components/List';
 
-function App() {
+const App: React.FC = () =>
+{
 	return (
 		<>
 			<TodosContextProvider>
-				<NewTodo />
-				<List />
+				<NewTodo/>
+				<List/>
 			</TodosContextProvider>
 		</>
 	);
-}
+};
 
 export default App;
