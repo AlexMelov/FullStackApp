@@ -35,7 +35,6 @@ const TodosContextProvider: React.FC = (props) => {
     	const nonDeletedItems = fetchedItems.filter((item) => item._id !== _id);
     	setTodos(nonDeletedItems)
         const deletedItem = fetchedItems.filter((item) => item._id === _id);
-        console.log(deletedItem);
         const deleteRequest = async () => {
             const todos = await axios.delete(`/todos/${_id}`, {
                 data: { deletedItem },

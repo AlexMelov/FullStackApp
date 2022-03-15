@@ -15,7 +15,7 @@ const List: React.FC = () => {
 			const {data} = await axios.get('/todos');
 			await setTodos(data)
 			await todosContext.todoList(data);
-			console.log(data)
+
 		};
 		fetchTodos()
 
