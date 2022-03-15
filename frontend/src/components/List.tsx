@@ -14,13 +14,12 @@ const List: React.FC = () => {
 		const fetchTodos = async () => {
 			const {data} = await axios.get('/todos');
 			await setTodos(data)
-			await todosContext.todoList(todos);
-
-
+			await todosContext.todoList(data);
+			console.log(data)
 		};
 		fetchTodos()
 
-	}, [todos]);
+	}, [setTodos,todosContext.items]);
 
 	return (
 		<ul className={classes.todos}>

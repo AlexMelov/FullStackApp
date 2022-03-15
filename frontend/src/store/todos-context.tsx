@@ -27,17 +27,15 @@ const TodosContextProvider: React.FC = (props) => {
 
     const addTodoHandler = (title: string) => {
         const newTodo = new Todo(title);
-
-
         setTodos((prevState) => {
             return prevState.concat(newTodo);
         });
     };
     const removeTodoHandler = (_id: number) => {
+    	const nonDeletedItems = fetchedItems.filter((item) => item._id !== _id);
+    	setTodos(nonDeletedItems)
         const deletedItem = fetchedItems.filter((item) => item._id === _id);
         console.log(deletedItem);
-
-
         const deleteRequest = async () => {
             const todos = await axios.delete(`/todos/${_id}`, {
                 data: { deletedItem },
