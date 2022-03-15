@@ -35,30 +35,36 @@ mongoose.connect(process.env.DB_URL).then(() =>
 	process.exit();
 });
 
-function getHandler(request: Request, response: Response) {
+function getHandler(request: Request, response: Response)
+{
 	TodosSchema.find()
-		.then((data) => {
+		.then(data =>
+		{
 			response.json(data);
 		})
-		.catch((error) => {
+		.catch(error =>
+		{
 			response.json({ message: error });
 		});
 }
 
-function postHandler(request: Request, response: Response): void {
+function postHandler(request: Request, response: Response): void
+{
 	const todo = new TodosSchema({
 		title: request.body.title
 	});
 
 	todo.save()
-		.then((data) => response.json(data))
-		.catch((err) => response.json({ message: err }));
+		.then((data: any) => response.json(data))
+		.catch((err: string) => response.json({ message: err }));
 }
 
-function deleteHandler(request: Request, response: Response) {
+function deleteHandler(request: Request, response: Response)
+{
 	TodosSchema.remove({ _id: request.params.todoId })
-		.then((data) => response.json(data))
-		.catch((error) => {
+		.then(data => response.json(data))
+		.catch(error =>
+		{
 			response.json({ message: error });
 		});
 }

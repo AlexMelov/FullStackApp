@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { Request, Response } from 'express';
 
-const TodosSchema = mongoose.model(
+const TodosSchema:any = mongoose.model(
 	'Todos',
 	new mongoose.Schema({
 		title: {
@@ -13,23 +13,27 @@ const TodosSchema = mongoose.model(
 
 const todosSchema = mongoose.model('Todos', TodosSchema);
 
-export function getHandler(request: Request, response: Response): any {
+export function getHandler(request: Request, response: Response): any 
+{
 	todosSchema
 		.find()
-		.then((data) => {
+		.then(data => 
+		{
 			response.send(data);
 		})
-		.catch((error) => {
+		.catch(error => 
+		{
 			response.json({ message: error });
 		});
 }
 
-export function postHandler(request: Request, response: Response): void {
+export function postHandler(request: Request, response: Response): void 
+{
 	const todo = new TodosSchema({
 		title: request.body.title
 	});
 
 	todo.save()
-		.then((data) => response.json(data))
+		.then((data: any) => response.json(data))
 		.catch((error: string) => response.json({ message: error }));
 }
