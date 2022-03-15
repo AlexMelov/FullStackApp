@@ -25,7 +25,15 @@ server.post('/todos', postHandler);
 
 server.delete('/todos/:todoId', deleteHandler);
 
-mongoose.connect(process.env.DB_URL, () => server.listen(8000));
+mongoose.connect(process.env.DB_URL).then(() =>
+{
+	process.stdout.write('CONNECTION TO DATABASED SUCCEED');
+	server.listen(8000);
+}).catch(() =>
+{
+	process.stdout.write('CONNECTION TO DATABASE FAILED');
+	process.exit();
+});
 
 function getHandler(request: Request, response: Response) {
 	TodosSchema.find()
