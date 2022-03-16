@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Todo from '../components/models/Todo';
+import environmentalStage from '../environments/environment.stage';
 
 type TodosContextObj = {
     items: Todo[];
@@ -46,7 +47,7 @@ const TodosContextProvider: React.FC = props =>
 		const deletedItem = fetchedItems.filter(item => item._id === _id);
 		const deleteRequest = async () =>
 		{
-			 await axios.delete(`/todos/${_id}`, {
+			 await axios.delete(environmentalStage.apiRoutes.todos+_id, {
                 data: { deletedItem }
             });
 		};

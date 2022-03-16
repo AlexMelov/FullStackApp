@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import environment from "../../environments/environment.dev.js";
+import environment from '../../environments/environment.dev.js';
 
 
 const server: Express = express();
@@ -25,7 +25,7 @@ server.get(environment.apiRoutes.todos, getHandler);
 
 server.post(environment.apiRoutes.todos, postHandler);
 
-server.delete(environment.apiRoutes.todos.concat("/:todoId"), deleteHandler);
+server.delete(environment.apiRoutes.todos.concat('/:todoId'), deleteHandler);
 
 mongoose.connect(process.env.DB_URL).then(() =>
 {
