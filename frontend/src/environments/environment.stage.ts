@@ -1,4 +1,4 @@
-module.exports =
+const environmentalStage =
 {
 	metadata:
 	{
@@ -11,3 +11,5 @@ module.exports =
 		todos: '/todos'
 	}
 };
+
+export default environmentalStage;

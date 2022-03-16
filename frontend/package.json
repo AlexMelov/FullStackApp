@@ -24,8 +24,11 @@
 		"cypress": "^9.5.2",
 		"eslint": "7.32.0",
 		"eslint-config-redaxmedia": "4.2.0",
+		"jest": "^27.5.1",
 		"stylelint": "14.5.3",
-		"stylelint-config-redaxmedia": "3.2.0"
+		"stylelint-config-redaxmedia": "3.2.0",
+		"ts-jest": "^27.1.3",
+		"typescript": "^4.6.2"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -34,6 +37,7 @@
 		"start:prod": "cross-env-shell REACT_APP_ENV=prod npm run start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
+		"test:coverage": "jest ",
 		"eject": "react-scripts eject",
 		"lint": "eslint \"src/**/*.{ts,tsx}\" --cache && stylelint \"src/**/*.css\" --cache",
 		"fix": "eslint \"src/**/*.{ts,tsx}\" --fix && stylelint \"src/**/*.css\" --fix"

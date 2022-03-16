@@ -1,4 +1,4 @@
-module.exports =
+const environmentalDev =
 {
 	metadata:
     {
@@ -11,3 +11,5 @@ module.exports =
 		todos: '/todos'
 	}
 };
+
+export default environmentalDev

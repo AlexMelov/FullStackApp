@@ -5,21 +5,25 @@ import { TodosContext } from '../store/todos-context';
 import axios from 'axios';
 import Todo from './models/Todo';
 
-const List: React.FC = () => 
+
+const List: React.FC = () =>
 {
 	const todosContext = useContext(TodosContext);
 	const [todos, setTodos] = useState([]);
 
 
-	useEffect(() => 
+
+	 useEffect(() =>
 	{
 
-		const fetchTodos = async (): Promise<void> => 
+		const fetchTodos = async (): Promise<void> =>
 		{
 			const { data } = await axios.get('/todos');
 
 			setTodos(data);
 			todosContext.todoList(data);
+
+
 		};
 
 		fetchTodos();
@@ -32,6 +36,7 @@ const List: React.FC = () =>
 				<Item
 					key={idx}
 					title={item.title}
+
 					onRemoveTodo={todosContext.removeTodo.bind(null, item._id)}
 				/>
 			))}

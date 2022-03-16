@@ -1,6 +1,8 @@
 import express, { Express, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import environment from "../../environments/environment.dev.js";
+
 
 const server: Express = express();
 
@@ -15,15 +17,15 @@ const todoSchema = new mongoose.Schema({
 
 const TodosSchema = mongoose.model('Todos', todoSchema);
 
-server.get('/', (request: Request, response: Response) =>
+server.get(environment.apiUrl, (request: Request, response: Response) =>
 	response.sendStatus(404)
 );
 
-server.get('/todos', getHandler);
+server.get(environment.apiRoutes.todos, getHandler);
 
-server.post('/todos', postHandler);
+server.post(environment.apiRoutes.todos, postHandler);
 
-server.delete('/todos/:todoId', deleteHandler);
+server.delete(environment.apiRoutes.todos.concat("/:todoId"), deleteHandler);
 
 mongoose.connect(process.env.DB_URL).then(() =>
 {
@@ -44,6 +46,7 @@ function getHandler(request: Request, response: Response)
 		})
 		.catch(error =>
 		{
+
 			response.json({ message: error });
 		});
 }
