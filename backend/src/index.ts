@@ -4,6 +4,9 @@ import bodyParser from 'body-parser';
 import environment from '../../environments/environment.dev.js';
 
 
+const portString = environment.apiUrl.split(':');
+const port= (JSON.parse(portString[2]));
+
 const server: Express = express();
 
 server.use(bodyParser.json());
@@ -27,10 +30,11 @@ server.post(environment.apiRoutes.todos, postHandler);
 
 server.delete(environment.apiRoutes.todos.concat('/:todoId'), deleteHandler);
 
+
 mongoose.connect(process.env.DB_URL).then(() =>
 {
 	process.stdout.write('CONNECTION TO DATABASED SUCCEED');
-	server.listen(8000);
+	server.listen(port);
 }).catch(() =>
 {
 	process.stdout.write('CONNECTION TO DATABASE FAILED');
