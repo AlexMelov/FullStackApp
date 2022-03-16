@@ -47,7 +47,7 @@ const TodosContextProvider: React.FC = props =>
 		const deletedItem = fetchedItems.filter(item => item._id === _id);
 		const deleteRequest = async () =>
 		{
-			 await axios.delete(environmentalStage.apiRoutes.todos+_id, {
+			 await axios.delete(`${environmentalStage.apiRoutes.todos}/${_id}`, {
                 data: { deletedItem }
             });
 		};
