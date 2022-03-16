@@ -1,26 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Item from './Item';
 import classes from './List.module.css';
-import { TodosContext } from '../store/todos-context';
+import {TodosContext} from '../store/todos-context';
 import axios from 'axios';
 import Todo from './models/Todo';
 
-const List: React.FC = () => 
-{
+const List: React.FC = () => {
 	const todosContext = useContext(TodosContext);
 	const [todos, setTodos] = useState([]);
 
 
-	useEffect(() => 
-	{
+	useEffect(() => {
 
-		const fetchTodos = async ():Promise<void> => 
-		{
-			const { data } = await axios.get('/todos');
+		const fetchTodos = async (): Promise<void> => {
+			const {data} = await axios.get('/todos');
 
 			setTodos(data);
 			todosContext.todoList(data);
-
 		};
 
 		fetchTodos();
@@ -29,7 +25,7 @@ const List: React.FC = () =>
 
 	return (
 		<ul className={classes.todos}>
-			{todos && todos.map((item:Todo, idx) => (
+			{todos && todos.map((item: Todo, idx) => (
 				<Item
 					key={idx}
 					title={item.title}
