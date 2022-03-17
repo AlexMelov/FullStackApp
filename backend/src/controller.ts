@@ -1,52 +1,28 @@
-import express, { Express, Request, Response } from 'express';
-import { TodosSchema } from './models/mongooseModel.js';
+import { Request, Response } from 'express';
+import { todoModel } from './models/schema.js';
+import { HydratedDocument } from 'mongoose';
+import { Todo } from './models/todo';
+import { Handler } from './models/express';
 
-export const server: Express = express();
-
-export function getHandler(request: Request, response: Response): void
+export const getHandler : Handler = (request: Request, response: Response): void =>
 {
-	TodosSchema.find()
-		.then(data =>
-		{
-			response.json(data);
-		})
-		.catch(error =>
-		{
+	todoModel.find()
+		.then(data => response.json(data))
+		.catch(error => response.json({ message: error }));
+};
 
-			response.json({ message: error });
-		});
-}
-
-export function postHandler(request:Request, response: Response): void
+export const postHandler : Handler = (request: Request, response: Response): void =>
 {
-	const todo = new TodosSchema({
-		title: request.body.title
-	});
+	const todo : HydratedDocument<Todo> = new todoModel(request.body);
 
-	try
-	{
-		const savedTodo: Promise<object> = todo.save();
+	todo.save()
+		.then(data => response.json(data))
+		.catch(error => response.json({ message: error }));
+};
 
-		response.json(savedTodo);
-	}
-	catch (error)
-	{
-		response.json({ message: error });
-	}
-
-}
-
-export function deleteHandler(request: Request, response: Response): void
+export const deleteHandler : Handler = (request: Request, response: Response) : void =>
 {
-	try
-	{
-		const deletedData = TodosSchema.remove({ _id: request.params.todoId });
-
-		response.json(deletedData);
-	}
-	catch (error)
-	{
-		response.json({ message: error });
-	}
-}
-
+	todoModel.remove({ _id: request.params.todoId })
+		.then(data => response.json(data))
+		.catch(error => response.json({ message: error }));
+};

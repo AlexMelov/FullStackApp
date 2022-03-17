@@ -5,9 +5,11 @@ module.exports =
 		branch: 'master',
 		environment: 'prod'
 	},
-	apiUrl: 'http://localhost:8000',
+	apiUrl: 'http://localhost',
+	apiPort: 8000,
 	apiRoutes:
 	{
-		todos: '/todos'
+		todos: '/todos',
+		todosWithId: '/todos/:todoId'
 	}
 };

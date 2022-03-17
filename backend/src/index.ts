@@ -1,36 +1,25 @@
-import { Request, Response } from 'express';
+import express, { Express, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import { deleteHandler, getHandler, postHandler } from './controller.js';
 import environment from '../../frontend/src/environments/environment.dev.js';
-import { deleteHandler, getHandler, postHandler, server } from './controller.js';
+
+const server: Express = express();
 
 server.use(bodyParser.json());
-
-server.get(environment.apiUrl, (request: Request, response: Response) =>
-	response.sendStatus(404)
-);
-
+server.get(environment.apiUrl, (request: Request, response: Response) => response.sendStatus(404));
 server.get(environment.apiRoutes.todos, getHandler);
-
 server.post(environment.apiRoutes.todos, postHandler);
+server.delete(environment.apiRoutes.todosWithId, deleteHandler);
 
-server.delete(environment.apiRoutes.todos.concat('/:todoId'), deleteHandler);
-
-mongoose.connect(process.env.DB_URL, mongooseFunction);
-
-export function mongooseFunction() :void
-{
-	try
+mongoose.connect(process.env.DB_URL)
+	.then(() =>
 	{
 		process.stdout.write('CONNECTION TO DATABASED SUCCEED');
 		server.listen(environment.apiPort);
-
-	}
-	catch (error)
+	})
+	.catch(() =>
 	{
 		process.stdout.write('CONNECTION TO DATABASE FAILED');
 		process.exit();
-
-	}
-
-}
+	});

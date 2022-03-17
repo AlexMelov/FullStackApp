@@ -6,9 +6,10 @@ module.exports =
     	environment: 'dev'
     },
 	apiUrl: 'http://localhost',
-	apiPort:8000,
+	apiPort: 8000,
 	apiRoutes:
 	{
-		todos: '/todos'
+		todos: '/todos',
+		todosWithId: '/todos/:todoId'
 	}
 };
