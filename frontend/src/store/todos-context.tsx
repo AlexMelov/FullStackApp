@@ -29,7 +29,6 @@ const TodosContextProvider: React.FC = props =>
 	const [todos, setTodos] = useState<Todo[]>([]);
 	const [fetchedItems, setFetchedItems] = useState<Todo[]>([]);
 
-
 	const addTodoHandler = (title: string) =>
 	{
 		const newTodo = new Todo(title);
@@ -74,7 +73,6 @@ const TodosContextProvider: React.FC = props =>
 			{props.children}
 		</TodosContext.Provider>
 	);
-
 
 };
 

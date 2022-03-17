@@ -6,12 +6,10 @@ import axios from 'axios';
 import Todo from './models/Todo';
 import environmentalStage from '../environments/environment.stage';
 
-
 const List: React.FC = () => 
 {
 	const todosContext = useContext(TodosContext);
 	const [todos, setTodos] = useState([]);
-
 
 	useEffect(() => 
 	{
@@ -43,5 +41,4 @@ const List: React.FC = () =>
 };
 
 export default List;
-
 
