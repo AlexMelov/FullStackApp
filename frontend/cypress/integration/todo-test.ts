@@ -1,7 +1,7 @@
 describe('todo', () => {
 	it('visit the page and changing the 6th todo and adding new Todo', () => {
 		cy.visit('localhost:3000')
-		cy.findByRole('textbox', {name: /todo text/i}).type('My new todo!!!')
+		cy.get('#text').type('My new todo!!!')
 		let oldTodo;
 		cy.get('.List_todos__8LYu9 > :nth-child(6)').then($title => oldTodo = $title.text('Changed Todo from Cypress'))
 		expect('textbox').to.be.ok
