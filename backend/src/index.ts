@@ -18,15 +18,15 @@ server.delete(environment.apiRoutes.todos.concat('/:todoId'), deleteHandler);
 
 mongoose.connect(process.env.DB_URL, mongooseFunction);
 
-export function mongooseFunction() 
+export function mongooseFunction() :void
 {
-	try 
+	try
 	{
 		process.stdout.write('CONNECTION TO DATABASED SUCCEED');
 		server.listen(environment.apiPort);
 
 	}
-	catch (error) 
+	catch (error)
 	{
 		process.stdout.write('CONNECTION TO DATABASE FAILED');
 		process.exit();
