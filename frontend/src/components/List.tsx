@@ -32,7 +32,7 @@ const List: React.FC = () =>
 				<Item
 					key={idx}
 					title={item.title}
-
+					dataKey={idx}
 					onRemoveTodo={todosContext.removeTodo.bind(null, item._id)}
 				/>
 			))}

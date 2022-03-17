@@ -4,13 +4,12 @@ import classes from './Item.module.css';
 const Item: React.FC<{
 	title: string;
 	onRemoveTodo: () => void;
-
-}> = props => 
+	dataKey:number;
+}> = props =>
 {
 	return (
-		<li className={classes.item}>
+		<li className={classes.item} data-test={props.dataKey}>
 			<p>{props.title}</p>
-
 			<button onClick={props.onRemoveTodo}>Remove</button>
 		</li>
 	);
