@@ -6,15 +6,15 @@ import axios from 'axios';
 import Todo from './models/Todo';
 import environmentalStage from '../environments/environment.stage';
 
-const List: React.FC = () => 
+const List: React.FC = () =>
 {
 	const todosContext = useContext(TodosContext);
 	const [todos, setTodos] = useState([]);
 
-	useEffect(() => 
+	useEffect(() =>
 	{
 
-		const fetchTodos = async (): Promise<void> => 
+		const fetchTodos = async (): Promise<void> =>
 		{
 			const { data } = await axios.get(environmentalStage.apiRoutes.todos);
 
