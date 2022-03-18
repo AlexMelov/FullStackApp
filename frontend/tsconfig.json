@@ -1,17 +1,26 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "outDir": "./build",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react-jsx"
-  },
-  "include": [
-    "./src"
-  ]
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"target": "ES6",
+		"types": [
+			"cypress"
+		],
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext",
+			"ES6"
+		],
+
+		"outDir": "./build",
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		"jsx": "react-jsx"
+	},
+	"include": [
+		"./src",
+		"**/*.ts"
+	]
 }
+
+

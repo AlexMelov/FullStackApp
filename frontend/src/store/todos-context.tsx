@@ -41,14 +41,13 @@ const TodosContextProvider: React.FC = props =>
 	const removeTodoHandler = (_id: number) =>
 	{
     	const nonDeletedItems = fetchedItems.filter(item => item._id !== _id);
-
-    	setTodos(nonDeletedItems);
 		const deletedItem = fetchedItems.filter(item => item._id === _id);
 		const deleteRequest = async () =>
 		{
-			 await axios.delete(`${environmentalStage.apiRoutes.todos}/${_id}`, {
+			 await axios.delete(`${environmentalStage.apiUrl+environmentalStage.apiPort+environmentalStage.apiRoutes.todos}/${_id}`, {
                 data: { deletedItem }
             });
+    	setTodos(nonDeletedItems);
 		};
 
 		deleteRequest();
@@ -65,7 +64,6 @@ const TodosContextProvider: React.FC = props =>
         removeTodo: removeTodoHandler,
         todoList,
         fetchedItems
-
     };
 
 	return (
