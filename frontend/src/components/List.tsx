@@ -20,6 +20,7 @@ const List: React.FC = () =>
 
 			setTodos(data);
 			todosContext.todoList(data);
+
 		};
 
 		fetchTodos();
@@ -27,7 +28,7 @@ const List: React.FC = () =>
 	}, [setTodos, todosContext.items]);
 
 	return (
-		<ul className={classes.todos}>
+		<ul className={classes.todos} data-test='list'>
 			{todos && todos.map((item: Todo, idx) => (
 				<Item
 					key={idx}
