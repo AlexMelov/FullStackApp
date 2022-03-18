@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from 'react';
 import classes from './NewTodo.module.css';
 import { TodosContext } from '../store/todos-context';
-import axios from 'axios';
+import axis from 'axios';
 import environmentalStage from '../environments/environment.stage';
 
 const NewTodo: React.FC = () =>
@@ -14,20 +14,17 @@ const NewTodo: React.FC = () =>
         event.preventDefault();
         const enteredText = todoTextInputRef.current!.value;
 
-        if (enteredText.trim().length === 0)
+        if (enteredText.trim().length !== 0)
         {
-        	return;
+        	const sendTodo = async () =>
+        	{
+        		await axis.post(environmentalStage.apiUrl + environmentalStage.apiPort + environmentalStage.apiRoutes.todos, { title: enteredText });
+        	};
+
+			todosContext.addTodo(enteredText);
+			todoTextInputRef.current!.value = '';
+			sendTodo();
         }
-
-        const sendTodo = async () =>
-        {
-        	 await axios.post(environmentalStage.apiUrl+environmentalStage.apiPort+environmentalStage.apiRoutes.todos, { title: enteredText });
-        };
-
-        todosContext.addTodo(enteredText);
-        todoTextInputRef.current!.value = '';
-
-        sendTodo();
 	};
 
 	return (

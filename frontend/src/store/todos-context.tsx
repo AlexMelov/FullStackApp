@@ -9,7 +9,6 @@ type TodosContextObj = {
     removeTodo: (_id: number) => void;
     todoList: (data: Todo[]) => void;
     fetchedItems: Todo[];
-
 };
 
 export const TodosContext = React.createContext<TodosContextObj>({

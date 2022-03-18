@@ -7,7 +7,6 @@
 	justify-content: space-between;
 	margin: 1rem 0;
 	padding: 0.5rem 1rem;
-
 }
 
 .item p
@@ -25,13 +24,11 @@
 	padding: 0.35rem 0.8rem;
 	transition: all 0.3s ease;
 }
-
 .item button:hover
 {
 	cursor: pointer;
 	transform: translateY(-0.1rem);
 }
-
 .item button:active
 {
 	transform: translateY(0);
