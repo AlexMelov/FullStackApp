@@ -1,5 +1,5 @@
 {
-	"extends": ["eslint-config-redaxmedia","plugin:cypress/recommended"],
+	"extends": ["eslint-config-redaxmedia"],
 	"rules": {
 		"@typescript-eslint/typedef": "warn",
 		"@typescript-eslint/type-annotation-spacing": "off",
