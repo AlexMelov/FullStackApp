@@ -23,7 +23,6 @@
 		"cypress": "^9.5.2",
 		"eslint": "8.11.0",
 		"eslint-config-redaxmedia": "4.2.1",
-		"eslint-plugin-cypress": "^2.12.1",
 		"stylelint": "14.6.0",
 		"stylelint-config-redaxmedia": "3.2.0",
 		"typescript": "^4.6.2"
@@ -40,8 +39,8 @@
 		"e2e:stage": "cross-env-shell REACT_APP_ENV=stage npm run e2e",
 		"e2e:prod": "cross-env-shell REACT_APP_ENV=prod npm run e2e",
 		"eject": "react-scripts eject",
-		"lint": "eslint \"src/**/*.{ts,tsx}\" --cache && stylelint \"src/**/*.css\" --cache",
-		"fix": "eslint \"src/**/*.{ts,tsx}\" --fix && stylelint \"src/**/*.css\" --fix"
+		"lint": "eslint \"{cypress,src}/**/*.{ts,tsx}\" --cache && stylelint \"src/**/*.css\" --cache",
+		"fix": "eslint \"{cypress,src}/**/*.{ts,tsx}\" --fix && stylelint \"src/**/*.css\" --fix "
 	},
 	"browserslist": {
 		"production": [
