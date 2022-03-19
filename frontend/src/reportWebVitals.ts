@@ -1,6 +1,6 @@
 import { ReportHandler } from 'web-vitals';
 
-const reportWebVitals = (onPerfEntry?: ReportHandler):void =>
+export default function reportWebVitals  (onPerfEntry?: ReportHandler):void
 {
 	if (onPerfEntry && onPerfEntry instanceof Function)
 	{
@@ -17,4 +17,3 @@ const reportWebVitals = (onPerfEntry?: ReportHandler):void =>
 	}
 };
 
-export default reportWebVitals;
