@@ -12,7 +12,7 @@ const NewTodo: React.FC = () =>
 	const submitHandler = (event: React.FormEvent) =>
 	{
         event.preventDefault();
-        const enteredText = todoTextInputRef.current!.value;
+        const enteredText = todoTextInputRef.current.value;
 
         if (enteredText.trim().length !== 0)
         {
@@ -22,7 +22,7 @@ const NewTodo: React.FC = () =>
         	};
 
 			todosContext.addTodo(enteredText);
-			todoTextInputRef.current!.value = '';
+			todoTextInputRef.current.value = '';
 			sendTodo();
         }
 	};

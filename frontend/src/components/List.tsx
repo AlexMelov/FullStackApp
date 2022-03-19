@@ -13,14 +13,12 @@ const List: React.FC = () =>
 
 	useEffect(() =>
 	{
-
-		const fetchTodos = async (): Promise<void> =>
+		const fetchTodos = async () =>
 		{
 			const { data } = await axios.get(environmentalStage.apiUrl+environmentalStage.apiPort+environmentalStage.apiRoutes.todos);
 
 			setTodos(data);
 			todosContext.todoList(data);
-
 		};
 
 		fetchTodos();

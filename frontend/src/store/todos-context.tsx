@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import Todo from '../components/models/Todo';
 import environmentalStage from '../environments/environment.stage';
 
@@ -11,7 +11,7 @@ type TodosContextObj = {
     fetchedItems: Todo[];
 };
 
-export const TodosContext = React.createContext<TodosContextObj>({
+export const TodosContext:React.Context<TodosContextObj> = createContext<TodosContextObj>({
     items: [],
     addTodo: () =>
     {},
@@ -19,7 +19,7 @@ export const TodosContext = React.createContext<TodosContextObj>({
     {},
     todoList: () =>
     {},
-    fetchedItems: []
+    fetchedItems:[]
 
 });
 
@@ -28,20 +28,21 @@ const TodosContextProvider: React.FC = props =>
 	const [todos, setTodos] = useState<Todo[]>([]);
 	const [fetchedItems, setFetchedItems] = useState<Todo[]>([]);
 
-	const addTodoHandler = (title: string) =>
+	function addTodoHandler  (title: string)
 	{
-		const newTodo = new Todo(title);
+		const newTodo:Todo = new Todo(title);
 
 		setTodos(prevState =>
 		{
-			return prevState.concat(newTodo);
+			return [...prevState, newTodo];
 		});
 	};
-	const removeTodoHandler = (_id: number) =>
+	function removeTodoHandler (_id: number)
 	{
-    	const nonDeletedItems = fetchedItems.filter(item => item._id !== _id);
-		const deletedItem = fetchedItems.filter(item => item._id === _id);
-		const deleteRequest = async () =>
+    	const nonDeletedItems:Todo[] = fetchedItems.filter(item => item._id !== _id);
+		const deletedItem:Todo[] = fetchedItems.filter(item => item._id === _id);
+
+		async function deleteRequest ()
 		{
 			 await axios.delete(`${environmentalStage.apiUrl+environmentalStage.apiPort+environmentalStage.apiRoutes.todos}/${_id}`, {
                 data: { deletedItem }
@@ -52,9 +53,9 @@ const TodosContextProvider: React.FC = props =>
 		deleteRequest();
 	};
 
-	const todoList = (todos: Todo[]) =>
+	function todoList (todos: Todo[])
 	{
-		setFetchedItems(todos);
+		return setFetchedItems(todos);
 	};
 
 	const contextValue: TodosContextObj = {
