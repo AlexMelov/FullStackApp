@@ -7,16 +7,16 @@ import environmentalStage from '../environments/environment.stage';
 const NewTodo: React.FC = () =>
 {
 	const todosContext = useContext(TodosContext);
-	const todoTextInputRef = useRef<HTMLInputElement>(null);
+	const todoTextInputRef: React.MutableRefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
 
 	function submitHandler (event: React.FormEvent)
 	{
         event.preventDefault();
-        const enteredText = todoTextInputRef.current.value;
+        const enteredText:string = todoTextInputRef.current.value;
 
         if (enteredText.trim().length !== 0)
         {
-        	const sendTodo = async () =>
+        	async function sendTodo (): Promise<void>
         	{
         		await axis.post(environmentalStage.apiUrl + environmentalStage.apiPort + environmentalStage.apiRoutes.todos, { title: enteredText });
         	};
