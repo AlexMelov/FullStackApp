@@ -8,12 +8,13 @@ import environmentalStage from '../environments/environment.stage';
 
 const List: React.FC = () =>
 {
+
 	const todosContext = useContext(TodosContext);
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState<Todo[]>([]);
 
 	useEffect(() =>
 	{
-		const fetchTodos = async () =>
+		async function fetchTodos  (): Promise<void>
 		{
 			const { data } = await axios.get(environmentalStage.apiUrl+environmentalStage.apiPort+environmentalStage.apiRoutes.todos);
 

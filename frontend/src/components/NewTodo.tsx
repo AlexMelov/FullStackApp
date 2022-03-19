@@ -9,7 +9,7 @@ const NewTodo: React.FC = () =>
 	const todosContext = useContext(TodosContext);
 	const todoTextInputRef = useRef<HTMLInputElement>(null);
 
-	const submitHandler = (event: React.FormEvent) =>
+	function submitHandler (event: React.FormEvent)
 	{
         event.preventDefault();
         const enteredText = todoTextInputRef.current.value;
@@ -25,7 +25,7 @@ const NewTodo: React.FC = () =>
 			todoTextInputRef.current.value = '';
 			sendTodo();
         }
-	};
+	}
 
 	return (
 		<form className={classes.form} onSubmit={submitHandler}>
