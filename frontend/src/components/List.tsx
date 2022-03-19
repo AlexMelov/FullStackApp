@@ -6,10 +6,18 @@ import axios from 'axios';
 import Todo from './models/Todo';
 import environmentalStage from '../environments/environment.stage';
 
+type TodosContextObj = {
+	items: Todo[];
+	addTodo: (title: string) => void;
+	removeTodo: (_id: number) => void;
+	todoList: (data: Todo[]) => void;
+	fetchedItems: Todo[];
+};
+
 const List: React.FC = () =>
 {
 
-	const todosContext = useContext(TodosContext);
+	const todosContext:TodosContextObj = useContext(TodosContext);
 	const [todos, setTodos] = useState<Todo[]>([]);
 
 	useEffect(() =>
