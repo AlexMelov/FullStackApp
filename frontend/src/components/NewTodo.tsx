@@ -1,17 +1,9 @@
 import React, { useRef, useContext } from 'react';
 import classes from './NewTodo.module.css';
-import { TodosContext } from '../store/todos-context';
+import { TodosContext, TodosContextObj } from '../store/todos-context';
 import axis from 'axios';
 import environmentalStage from '../environments/environment.stage';
-import Todo from './models/Todo';
 
-type TodosContextObj = {
-	items: Todo[];
-	addTodo: (title: string) => void;
-	removeTodo: (_id: number) => void;
-	todoList: (data: Todo[]) => void;
-	fetchedItems: Todo[];
-};
 const NewTodo: React.FC = () =>
 {
 	const todosContext:TodosContextObj = useContext(TodosContext);

@@ -3,7 +3,7 @@ import React, { useState, createContext } from 'react';
 import Todo from '../components/models/Todo';
 import environmentalStage from '../environments/environment.stage';
 
-type TodosContextObj = {
+export type TodosContextObj = {
     items: Todo[];
     addTodo: (title: string) => void;
     removeTodo: (_id: number) => void;

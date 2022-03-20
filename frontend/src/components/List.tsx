@@ -1,18 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Item from './Item';
 import classes from './List.module.css';
-import { TodosContext } from '../store/todos-context';
+import { TodosContext, TodosContextObj } from '../store/todos-context';
 import axios from 'axios';
 import Todo from './models/Todo';
 import environmentalStage from '../environments/environment.stage';
-
-type TodosContextObj = {
-	items: Todo[];
-	addTodo: (title: string) => void;
-	removeTodo: (_id: number) => void;
-	todoList: (data: Todo[]) => void;
-	fetchedItems: Todo[];
-};
 
 const List: React.FC = () =>
 {
