@@ -10,7 +10,7 @@ const List: React.FC = () =>
 {
 
 	const todosContext:TodosContextObj = useContext(TodosContext);
-	const [todos, setTodos] = useState<Todo[]>([]);
+	const [ todos, setTodos ] = useState<Todo[]>([]);
 
 	useEffect(() =>
 	{
@@ -20,11 +20,11 @@ const List: React.FC = () =>
 
 			setTodos(data);
 			todosContext.todoList(data);
-		};
+		}
 
 		fetchTodos();
 
-	}, [setTodos, todosContext.items]);
+	}, [ setTodos, todosContext.items ]);
 
 	return (
 		<ul className={classes.todos} data-test='list'>

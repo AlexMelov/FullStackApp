@@ -15,5 +15,5 @@ export default function reportWebVitals  (onPerfEntry?: ReportHandler):void
 			})
 			.catch(() => null);
 	}
-};
+}
 

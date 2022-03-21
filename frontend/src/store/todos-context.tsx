@@ -25,8 +25,8 @@ export const TodosContext:React.Context<TodosContextObj> = createContext<TodosCo
 
 const TodosContextProvider: React.FC = props =>
 {
-	const [todos, setTodos] = useState<Todo[]>([]);
-	const [fetchedItems, setFetchedItems] = useState<Todo[]>([]);
+	const [ todos, setTodos ] = useState<Todo[]>([]);
+	const [ fetchedItems, setFetchedItems ] = useState<Todo[]>([]);
 
 	function addTodoHandler  (title: string)
 	{
@@ -34,9 +34,9 @@ const TodosContextProvider: React.FC = props =>
 
 		setTodos(prevState =>
 		{
-			return [...prevState, newTodo];
+			return [ ...prevState, newTodo ];
 		});
-	};
+	}
 	function removeTodoHandler (_id: number)
 	{
     	const nonDeletedItems:Todo[] = fetchedItems.filter(item => item._id !== _id);
@@ -48,15 +48,15 @@ const TodosContextProvider: React.FC = props =>
                 data: { deletedItem }
             });
     	setTodos(nonDeletedItems);
-		};
+		}
 
 		deleteRequest();
-	};
+	}
 
 	function todoList (todos: Todo[])
 	{
 		return setFetchedItems(todos);
-	};
+	}
 
 	const contextValue: TodosContextObj = {
         items: todos,

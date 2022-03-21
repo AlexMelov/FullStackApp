@@ -19,7 +19,7 @@ const NewTodo: React.FC = () =>
         	async function sendTodo (): Promise<void>
         	{
         		await axis.post(environmentalStage.apiUrl + environmentalStage.apiPort + environmentalStage.apiRoutes.todos, { title: enteredText });
-        	};
+        	}
 
 			todosContext.addTodo(enteredText);
 			todoTextInputRef.current.value = '';
