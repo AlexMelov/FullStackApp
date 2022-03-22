@@ -4,7 +4,6 @@
 	"private": true,
 	"type": "module",
 	"dependencies": {
-		"@types/supertest": "^2.0.11",
 		"cors": "^2.8.5",
 		"cross-env": "7.0.3",
 		"dotenv": "^16.0.0",
@@ -35,6 +34,16 @@
 		"build": "tsc",
 		"lint": "eslint \"src/**/*.ts\"",
 		"fix": "eslint \"src/**/*.ts\" --fix",
-		"test": "Jest"
+		"test": "jest"
+	},
+	"jest": {
+		"preset": "ts-jest",
+		"testEnvironment": "node",
+		"transform": {
+			"node_modules/variables/.+\\.(j|t)sx?$": "ts-jest"
+		},
+		"transformIgnorePatterns": [
+			"node_modules/(?!variables/.*)"
+		]
 	}
 }
