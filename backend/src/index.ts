@@ -25,4 +25,3 @@ mongoose.connect(process.env.DB_URL)
 		process.stdout.write('CONNECTION TO DATABASE FAILED');
 		process.exit();
 	});
-export default server;

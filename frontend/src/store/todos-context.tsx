@@ -1,15 +1,8 @@
 import axios from 'axios';
 import React, { useState, createContext } from 'react';
 import Todo from '../components/models/Todo';
-import environmentalStage from '../environments/environment.stage';
-
-export type TodosContextObj = {
-    items: Todo[];
-    addTodo: (title: string) => void;
-    removeTodo: (_id: number) => void;
-    todoList: (data: Todo[]) => void;
-    fetchedItems: Todo[];
-};
+import environmentalStage from '../environments/environment.dev';
+import { TodosContextObj } from '../components/models/TodosContext';
 
 export const TodosContext:React.Context<TodosContextObj> = createContext<TodosContextObj>({
     items: [],
@@ -37,20 +30,22 @@ const TodosContextProvider: React.FC = props =>
 			return [ ...prevState, newTodo ];
 		});
 	}
+
+	async function deleteRequest (_id:number, deletedItem:Todo[], nonDeletedItems:Todo[])
+	{
+		await axios.delete(environmentalStage.apiUrl+environmentalStage.apiPort+environmentalStage.apiRoutes.todos +'/'+ _id, {
+			data: { deletedItem }
+		});
+
+		setTodos(nonDeletedItems);
+	}
+
 	function removeTodoHandler (_id: number)
 	{
     	const nonDeletedItems:Todo[] = fetchedItems.filter(item => item._id !== _id);
 		const deletedItem:Todo[] = fetchedItems.filter(item => item._id === _id);
 
-		async function deleteRequest ()
-		{
-			 await axios.delete(`${environmentalStage.apiUrl+environmentalStage.apiPort+environmentalStage.apiRoutes.todos}/${_id}`, {
-                data: { deletedItem }
-            });
-    	setTodos(nonDeletedItems);
-		}
-
-		deleteRequest();
+		deleteRequest(_id, deletedItem, nonDeletedItems);
 	}
 
 	function todoList (todos: Todo[])

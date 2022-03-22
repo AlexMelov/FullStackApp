@@ -10,7 +10,7 @@ const Item: React.FC<{
 	return (
 		<li className={classes.item} data-test='item'>
 			<p>{props.title}</p>
-			<button onClick={props.onRemoveTodo} data-test='removeBtn'>Remove</button>
+			<button onClick={props.onRemoveTodo} data-test='remove-button'>Remove</button>
 		</li>
 	);
 };

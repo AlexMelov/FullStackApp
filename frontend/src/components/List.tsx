@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Item from './Item';
 import classes from './List.module.css';
-import { TodosContext, TodosContextObj } from '../store/todos-context';
+import { TodosContext } from '../store/todos-context';
 import axios from 'axios';
 import Todo from './models/Todo';
 import environmentalStage from '../environments/environment.stage';
+import { TodosContextObj } from './models/TodosContext';
 
 const List: React.FC = () =>
 {
@@ -27,7 +28,7 @@ const List: React.FC = () =>
 	}, [ setTodos, todosContext.items ]);
 
 	return (
-		<ul className={classes.todos} data-test='list'>
+		<ul className={classes.todos} data-test="list">
 			{todos && todos.map((item: Todo, idx) => (
 				<Item
 					key={idx}
