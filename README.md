@@ -1,4 +1,4 @@
-#Full Stack Todo-Application
+# Full Stack Todo-Application
 This is todo application for posting listing and deleting todos.
 The entire application including the testing part is with typescript.
 
