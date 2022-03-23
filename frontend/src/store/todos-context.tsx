@@ -4,7 +4,7 @@ import Todo from '../components/models/Todo';
 import environmentalStage from '../environments/environment.dev';
 import { TodosContextObj } from '../components/models/TodosContext';
 
-export const TodosContext:React.Context<TodosContextObj> = createContext<TodosContextObj>({
+export const TodosContext : React.Context<TodosContextObj> = createContext<TodosContextObj>({
     items: [],
     addTodo: () =>
     {},
@@ -16,44 +16,44 @@ export const TodosContext:React.Context<TodosContextObj> = createContext<TodosCo
 
 });
 
-const TodosContextProvider: React.FC = props =>
+const TodosContextProvider : React.FC = props =>
 {
 	const [ todos, setTodos ] = useState<Todo[]>([]);
 	const [ fetchedItems, setFetchedItems ] = useState<Todo[]>([]);
 
-	function addTodoHandler  (title: string)
+	function addTodoHandler  (title : string)
 	{
-		const newTodo:Todo = new Todo(title);
+		const newTodo : Todo = new Todo(title);
 
-		setTodos(prevState =>
+		setTodos(previousState =>
 		{
-			return [ ...prevState, newTodo ];
+			return [ ...previousState, newTodo ];
 		});
 	}
 
-	async function deleteRequest (_id:number, deletedItem:Todo[], nonDeletedItems:Todo[])
+	async function deleteRequest (_id : number, deletedItem : Todo[], nonDeletedItems : Todo[])
 	{
-		await axios.delete(environmentalStage.apiUrl+environmentalStage.apiPort+environmentalStage.apiRoutes.todos +'/'+ _id, {
+		await axios.delete(environmentalStage.apiUrl + ':' + environmentalStage.apiPort + environmentalStage.apiRoutes.todos +'/'+ _id, {
 			data: { deletedItem }
 		});
 
 		setTodos(nonDeletedItems);
 	}
 
-	function removeTodoHandler (_id: number)
+	function removeTodoHandler (_id : number)
 	{
-    	const nonDeletedItems:Todo[] = fetchedItems.filter(item => item._id !== _id);
-		const deletedItem:Todo[] = fetchedItems.filter(item => item._id === _id);
+    	const nonDeletedItems : Todo[] = fetchedItems.filter(item => item._id !== _id);
+		const deletedItem : Todo[] = fetchedItems.filter(item => item._id === _id);
 
 		deleteRequest(_id, deletedItem, nonDeletedItems);
 	}
 
-	function todoList (todos: Todo[])
+	function todoList (todos : Todo[])
 	{
 		return setFetchedItems(todos);
 	}
 
-	const contextValue: TodosContextObj = {
+	const contextValue : TodosContextObj = {
         items: todos,
         addTodo: addTodoHandler,
         removeTodo: removeTodoHandler,

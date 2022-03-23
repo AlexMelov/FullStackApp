@@ -1,8 +1,6 @@
 {
 	"extends": ["eslint-config-redaxmedia"],
 	"rules": {
-		"@typescript-eslint/typedef": "warn",
-		"@typescript-eslint/type-annotation-spacing": "off",
 		"@typescript-eslint/no-require-imports": "warn",
 		"jsdoc/require-jsdoc": "off"
 	}

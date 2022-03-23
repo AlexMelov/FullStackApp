@@ -1,8 +1,8 @@
 type environmentStageObj ={
-	metadata: {branch: string, environment: string}
-, apiUrl: string, apiPort: number, apiRoutes: {todos: string, todosWithId: string}}
+	metadata : {branch : string, environment : string}
+, apiUrl : string, apiPort : number, apiRoutes : {todos : string, todosWithId : string}}
 
-const environmentalStage:environmentStageObj =
+const environmentalStage : environmentStageObj =
 {
 	metadata:
 	{

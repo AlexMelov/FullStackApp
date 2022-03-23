@@ -4,7 +4,8 @@ import TodosContextProvider, { TodosContext } from './todos-context';
 
 describe('TodoProvider', ()=>
 {
-	test('check length !== 0', ()=>
+
+	test('listing the todos and checks if the array length is not 0', ()=>
 	{
 
 		render(<TodosContextProvider>
@@ -14,11 +15,10 @@ describe('TodoProvider', ()=>
 				}
 			</TodosContext.Consumer>
 		</TodosContextProvider>);
-
 	expect(('Is length')).not.toHaveLength(0);
-
 	});
-	test('check length === exact number', ()=>
+
+	test('checking the length on the exact number of todos', ()=>
 	{
 
 		render(<TodosContextProvider>
@@ -28,11 +28,10 @@ describe('TodoProvider', ()=>
 				}
 			</TodosContext.Consumer>
 		</TodosContextProvider>);
-
-	expect(('is length')).not.toHaveLength(0);
-
+	expect(('is length')).toHaveLength(9);
 	});
-	test('check add todo func', ()=>
+
+	test('checking add todo func', () =>
 	{
 
 		render(<TodosContextProvider>
@@ -40,7 +39,7 @@ describe('TodoProvider', ()=>
 				{
 					value => <>
 						<span>Is sending: {value.addTodo}</span>
-						<button onClick={()=>
+						<button onClick={() =>
 						{
 							value.addTodo('My Todo from Jest');
 						}
@@ -51,7 +50,5 @@ describe('TodoProvider', ()=>
 		</TodosContextProvider>);
 	fireEvent.click(screen.getByText('Add Todo'));
 	expect(('Is sending: true')).toBeTruthy();
-
 	});
-
 });

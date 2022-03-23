@@ -5,7 +5,7 @@ module.exports =
     	branch: 'develop',
     	environment: 'dev'
     },
-	apiUrl: 'http://localhost:',
+	apiUrl: 'http://localhost',
 	apiPort: 8000,
 	apiRoutes:
 	{

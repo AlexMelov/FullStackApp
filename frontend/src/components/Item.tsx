@@ -1,14 +1,14 @@
 import React from 'react';
-import classes from './Item.module.css';
+import styles from './styles/Item.module.css';
 
-const Item: React.FC<{
-	title: string;
-	onRemoveTodo: () => void;
-	dataKey:number;
+const Item : React.FC<{
+	title : string;
+	onRemoveTodo : () => void;
+	dataKey : number;
 }> = props =>
 {
 	return (
-		<li className={classes.item} data-test='item'>
+		<li className={styles.item} data-test='item'>
 			<p>{props.title}</p>
 			<button onClick={props.onRemoveTodo} data-test='remove-button'>Remove</button>
 		</li>

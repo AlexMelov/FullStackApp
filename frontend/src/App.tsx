@@ -3,7 +3,7 @@ import NewTodo from './components/NewTodo';
 import List from './components/List';
 import React, { Fragment } from 'react';
 
-const App: React.FC = () =>
+const App : React.FC = () =>
 {
 	return (
 		<Fragment>
