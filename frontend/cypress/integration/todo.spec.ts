@@ -1,6 +1,6 @@
 describe('todo', () =>
 {
-	beforeEach('visit the page and changing the 6th todo and adding new Todo', ()=>
+	beforeEach('visit the page and changing the 6th todo and adding new Todo', () =>
 	{
 		cy.visit('localhost:3000');
 	});
@@ -11,10 +11,10 @@ describe('todo', () =>
 	});
 	it('adding todo to list', () =>
 	{
-		expect(cy.get('[data-test="item"]').should('not.contain.text', 'My new Todo from Cypress' ));
+		expect(cy.get('[data-test="item"]').should('not.contain.text', 'My new Todo from Cypress'));
 		cy.get('[data-test="text-input"]').type('My new Todo from Cypress');
 		cy.get('[data-test="add-button"]').click();
-		expect(cy.get('[data-test="item"]').should('contain.text', 'My new Todo from Cypress' ));
+		expect(cy.get('[data-test="item"]').should('contain.text', 'My new Todo from Cypress'));
 
 	});
 	it('removing todo from list', () =>
