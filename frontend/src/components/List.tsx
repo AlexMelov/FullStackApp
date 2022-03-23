@@ -5,11 +5,11 @@ import { TodosContext } from '../store/todos-context';
 import axios from 'axios';
 import Todo from './models/Todo';
 import environmentalStage from '../environments/environment.dev.js';
-import { TodosContextObj } from './models/TodosContext';
+import { TodosContextModel } from './models/TodosContext';
 
 const List : React.FC = () =>
 {
-	const todosContext : TodosContextObj = useContext(TodosContext);
+	const todosContext : TodosContextModel = useContext(TodosContext);
 	const [ todos, setTodos ] = useState<Todo[]>([]);
 
 	useEffect(() =>

@@ -2,9 +2,9 @@ import axios from 'axios';
 import React, { useState, createContext } from 'react';
 import Todo from '../components/models/Todo';
 import environmentalStage from '../environments/environment.dev';
-import { TodosContextObj } from '../components/models/TodosContext';
+import { TodosContextModel } from '../components/models/TodosContext';
 
-export const TodosContext : React.Context<TodosContextObj> = createContext<TodosContextObj>({
+export const TodosContext : React.Context<TodosContextModel> = createContext<TodosContextModel>({
     items: [],
     addTodo: () =>
     {},
@@ -53,7 +53,7 @@ const TodosContextProvider : React.FC = props =>
 		return setFetchedItems(todos);
 	}
 
-	const contextValue : TodosContextObj = {
+	const contextValue : TodosContextModel = {
         items: todos,
         addTodo: addTodoHandler,
         removeTodo: removeTodoHandler,

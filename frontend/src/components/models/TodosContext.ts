@@ -1,6 +1,6 @@
 import Todo from './Todo';
 
-export type TodosContextObj =
+export type TodosContextModel =
 {
 	items : Todo[];
 	addTodo : (title : string) => void;

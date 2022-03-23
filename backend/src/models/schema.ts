@@ -7,4 +7,4 @@ export const todoSchema : Schema = new mongoose.Schema({
 		required: true
 	}
 });
-export const todoModel: Model<Todo> = mongoose.model('Todos', todoSchema);
+export const todoModel : Model<Todo> = mongoose.model('Todos', todoSchema);

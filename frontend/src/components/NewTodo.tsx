@@ -3,11 +3,11 @@ import styles from './styles/NewTodo.module.css';
 import { TodosContext } from '../store/todos-context';
 import axios from 'axios';
 import environmentalStage from '../environments/environment.stage';
-import { TodosContextObj } from './models/TodosContext';
+import { TodosContextModel } from './models/TodosContext';
 
 const NewTodo : React.FC = () =>
 {
-	const todosContext : TodosContextObj = useContext(TodosContext);
+	const todosContext : TodosContextModel = useContext(TodosContext);
 	const todoTextInputRef : React.MutableRefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
 
 	async function sendTodo (title : string) : Promise<void>
