@@ -1,8 +1,8 @@
 .idea
 .env
 .eslintcache
+.stylelintcache
 build
 node_modules
 package-lock.json
-.stylelintcache
-.eslintcache
+

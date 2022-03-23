@@ -4,14 +4,14 @@ import { HydratedDocument } from 'mongoose';
 import { Todo } from './models/todo';
 import { Handler } from './models/express';
 
-export const getHandler : Handler = (request: Request, response: Response): void =>
+export const getHandler : Handler = (request : Request, response : Response) : void =>
 {
 	todoModel.find()
 		.then(data => response.json(data))
 		.catch(error => response.json({ message: error }));
 };
 
-export const postHandler : Handler = (request: Request, response: Response): void =>
+export const postHandler : Handler = (request : Request, response : Response) : void =>
 {
 	const todo : HydratedDocument<Todo> = new todoModel(request.body);
 
@@ -20,7 +20,7 @@ export const postHandler : Handler = (request: Request, response: Response): voi
 		.catch(error => response.json({ message: error }));
 };
 
-export const deleteHandler : Handler = (request: Request, response: Response) : void =>
+export const deleteHandler : Handler = (request : Request, response : Response) : void =>
 {
 	todoModel.remove({ _id: request.params.todoId })
 		.then(data => response.json(data))

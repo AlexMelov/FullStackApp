@@ -1,6 +1,6 @@
 import { ReportHandler } from 'web-vitals';
 
-export default function reportWebVitals  (onPerfEntry?: ReportHandler):void
+export default function reportWebVitals  (onPerfEntry ?: ReportHandler) : void
 {
 	if (onPerfEntry && onPerfEntry instanceof Function)
 	{
@@ -15,5 +15,5 @@ export default function reportWebVitals  (onPerfEntry?: ReportHandler):void
 			})
 			.catch(() => null);
 	}
-};
+}
 
