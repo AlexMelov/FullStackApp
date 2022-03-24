@@ -41,5 +41,5 @@ jobs:
              uses: actions/setup-node@v1
              with:
                  node-version: 14
-         -   run: npm install --prefix ./frontend/
+         -   run: npm install --legacy-peer-deps
          -   run: npm run test --prefix ./frontend/
