@@ -29,16 +29,4 @@ jobs:
             - run: npm --prefix ./backend/ run build
             - run: npm --prefix ./frontend/ install
             - run: npm --prefix ./frontend/ run build
-        test:
-            runs-on: ubuntu-latest
-            steps:
-                -   name: Checkout
-                    uses: actions/checkout@v2
-                -   name: Set up Node 14
-                    uses: actions/setup-node@v1
-                    with:
-                        node-version: 14
-            - run: npm --prefix ./backend/ install
-            - run: npm --prefix ./backend/ run test
-            - run: npm --prefix ./frontend/ install
-            - run: npm --prefix ./frontend/ run test
+
