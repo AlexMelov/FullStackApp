@@ -15,7 +15,7 @@ describe('TodoProvider', ()=>
 				}
 			</TodosContext.Consumer>
 		</TodosContextProvider>);
-	expect(('Is length')).not.toHaveLength(0);
+	expect('Is length').not.toHaveLength(0);
 	});
 
 	test('checking the length on the exact number of todos', ()=>

@@ -13,6 +13,7 @@ class Todo
 
 export default Todo;
 
-export interface TodoForCypress {
-	title : string
+export interface TodoForTest {
+	title : string,
+	id : string
 }
