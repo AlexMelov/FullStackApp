@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import List from './List';
-import { Todo } from 'backend/src/models/todo';
+import { TodoForCypress } from './models/Todo';
 
 describe('Async component', ()=>
 {
@@ -12,7 +12,7 @@ describe('Async component', ()=>
 
 		render(<List/>);
 
-		const listItems : Todo[] = await screen.findAllByRole('listitem');
+		const listItems : TodoForCypress[] = await screen.findAllByRole('listitem');
 
 		expect(listItems).not.toHaveLength(0);
 	});

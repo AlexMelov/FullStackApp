@@ -12,3 +12,7 @@ class Todo
 }
 
 export default Todo;
+
+export interface TodoForCypress {
+	title : string
+}
