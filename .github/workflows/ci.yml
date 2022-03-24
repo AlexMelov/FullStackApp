@@ -43,3 +43,4 @@ jobs:
                  node-version: ${{ matrix.node-version }}
          -   run: npm install --prefix ./frontend/
          -   run: npm run test --prefix ./frontend/
+         -   run: yarn run cypress open --prefix ./frontend/
