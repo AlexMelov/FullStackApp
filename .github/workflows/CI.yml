@@ -12,6 +12,8 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: 14
+            - run: npm --prefix ./backend/ install
+            - run: npm --prefix ./backend/ run fix
             - run: npm --prefix ./frontend/ install
             - run: npm --prefix ./frontend/ run fix
 
