@@ -1,54 +1,32 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
 import TodosContextProvider, { TodosContext } from './todos-context';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 describe('TodoProvider', ()=>
 {
-
-	test('listing the todos and checks if the array length is not 0', ()=>
+	Enzyme.configure({ adapter: new Adapter() });
+	it('sets status', () =>
 	{
+		const TestComponent : React.FC = () =>
+		{
+			const { addTodo, items } = React.useContext(TodosContext);
 
-		render(<TodosContextProvider>
-			<TodosContext.Consumer>
-				{
-					value => <span>Is length: {value.fetchedItems}</span>
-				}
-			</TodosContext.Consumer>
-		</TodosContextProvider>);
-	expect('Is length').not.toHaveLength(0);
-	});
+			return <React.Fragment>
+				<div data-testing = 'value'>{items.map(item=>item.title)}</div>
+				<button onClick={() => addTodo('Test Todo!')}>Add Todo</button>
+			</React.Fragment>;
+		};
+		const wrapper : Enzyme.ReactWrapper<any> = mount(
+			<TodosContextProvider>
+				<TestComponent />
+			</TodosContextProvider>
+		);
 
-	test('checking the length on the exact number of todos', ()=>
-	{
+		expect(wrapper.find('[data-testing="value"]').text()).toBeFalsy();
 
-		render(<TodosContextProvider>
-			<TodosContext.Consumer>
-				{
-					value => <span>Is length: {value.fetchedItems}</span>
-				}
-			</TodosContext.Consumer>
-		</TodosContextProvider>);
-	expect(('is length')).toHaveLength(9);
-	});
+		wrapper.find('button').simulate('click');
 
-	test('checking add todo func', () =>
-	{
-
-		render(<TodosContextProvider>
-			<TodosContext.Consumer>
-				{
-					value => <>
-						<span>Is sending: {value.addTodo}</span>
-						<button onClick={() =>
-						{
-							value.addTodo('My Todo from Jest');
-						}
-						}>Add Todo</button>
-					</>
-				}
-			</TodosContext.Consumer>
-		</TodosContextProvider>);
-	fireEvent.click(screen.getByText('Add Todo'));
-	expect(('Is sending: true')).toBeTruthy();
+		expect(wrapper.find('[data-testing="value"]').text()).toBeTruthy();
 	});
 });
