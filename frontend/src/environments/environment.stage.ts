@@ -13,8 +13,8 @@ const environmentalStage : environmentStageObj =
 	apiPort: 8000,
 	apiRoutes:
 	{
-		todos: '/api/todos',
-		todosWithId: '/api/todos/:todoId'
+		todos: '/todos',
+		todosWithId: '/todos/:todoId'
 	}
 };
 
