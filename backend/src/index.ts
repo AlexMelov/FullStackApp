@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import { deleteHandler, getHandler, postHandler } from './controller.js';
 import environment from '../../frontend/src/environments/environment.dev.js';
 import cors from 'cors';
+import path from 'path';
 
 const server : Express = express();
 
@@ -13,6 +14,14 @@ server.get(`${environment.apiUrl}:`, (request : Request, response : Response) =>
 server.get(environment.apiRoutes.todos, getHandler);
 server.post(environment.apiRoutes.todos, postHandler);
 server.delete(environment.apiRoutes.todosWithId, deleteHandler);
+
+const __dirname : string = path.resolve();
+
+server.use(express.static(path.join(__dirname, '../frontend/build')));
+server.get('*', (request, response) =>
+{
+	response.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'));
+});
 
 mongoose.connect(process.env.DB_URL)
 	.then(() =>
