@@ -4,7 +4,7 @@ import styles from './styles/List.module.css';
 import { TodosContext } from '../store/todos-context';
 import axios from 'axios';
 import Todo from './models/Todo';
-import environmentalStage from '../environments/environment.dev.js';
+import environmentalStage from '../environments/environment.stage';
 import { TodosContextModel } from './models/TodosContext';
 
 const List : React.FC = () =>

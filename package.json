@@ -8,9 +8,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"prepare": "husky install",
-		"start": "npm run start:dev --prefix ./frontend",
-		"start:server": "npm run start:dev --prefix ./backend"
+		"prepare": "husky install"
 	},
 	"devDependencies": {
 		"husky": "7.0.4"
