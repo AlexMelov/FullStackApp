@@ -62,7 +62,4 @@ jobs:
             -   run: npm run wait-for-serve --prefix ./frontend && npm run e2e --prefix ./frontend
                 env:
                     DB_URL: ${{ secrets.DB_URL }}
-
-    my-job:
-        runs-on: ubuntu-latest
-         timeout-minutes: 30
+                timeout-minutes: 30
