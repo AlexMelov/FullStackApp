@@ -2,6 +2,7 @@
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
 		"target": "ES6",
+		"skipLibCheck": true,
 		"types": [
 			"cypress"
 		],
@@ -17,6 +18,9 @@
 		"allowSyntheticDefaultImports": true,
 		"jsx": "react-jsx"
 	},
+	"exclude": [
+		"./node_modules"
+	],
 	"include": [
 		"./src",
 		"**/*.ts"

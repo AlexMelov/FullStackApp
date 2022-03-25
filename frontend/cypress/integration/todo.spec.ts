@@ -1,9 +1,13 @@
 describe('todo', () =>
 {
-	beforeEach('visit the page and changing the 6th todo and adding new Todo', () =>
+	beforeEach(() =>
 	{
+		it('visit the page', () =>
+		{
 		cy.visit('localhost:3000');
+		});
 	});
+
 	it('todo list is working', () =>
 	{
 		cy.get('[data-test="item"]').should('have.length.above', 0);
