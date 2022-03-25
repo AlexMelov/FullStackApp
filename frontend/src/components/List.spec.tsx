@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import List from './List';
 import { TodoForTest } from './models/Todo';
+import React from 'react';
 
 describe('Async component', ()=>
 {
