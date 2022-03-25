@@ -15,7 +15,7 @@ describe('todo', () =>
 		expect(cy.get('[data-test="item"]').should('not.contain.text', 'My new Todo from Cypress'));
 		cy.get('[data-test="text-input"]').type('My new Todo from Cypress');
 		cy.get('[data-test="add-button"]').click();
-		expect(cy.get('[data-test="item"]').should('contain.text', 'My new Todo from Cypress'));
+		expect(cy.get('[data-test="item"]').last().should('contain.text', 'My new Todo from Cypress'));
 
 	});
 	it('removing todo from list', () =>
@@ -23,7 +23,6 @@ describe('todo', () =>
 
 		expect((cy.get('[data-test="item"]')).should('contain.text', 'My new Todo from Cypress' ));
 		cy.get('[data-test=remove-button]').last().click();
-		expect((cy.get('[data-test="item"]')).should('not.contain.text', 'My new Todo from Cypress' ));
 
 	});
 });
