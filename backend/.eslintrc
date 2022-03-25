@@ -3,5 +3,8 @@
 	"rules": {
 		"@typescript-eslint/no-require-imports": "warn",
 		"jsdoc/require-jsdoc": "off"
+	},
+	"parserOptions": {
+		"project": "./tsconfig.json"
 	}
 }
