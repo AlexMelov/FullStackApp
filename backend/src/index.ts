@@ -26,4 +26,3 @@ mongoose.connect(process.env.DB_URL)
 		process.exit();
 	});
 export default server;
-

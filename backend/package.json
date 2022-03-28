@@ -10,8 +10,6 @@
 		"express": "^4.17.3",
 		"mongodb": "^4.4.1",
 		"mongoose": "^6.2.7",
-		"netlify-lambda": "^2.0.15",
-		"serverless-http": "^2.7.0",
 		"wait-on": "^6.0.1",
 		"web-vitals": "^2.1.4"
 	},
