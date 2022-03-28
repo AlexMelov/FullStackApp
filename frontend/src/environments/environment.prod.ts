@@ -5,7 +5,7 @@ export const environment : Environment =
 	metadata:
 	{
 		branch: 'master',
-		environment: 'stage'
+		environment: 'prod'
 	},
 	apiUrl: 'http://localhost:',
 	apiPort: 8000,
