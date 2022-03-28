@@ -5,7 +5,11 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 describe('TodoProvider', ()=>
 {
-	Enzyme.configure({ adapter: new Adapter() });
+
+	beforeEach(() => 
+	{
+		Enzyme.configure({ adapter: new Adapter() });
+	});
 	it('sets status', () =>
 	{
 		const TestComponent : React.FC = () =>
@@ -13,20 +17,20 @@ describe('TodoProvider', ()=>
 			const { addTodo, items } = React.useContext(TodosContext);
 
 			return <React.Fragment>
-				<div data-testing = 'value'>{items.map(item=>item.title)}</div>
+				<div data-testing='title'>{items.map(item=>item.title)}</div>
 				<button onClick={() => addTodo('Test Todo!')}>Add Todo</button>
 			</React.Fragment>;
 		};
-		const wrapper : Enzyme.ReactWrapper<any> = mount(
+		const wrapper :  Enzyme.ReactWrapper<React.Component> = mount(
 			<TodosContextProvider>
 				<TestComponent />
 			</TodosContextProvider>
 		);
 
-		expect(wrapper.find('[data-testing="value"]').text()).toBeFalsy();
+		expect(wrapper.find('[data-testing="title"]').text()).toBeFalsy();
 
 		wrapper.find('button').simulate('click');
 
-		expect(wrapper.find('[data-testing="value"]').text()).toBeTruthy();
+		expect(wrapper.find('[data-testing="title"]').text()).toBeTruthy();
 	});
 });

@@ -24,5 +24,6 @@ describe('todo', () =>
 
 		expect((cy.get('[data-test="item"]')).should('contain.text', 'My new Todo from Cypress' ));
 		cy.get('[data-test=remove-button]').last().click();
+		expect((cy.get('[data-test="item"]')).should('not.contain.text', 'My new Todo from Cypress' ));
 	});
 });
