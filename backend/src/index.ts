@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import { deleteHandler, getHandler, postHandler } from './controller.js';
+import { deleteHandler, editHandler, getHandler, postHandler } from './controller.js';
 import cors from 'cors';
 import environment from '../environments/environment.dev.js';
 
@@ -13,6 +13,7 @@ server.get(`${environment.apiUrl}:`, (request : Request, response : Response) =>
 server.get(environment.apiRoutes.todos, getHandler);
 server.post(environment.apiRoutes.todos, postHandler);
 server.delete(environment.apiRoutes.todosWithId, deleteHandler);
+server.patch(environment.apiRoutes.todosWithId, editHandler);
 
 mongoose.connect(process.env.DB_URL)
 	.then(() =>

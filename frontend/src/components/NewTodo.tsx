@@ -2,8 +2,8 @@ import React, { useRef, useContext } from 'react';
 import styles from './styles/NewTodo.module.css';
 import { TodosContext } from '../store/todos-context';
 import axios from 'axios';
-import { TodosContextModel } from './models/TodosContext';
 import environment from '../environments/environment.dev';
+import { TodosContextModel } from './models/TodosContext';
 
 const NewTodo : React.FC = () =>
 {

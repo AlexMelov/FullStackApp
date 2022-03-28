@@ -12,7 +12,8 @@ class Todo
 
 export default Todo;
 
-export interface TodoForTest {
+export interface TodoForTest
+{
 	title : string,
 	id : string
 }

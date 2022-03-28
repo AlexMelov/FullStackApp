@@ -26,3 +26,12 @@ export const deleteHandler : Handler = (request : Request, response : Response) 
 		.then(data => response.json(data))
 		.catch(error => response.json({ message: error }));
 };
+export const editHandler : Handler = (request : Request, response : Response) : void =>
+{
+	todoModel.updateOne(
+		{ _id:request.params.todoId },
+		{ $set:  request.body }
+	)
+		.then(data => response.json(data))
+		.catch(error => response.json({ message: error }));
+};
