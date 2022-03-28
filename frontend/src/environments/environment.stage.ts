@@ -8,7 +8,7 @@ export const environment : Environment =
 		environment: 'stage'
 	},
 	apiUrl: 'http://localhost:',
-	apiPort: 3000,
+	apiPort: 8000,
 	apiRoutes:
 	{
 		todos: '/todos',
