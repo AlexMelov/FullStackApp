@@ -1,54 +1,37 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
 import TodosContextProvider, { TodosContext } from './todos-context';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 describe('TodoProvider', ()=>
 {
 
-	test('listing the todos and checks if the array length is not 0', ()=>
+	beforeEach(() =>
 	{
-
-		render(<TodosContextProvider>
-			<TodosContext.Consumer>
-				{
-					value => <span>Is length: {value.fetchedItems}</span>
-				}
-			</TodosContext.Consumer>
-		</TodosContextProvider>);
-	expect('Is length').not.toHaveLength(0);
+		Enzyme.configure({ adapter: new Adapter() });
 	});
 
-	test('checking the length on the exact number of todos', ()=>
+	it('sets status', () =>
 	{
+		const TestComponent : React.FC = () =>
+		{
+			const { addTodo, items } = React.useContext(TodosContext);
 
-		render(<TodosContextProvider>
-			<TodosContext.Consumer>
-				{
-					value => <span>Is length: {value.fetchedItems}</span>
-				}
-			</TodosContext.Consumer>
-		</TodosContextProvider>);
-	expect(('is length')).toHaveLength(9);
-	});
+			return <React.Fragment>
+				<div data-testing="title">{items.map(item=>item.title)}</div>
+				<button onClick={() => addTodo('Test Todo!')}>Add Todo</button>
+			</React.Fragment>;
+		};
+		const wrapper :  Enzyme.ReactWrapper<React.Component> = mount(
+			<TodosContextProvider>
+				<TestComponent />
+			</TodosContextProvider>
+		);
 
-	test('checking add todo func', () =>
-	{
+		expect(wrapper.find('[data-testing="title"]').text()).toBeFalsy();
 
-		render(<TodosContextProvider>
-			<TodosContext.Consumer>
-				{
-					value => <>
-						<span>Is sending: {value.addTodo}</span>
-						<button onClick={() =>
-						{
-							value.addTodo('My Todo from Jest');
-						}
-						}>Add Todo</button>
-					</>
-				}
-			</TodosContext.Consumer>
-		</TodosContextProvider>);
-	fireEvent.click(screen.getByText('Add Todo'));
-	expect(('Is sending: true')).toBeTruthy();
+		wrapper.find('button').simulate('click');
+
+		expect(wrapper.find('[data-testing="title"]').text()).toBe('Test Todo!');
 	});
 });

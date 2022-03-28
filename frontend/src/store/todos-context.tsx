@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, createContext } from 'react';
 import Todo from '../components/models/Todo';
-import environmentalStage from '../environments/environment.dev';
 import { TodosContextModel } from '../components/models/TodosContext';
 
 export const TodosContext : React.Context<TodosContextModel> = createContext<TodosContextModel>({
@@ -33,7 +32,7 @@ const TodosContextProvider : React.FC = props =>
 
 	async function deleteRequest (_id : number, deletedItem : Todo[], nonDeletedItems : Todo[])
 	{
-		await axios.delete(environmentalStage.apiUrl + ':' + environmentalStage.apiPort + environmentalStage.apiRoutes.todos +'/'+ _id, {
+		await axios.delete('http://localhost:8000/todos/'+ _id, {
 			data: { deletedItem }
 		});
 

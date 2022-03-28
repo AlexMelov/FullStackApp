@@ -18,6 +18,7 @@
 		"@types/express": "^4.17.13",
 		"@types/jest": "^26.0.24",
 		"@types/node": "^17.0.21",
+		"cross-env": "7.0.3",
 		"eslint": "8.11.0",
 		"eslint-config-redaxmedia": "4.2.3",
 		"jest": "^26.6.3",
@@ -29,7 +30,7 @@
 		"kill-port-process": "3.0.1"
 	},
 	"scripts": {
-		"start": "kill-port 8000 && node --loader ts-node/esm --require dotenv/config src/index.ts",
+		"start": "node --loader ts-node/esm --require dotenv/config src/index.ts",
 		"start:dev": "cross-env-shell EXPRESS_APP_ENV=dev npm run start",
 		"start:stage": "cross-env-shell EXPRESS_APP_ENV=stage npm run start",
 		"start:prod": "cross-env-shell EXPRESS_APP_ENV=prod npm run start",
@@ -37,15 +38,5 @@
 		"lint": "eslint \"src/**/*.ts\"",
 		"fix": "eslint \"src/**/*.ts\" --fix",
 		"test": "jest"
-	},
-	"jest": {
-		"preset": "ts-jest",
-		"testEnvironment": "node",
-		"transform": {
-			"node_modules/variables/.+\\.(j|t)sx?$": "ts-jest"
-		},
-		"transformIgnorePatterns": [
-			"node_modules/(?!variables/.*)"
-		]
 	}
 }

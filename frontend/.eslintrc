@@ -4,6 +4,8 @@
 		"@typescript-eslint/no-require-imports": "warn",
 		"jsdoc/require-jsdoc": "off",
 		"jsdoc/require-description": "off"
+	},
+	"parserOptions": {
+		"project": "./tsconfig.json"
 	}
-
 }
