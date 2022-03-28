@@ -18,7 +18,7 @@ describe('TodoProvider', ()=>
 			const { addTodo, items } = React.useContext(TodosContext);
 
 			return <React.Fragment>
-				<div data-testing='title'>{items.map(item=>item.title)}</div>
+				<div data-testing="title">{items.map(item=>item.title)}</div>
 				<button onClick={() => addTodo('Test Todo!')}>Add Todo</button>
 			</React.Fragment>;
 		};
@@ -32,6 +32,6 @@ describe('TodoProvider', ()=>
 
 		wrapper.find('button').simulate('click');
 
-		expect(wrapper.find('[data-testing="title"]').text()).toBeTruthy();
+		expect(wrapper.find('[data-testing="title"]').text()).toBe('Test Todo!');
 	});
 });
