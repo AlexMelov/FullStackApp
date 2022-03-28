@@ -6,10 +6,11 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 describe('TodoProvider', ()=>
 {
 
-	beforeEach(() => 
+	beforeEach(() =>
 	{
 		Enzyme.configure({ adapter: new Adapter() });
 	});
+
 	it('sets status', () =>
 	{
 		const TestComponent : React.FC = () =>
