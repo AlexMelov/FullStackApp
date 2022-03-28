@@ -4,8 +4,8 @@ on: [ push, pull_request ]
 
 jobs:
  lint:
-  runs-on: ubuntu-latest
-  steps:
+   runs-on: ubuntu-latest
+   steps:
    - name: Checkout
     uses: actions/checkout@v2
    - name: Set up Node 14
@@ -17,8 +17,8 @@ jobs:
    - run: npm install --prefix ./frontend/
    - run: npm run lint --prefix ./frontend/
  build:
-  runs-on: ubuntu-latest
-  steps:
+   runs-on: ubuntu-latest
+   steps:
    - name: Checkout
     uses: actions/checkout@v2
    - name: Set up Node 14
@@ -30,11 +30,11 @@ jobs:
    - run: npm install --prefix ./frontend/
    - run: npm run build --prefix ./frontend/
  test:
-  runs-on: ubuntu-latest
-  strategy:
+   runs-on: ubuntu-latest
+   strategy:
    matrix:
     node-version: [ 14 ]
-  steps:
+   steps:
    - name: Checkout
     uses: actions/checkout@v2
    - name: Set up Node ${{ matrix.node-version }}
@@ -48,7 +48,7 @@ jobs:
   strategy:
    matrix:
     node-version: [ 14 ]
-  steps:
+   steps:
    - name: Checkout
     uses: actions/checkout@v2
    - name: Set up Node ${{ matrix.node-version }}
