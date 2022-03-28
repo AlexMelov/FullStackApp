@@ -19,10 +19,11 @@ mongoose.connect(process.env.DB_URL)
 	.then(() =>
 	{
 		process.stdout.write('CONNECTION TO DATABASED SUCCEED');
-		server.listen(process.env.PORT || environment.apiPort);
+		server.listen(environment.apiPort);
 	})
 	.catch(() =>
 	{
 		process.stdout.write('CONNECTION TO DATABASE FAILED');
 		process.exit();
 	});
+export default server;

@@ -1,19 +1,24 @@
 .item
- {
+{
 	align-content: center;
 	background-color: #fff;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	margin: 1rem 0;
 	padding: 0.5rem 1rem;
+	position: relative;
+
 }
 
 .item p
 {
-	color: #056094;
+	color: #940586;
+	display: block;
 	font-weight: 700;
 	margin: 0 ;
+	text-transform: capitalize;
 }
 .item button
 {
@@ -21,15 +26,66 @@
 	border: none;
 	border-radius: 0.25rem;
 	color: #fff;
+	margin: 0.3rem 0;
 	padding: 0.35rem 0.8rem;
 	transition: all 0.3s ease;
+	width: 30%;
 }
 .item button:hover
 {
+	background-color: #0d6da3;
 	cursor: pointer;
 	transform: translateY(-0.1rem);
 }
 .item button:active
 {
 	transform: translateY(0);
+}
+.item h4
+{
+	color: #056094;
+	font-weight: 700;
+	margin: 0 ;
+}
+.item img
+{
+	display: block;
+	height: 20vh ;
+	object-fit: cover;
+	transition: all 0.3s ease;
+
+}
+.item img:hover
+{
+	cursor: pointer;
+	transform: scale(1.05);
+}
+.editForm
+{
+	background-color: #a6c5d7;
+	border: none;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	left: 50%;
+	padding: 2rem;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 60%;
+	z-index: 999;
+}
+.editForm input
+{
+	background-color: #ffffff;
+	border: none;
+	border-radius: 5px;
+	outline: none;
+	padding: 0.3rem;
+}
+.buttons
+{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 0.5rem;
 }

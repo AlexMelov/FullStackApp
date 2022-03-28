@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, createContext } from 'react';
-import Todo from '../components/models/Todo';
+import Todo, { StateTodo } from '../components/models/Todo';
 import { TodosContextModel } from '../components/models/TodosContext';
 import environment from '../environments/environment.dev';
 
@@ -12,7 +12,10 @@ export const TodosContext : React.Context<TodosContextModel> = createContext<Tod
     {},
     todoList: () =>
     {},
-    fetchedItems:[]
+    fetchedItems:[],
+	editTodo: () =>
+	{},
+	itemForEdit: { title: '', description: '', url: '' }
 
 });
 
@@ -20,15 +23,17 @@ const TodosContextProvider : React.FC = props =>
 {
 	const [ todos, setTodos ] = useState<Todo[]>([]);
 	const [ fetchedItems, setFetchedItems ] = useState<Todo[]>([]);
+	const [ itemForEdit, setItemForEdit ] = useState<StateTodo>(null);
 
-	function addTodoHandler  (title : string)
+	function addTodoHandler  (title : string, description : string, url : string)
 	{
-		const newTodo : Todo = new Todo(title);
+		const newTodo : Todo = new Todo(title, description, url);
 
 		setTodos(previousState =>
 		{
 			return [ ...previousState, newTodo ];
 		});
+		setItemForEdit( null);
 	}
 
 	async function deleteRequest (_id : number, deletedItem : Todo[], nonDeletedItems : Todo[])
@@ -53,12 +58,23 @@ const TodosContextProvider : React.FC = props =>
 		return setFetchedItems(todos);
 	}
 
+	function editTodoHandler(_id : number)
+	{
+		const editItem : Todo[] = fetchedItems.filter(item => item._id === _id);
+		const itemForEdit : StateTodo = editItem[0];
+
+		setItemForEdit(itemForEdit);
+
+	}
+
 	const contextValue : TodosContextModel = {
         items: todos,
         addTodo: addTodoHandler,
         removeTodo: removeTodoHandler,
         todoList,
-        fetchedItems
+        fetchedItems,
+		editTodo: editTodoHandler,
+		itemForEdit
     };
 
 	return (
