@@ -1,5 +1,4 @@
 class Todo
-
 {
 	title : string;
 	_id : number;

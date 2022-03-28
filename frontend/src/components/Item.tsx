@@ -8,9 +8,9 @@ const Item : React.FC<{
 }> = props =>
 {
 	return (
-		<li className={styles.item} data-test='item'>
+		<li className={styles.item} data-test="item">
 			<p>{props.title}</p>
-			<button onClick={props.onRemoveTodo} data-test='remove-button'>Remove</button>
+			<button onClick={props.onRemoveTodo} data-test="remove-button">Remove</button>
 		</li>
 	);
 };

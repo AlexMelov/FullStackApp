@@ -8,7 +8,7 @@ export const environment : Environment =
 		environment: 'prod'
 	},
 	apiUrl: 'http://localhost:',
-	apiPort: 8000,
+	apiPort: 3000,
 	apiRoutes:
 	{
 		todos: '/todos',
