@@ -18,11 +18,11 @@
 	"routes": [
 		{
 			"src": "/(.*)",
-			"dest": "backend/build/src/index.js"
+			"dest": "./index.js"
 		},
 		{
 			"src": "/",
-			"dest": "frontend/build/src/index.html"
+			"dest": "./index.html"
 		},
 		{
 			"src": "/(.+)",
