@@ -5,12 +5,28 @@
 		"enabled": false
 	},
 	"builds": [
-		{ "src": "./", "use": "@vercel/static" }
+		{ "src": "backend/build/index.js",
+			"use": "@vercel/node",
+			"config": { "includeFiles": ["backend/build/**"] }
+		},
+		{
+			"src": "frontend/build/**",
+			"use": "@vercel/static",
+			"config": { "includeFiles": ["frontend/build/**"] }
+		}
 	],
 	"routes": [
 		{
 			"src": "/(.*)",
-			"dest": "/"
+			"dest": "backend/build/index.js"
+		},
+		{
+			"src": "/",
+			"dest": "frontend/build/index.html"
+		},
+		{
+			"src": "/(.+)",
+			"dest": "frontend/build/$1"
 		}
 	]
 }
