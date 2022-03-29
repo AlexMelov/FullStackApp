@@ -80,4 +80,3 @@ jobs:
               vercel-project-id: ${{ secrets.PROJECT_ID }}
               vercel-args: --confirm
               working-directory: ./backend
-              vercel-project-name: fullstack-app-backend
