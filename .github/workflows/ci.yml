@@ -69,7 +69,8 @@ jobs:
         steps:
         - uses: actions/checkout@v2
         -   run: npm install --prefix ./backend/
-        -   run: node index.js --prefix ./backend &
+        -   run: npm run build --prefix ./backend/
+        -   run: node index.js --prefix ./backend
         - uses: amondnet/vercel-action@v20
           with:
               vercel-token: ${{ secrets.VERCEL_TOKEN }}
