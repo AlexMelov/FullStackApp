@@ -75,7 +75,7 @@ jobs:
         - uses: amondnet/vercel-action@v20
           with:
               env:
-              GH_TOKEN: ${{ secrets.GH_TOKEN }}
+              github-token: ${{ secrets.GH_TOKEN }}
               vercel-token: ${{ secrets.VERCEL_TOKEN }}
               vercel-org-id: ${{ secrets.ORG_ID }}
               vercel-project-id: ${{ secrets.PROJECT_ID }}
