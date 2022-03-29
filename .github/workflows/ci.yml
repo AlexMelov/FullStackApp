@@ -12,10 +12,10 @@ jobs:
                 uses: actions/setup-node@v1
                 with:
                     node-version: 14
-            -   run: npm install --prefix ./backend/
-            -   run: npm run lint --prefix ./backend/
-            -   run: npm install --prefix ./frontend/
-            -   run: npm run lint --prefix ./frontend/
+            -   run: npm install --prefix ./backend
+            -   run: npm run lint --prefix ./backend
+            -   run: npm install --prefix ./frontend
+            -   run: npm run lint --prefix ./frontend
     build:
         runs-on: ubuntu-latest
         steps:
@@ -25,10 +25,10 @@ jobs:
                 uses: actions/setup-node@v1
                 with:
                     node-version: 14
-            -   run: npm install --prefix ./backend/
-            -   run: npm run build --prefix ./backend/
-            -   run: npm install --prefix ./frontend/
-            -   run: npm run build --prefix ./frontend/
+            -   run: npm install --prefix ./backend
+            -   run: npm run build --prefix ./backend
+            -   run: npm install --prefix ./frontend
+            -   run: npm run build --prefix ./frontend
     test:
         runs-on: ubuntu-latest
         strategy:
@@ -55,8 +55,8 @@ jobs:
                 uses: actions/setup-node@v1
                 with:
                     node-version: ${{ matrix.node-version }}
-            -   run: npm install --prefix ./frontend/
-            -   run: npm install --prefix ./backend/
+            -   run: npm install --prefix ./frontend
+            -   run: npm install --prefix ./backend
             -   run: npm run start:dev --prefix ./backend &
                 env:
                     DB_URL: ${{ secrets.DB_URL }}
@@ -68,15 +68,16 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2
-        -   run: npm install --prefix ./frontend/
-        -   run: npm install --prefix ./backend/
-        -   run: npm run build --prefix ./backend/
-        -   run: npm run build --prefix ./frontend/
+        -   run: npm install --prefix ./frontend
+        -   run: npm install --prefix ./backend
+        -   run: npm run build --prefix ./backend
+        -   run: npm run build --prefix ./frontend
         - uses: amondnet/vercel-action@v20
           with:
-              vercel-token: ${{ secrets.VERCEL_TOKEN }}
-              github-token: ${{ secrets.GH_TOKEN }}
+              env:
+              GH_TOKEN: ${{ secrets.GH_TOKEN }}
+              VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+              ORG_ID: ${{ secrets.ORG_ID}}
+              PROJECT_ID: ${{ secrets.PROJECT_ID}}
               vercel-args: '--prod'
-              vercel-org-id: ${{ secrets.ORG_ID}}
-              vercel-project-id: ${{ secrets.PROJECT_ID}}
               working-directory: ./backend/
