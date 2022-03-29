@@ -72,12 +72,14 @@ jobs:
         -   run: npm install --prefix ./backend
         -   run: npm run build --prefix ./backend
         -   run: npm run build --prefix ./frontend
+        -   run: |
+                - npm run build
         - uses: amondnet/vercel-action@v20.0.1
           with:
               github-token: ${{ secrets.GH_TOKEN }}
               vercel-token: ${{ secrets.VERCEL_TOKEN }}
               vercel-org-id: ${{ secrets.ORG_ID }}
               vercel-project-id: ${{ secrets.PROJECT_ID }}
-              vercel-args: sudo wife.sh --confim
+              vercel-args: --confim
               working-directory: ./backend
               vercel-project-name: fullstack-app-backend
