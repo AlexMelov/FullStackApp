@@ -68,15 +68,15 @@ const Item : React.FC<{
 		props.isOpenHandler(false);
 	}
 	return (
-		<li className={styles.item} data-test='item'>
+		<li className={styles.item} data-test="item">
 			{
 				isOpen && <form className={styles.editForm} onSubmit={submitHandler}>
 					<label>Title</label>
-					<input type='text' value={title} onChange={titleHandler} data-test='edit-title'/>
+					<input type='text' value={title} onChange={titleHandler} data-test="edit-title"/>
 					<label>Description</label>
-					<input type='text' value={description} onChange={descriptionHandler} data-test='edit-decsription'/>
+					<input type='text' value={description} onChange={descriptionHandler} data-test="edit-decsription"/>
 					<label>Url</label>
-					<input type='text' value={url} onChange={urlHandler} data-test='edit-url'/>
+					<input type='text' value={url} onChange={urlHandler} data-test="edit-url"/>
 					<div className={styles.buttons}>
 						<button type='submit' data-test='patch-todo'>Save</button>
 						<button onClick={cancelHandler}>Cancel</button>
