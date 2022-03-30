@@ -2,36 +2,29 @@
 	"version": 2,
 	"builds": [
 		{
-			"src": "./backend/build/src/index.js",
+			"src": "backend/build/src/index.js",
 			"use": "@vercel/node",
-			"config":
-			{
-				"includeFiles":
-				[
-					"./backend/build/**"
-				]
-			}
+			"config": { "includeFiles": ["backend/build/src/**"] }
 		},
 		{
-			"src": "./frontend/build/index.html",
+			"src": "frontend/build/**",
 			"use": "@vercel/static",
-			"config":
-			{
-				"includeFiles":
-				[
-					"./frontend/build/**"
-				]
-			}
+			"config": { "includeFiles": ["frontend/build/**"] }
 		}
 	],
 	"routes": [
 		{
-			"src": "/api",
-			"dest": "backend/build/src/index.js"
+			"src": "/api/(.*)",
+			"dest": "backend/build/index.js"
 		},
 		{
 			"src": "/",
-			"dest": "./frontend/build/index.html"
+			"dest": "frontend/build/index.html"
+		},
+		{
+			"src": "/(.+)",
+			"dest": "frontend/build/$1"
 		}
 	]
 }
+
