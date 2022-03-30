@@ -3,22 +3,22 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import { deleteHandler, getHandler, postHandler } from './controller.js';
 import cors from 'cors';
-// import environment from '../environments/environment.dev.js';
+import environment from '../environments/environment.dev.js';
 
 const server : Express = express();
 
 server.use(cors());
 server.use(bodyParser.json());
-server.get('/api', (request : Request, response : Response) => response.sendStatus(404));
-server.get('/api/todos', getHandler);
-server.post('/api/todos', postHandler);
-server.delete('/api/todos/:todoId', deleteHandler);
+server.get(`${environment.apiUrl}${environment.apiPort}`, (request : Request, response : Response) => response.sendStatus(404));
+server.get(environment.apiRoutes.api + environment.apiRoutes.todos, getHandler);
+server.post(environment.apiRoutes.api + environment.apiRoutes.todos, postHandler);
+server.delete(environment.apiRoutes.api + environment.apiRoutes.todosWithId, deleteHandler);
 
 mongoose.connect(process.env.DB_URL)
 	.then(() =>
 	{
 		process.stdout.write('CONNECTION TO DATABASED SUCCEED');
-		server.listen(8000);
+		server.listen(process.env.PORT || environment.apiPort);
 	})
 	.catch(() =>
 	{
