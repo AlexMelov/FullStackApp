@@ -9,7 +9,7 @@ const server : Express = express();
 
 server.use(cors());
 server.use(bodyParser.json());
-server.get('/', (request : Request, response : Response) => response.sendStatus(404));
+server.get('/api', (request : Request, response : Response) => response.sendStatus(404));
 server.get('/api/todos', getHandler);
 server.post('/api/todos', postHandler);
 server.delete('/api/todos/:todoId', deleteHandler);
