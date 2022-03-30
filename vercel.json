@@ -10,7 +10,7 @@
 			"config": { "includeFiles": ["backend/build/**"] }
 		},
 		{
-			"src": "./frontend/build/**",
+			"src": "frontend/build/**",
 			"use": "@vercel/static",
 			"config": { "includeFiles": ["frontend/build/**"] }
 		}
