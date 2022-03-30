@@ -1,9 +1,5 @@
 {
 	"version": 2,
-	"public": false,
-	"github": {
-		"enabled": false
-	},
 	"env": {
 	},
 	"builds": [
@@ -20,7 +16,7 @@
 	],
 	"routes": [
 		{
-			"src": "/(.*)",
+			"src": "/api/todos/(.*)",
 			"dest": "backend/build/index.js"
 		},
 		{
