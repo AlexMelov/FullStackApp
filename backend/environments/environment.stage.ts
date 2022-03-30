@@ -7,7 +7,7 @@ export const environment : Environment =
 		branch: 'master',
 		environment: 'stage'
 	},
-	apiUrl: 'http://localhost',
+	apiUrl: 'http://localhost:8000',
 	apiPort: 8000,
 	apiRoutes:
 	{
