@@ -33,7 +33,7 @@ const TodosContextProvider : React.FC = props =>
 
 	async function deleteRequest (_id : number, deletedItem : Todo[], nonDeletedItems : Todo[])
 	{
-		await axios.delete(environment.apiUrl + ':' + environment.apiPort + environment.apiRoutes.todos + '/' + _id, {
+		await axios.delete(environment.apiUrl + ':' + environment.apiPort+ '/api' + environment.apiRoutes.todos + '/' + _id, {
 			data: { deletedItem }
 		});
 

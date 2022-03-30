@@ -12,7 +12,7 @@ const NewTodo : React.FC = () =>
 
 	async function sendTodo (title : string) : Promise<void>
 	{
-		await axios.post(environment.apiUrl + ':' + environment.apiPort + environment.apiRoutes.todos, { title });
+		await axios.post(environment.apiUrl + ':' + environment.apiPort +'/api'+ environment.apiRoutes.todos, { title });
 	}
 
 	function submitHandler (event : React.FormEvent)
