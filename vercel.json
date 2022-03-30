@@ -27,7 +27,7 @@
 	"routes":
 	[
 		{
-			"src": "/api/todos",
+			"src": "/api",
 			"dest": "./backend/build/src/index.js"
 		},
 		{
