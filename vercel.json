@@ -2,24 +2,24 @@
 	"version": 2,
 	"builds": [
 		{
-			"src": "./build/src/index.js",
+			"src": "./backend/build/src/index.js",
 			"use": "@vercel/node",
 			"config":
 			{
 				"includeFiles":
 				[
-					"./build/**"
+					"./backend/build/**"
 				]
 			}
 		},
 		{
-			"src": "../frontend/build/src/index.html",
+			"src": "./frontend/build/src/index.html",
 			"use": "@vercel/static",
 			"config":
 			{
 				"includeFiles":
 				[
-					"../frontend/build/**"
+					"./frontend/build/**"
 				]
 			}
 		}
@@ -28,11 +28,11 @@
 	[
 		{
 			"src": "/api",
-			"dest": "./build/src/index.js"
+			"dest": "./backend/build/src/index.js"
 		},
 		{
 			"src": "/",
-			"dest": "../frontend/build/index.html"
+			"dest": "./frontend/build/index.html"
 		}
 	]
 }
