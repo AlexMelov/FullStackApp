@@ -8,7 +8,7 @@
 			{
 				"includeFiles":
 				[
-					"./backend/build/**"
+					"./build/**"
 				]
 			}
 		}
