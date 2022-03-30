@@ -18,15 +18,15 @@
 	"routes": [
 		{
 			"src": "/api/(.*)",
-			"dest": "./index.js"
+			"dest": "./backend/build/src/index.js"
 		},
 		{
 			"src": "/",
-			"dest": "frontend/build/components/index.html"
+			"dest": "frontend/build/index.html"
 		},
 		{
 			"src": "/(.+)",
-			"dest": "frontend/build/components/$1"
+			"dest": "frontend/build/$1"
 		}
 	]
 }
