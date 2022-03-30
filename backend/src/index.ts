@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import { deleteHandler, getHandler, postHandler } from './controller.js';
 import cors from 'cors';
 import environment from '../environments/environment.dev.js';
+import 'dotenv/config';
 
 const server : Express = express();
 

@@ -24,14 +24,14 @@
 			}
 		}
 	],
-	"rewrites": [
+	"routes": [
 		{
-			"source": "/api",
-			"destination": "backend/build/src/index.js"
+			"src": "/api",
+			"dest": "backend/build/src/index.js"
 		},
 		{
-			"source": "/",
-			"destination": "./frontend/build/index.html"
+			"src": "/",
+			"dest": "./frontend/build/index.html"
 		}
 	]
 }
