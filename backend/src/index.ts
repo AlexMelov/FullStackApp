@@ -17,12 +17,11 @@ server.delete(environment.apiRoutes.todosWithId, deleteHandler);
 mongoose.connect(process.env.DB_URL)
 	.then(() =>
 	{
-		process.stdout.write('CONNECTION TO DATABASED SUCCEED');
-		server.listen(process.env.PORT || environment.apiPort);
+		process.stdout.write('[' + environment.metadata.environment + '] CONNECTION TO DATABASED SUCCEED');
+		server.listen(environment.apiPort);
 	})
 	.catch(() =>
 	{
-		process.stdout.write('CONNECTION TO DATABASE FAILED');
+		process.stdout.write('[' + environment.metadata.environment + '] CONNECTION TO DATABASE FAILED');
 		process.exit();
 	});
-export default server;

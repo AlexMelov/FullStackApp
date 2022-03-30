@@ -5,7 +5,7 @@ import { TodosContext } from '../store/todos-context';
 import axios from 'axios';
 import Todo from './models/Todo';
 import { TodosContextModel } from './models/TodosContext';
-import environment from '../environments/environment.dev';
+import environment from '../environments/environment';
 
 const List : React.FC = () =>
 {

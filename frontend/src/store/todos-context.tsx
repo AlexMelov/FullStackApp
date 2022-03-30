@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, createContext } from 'react';
 import Todo from '../components/models/Todo';
 import { TodosContextModel } from '../components/models/TodosContext';
-import environment from '../environments/environment.dev';
+import environment from '../environments/environment';
 
 export const TodosContext : React.Context<TodosContextModel> = createContext<TodosContextModel>({
     items: [],
