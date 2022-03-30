@@ -9,7 +9,7 @@ const server : Express = express();
 
 server.use(cors());
 server.use(bodyParser.json());
-server.get(`${environment.apiUrl}:`, (request : Request, response : Response) => response.sendStatus(404));
+server.get(`${environment.apiUrl}:8000`, (request : Request, response : Response) => response.sendStatus(404));
 server.get(environment.apiRoutes.api + environment.apiRoutes.todos, getHandler);
 server.post(environment.apiRoutes.api + environment.apiRoutes.todos, postHandler);
 server.delete(environment.apiRoutes.api + environment.apiRoutes.todosWithId, deleteHandler);
