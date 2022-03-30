@@ -75,5 +75,5 @@ jobs:
         - uses: AkhileshNS/heroku-deploy@v3.12.12
           with:
               heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-                  heroku_app_name: "backend-todo-app"
+                  heroku_app_name: "alex-todo_app_backend-part"
                   heroku_email: "melov.aleksandar@gmail.com"
