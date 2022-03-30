@@ -38,6 +38,7 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
+		"start:local": "cross-env-shell REACT_APP_ENV=local npm run start",
 		"start:dev": "cross-env-shell REACT_APP_ENV=dev npm run start",
 		"start:stage": "cross-env-shell REACT_APP_ENV=stage npm run start",
 		"start:prod": "cross-env-shell REACT_APP_ENV=prod npm run start",
