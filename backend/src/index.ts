@@ -18,7 +18,7 @@ mongoose.connect(process.env.DB_URL)
 	.then(() =>
 	{
 		process.stdout.write('CONNECTION TO DATABASED SUCCEED');
-		server.listen(process.env.Port || environment.apiPort);
+		server.listen(process.env.PORT || environment.apiPort);
 	})
 	.catch(() =>
 	{
