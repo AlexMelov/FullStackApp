@@ -6,6 +6,8 @@ import { Handler } from './models/express';
 
 export const getHandler : Handler = (request : Request, response : Response) : void =>
 {
+	response.setHeader('Content-Type', 'text/html');
+	response.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
 	todoModel.find()
 		.then(data => response.json(data))
 		.catch(error => response.json({ message: error }));
