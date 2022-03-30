@@ -5,15 +5,15 @@
 		"enabled": false
 	},
 	"builds": [
-		{ "src": "build/index.js",
+		{ "src": "index.js",
 			"use": "@vercel/node",
-			"config": { "includeFiles": ["build/**"] }
+			"config": { "includeFiles": ["/**"] }
 		}
 	],
 	"routes": [
 		{
 			"src": "/(.*)",
-			"dest": "build/index.js"
+			"dest": "index.js"
 		}
 	]
 }
