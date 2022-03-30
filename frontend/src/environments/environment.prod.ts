@@ -7,11 +7,10 @@ export const environment : Environment =
 		branch: 'master',
 		environment: 'prod'
 	},
-	apiUrl: 'http://localhost:',
+	apiUrl: 'http://localhost',
 	apiPort: 8000,
 	apiRoutes:
 	{
-		api: '/api',
 		todos: '/todos',
 		todosWithId: '/todos/:todoId'
 	}

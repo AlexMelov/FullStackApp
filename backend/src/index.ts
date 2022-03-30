@@ -10,9 +10,9 @@ const server : Express = express();
 server.use(cors());
 server.use(bodyParser.json());
 server.get(environment.apiUrl + environment.apiPort, (request : Request, response : Response) => response.sendStatus(500));
-server.get(environment.apiRoutes.api + environment.apiRoutes.todos, getHandler);
-server.post(environment.apiRoutes.api + environment.apiRoutes.todos, postHandler);
-server.delete(environment.apiRoutes.api + environment.apiRoutes.todosWithId, deleteHandler);
+server.get(environment.apiUrl + environment.apiRoutes.todos, getHandler);
+server.post(environment.apiUrl + environment.apiRoutes.todos, postHandler);
+server.delete(environment.apiUrl + environment.apiRoutes.todosWithId, deleteHandler);
 
 mongoose.connect(process.env.DB_URL)
 	.then(() =>
@@ -25,4 +25,3 @@ mongoose.connect(process.env.DB_URL)
 		process.stdout.write('CONNECTION TO DATABASE FAILED');
 		process.exit();
 	});
-
