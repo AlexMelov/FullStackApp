@@ -12,10 +12,10 @@ jobs:
                 uses: actions/setup-node@v1
                 with:
                     node-version: 14
-            -   run: npm install --prefix ./backend/
-            -   run: npm run lint --prefix ./backend/
-            -   run: npm install --prefix ./frontend/
-            -   run: npm run lint --prefix ./frontend/
+            -   run: npm install --prefix ./backend
+            -   run: npm run lint --prefix ./backend
+            -   run: npm install --prefix ./frontend
+            -   run: npm run lint --prefix ./frontend
     build:
         runs-on: ubuntu-latest
         steps:
@@ -25,42 +25,52 @@ jobs:
                 uses: actions/setup-node@v1
                 with:
                     node-version: 14
-            -   run: npm install --prefix ./backend/
-            -   run: npm run build --prefix ./backend/
-            -   run: npm install --prefix ./frontend/
-            -   run: npm run build --prefix ./frontend/
+            -   run: npm install --prefix ./backend
+            -   run: npm run build --prefix ./backend
+            -   run: npm install --prefix ./frontend
+            -   run: npm run build --prefix ./frontend
     test:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [ 14 ]
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2
-            -   name: Set up Node ${{ matrix.node-version }}
+            -   name: Set up Node 14
                 uses: actions/setup-node@v1
                 with:
-                    node-version: ${{ matrix.node-version }}
-            -   run: npm install --prefix ./frontend/
-            -   run: npm run test --prefix ./frontend/
+                    node-version: 14
+            -   run: npm install --prefix ./frontend
+            -   run: npm run test --prefix ./frontend
     test-acceptance:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [ 14 ]
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2
-            -   name: Set up Node ${{ matrix.node-version }}
+            -   name: Set up Node 14
                 uses: actions/setup-node@v1
                 with:
-                    node-version: ${{ matrix.node-version }}
-            -   run: npm install --prefix ./frontend/
-            -   run: npm install --prefix ./backend/
+                    node-version: 14
+            -   run: npm install --prefix ./frontend
+            -   run: npm install --prefix ./backend
             -   run: npm run start:dev --prefix ./backend &
                 env:
                     DB_URL: ${{ secrets.DB_URL }}
             -   run: npm run start:dev --prefix ./frontend &
             -   run: npm run wait-for-serve --prefix ./frontend && npm run e2e --prefix ./frontend
-
-                timeout-minutes: 30
+                timeout-minutes: 10
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v2
+            -   run: npm install --prefix ./frontend
+            -   run: npm install --prefix ./backend
+            -   run: npm run build --prefix ./backend
+            -   run: npm run build --prefix ./frontend
+            -   uses: amondnet/vercel-action@v20.0.1
+                with:
+                      github-token: ${{ secrets.GH_TOKEN }}
+                      vercel-token: ${{ secrets.VERCEL_TOKEN }}
+                      vercel-org-id: ${{ secrets.ORG_ID }}
+                      vercel-project-id: ${{ secrets.PROJECT_ID }}
+                      vercel-args: --confirm --prod
+                      working-directory: ./
