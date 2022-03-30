@@ -4,16 +4,32 @@
 	"github": {
 		"enabled": false
 	},
+	"env": {
+	},
 	"builds": [
-		{ "src": "index.js",
+		{
+			"src": "backend/build/index.js",
 			"use": "@vercel/node",
-			"config": { "includeFiles": ["/**"] }
+			"config": { "includeFiles": ["backend/build/**"] }
+		},
+		{
+			"src": "frontend/build/**",
+			"use": "@vercel/static",
+			"config": { "includeFiles": ["frontend/build/**"] }
 		}
 	],
 	"routes": [
 		{
 			"src": "/(.*)",
-			"dest": "index.js"
+			"dest": "backend/build/index.js"
+		},
+		{
+			"src": "/",
+			"dest": "frontend/build/index.html"
+		},
+		{
+			"src": "/(.+)",
+			"dest": "frontend/build/$1"
 		}
 	]
 }
