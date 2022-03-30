@@ -72,11 +72,8 @@ jobs:
         -   run: npm install --prefix ./backend
         -   run: npm run build --prefix ./backend
         -   run: npm run build --prefix ./frontend
-        - uses: amondnet/vercel-action@v20.0.1
+        - uses: AkhileshNS/heroku-deploy@v3.12.12
           with:
-              github-token: ${{ secrets.GH_TOKEN }}
-              vercel-token: ${{ secrets.VERCEL_TOKEN }}
-              vercel-org-id: ${{ secrets.ORG_ID }}
-              vercel-project-id: ${{ secrets.PROJECT_ID }}
-              vercel-args: --confirm
-              working-directory: ./
+              heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+                  heroku_app_name: "backend-todo-app"
+                  heroku_email: "melov.aleksandar@gmail.com"
