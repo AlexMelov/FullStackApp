@@ -4,7 +4,6 @@ import bodyParser from 'body-parser';
 import { deleteHandler, getHandler, postHandler } from './controller.js';
 import cors from 'cors';
 import environment from '../environments/environment.dev.js';
-import 'dotenv/config';
 
 const server : Express = express();
 
@@ -19,10 +18,11 @@ mongoose.connect(process.env.DB_URL)
 	.then(() =>
 	{
 		process.stdout.write('CONNECTION TO DATABASED SUCCEED');
-		server.listen(environment.apiPort);
+		server.listen(process.env.Port || environment.apiPort);
 	})
 	.catch(() =>
 	{
 		process.stdout.write('CONNECTION TO DATABASE FAILED');
 		process.exit();
 	});
+export default server;
