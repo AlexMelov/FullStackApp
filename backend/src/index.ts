@@ -9,10 +9,10 @@ const server : Express = express();
 
 server.use(cors());
 server.use(bodyParser.json());
-server.get(environment.apiUrl, (request : Request, response : Response) => response.sendStatus(500));
-server.get(environment.apiUrl + environment.apiRoutes.todos, getHandler);
-server.post(environment.apiUrl + environment.apiRoutes.todos, postHandler);
-server.delete(environment.apiUrl + environment.apiRoutes.todosWithId, deleteHandler);
+server.get('/', (request : Request, response : Response) => response.sendStatus(500));
+server.get(environment.apiRoutes.todos, getHandler);
+server.post(environment.apiRoutes.todos, postHandler);
+server.delete(environment.apiRoutes.todosWithId, deleteHandler);
 
 mongoose.connect(process.env.DB_URL)
 	.then(() =>
