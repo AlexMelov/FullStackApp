@@ -22,6 +22,7 @@ const environmentHelper : Function = (environment : string) : Environment =>
 	{
 		return environmentProd;
 	}
+	throw Error('no environment defined');
 };
 
 export default environmentHelper(process.env.REACT_APP_ENV) as Environment;

@@ -1,8 +1,8 @@
 import { Environment } from './evironment.interface';
-import environmentLocal from './environment.local.js';
-import environmentDev from './environment.dev.js';
-import environmentStage from './environment.stage.js';
-import environmentProd from './environment.prod.js';
+import environmentLocal from './environment.local';
+import environmentDev from './environment.dev';
+import environmentStage from './environment.stage';
+import environmentProd from './environment.prod';
 
 const environmentHelper : Function = (environment : string) : Environment =>
 {
@@ -22,6 +22,7 @@ const environmentHelper : Function = (environment : string) : Environment =>
 	{
 		return environmentProd;
 	}
+	throw Error('no environment defined');
 };
 
-export default environmentHelper(process.env.REACT_APP_ENV) as Environment;
+export default environmentHelper(process.env.EXPRESS_APP_ENV) as Environment;

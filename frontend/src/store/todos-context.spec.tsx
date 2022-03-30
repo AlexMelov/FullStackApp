@@ -5,7 +5,6 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 describe('TodoProvider', ()=>
 {
-
 	beforeEach(() =>
 	{
 		Enzyme.configure({ adapter: new Adapter() });
