@@ -9,7 +9,7 @@ const server : Express = express();
 
 server.use(cors());
 server.use(bodyParser.json());
-server.get(`${environment.apiUrl}${environment.apiPort}`, (request : Request, response : Response) => response.sendStatus(404));
+server.get(environment.apiUrl + environment.apiPort, (request : Request, response : Response) => response.sendStatus(500));
 server.get(environment.apiRoutes.api + environment.apiRoutes.todos, getHandler);
 server.post(environment.apiRoutes.api + environment.apiRoutes.todos, postHandler);
 server.delete(environment.apiRoutes.api + environment.apiRoutes.todosWithId, deleteHandler);
@@ -18,11 +18,11 @@ mongoose.connect(process.env.DB_URL)
 	.then(() =>
 	{
 		process.stdout.write('CONNECTION TO DATABASED SUCCEED');
-		server.listen(process.env.PORT || environment.apiPort);
+		server.listen(environment.apiPort);
 	})
 	.catch(() =>
 	{
 		process.stdout.write('CONNECTION TO DATABASE FAILED');
 		process.exit();
 	});
-export default server;
+
