@@ -13,7 +13,7 @@
 			}
 		},
 		{
-			"src": "./frontend/build/src/index.html",
+			"src": "./frontend/build/index.html",
 			"use": "@vercel/static",
 			"config":
 			{
