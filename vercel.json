@@ -19,6 +19,14 @@
 		{
 			"src": "/api/(.*)",
 			"dest": "./index.js"
+		},
+		{
+			"src": "/",
+			"dest": "frontend/build/components/index.html"
+		},
+		{
+			"src": "/(.+)",
+			"dest": "frontend/build/components/$1"
 		}
 	]
 }

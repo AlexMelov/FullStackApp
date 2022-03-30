@@ -79,4 +79,4 @@ jobs:
               vercel-org-id: ${{ secrets.ORG_ID }}
               vercel-project-id: ${{ secrets.PROJECT_ID }}
               vercel-args: --confirm
-              working-directory: ./backend
+              working-directory: ./
