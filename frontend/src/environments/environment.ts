@@ -1,5 +1,9 @@
 const environmentHelper : Function = (environment : string) =>
 {
+	if (environment === 'local')
+	{
+		return import('./environment.local.js');
+	}
 	if (environment === 'dev')
 	{
 		return import('./environment.dev.js');
