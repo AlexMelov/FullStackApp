@@ -8,8 +8,7 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"prepare": "husky install",
-		"build": "npm run build --prefix ./backend"
+		"prepare": "husky install"
 	},
 	"devDependencies": {
 		"husky": "7.0.4"
