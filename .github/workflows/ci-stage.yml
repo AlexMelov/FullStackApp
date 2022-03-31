@@ -1,9 +1,9 @@
 name: ci
 
 on:
-    push:
+   push:
         branches:
-            -stage
+             -stage
 jobs:
     lint:
         runs-on: ubuntu-latest
