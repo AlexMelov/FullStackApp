@@ -1,6 +1,9 @@
 name: ci
 
-on: ['push pull']
+on:
+  push:
+    branches:
+      - develop
 jobs:
     lint:
         runs-on: ubuntu-latest
