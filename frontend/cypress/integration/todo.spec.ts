@@ -1,8 +1,10 @@
+import environment from '../../src/environments/environment';
+
 describe('todo', () =>
 {
 	beforeEach(() =>
 	{
-		cy.visit('localhost:3000');
+		cy.visit(environment.apiUrl);
 	});
 
 	it('todo list is working', () =>
