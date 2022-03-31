@@ -1,8 +1,10 @@
+import environment from '../../src/environments/environment';
+
 describe('todo', () =>
 {
 	beforeEach(() =>
 	{
-		cy.visit('https://full-stack-a3sgu4q5h-alexmelov.vercel.app');
+		cy.visit(environment.apiUrl);
 	});
 
 	it('todo list is working', () =>
