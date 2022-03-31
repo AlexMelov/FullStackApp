@@ -57,7 +57,7 @@ jobs:
             -   run: npm run start:local --prefix ./frontend &
             -   run: npm run wait-for-serve --prefix ./frontend && npm run e2e --prefix ./frontend
                 timeout-minutes: 10
-    deploy:
+    deploy-develop:
         runs-on: ubuntu-latest
         steps:
             -   name: Checkout
@@ -68,9 +68,8 @@ jobs:
             -   run: npm run build:dev --prefix ./frontend
             -   uses: amondnet/vercel-action@v20.0.1
                 with:
-                    github-token: ${{ secrets.GH_TOKEN }}
                     vercel-token: ${{ secrets.VERCEL_TOKEN }}
-                    vercel-org-id: ${{ secrets.ORG_ID }}
-                    vercel-project-id: ${{ secrets.PROJECT_ID }}
+                    vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+                    vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
                     vercel-args: --confirm --prod
                     working-directory: ./
