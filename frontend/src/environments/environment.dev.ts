@@ -9,6 +9,8 @@ export const environment : Environment =
 	},
 	apiUrl: 'https://todos-dev.vercel.app/',
 	apiPort: null,
+	baseUrl : 'https://todos-dev.vercel.app',
+	basePort : null,
 	apiRoutes:
 	{
 		api: '/api',

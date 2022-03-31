@@ -9,6 +9,8 @@ export const environment : Environment =
 	},
 	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app',
 	apiPort: null,
+	baseUrl : 'http://localhost',
+	basePort : 3000,
 	apiRoutes:
 	{
 		api: '/api',

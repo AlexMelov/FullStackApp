@@ -9,6 +9,8 @@ export const environment : Environment =
 	},
 	apiUrl: 'http://localhost',
 	apiPort: 8000,
+	baseUrl : 'http://localhost',
+	basePort : 3000,
 	apiRoutes:
 	{
 		api: '/api',
