@@ -1,10 +1,8 @@
-import environment from '../../src/environments/environment';
-
 describe('todo', () =>
 {
 	beforeEach(() =>
 	{
-		cy.visit(environment.apiUrl);
+		cy.visit('https://todos-dev.vercel.app');
 	});
 
 	it('todo list is working', () =>
