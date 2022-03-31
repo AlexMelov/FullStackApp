@@ -2,7 +2,7 @@ describe('todo', () =>
 {
 	beforeEach(() =>
 	{
-		cy.visit('http://localhost:3000');
+		cy.visit('https://full-stack-a3sgu4q5h-alexmelov.vercel.app');
 	});
 
 	it('todo list is working', () =>
