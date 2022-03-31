@@ -7,7 +7,7 @@ export const environment : Environment =
 		branch: 'master',
 		environment: 'dev'
 	},
-	apiUrl: 'todos-dev.vercel.app',
+	apiUrl: 'https://todos-dev.vercel.app/',
 	apiPort: null,
 	apiRoutes:
 	{
