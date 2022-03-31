@@ -71,6 +71,5 @@ jobs:
             -   run: npm run build:dev --prefix ./frontend
             -   uses: amondnet/vercel-action@v20.0.1
                 with:
-                    environment: STAGE
                     vercel-args: --confirm --prod
                     working-directory: ./
