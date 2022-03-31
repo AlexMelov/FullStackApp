@@ -9,6 +9,7 @@ export interface Environment
 	apiPort : number;
 	apiRoutes :
 	{
+		api : string;
 		todos : string;
 		todosWithId : string;
 	}

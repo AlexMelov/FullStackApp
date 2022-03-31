@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+
 jobs:
     lint:
         runs-on: ubuntu-latest
@@ -60,7 +61,7 @@ jobs:
             -   run: npm run start:local --prefix ./frontend &
             -   run: npm run wait-for-serve --prefix ./frontend && npm run e2e:local --prefix ./frontend
                 timeout-minutes: 10
-    deploy-develop:
+    deploy-dev:
         runs-on: ubuntu-latest
         environment: DEV
         steps:

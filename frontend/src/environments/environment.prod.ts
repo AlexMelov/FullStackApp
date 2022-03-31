@@ -11,8 +11,9 @@ export const environment : Environment =
 	apiPort: null,
 	apiRoutes:
 	{
-		todos: '/api/todos',
-		todosWithId: '/api/todos/:todoId'
+		api: '/api',
+		todos: '/todos',
+		todosWithId: '/todos/:todoId'
 	}
 };
 

@@ -16,7 +16,7 @@ const List : React.FC = () =>
 	{
 		async function fetchTodos  () : Promise<void>
 		{
-			const { data } = await axios.get(environment.apiUrl + environment.apiRoutes.todos);
+			const { data } = await axios.get(environment.apiUrl + environment.apiRoutes.api + environment.apiRoutes.todos);
 
 			setTodos(data);
 			todosContext.todoList(data);
