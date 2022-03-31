@@ -74,6 +74,6 @@ jobs:
                 with:
                     vercel-token: ${{ secrets.VERCEL_TOKEN_DEV }}
                     vercel-org-id: ${{ secrets.VERCEL_ORG_ID_DEV }}
-                    vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_DEV2 }}
+                    vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_DEV }}
                     vercel-args: --confirm --prod
                     working-directory: ./
