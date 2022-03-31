@@ -61,7 +61,6 @@ jobs:
                 timeout-minutes: 10
     stage-deploy:
         runs-on: ubuntu-latest
-        needs: deploy
         environment: STAGE
         steps:
             -   name: Checkout
