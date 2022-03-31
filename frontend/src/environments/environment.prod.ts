@@ -7,12 +7,12 @@ export const environment : Environment =
 		branch: 'master',
 		environment: 'prod'
 	},
-	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app/api',
+	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app',
 	apiPort: null,
 	apiRoutes:
 	{
-		todos: '/todos',
-		todosWithId: '/todos/:todoId'
+		todos: '/api/todos',
+		todosWithId: '/api/todos/:todoId'
 	}
 };
 
