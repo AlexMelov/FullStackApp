@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - develop
+      - stage
 jobs:
     lint:
         runs-on: ubuntu-latest
