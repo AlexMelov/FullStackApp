@@ -7,8 +7,8 @@ export const environment : Environment =
 		branch: 'master',
 		environment: 'prod'
 	},
-	apiUrl: 'http://localhost',
-	apiPort: 8000,
+	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app/api',
+	apiPort: null,
 	apiRoutes:
 	{
 		todos: '/todos',

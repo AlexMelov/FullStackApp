@@ -3,7 +3,7 @@ import styles from './styles/NewTodo.module.css';
 import { TodosContext } from '../store/todos-context';
 import axios from 'axios';
 import { TodosContextModel } from './models/TodosContext';
-import environment from '../environments/environment.dev';
+import environment from '../environments/environment';
 
 const NewTodo : React.FC = () =>
 {
@@ -12,7 +12,7 @@ const NewTodo : React.FC = () =>
 
 	async function sendTodo (title : string) : Promise<void>
 	{
-		await axios.post(environment.apiUrl + ':' + environment.apiPort + environment.apiRoutes.todos, { title });
+		await axios.post(environment.apiUrl + environment.apiRoutes.todos, { title });
 	}
 
 	function submitHandler (event : React.FormEvent)

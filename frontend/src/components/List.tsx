@@ -5,7 +5,7 @@ import { TodosContext } from '../store/todos-context';
 import axios from 'axios';
 import Todo from './models/Todo';
 import { TodosContextModel } from './models/TodosContext';
-import environment from '../environments/environment.dev';
+import environment from '../environments/environment';
 
 const List : React.FC = () =>
 {
@@ -16,7 +16,7 @@ const List : React.FC = () =>
 	{
 		async function fetchTodos  () : Promise<void>
 		{
-			const { data } = await axios.get(environment.apiUrl + ':' + environment.apiPort + environment.apiRoutes.todos);
+			const { data } = await axios.get(environment.apiUrl + environment.apiRoutes.todos);
 
 			setTodos(data);
 			todosContext.todoList(data);

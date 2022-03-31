@@ -1,17 +1,28 @@
-const environmentHelper : Function = (environment : string) =>
+import { Environment } from './evironment.interface';
+import environmentLocal from './environment.local';
+import environmentDev from './environment.dev';
+import environmentStage from './environment.stage';
+import environmentProd from './environment.prod';
+
+const environmentHelper : Function = (environment : string) : Environment =>
 {
+	if (environment === 'local')
+	{
+		return environmentLocal;
+	}
 	if (environment === 'dev')
 	{
-		return import('./environment.dev.js');
+		return environmentDev;
 	}
 	if (environment === 'stage')
 	{
-		return import('./environment.stage.js');
+		return environmentStage;
 	}
 	if (environment === 'prod')
 	{
-		return import('./environment.prod.js');
+		return environmentProd;
 	}
+	throw Error('no environment defined');
 };
 
-export default environmentHelper(process.env.REACT_APP_ENV);
+export default environmentHelper(process.env.EXPRESS_APP_ENV) as Environment;

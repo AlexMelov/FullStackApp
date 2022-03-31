@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import { deleteHandler, getHandler, postHandler } from './controller.js';
 import cors from 'cors';
-import environment from '../environments/environment.dev.js';
+import environment from '../environments/environment.local.js';
 
 const server : Express = express();
 
@@ -17,11 +17,11 @@ server.delete(environment.apiRoutes.todosWithId, deleteHandler);
 mongoose.connect(process.env.DB_URL)
 	.then(() =>
 	{
-		process.stdout.write('CONNECTION TO DATABASED SUCCEED');
+		process.stdout.write('[' + environment.metadata.environment.toUpperCase() + '] CONNECTION TO DATABASED SUCCEED');
 		server.listen(environment.apiPort);
 	})
 	.catch(() =>
 	{
-		process.stdout.write('CONNECTION TO DATABASE FAILED');
+		process.stdout.write('[' + environment.metadata.environment.toUpperCase() + '] CONNECTION TO DATABASE FAILED');
 		process.exit();
 	});

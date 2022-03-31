@@ -7,12 +7,12 @@ export const environment : Environment =
 		branch: 'master',
 		environment: 'dev'
 	},
-	apiUrl: 'http://localhost',
+	apiUrl: 'http://localhost:8000',
 	apiPort: 8000,
 	apiRoutes:
 	{
-		todos: '/todos',
-		todosWithId: '/todos/:todoId'
+		todos: '/api/todos',
+		todosWithId: '/api/todos/:todoId'
 	}
 };
 
