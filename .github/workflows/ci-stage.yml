@@ -73,6 +73,6 @@ jobs:
                 with:
                     vercel-token: ${{ secrets.VERCEL_TOKEN_STAGE }}
                     vercel-org-id: ${{ secrets.VERCEL_ORG_ID_STAGE }}
-                    vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_STAGE }
+                    vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_STAGE }}
                     vercel-args: --confirm --prod
                     working-directory: ./
