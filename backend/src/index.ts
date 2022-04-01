@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import { deleteHandler, getHandler, postHandler } from './controller.js';
 import cors from 'cors';
-import environment from '../environments/environment.local.js';
+import environment from '../environments/environment.js';
 
 const server : Express = express();
 

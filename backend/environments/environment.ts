@@ -1,10 +1,10 @@
-import { Environment } from './evironment.interface';
-import environmentLocal from './environment.local';
-import environmentDev from './environment.dev';
-import environmentStage from './environment.stage';
-import environmentProd from './environment.prod';
+import { Environment } from './evironment.interface.js';
+import environmentLocal from './environment.local.js';
+import environmentDev from './environment.dev.js';
+import environmentStage from './environment.stage.js';
+import environmentProd from './environment.prod.js';
 
-const environmentHelper : Function = (environment : string) : Environment =>
+export const environmentHelper : Function = (environment : string) : Environment =>
 {
 	if (environment === 'local')
 	{
@@ -22,7 +22,6 @@ const environmentHelper : Function = (environment : string) : Environment =>
 	{
 		return environmentProd;
 	}
-	throw Error('no environment defined');
 };
 
 export default environmentHelper(process.env.EXPRESS_APP_ENV) as Environment;
