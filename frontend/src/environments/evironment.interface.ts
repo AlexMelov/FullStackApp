@@ -6,7 +6,6 @@ export interface Environment
 		environment : string
 	};
 	apiUrl : string;
-	apiPort : number;
 	apiRoutes :
 	{
 		todos : string;

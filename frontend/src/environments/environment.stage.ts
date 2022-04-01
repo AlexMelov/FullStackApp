@@ -8,7 +8,6 @@ export const environment : Environment =
 		environment: 'stage'
 	},
 	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app',
-	apiPort: null,
 	apiRoutes:
 	{
 		todos: '/api/todos',

@@ -8,7 +8,6 @@ export const environment : Environment =
 		environment: 'prod'
 	},
 	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app/api',
-	apiPort: null,
 	apiRoutes:
 	{
 		todos: '/todos',
