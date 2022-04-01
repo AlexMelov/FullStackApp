@@ -7,7 +7,7 @@ export const environment : Environment =
 		branch: 'master',
 		environment: 'stage'
 	},
-	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app/api',
+	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app',
 	apiPort: null,
 	baseUrl : 'http://localhost:3000',
 	apiRoutes:
