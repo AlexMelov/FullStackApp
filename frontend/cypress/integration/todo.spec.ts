@@ -30,6 +30,7 @@ describe('todo', () =>
 	{
 		cy.get('[data-test="item"]').should('contain.text', 'My new Todo from Cypress');
 		cy.get('[data-test=remove-button]').last().click();
+		cy.wait(2000);
 		cy.reload();
 		cy.get('[data-test="item"]').should('not.contain.text', 'My new Todo from Cypress');
 	});
