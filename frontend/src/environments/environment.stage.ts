@@ -8,11 +8,11 @@ export const environment : Environment =
 		environment: 'stage'
 	},
 	baseUrl : 'http://localhost:3000',
-	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app',
+	apiUrl: 'https://todos-stage.vercel.app/api',
 	apiRoutes:
 	{
-		todos: '/api/todos',
-		todosWithId: '/api/todos/:todoId'
+		todos: '/todos',
+		todosWithId: '/todos/:todoId'
 	}
 };
 
