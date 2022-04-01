@@ -57,7 +57,7 @@ jobs:
             -   run: npm install --prefix ./backend
             -   run: npm run start:local --prefix ./backend &
                 env:
-                    DB_URL: ${{ secrets.DB_URL_STAGE }}
+                    DB_URL: ${{ secrets.DB_URL }}
             -   run: npm run start:local --prefix ./frontend &
             -   run: npm run wait-for-serve --prefix ./frontend && npm run e2e:local --prefix ./frontend
                 timeout-minutes: 10
@@ -74,9 +74,9 @@ jobs:
             -   run: npm run build:stage --prefix ./frontend
             -   uses: amondnet/vercel-action@v20.0.1
                 with:
-                    vercel-token: ${{ secrets.VERCEL_TOKEN_STAGE }}
-                    vercel-org-id: ${{ secrets.VERCEL_STAGE_ORG_ID }}
-                    vercel-project-id: ${{ secrets.VERCEL_STAGE_PROJECT_ID }}
+                    vercel-token: ${{ secrets.VERCEL_TOKEN }}
+                    vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+                    vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
                     vercel-args: --confirm --prod
                     working-directory: ./
     test-smoke:
