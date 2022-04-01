@@ -7,6 +7,7 @@ export const environment : Environment =
 		branch: 'master',
 		environment: 'dev'
 	},
+	baseUrl : 'http://localhost:3000',
 	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app/api',
 	apiRoutes:
 	{
