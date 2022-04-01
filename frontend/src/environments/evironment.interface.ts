@@ -5,6 +5,7 @@ export interface Environment
 		branch : string;
 		environment : string
 	};
+	baseUrl : string;
 	apiUrl : string;
 	apiRoutes :
 	{

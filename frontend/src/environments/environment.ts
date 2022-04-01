@@ -4,7 +4,7 @@ import environmentDev from './environment.dev';
 import environmentStage from './environment.stage';
 import environmentProd from './environment.prod';
 
-const environmentHelper : Function = (environment : string) : Environment =>
+export const environmentHelper : Function = (environment : string) : Environment =>
 {
 	if (environment === 'local')
 	{
@@ -22,7 +22,6 @@ const environmentHelper : Function = (environment : string) : Environment =>
 	{
 		return environmentProd;
 	}
-	throw Error('no environment defined');
 };
 
 export default environmentHelper(process.env.REACT_APP_ENV) as Environment;

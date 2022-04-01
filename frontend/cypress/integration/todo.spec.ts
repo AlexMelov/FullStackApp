@@ -1,8 +1,13 @@
+import { environmentHelper } from '../../src/environments/environment';
+import { Environment } from '../../src/environments/evironment.interface';
+
+const environment : Environment = environmentHelper(Cypress.env('APP_ENV')) as Environment;
+
 describe('todo', () =>
 {
 	beforeEach(() =>
 	{
-		cy.visit('localhost:3000');
+		cy.visit(environment.baseUrl);
 	});
 
 	it('todo list is working', () =>
@@ -16,6 +21,7 @@ describe('todo', () =>
 		cy.get('[data-test="item"]').last().should('not.contain.text', 'My new Todo from Cypress');
 		cy.get('[data-test="text-input"]').type('My new Todo from Cypress');
 		cy.get('[data-test="add-button"]').click();
+		cy.wait(2000);
 		cy.reload();
 		cy.get('[data-test="item"]').should('contain.text', 'My new Todo from Cypress');
 	});
