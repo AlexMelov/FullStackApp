@@ -40,8 +40,8 @@
 		"build:dev": "cross-env-shell EXPRESS_APP_ENV=dev npm run build",
 		"build:stage": "cross-env-shell EXPRESS_APP_ENV=stage npm run build",
 		"build:prod": "cross-env-shell EXPRESS_APP_ENV=prod npm run build",
-		"lint": "eslint \"src/**/*.ts\" && eslint \"src/**/**/*.ts\"",
-		"fix": "eslint \"src/**/*.ts\" --fix && eslint \"src/**/**/*.ts\" --fix",
+		"lint": "eslint \"src/**/**/*.ts\"",
+		"fix": "eslint \"src/**/**/*.ts\" --fix",
 		"test": "jest"
 	}
 }
