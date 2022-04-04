@@ -5,6 +5,6 @@ import NewTodo from './NewTodo';
 test('on intial render, button', ()=>
 {
 	render(<NewTodo/>);
-	expect(screen.getByRole('button', {  name: /add todo/i })).toBeEnabled();
-	expect(screen.getByRole('textbox', {  name: /todo text/i })).toBeVisible();
+	expect(screen.getByRole('button', { name: /add todo/i })).toBeEnabled();
+	expect(screen.getByRole('textbox', { name: /todo text/i })).toBeVisible();
 });

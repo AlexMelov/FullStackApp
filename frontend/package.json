@@ -3,6 +3,8 @@
 	"version": "1.0.0",
 	"private": true,
 	"dependencies": {
+		"@isnotdefined/eslint-config": "^4.3.0",
+		"@isnotdefined/stylelint-config": "^3.2.0",
 		"@testing-library/cypress": "^8.0.2",
 		"@types/enzyme": "^3.10.11",
 		"axios": "^0.26.1",

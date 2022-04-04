@@ -21,7 +21,7 @@ describe('TodoProvider', ()=>
 				<button onClick={() => addTodo('Test Todo!')}>Add Todo</button>
 			</React.Fragment>;
 		};
-		const wrapper :  Enzyme.ReactWrapper<React.Component> = mount(
+		const wrapper : Enzyme.ReactWrapper<React.Component> = mount(
 			<TodosContextProvider>
 				<TestComponent />
 			</TodosContextProvider>

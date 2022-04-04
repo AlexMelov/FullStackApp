@@ -1,6 +1,7 @@
 {
 	"extends":
 	[
-		"stylelint-config-redaxmedia"
+		"stylelint-config-redaxmedia",
+		"@isnotdefined/stylelint-config"
 	]
 }

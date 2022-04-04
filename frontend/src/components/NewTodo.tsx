@@ -10,12 +10,12 @@ const NewTodo : React.FC = () =>
 	const todosContext : TodosContextModel = useContext(TodosContext);
 	const todoTextInputRef : React.MutableRefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
 
-	async function sendTodo (title : string) : Promise<void>
+	async function sendTodo(title : string) : Promise<void>
 	{
 		await axios.post(environment.apiUrl + environment.apiRoutes.todos, { title });
 	}
 
-	function submitHandler (event : React.FormEvent)
+	function submitHandler(event : React.FormEvent)
 	{
         event.preventDefault();
         const enteredText : string = todoTextInputRef.current.value;

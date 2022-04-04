@@ -21,7 +21,7 @@ const TodosContextProvider : React.FC = props =>
 	const [ todos, setTodos ] = useState<Todo[]>([]);
 	const [ fetchedItems, setFetchedItems ] = useState<Todo[]>([]);
 
-	function addTodoHandler  (title : string)
+	function addTodoHandler(title : string)
 	{
 		const newTodo : Todo = new Todo(title);
 
@@ -31,7 +31,7 @@ const TodosContextProvider : React.FC = props =>
 		});
 	}
 
-	async function deleteRequest (_id : number, deletedItem : Todo[], nonDeletedItems : Todo[])
+	async function deleteRequest(_id : number, deletedItem : Todo[], nonDeletedItems : Todo[])
 	{
 		await axios.delete(environment.apiUrl + environment.apiRoutes.todos + '/' + _id, {
 			data: { deletedItem }
@@ -40,7 +40,7 @@ const TodosContextProvider : React.FC = props =>
 		setTodos(nonDeletedItems);
 	}
 
-	function removeTodoHandler (_id : number)
+	function removeTodoHandler(_id : number)
 	{
     	const nonDeletedItems : Todo[] = fetchedItems.filter(item => item._id !== _id);
 		const deletedItem : Todo[] = fetchedItems.filter(item => item._id === _id);
@@ -48,7 +48,7 @@ const TodosContextProvider : React.FC = props =>
 		deleteRequest(_id, deletedItem, nonDeletedItems);
 	}
 
-	function todoList (todos : Todo[])
+	function todoList(todos : Todo[])
 	{
 		return setFetchedItems(todos);
 	}
