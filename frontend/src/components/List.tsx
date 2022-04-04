@@ -14,7 +14,7 @@ const List : React.FC = () =>
 
 	useEffect(() =>
 	{
-		async function fetchTodos  () : Promise<void>
+		async function fetchTodos() : Promise<void>
 		{
 			const { data } = await axios.get(environment.apiUrl + environment.apiRoutes.todos);
 
