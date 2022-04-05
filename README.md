@@ -2,7 +2,9 @@
 This is todo application for posting listing and deleting todos.
 The entire application including the testing part is with typescript.
 ### setup
-```npm install --prefix ./backend && npm install --prefix ./frontend```
+```
+npm install --prefix ./backend && npm install --prefix ./frontend
+```
 
 
 # backend
@@ -17,21 +19,28 @@ For the backend-environmental file (.env) file has to contain database url conne
 for example DB_URL=mongodb+srv://<mognodb-user>:<mongodb-password>@cluster0.r00ao.mongodb.net/cluster-name?retryWrites=true&w=majority
 You can start the application with
 
-```npm start:local --prefix ./backend```
+```
+npm start:local --prefix ./backend
+```
 
 or if you are already inside backend folder
-
-```npm start:local```
+```
+npm start:local
+```
 
 this will return you string inside terminal telling you that the connections is established with mongo db or connection is failed.
 On "localhost:8000/todos" you'll see the database api
 If you want to start the application on the vercel server you'll need to run
 
-```npm run start:dev --prefix ./backend```
+```
+npm run start:dev --prefix ./backend
+```
 
 Or
 
-```npm run start:stage --prefix ./backend```
+```
+npm run start:stage --prefix ./backend
+```
 
 ## usage
 It runs as a part from the entire application but can be used separated
@@ -49,19 +58,27 @@ For starting the application first you need to start the backend server
 with the database (to return you the todos).
 After that you neeed to run
 
-```npm run start:local --prefix ./frontend```
+```
+npm run start:local --prefix ./frontend
+```
 
 or if you are already inside frontend folder
 
-```npm start:local```
+```
+npm start:local
+```
 
 If you want to start the application on the vercel server you'll need to run
 
-```npm run start:dev --prefix ./frontend```
+```
+npm run start:dev --prefix ./frontend
+```
 
 Or
 
-```npm run start:stage --prefix ./frontend```
+```
+npm run start:stage --prefix ./frontend
+```
 
 ## usage
 You write todo and posted, and you get it back a list with all todos.
