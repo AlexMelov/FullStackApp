@@ -3,8 +3,8 @@ import { Response, Request } from 'express';
 
 describe('Get all users request', () =>
 {
-	let mockRequest : Partial<Request>;
-	let mockResponse : Partial<Response>;
+	let mockRequest : Partial<Request> = null ;
+	let mockResponse : Partial<Response> = null;
 	let responseObj : {} = {};
 
 	beforeEach(() =>
