@@ -63,7 +63,7 @@ jobs:
                 timeout-minutes: 10
     test-smoke:
         runs-on: ubuntu-latest
-        needs: deploy
+        needs: test-acceptance
         environment: FEATURE
         steps:
             -   name: Checkout
