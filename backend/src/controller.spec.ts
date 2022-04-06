@@ -1,8 +1,11 @@
 describe( 'Get all requests', () =>
 {
-	test('Get all Posts', () =>
+	describe('Get all Posts', () =>
 	{
-		expect(2 + 1).toEqual(3);
+		test('simple test', () =>
+		{
+			expect(true).toBe(true);
+		});
 	});
 
 });
