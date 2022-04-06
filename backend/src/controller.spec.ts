@@ -1,11 +1,7 @@
-describe( 'Get all requests', () =>
+describe( 'Example', () =>
 {
-	describe('Get all Posts', () =>
+	it('Example', () =>
 	{
-		test('simple test', () =>
-		{
-			expect(true).toBe(true);
-		});
+		expect(true).toBe(true);
 	});
-
 });
