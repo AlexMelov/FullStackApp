@@ -1,12 +1,8 @@
 module.exports =
 {
-	preset: 'ts-jest',
-	extensionsToTreatAsEsm: [ '.ts' ],
-	globals:
+	preset: 'ts-jest/presets/js-with-ts-esm',
+	moduleNameMapper:
 	{
-		'ts-jest':
-		{
-			useESM: true,
-		},
+		'^(\\./.*)\\.js$': '$1',
 	}
-}
+};
