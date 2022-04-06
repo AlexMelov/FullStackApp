@@ -1,5 +1,6 @@
 {
-	"jest": {
-		"setupFilesAfterEnv": ["<rootDir>src/setupTests.js"]
+	"jest":
+	{
+		"setupFilesAfterEnv": [ "<rootDir>src/setupTests.js" ]
 	}
 }

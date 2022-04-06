@@ -1,14 +1,17 @@
 {
 	"extends": "../tsconfig.json",
-	"compilerOptions": {
+	"compilerOptions":
+	{
 		"outDir": "./build",
 		"allowSyntheticDefaultImports": true,
 		"skipLibCheck": true
 	},
-	"exclude": [
+	"exclude":
+	[
 		"./node_modules"
 	],
-	"include": [
+	"include":
+	[
 		"./src"
 	]
 }
