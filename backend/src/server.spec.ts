@@ -5,7 +5,7 @@ import { Body } from './server.interface.js';
 
 describe('Server', () =>
 {
-	it('should GET all todos', async() =>
+	it('should GET root', async() =>
 	{
 		const response : Response = await supertest(server).get('/');
 

@@ -4,67 +4,61 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { fireEvent, render } from '@testing-library/react';
 
+function createWrapper(TestComponent : React.FC) : Enzyme.ReactWrapper<React.Component>
+{
+	const wrapper : Enzyme.ReactWrapper<React.Component> = mount(
+		<TodosContextProvider>
+			<TestComponent/>
+		</TodosContextProvider>
+	);
+
+	return wrapper;
+}
+
 describe('TodoProvider', ()=>
 {
-	beforeEach(() =>
-	{
-		Enzyme.configure({ adapter: new Adapter() });
-	});
+	beforeEach(() => Enzyme.configure({ adapter: new Adapter() }));
 
-	it('should get all todos', () =>
+	it('should GET all todos', () =>
 	{
 		const TestComponent : React.FC = () =>
 		{
 			const { items } = React.useContext(TodosContext);
 
-			return <React.Fragment>
-				<ul>
-					{items.map(item => <li data-testing="item">{item.title}</li>)}
-				</ul>
-			</React.Fragment>;
+			return <ul>
+				{ items.map(item => <li data-test="item">{ item.title }</li>) }
+			</ul>;
 		};
 
-		const wrapper : Enzyme.ReactWrapper<React.Component> = mount(
-			<TodosContextProvider>
-				<TestComponent />
-			</TodosContextProvider>
-		);
-
-		expect(wrapper.children('list')).toBeTruthy();
+		expect(createWrapper(TestComponent).children()).toBeTruthy();
 	});
 
-	it('add new todo', () =>
+	it('should CREATE a todo', () =>
 	{
 		const TestComponent : React.FC = () =>
 		{
 			const { addTodo, items } = React.useContext(TodosContext);
 
 			return <React.Fragment>
-				<div data-testing="title">{items.map(item=>item.title)}</div>
-				<button onClick={() => addTodo('Test Todo!')}>Add Todo</button>
+				<div data-test="title">{ items.map(item=>item.title) }</div>
+				<button onClick={ () => addTodo('Test Todo!') }></button>
 			</React.Fragment>;
 		};
-		const wrapper : Enzyme.ReactWrapper<React.Component> = mount(
-			<TodosContextProvider>
-				<TestComponent />
-			</TodosContextProvider>
-		);
+		const wrapper : Enzyme.ReactWrapper<React.Component> = createWrapper(TestComponent);
 
-		expect(wrapper.find('[data-testing="title"]').text()).toBeFalsy();
-
+		expect(wrapper.find('[data-test="title"]').text()).toBeFalsy();
 		wrapper.find('button').simulate('click');
-
-		expect(wrapper.find('[data-testing="title"]').text()).toBe('Test Todo!');
+		expect(wrapper.find('[data-test="title"]').text()).toBe('Test Todo!');
 	});
 
-	it('remove todo', () =>
+	it('should not DELETE todo', () =>
 	{
 		const { getByText } = render(
 			<TodosContextProvider>
 				<TodosContext.Consumer>
 					{
 						value => <React.Fragment>
-							<button onClick={() => value.removeTodo(1)}>Remove Todo</button>
+							<button onClick={ () => value.removeTodo(1) }>Remove Todo</button>
 						</React.Fragment>
 					}
 				</TodosContext.Consumer>
