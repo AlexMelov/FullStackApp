@@ -42,7 +42,9 @@ jobs:
                 with:
                     node-version: 14
             -   run: npm install --prefix ./frontend
+            -   run: npm install --prefix ./backend
             -   run: npm run test:local --prefix ./frontend
+            -   run: npm run test:local --prefix ./backend
     test-acceptance:
         runs-on: ubuntu-latest
         environment: DEV
