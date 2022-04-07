@@ -1,12 +1,10 @@
-import supertest, { Response } from 'supertest';
+import supertest from 'supertest';
 import { server } from './server.js';
 
 describe( 'Server', () =>
 {
 	it('GET /todos', async() =>
 	{
-		const response : Response = await supertest(server).get('/todos');
-
-		expect(response.status).toBe(200);
+		await supertest(server).get('/todos').expect(200);
 	});
 });
