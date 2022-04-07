@@ -45,6 +45,8 @@ jobs:
             -   run: npm install --prefix ./backend
             -   run: npm run test:local --prefix ./frontend
             -   run: npm run test:local --prefix ./backend
+                env:
+                    DB_URL: ${{ secrets.DB_URL }}
     test-acceptance:
         runs-on: ubuntu-latest
         environment: DEV
