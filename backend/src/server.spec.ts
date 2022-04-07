@@ -1,40 +1,52 @@
 import supertest, { Response } from 'supertest';
 import mongoose from 'mongoose';
 import { server } from './server.js';
+import { Body } from './server.interface.js';
 
-let todoId : string;
-
-describe( 'Server', () =>
+describe('Server', () =>
 {
-	it('should GET all todos from /todos', async() =>
+	it('should GET all todos', async() =>
+	{
+		const response : Response = await supertest(server).get('/');
+
+		expect(response.statusCode).toBe(404);
+	});
+
+	it('should GET all todos', async() =>
 	{
 		const response : Response = await supertest(server).get('/todos');
+		const body : Body[] = await response.body;
 
 		expect(response.statusCode).toBe(200);
+		expect((body[0])._id).toBeDefined();
 	});
 
-	it('should POST todo on route /todos', async() =>
+	it('should CREATE a todo', async() =>
 	{
-		const response : Response = await supertest(server).post('/todos')
-			.send({ title : 'Todo From Jest!' }).expect(200);
-		const sendedData : {title : string, _id : string} = await response.body;
+		const response : Response = await supertest(server).post('/todos').send({ title : 'Todo from Jest!' });
+		const body : Body = await response.body;
 
-		todoId = await sendedData._id;
+		expect(response.statusCode).toBe(200);
 		expect(response.headers).toBeDefined();
-		expect(sendedData.title).toContain('Todo From Jest!');
-		expect(sendedData._id).toContain(todoId);
+		expect(body.title).toContain('Todo from Jest!');
+		supertest(server).delete('/todos/' + body._id);
 	});
 
-	it('should DELETE /todos/lastTodo ', async() =>
+	it('should not DELETE todo', async() =>
 	{
-		const response : Response = await supertest(server).delete(`/todos/${todoId}`);
+		const responseCreate : Response = await supertest(server).post('/todos').send({ title : 'Todo from Jest!' });
+		const bodyCreate : Body = await responseCreate.body;
+		const responseDelete : Response = await supertest(server).delete('/todos/' + bodyCreate._id);
 
-		expect(response.statusCode).toEqual(200);
+		expect(responseDelete.statusCode).toEqual(200);
 	});
 
-	afterAll(done =>
+	it.skip('should not DELETE invalid todo', async() =>
 	{
-		mongoose.connection.close();
-		done();
+		const response : Response = await supertest(server).delete('/todos/123456');
+
+		expect(response.statusCode).toEqual(404);
 	});
+
+	afterAll(() => mongoose.connection.close());
 });

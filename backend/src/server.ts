@@ -11,7 +11,7 @@ const db : Promise<typeof mongoose> = mongoose.connect(process.env.DB_URL);
 
 server.use(cors());
 server.use(bodyParser.json());
-server.get('/', (request : Request, response : Response) => response.sendStatus(500));
+server.get('/', (request : Request, response : Response) => response.sendStatus(404));
 server.get(environment.apiRoutes.todos, getHandler);
 server.post(environment.apiRoutes.todos, postHandler);
 server.delete(environment.apiRoutes.todosWithId, deleteHandler);
