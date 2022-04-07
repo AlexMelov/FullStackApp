@@ -4,12 +4,20 @@ import Enzyme, { mount } from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import { fireEvent, render } from '@testing-library/react';
 
+function createWrapper(TestComponent : React.FC) : Enzyme.ReactWrapper<React.Component>
+{
+	const wrapper : Enzyme.ReactWrapper<React.Component> = mount(
+		<TodosContextProvider>
+			<TestComponent/>
+		</TodosContextProvider>
+	);
+
+	return wrapper;
+}
+
 describe('TodoProvider', ()=>
 {
-	beforeEach(() =>
-	{
-		Enzyme.configure({ adapter: new Adapter() });
-	});
+	beforeEach(() => Enzyme.configure({ adapter: new Adapter() }));
 
 	it('should get all todos', () =>
 	{
@@ -17,20 +25,12 @@ describe('TodoProvider', ()=>
 		{
 			const { items } = React.useContext(TodosContext);
 
-			return <React.Fragment>
-				<ul>
-					{items.map(item => <li data-testing="item">{item.title}</li>)}
-				</ul>
-			</React.Fragment>;
+			return <ul>
+				{ items.map(item => <li data-testing="item">{ item.title }</li>) }
+			</ul>;
 		};
 
-		const wrapper : Enzyme.ReactWrapper<React.Component> = mount(
-			<TodosContextProvider>
-				<TestComponent />
-			</TodosContextProvider>
-		);
-
-		expect(wrapper.children('list')).toBeTruthy();
+		expect(createWrapper(TestComponent).children()).toBeTruthy();
 	});
 
 	it('add new todo', () =>
