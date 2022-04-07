@@ -11,7 +11,29 @@ describe('TodoProvider', ()=>
 		Enzyme.configure({ adapter: new Adapter() });
 	});
 
-	it('sets status', () =>
+	it('should get all todos', () =>
+	{
+		const TestComponent : React.FC = () =>
+		{
+			const { items } = React.useContext(TodosContext);
+
+			return <React.Fragment>
+				<ul>
+					{items.map(item => <li data-testing="item">{item.title}</li>)}
+				</ul>
+			</React.Fragment>;
+		};
+
+		const wrapper : Enzyme.ReactWrapper<React.Component> = mount(
+			<TodosContextProvider>
+				<TestComponent />
+			</TodosContextProvider>
+		);
+
+		expect(wrapper.children('list')).toBeTruthy();
+	});
+
+	it('add new todo', () =>
 	{
 		const TestComponent : React.FC = () =>
 		{
@@ -49,29 +71,5 @@ describe('TodoProvider', ()=>
 			</TodosContextProvider>);
 
 		fireEvent.click(getByText('Remove Todo'));
-	});
-	it('add todo', () =>
-	{
-		const { getByText } = render(
-			<TodosContextProvider>
-				<TodosContext.Consumer>
-					{
-						value => <React.Fragment>
-							<button onClick={() => value.addTodo('New todo From Jest!')}>Add Todo</button>
-							<ul>
-								{value.items.map(item =>
-								{
-									if(item.title === 'New todo From Jest!')
-									{
-										<li>{item.title}</li>;
-									}
-								})}
-							</ul>
-						</React.Fragment>
-					}
-				</TodosContext.Consumer>
-			</TodosContextProvider>);
-
-		fireEvent.click(getByText('Add Todo'));
 	});
 });
