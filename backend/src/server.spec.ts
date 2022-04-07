@@ -6,14 +6,14 @@ let todoId : string;
 
 describe( 'Server', () =>
 {
-	it('GET /todos', async() =>
+	it('should GET all todos from /todos', async() =>
 	{
 		const response : Response = await supertest(server).get('/todos');
 
 		expect(response.statusCode).toBe(200);
 	});
 
-	it('POST /todos', async() =>
+	it('should POST todo on route /todos', async() =>
 	{
 		const response : Response = await supertest(server).post('/todos')
 			.send({ title : 'Todo From Jest!' }).expect(200);
@@ -23,6 +23,13 @@ describe( 'Server', () =>
 		expect(response.headers).toBeDefined();
 		expect(sendedData.title).toContain('Todo From Jest!');
 		expect(sendedData._id).toContain(todoId);
+	});
+
+	it('should DELETE /todos/lastTodo ', async() =>
+	{
+		const response : Response = await supertest(server).delete(`/todos/${todoId}`);
+
+		expect(response.statusCode).toEqual(200);
 	});
 
 	afterAll(done =>
