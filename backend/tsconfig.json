@@ -1,14 +1,18 @@
 {
 	"extends": "../tsconfig.json",
-	"compilerOptions": {
+	"compilerOptions":
+	{
 		"outDir": "./build",
 		"allowSyntheticDefaultImports": true,
-		"skipLibCheck": true
+		"esModuleInterop": true,
+		"allowJs": true,
 	},
-	"exclude": [
+	"exclude":
+	[
 		"./node_modules"
 	],
-	"include": [
+	"include":
+	[
 		"./src"
 	]
 }
