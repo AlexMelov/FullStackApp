@@ -29,7 +29,7 @@ describe('Server', () =>
 		expect(response.statusCode).toBe(200);
 		expect(response.headers).toBeDefined();
 		expect(body.title).toContain('Todo from Jest!');
-		supertest(server).delete('/todos/' + body._id);
+		await supertest(server).delete('/todos/' + body._id);
 	});
 
 	it('should not DELETE todo', async() =>
