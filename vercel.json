@@ -3,8 +3,15 @@
 	"builds":
 	[
 		{
-			"src": "backend/build/**",
-			"use": "@vercel/node"
+			"src": "backend/build/index.js",
+			"use": "@vercel/node",
+			"config":
+			{
+				"includeFiles":
+				[
+					"backend/build/src/**"
+				]
+			}
 		},
 		{
 			"src": "frontend/build/**",

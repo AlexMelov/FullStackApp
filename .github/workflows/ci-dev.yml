@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+      - fix-dev-pipeline
 
 jobs:
     lint:
@@ -30,8 +31,8 @@ jobs:
                     node-version: 14
             -   run: npm install --prefix ./backend
             -   run: npm install --prefix ./frontend
-            -   run: npm run build:local --prefix ./backend
-            -   run: npm run build:local --prefix ./frontend
+            -   run: npm run build:dev --prefix ./backend
+            -   run: npm run build:dev --prefix ./frontend
             -   uses: actions/upload-artifact@v3
                 with:
                     name: build-backend
