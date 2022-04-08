@@ -7,8 +7,7 @@ describe('Server', () =>
 {
 	afterAll(done =>
 	{
-		mongoose.connection.close();
-		done();
+		mongoose.connection.close().then(() => done()).catch(error => ({ message:error }));
 	});
 
 	it('should GET root', async() =>

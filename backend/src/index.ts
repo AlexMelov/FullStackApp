@@ -1,5 +1,5 @@
-import { server, db } from '../server.js';
-import environment from '../environments/environment.js';
+import { server, db } from './server.js';
+import environment from './environments/environment.js';
 
 db.then(() =>
 {
