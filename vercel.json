@@ -5,12 +5,24 @@
 		{
 			"src": "backend/build/index.js",
 			"use": "@vercel/node",
-			"config": { "includeFiles": ["backend/build/src/**"] }
+			"config":
+			{
+				"includeFiles":
+				[
+					"backend/build/src/**"
+				]
+			}
 		},
 		{
 			"src": "frontend/build/**",
 			"use": "@vercel/static",
-			"config": { "includeFiles": ["frontend/build/**"] }
+			"config":
+			{
+				"includeFiles":
+				[
+					"frontend/build/**"
+				]
+			}
 		}
 	],
 	"routes":
