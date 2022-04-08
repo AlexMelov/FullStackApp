@@ -22,7 +22,7 @@ export const postHandler : Handler = (request : Request, response : Response) : 
 
 export const deleteHandler : Handler = (request : Request, response : Response) : void =>
 {
-	todoModel.remove({ _id: request.params.todoId })
+	todoModel.deleteOne({ _id: request.params.todoId })
 		.then(data => response.json(data))
 		.catch(error => response.json({ message: error }));
 };

@@ -5,6 +5,12 @@ import { Body } from './server.interface.js';
 
 describe('Server', () =>
 {
+	afterAll(done =>
+	{
+		mongoose.connection.close();
+		done();
+	});
+
 	it('should GET root', async() =>
 	{
 		const response : Response = await supertest(server).get('/');
@@ -47,6 +53,4 @@ describe('Server', () =>
 
 		expect(response.statusCode).toEqual(404);
 	});
-
-	afterAll(() => mongoose.connection.close());
 });
