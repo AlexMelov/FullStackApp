@@ -3,7 +3,7 @@ name: ci-dev
 on:
   push:
     branches:
-      - develop
+      - fix-dev-pipeline
 
 jobs:
     lint:
