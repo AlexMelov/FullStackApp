@@ -1,9 +1,9 @@
 # Fullstack todo application
 Simple todo application created in
 - backend part : Express.ts, MongoDb with mongoose,
-- frontend part : React.ts, for posting
+- frontend part : React.ts,
 
-sending and deleting todos also for testing todos and runing ci github pipeline
+for posting sending and deleting todos also for testing todos and runing ci github pipeline
 
 ## Setup
 
@@ -35,7 +35,7 @@ npm run build:local --prefix ./frontend
 ```Testing
 npm run e2e:local --prefix ./frontend
 ```
--[x] Unit Test with Jest.ts
+- [x] Unit Test with Jest.ts
 ```Jest Test
 npm run test:local --prefix ./backend
 npm run test:local --prefix ./frontend
