@@ -50,6 +50,7 @@ npm install -g vercel
 vercel
 ```
 - [x] Follow the steps on the IDE terminal
+- [x] Your IDE will create vercel folder in the root folder
 - [x] Get the PRODUCT_ID and ORG_ID form vercel folder
 ##### On the GitHub repository
 
