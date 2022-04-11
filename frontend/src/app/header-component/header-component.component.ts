@@ -8,4 +8,10 @@ import { Component } from '@angular/core';
 export class HeaderComponentComponent
 {
 	listItem : string = 'Item1';
+	new_item : string = '';
+
+	update_item_name(event : KeyboardEvent) : void
+	{
+    this.new_item = (<HTMLInputElement>event.target).value;
+	}
 }
