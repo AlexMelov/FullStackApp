@@ -8,7 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "lint": "ng lint",
-    "fix": "ng lint --fix"
+    "fix": "ng lint --fix",
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +39,8 @@
     "@angular-eslint/template-parser": "13.2.0",
     "@angular/cli": "~13.3.2",
     "@angular/compiler-cli": "~13.3.0",
+    "@briebug/jest-schematic": "^4.0.0",
+    "@cypress/schematic": "^1.6.0",
     "@isnotdefined/eslint-config": "4.4.0",
     "@isnotdefined/stylelint-config": "^3.2.0",
     "@types/jest": "^27.4.1",
