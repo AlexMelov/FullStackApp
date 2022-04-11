@@ -1,0 +1,26 @@
+.form-container
+{
+  width: 80%;
+  margin: 0 auto;
+}
+.form-container input
+{
+  width: 50%;
+  height: 3vh;
+}
+.form-container button
+{
+  margin-left: 1rem;
+  background-color: #0909fd;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  width: 6rem;
+  height: 3vh;
+  transition: all 0.3s ease;
+}
+.form-container button:hover
+{
+  transform: scale(1.1);
+  cursor: pointer;
+}

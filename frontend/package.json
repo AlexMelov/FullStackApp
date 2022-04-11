@@ -4,21 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:local": "cross-env-shell ANGULAR_APP_ENV=local ng serve",
-    "start:dev": "cross-env-shell ANGULAR_APP_ENV=dev ng serve",
-    "start:stage": "cross-env-shell ANGULAR_APP_ENV=stage ng serve",
-    "start:prod": "cross-env-shell ANGULAR_APP_ENV=prod ng serve",
     "build": "ng build",
-    "build:local": "cross-env-shell ANGULAR_APP_ENV=local ng build",
-    "build:dev": "cross-env-shell ANGULAR_APP_ENV=dev ng build",
-    "build:state": "cross-env-shell ANGULAR_APP_ENV=state ng build",
-    "build:prod": "cross-env-shell ANGULAR_APP_ENV=prod ng build",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
-    "test:local": "cross-env-shell ANGULAR_APP_ENV=local ng test",
-    "test:dev": "cross-env-shell ANGULAR_APP_ENV=dev ng test",
-    "test:state": "cross-env-shell ANGULAR_APP_ENV=state ng test",
-    "test:prod": "cross-env-shell ANGULAR_APP_ENV=prod ng test",
     "lint": "ng lint",
     "fix": "ng lint --fix"
   },
@@ -39,6 +27,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-builders/jest": "latest",
     "@angular-devkit/build-angular": "~13.3.2",
     "@angular-eslint/builder": "13.2.0",
     "@angular-eslint/eslint-plugin": "13.2.0",
