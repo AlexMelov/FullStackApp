@@ -22,23 +22,7 @@
       "rules": {
         "@typescript-eslint/no-require-imports": "warn",
         "jsdoc/require-jsdoc": "off",
-        "jsdoc/require-description": "off",
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
-        ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ]
+        "jsdoc/require-description": "off"
       }
     },
     {
