@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "fix": "ng lint --fix"
   },
   "private": true,
   "dependencies": {
@@ -19,8 +20,10 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@isnotdefined/eslint-config": "4.4.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "wait-on": "^6.0.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -32,10 +35,13 @@
     "@angular-eslint/template-parser": "13.2.0",
     "@angular/cli": "~13.3.2",
     "@angular/compiler-cli": "~13.3.0",
+    "@isnotdefined/eslint-config": "4.4.0",
+    "@isnotdefined/stylelint-config": "^3.2.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.17.0",
     "@typescript-eslint/parser": "5.17.0",
+    "cross-env": "7.0.3",
     "cypress": "^9.5.3",
     "eslint": "^8.12.0",
     "jest": "^27.5.1",

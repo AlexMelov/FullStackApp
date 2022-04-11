@@ -4,11 +4,11 @@ export const environment : Environment =
 {
 	metadata:
 	{
-		branch: 'master',
-		environment: 'prod'
+		branch: 'develop',
+		environment: 'local'
 	},
 	baseUrl : 'http://localhost:3000',
-	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app/api',
+	apiUrl: 'http://localhost:8000',
 	apiRoutes:
 	{
 		todos: '/todos',
