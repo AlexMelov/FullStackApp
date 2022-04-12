@@ -20,7 +20,8 @@
     "e2e:local": "npm run e2e",
     "e2e:dev": "npm run e2e -- --configuration=dev",
     "e2e:stage": "npm run e2e -- --configuration=stage",
-    "e2e:prod": "npm run e2e -- --configuration=prod"
+    "e2e:prod": "npm run e2e -- --configuration=prod",
+    "wait-for-serve": "wait-on tcp:4200 tcp:8000"
   },
   "private": true,
   "dependencies": {
