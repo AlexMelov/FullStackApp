@@ -17,9 +17,10 @@
 <!--  >{{ status_item }}-->
 <!--  </p>-->
   <ul>
-    <li *ngFor="let item of items; let i = index">
+     <li *ngFor="let item of items; let i = index">
       <p>{{item.title}}</p>
       <button type="button" [disabled]="list_activities" (click)="on_remove_item(i)">Remove</button>
     </li>
+    <app-list-component *ngFor="let item of items; let i = index" [list_item]="item.title"></app-list-component>
   </ul>
 </form>
