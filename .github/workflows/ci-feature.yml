@@ -64,5 +64,5 @@ jobs:
                 env:
                     DB_URL: ${{ secrets.DB_URL }}
             -   run: npm run start:local --prefix ./frontend &
-            -   run: npm run wait-for-serve --prefix ./frontend && npm run e2e:local --prefix ./frontend
+            -   run: npm run e2e:local --prefix ./frontend
                 timeout-minutes: 10
