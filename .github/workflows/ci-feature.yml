@@ -17,7 +17,7 @@ jobs:
                 with:
                     node-version: 14
             -   run: npm install --prefix ./backend
-            -   run: npm install --prefix ./frontend
+            -   run: yarn install --prefix ./frontend
             -   run: npm run lint --prefix ./backend
             -   run: npm run lint --prefix ./frontend
     build:
@@ -30,7 +30,7 @@ jobs:
                 with:
                     node-version: 14
             -   run: npm install --prefix ./backend
-            -   run: npm install --prefix ./frontend
+            -   run: yarn install --prefix ./frontend
             -   run: npm run build:local --prefix ./backend
             -   run: npm run build:local --prefix ./frontend
     test-unit:
@@ -58,7 +58,7 @@ jobs:
                 uses: actions/setup-node@v1
                 with:
                     node-version: 14
-            -   run: npm install --prefix ./frontend
+            -   run: yarn install --prefix ./frontend
             -   run: npm install --prefix ./backend
             -   run: npm run start:local --prefix ./backend &
                 env:

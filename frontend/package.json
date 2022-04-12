@@ -33,6 +33,7 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@isnotdefined/eslint-config": "4.4.0",
+    "root": "file:..",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "wait-on": "^6.0.1",
