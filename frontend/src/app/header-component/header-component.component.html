@@ -11,10 +11,15 @@
     <p>No Item was Created!</p>
   </ng-template>
   <p>{{ new_item }}</p>
-  <p [style]="{'background-color': change_color()}">{{ status_item }}</p>
+  <p
+    [style]="{'background-color': change_color()}"
+    [ngClass]="{checked: status_item==='Checked'}"
+  >{{ status_item }}
+  </p>
   <ul>
     <li *ngFor="let item of items; let i = index">
       <p>{{item.title}} _id:{{i}}</p>
+      <button type="button" [disabled]="list_activities" (click)="on_remove_item(i)">Remove</button>
     </li>
   </ul>
 </form>

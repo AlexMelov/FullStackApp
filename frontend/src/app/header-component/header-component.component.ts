@@ -3,31 +3,32 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-header-component',
   templateUrl: './header-component.component.html',
-  styleUrls: [ './header-component.component.css' ]
+  styleUrls: [ './header-component.component.css' ],
+  styles: [ `
+  .checked
+  {
+    color: white;
+  }
+  ` ]
 })
 export class HeaderComponentComponent
 {
-	items : Array<{title : string, _id : number}> =
+	items : Array<{title : string}> =
 		[
       {
-        title:'First todo',
-        _id: 1
+        title:'First todo'
       },
       {
-        title:'Second todo',
-        _id: 2
+        title:'Second todo'
       },
       {
-        title:'Third todo',
-        _id: 3
+        title:'Third todo'
       },
       {
-        title:'Fourth todo',
-        _id: 4
+        title:'Fourth todo'
       },
       {
-        title:'Fifth todo',
-        _id: 5
+        title:'Fifth todo'
       }
 
 		];
@@ -35,6 +36,7 @@ export class HeaderComponentComponent
 	new_item : string = '';
 	status_item : string = '';
 	list_item_created : boolean = false;
+	list_activities : boolean = true;
 	constructor()
 	{
 	  this.status_item = Math.random() > 0.5 ? 'Checked' : 'Not Checked';
@@ -46,9 +48,16 @@ export class HeaderComponentComponent
 	add_text() : void
 	{
     this.list_item_created = true;
+    this.items.push({ title: this.new_item });
+    this.new_item = '';
+    this.list_activities = false;
 	}
-	change_color() : void
+	change_color() : string
 	{
-		this.status_item === 'Checked' ? 'green' : 'red';
+		return this.status_item === 'Checked' ? 'green' : 'red';
+	}
+	on_remove_item(id : number) : void
+	{
+    this.items.filter((item, idx) => item ? idx !== id : null);
 	}
 }
