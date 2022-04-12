@@ -42,7 +42,7 @@ jobs:
                 uses: actions/setup-node@v1
                 with:
                     node-version: 14
-            -   run: npm install --prefix ./frontend
+            -   run: yarn install --prefix ./frontend
             -   run: npm install --prefix ./backend
             -   run: npm run test:local --prefix ./frontend
             -   run: npm run test:local --prefix ./backend
