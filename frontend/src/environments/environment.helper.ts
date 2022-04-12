@@ -1,10 +1,9 @@
-import { Environment } from './environment.interface';
 import { environment as environmentLocal } from './environment';
 import { environment as environmentDev } from './environment.dev';
 import { environment as environmentStage } from './environment.stage';
 import { environment as environmentProd } from './environment.prod';
 
-export const environmentHelper : Function = (environment : string) : Environment =>
+export const environmentHelper : Function = (environment : string) : any =>
 {
 	if (environment === 'local')
 	{
@@ -24,4 +23,4 @@ export const environmentHelper : Function = (environment : string) : Environment
 	}
 };
 
-export default environmentHelper(process.env['APP_ENV']) as Environment;
+export default environmentHelper(process.env['APP_ENV']);
