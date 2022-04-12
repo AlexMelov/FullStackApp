@@ -28,3 +28,16 @@
 {
   background-color: #5f5fa0;
 }
+.form-container ul
+{
+  margin: 0;
+  padding: 1rem;
+}
+.form-container ul>li
+{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+}

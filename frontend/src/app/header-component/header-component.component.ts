@@ -58,6 +58,8 @@ export class HeaderComponentComponent
 	}
 	on_remove_item(id : number) : void
 	{
-    this.items.filter((item, idx) => item ? idx !== id : null);
+		const newArray : {title : string}[] = this.items.filter((item, idx) => item ? idx === id : null);
+
+    this.items = this.items.filter(item => item !== newArray[0]);
 	}
 }
