@@ -1,3 +1,17 @@
-export const environment : {production : boolean} = {
-  production: true
+import { Environment } from './environment.interface';
+
+export const environment : Environment =
+{
+	metadata:
+	{
+		branch: 'master',
+		environment: 'prod'
+	},
+	baseUrl : 'http://localhost:3000',
+	apiUrl: 'https://full-stack-a3sgu4q5h-alexmelov.vercel.app/api',
+	apiRoutes:
+	{
+		todos: '/todos',
+		todosWithId: '/todos/:todoId'
+	}
 };

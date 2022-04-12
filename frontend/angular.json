@@ -32,19 +32,25 @@
             "scripts": []
           },
           "configurations": {
-            "production": {
-              "budgets": [
+            "dev": {
+              "fileReplacements": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
                 }
               ],
+              "outputHashing": "all"
+            },
+            "stage": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stage.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "prod": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -52,14 +58,6 @@
                 }
               ],
               "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -67,11 +65,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "browserTarget": "frontend:build:production"
+            "dev": {
+              "browserTarget": "frontend:build:dev"
             },
-            "development": {
-              "browserTarget": "frontend:build:development"
+            "stage": {
+              "browserTarget": "frontend:build:stage"
+            },
+            "prod": {
+              "browserTarget": "frontend:build:prod"
             }
           },
           "defaultConfiguration": "development"
@@ -131,8 +132,14 @@
             "headless": false
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "frontend:serve:production"
+            "dev": {
+              "devServerTarget": "frontend:serve:dev"
+            },
+            "stage": {
+              "devServerTarget": "frontend:serve:stage"
+            },
+            "prod": {
+              "devServerTarget": "frontend:serve:prod"
             }
           }
         }
