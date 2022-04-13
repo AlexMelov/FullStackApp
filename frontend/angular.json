@@ -129,7 +129,7 @@
           "options": {
             "devServerTarget": "frontend:serve",
             "watch": true,
-            "headless": false
+            "headless": true
           },
           "configurations": {
             "dev": {
