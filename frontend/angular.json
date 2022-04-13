@@ -127,7 +127,6 @@
         "e2e": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "frontend:serve",
             "watch": true,
             "headless": true
           },
