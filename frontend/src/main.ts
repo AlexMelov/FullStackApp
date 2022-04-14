@@ -9,5 +9,4 @@ if (environment.metadata.environment === 'prod')
 	enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(error => ({ message:error }));
+platformBrowserDynamic().bootstrapModule(AppModule);

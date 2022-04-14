@@ -22,5 +22,3 @@ export const environmentHelper : Function = (environment : string) : any =>
 		return environmentProd;
 	}
 };
-
-export default environmentHelper(process.env['APP_ENV']);

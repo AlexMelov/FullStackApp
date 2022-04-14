@@ -17,6 +17,10 @@ describe.skip('todo', () =>
 		cy.get('[data-test="item"]').should('have.length.above', 0);
 		cy.get('[data-test="item"]').should('have.length.below', 30);
 	});
+	it('empty test', ()=>
+	{
+		expect(true).to.equal(true);
+	});
 
 	it('adding todo to list', () =>
 	{
