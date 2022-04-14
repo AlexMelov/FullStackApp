@@ -2,21 +2,28 @@
 "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
 "version": 1,
 "newProjectRoot": "projects",
-"projects": {
-"frontend": {
+"projects":
+{
+"frontend":
+{
 	"projectType": "application",
-	"schematics": {
-	"@schematics/angular:application": {
+	"schematics":
+	{
+	"@schematics/angular:application":
+	{
 	"strict": true
 	}
 },
 "root": "",
 "sourceRoot": "src",
 "prefix": "app",
-"architect": {
-"build": {
+"architect":
+{
+"build":
+{
 	"builder": "@angular-devkit/build-angular:browser",
-	"options": {
+	"options":
+	{
 	"outputPath": "dist/frontend",
 	"index": "src/index.html",
 	"main": "src/main.ts",
@@ -31,8 +38,10 @@
 	],
 	"scripts": []
   },
-	"configurations": {
-	"dev": {
+	"configurations":
+	{
+	"dev":
+	{
 		"fileReplacements": [
 		{
 		"replace": "src/environments/environment.ts",
@@ -41,7 +50,8 @@
 		],
 		"outputHashing": "all"
 		},
-		"stage": {
+		"stage":
+		{
 		"fileReplacements": [
 		{
 		"replace": "src/environments/environment.ts",
@@ -50,7 +60,8 @@
 	],
 	"outputHashing": "all"
 	},
-	"prod": {
+	"prod":
+	{
 	"fileReplacements": [
 		{
 		"replace": "src/environments/environment.ts",
@@ -62,30 +73,39 @@
   },
 	"defaultConfiguration": "dev"
 	},
-"serve": {
+"serve":
+{
 	"builder": "@angular-devkit/build-angular:dev-server",
-	"configurations": {
-	"dev": {
+	"configurations":
+	{
+	"dev":
+	{
 	"browserTarget": "frontend:build:dev"
 	},
-	"stage": {
+	"stage":
+	{
 	"browserTarget": "frontend:build:stage"
 	},
-	"prod": {
+	"prod":
+	{
 	"browserTarget": "frontend:build:prod"
 	}
 	},
 	"defaultConfiguration": "dev"
 	},
-"extract-i18n": {
+"extract-i18n":
+{
 	"builder": "@angular-devkit/build-angular:extract-i18n",
-	"options": {
+	"options":
+	{
 	"browserTarget": "frontend:build"
   }
 },
-"test": {
+"test":
+{
 	"builder": "@angular-builders/jest:run",
-	"options": {
+	"options":
+	{
 	"tsConfig": "tsconfig.spec.json",
 	"assets": [
 	"src/favicon.ico",
@@ -97,18 +117,22 @@
 	"scripts": []
   }
 },
-"lint": {
+"lint":
+{
 	"builder": "@angular-eslint/builder:lint",
-	"options": {
+	"options":
+	{
 	"lintFilePatterns": [
 	"{cypress,src,**}/**/*.{ts,js}",
 	"src/**/*.html"
 	]
   }
 },
-"e2e": {
+"e2e":
+{
 	"builder": "@cypress/schematic:cypress",
-	"options": {
+	"options":
+	{
 	"watch": false,
 	"headless": true
 	}
@@ -117,7 +141,8 @@
 }
 },
 	"defaultProject": "frontend",
-	"cli": {
+	"cli":
+	{
 	"defaultCollection": "@angular-eslint/schematics"
   }
 }
