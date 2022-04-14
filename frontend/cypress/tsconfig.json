@@ -1,8 +1,20 @@
 {
-	"extends": "../tsconfig.json",
-	"include": ["**/*.ts"],
-	"compilerOptions": {
-	"sourceMap": false,
-	"types": ["cypress"]
-	}
+	"compilerOptions":
+	{
+		"target": "es5",
+		"lib":
+		[
+			"es5",
+			"dom"
+		],
+		"types":
+		[
+			"cypress",
+			"node"
+		]
+	},
+	"include":
+	[
+		"**/*.ts"
+	]
 }
