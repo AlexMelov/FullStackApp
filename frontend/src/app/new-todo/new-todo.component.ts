@@ -1,28 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Todo } from '../todo.intercace';
 import { environment } from '../../environments/environment';
-import { Todo } from '../todo.model';
 
 @Component({
   	selector: 'app-new-todo',
   	templateUrl: './new-todo.component.html',
   	styleUrls: [ './new-todo.component.css' ]
 })
-export class NewTodoComponent implements OnInit
+export class NewTodoComponent
 {
-	todo : Todo = { title:'', _id:'' };
+	todo : Todo = {};
 
 	constructor(private http : HttpClient)
-	{ }
-
-	ngOnInit() : void
 	{
 	}
 
 	addNewTodo() : void
 	{
 		this.http.post(environment.apiUrl + environment.apiRoutes.todos, this.todo)
-			.subscribe(todo => ({ message:todo }));
-		this.todo.title = '';
+			.subscribe();
+		this.todo.title = null;
 	}
 }

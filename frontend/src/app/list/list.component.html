@@ -1,4 +1,4 @@
 <li class="list-item">
-	<p>{{ single_todo.title }}</p>
-	<button (click)="onRemove(single_todo._id)">Remove</button>
+	<p>{{ todo.title }}</p>
+	<button *ngIf="todo._id" (click)="onRemove(todo._id)">Remove</button>
 </li>

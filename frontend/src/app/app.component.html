@@ -1,6 +1,6 @@
 <div>
 	<ul>
 		<app-new-todo></app-new-todo>
-		<app-list *ngFor="let todo of todos_array[0]" [single_todo]="todo"></app-list>
+		<app-list *ngFor="let todo of todos" [todo]="todo"></app-list>
 	</ul>
 </div>

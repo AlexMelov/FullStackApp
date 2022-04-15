@@ -1,28 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Todo } from '../todo.model';
+import { Todo } from '../todo.intercace';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: [ './list.component.css' ]
 })
-export class ListComponent implements OnInit
+export class ListComponent
 {
-	@Input() single_todo : Todo | any;
+	@Input() todo : Todo = {};
 
 	constructor(private http : HttpClient)
 	{
 	}
 
-	ngOnInit() : void
+	onRemove(id : string) : void
 	{
-	}
-
-	onRemove(_id : string) : void
-	{
-		this.http.delete(environment.apiUrl + environment.apiRoutes.todos + `/${_id}`)
-			.subscribe(todo => ({ message:todo }));
+		this.http.delete(environment.apiUrl + environment.apiRoutes.todos + '/' + id)
+			.subscribe();
 	}
 }

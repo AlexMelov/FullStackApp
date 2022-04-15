@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
-import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Todo } from './todo.intercace';
+import { environment } from '../environments/environment';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: [
-  	'./app.component.css'
-  ]
+@Component(
+{
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls:
+	[
+		'./app.component.css'
+	]
 })
 export class AppComponent
 {
-	title : string = 'frontend';
-	todos_array : any[] =
-		[];
+	todos : Todo[] = [];
 
 	constructor(private http : HttpClient)
 	{
@@ -24,9 +25,9 @@ export class AppComponent
 		this.fetchItems();
 	}
 
-	async fetchItems() : Promise<void>
+	fetchItems() : void
 	{
-		await this.http.get(environment.apiUrl + environment.apiRoutes.todos)
-			.subscribe(data => this.todos_array.push(data));
+		this.http.get<Todo[]>(environment.apiUrl + environment.apiRoutes.todos)
+			.subscribe(todos => this.todos = todos);
 	}
 }
