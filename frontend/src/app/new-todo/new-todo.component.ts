@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Todo } from '../../models/Todo';
+import { Todo } from '../todo.model';
 
 @Component({
   	selector: 'app-new-todo',
