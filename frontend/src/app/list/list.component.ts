@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ListComponent implements OnInit
 {
 	@Input() single_todo : { title : string } | any;
+	title : string = 'frontend';
 	ngOnInit() : void
 	{
 	}

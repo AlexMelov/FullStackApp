@@ -2,6 +2,6 @@ describe('todo', () =>
 {
 	it('should run empty', () =>
 	{
-    	expect( 1 + 1 ).toEqual(2);
+    	expect( 1 + 1 ).toBe(2);
 	});
 });
