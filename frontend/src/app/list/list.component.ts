@@ -14,9 +14,11 @@ export class ListComponent implements OnInit
 	constructor(private http : HttpClient)
 	{
 	}
+
 	ngOnInit() : void
 	{
 	}
+
 	onRemove(_id : string) : void
 	{
 		this.http.delete(environment.apiUrl + environment.apiRoutes.todos + `/${_id}`)

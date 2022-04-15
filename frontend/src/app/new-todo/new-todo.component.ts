@@ -9,19 +9,19 @@ import { environment } from '../../environments/environment';
 })
 export class NewTodoComponent implements OnInit
 {
-
 	todo_object : {title : string, _id : string} = { title:'', _id:'' };
+
 	constructor(private http : HttpClient)
 	{ }
 
 	ngOnInit() : void
 	{
 	}
+
 	addNewTodo() : void
 	{
 		this.http.post(environment.apiUrl + environment.apiRoutes.todos, this.todo_object)
 			.subscribe(todo => ({ message:todo }));
 		this.todo_object.title = '';
 	}
-
 }

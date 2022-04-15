@@ -1,23 +1,30 @@
 {
   "root": true,
-  "ignorePatterns": [
+  "ignorePatterns":
+  [
     "projects/**/*"
   ],
-  "overrides": [
+  "overrides":
+  [
     {
-      "files": [
+      "files":
+	  [
         "*.ts"
       ],
-      "parserOptions": {
-        "project": [
+      "parserOptions":
+	  {
+        "project":
+		[
           "tsconfig.json"
         ],
         "createDefaultProgram": true
       },
-      "extends": [
+      "extends":
+	  [
         "@isnotdefined/eslint-config"
       ],
-      "rules": {
+      "rules":
+	  {
         "@typescript-eslint/no-require-imports": "warn",
         "jsdoc/require-jsdoc": "off",
         "jsdoc/require-description": "off",
@@ -25,16 +32,20 @@
 	  }
     },
     {
-      "files": [
+      "files":
+	  [
         "*.html"
       ],
-      "extends": [
+      "extends":
+	  [
         "plugin:@angular-eslint/template/recommended"
       ],
-      "rules": {}
+      "rules":
+	  {}
     }
   ],
-  "parserOptions": {
+  "parserOptions":
+  {
     "project": "./tsconfig.json"
   }
 }

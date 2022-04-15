@@ -8,18 +8,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewTodoComponent } from './new-todo/new-todo.component';
 
 @NgModule({
-	declarations: [
+	declarations:
+	[
 		AppComponent,
 		ListComponent,
 		NewTodoComponent
 	],
-	imports: [
+	imports:
+	[
 		BrowserModule,
 		FormsModule,
 		HttpClientModule
 	],
-	providers: [],
-	bootstrap: [ AppComponent ]
+	providers:
+		[],
+	bootstrap:
+		[
+			AppComponent
+		]
 })
 export class AppModule
 {}

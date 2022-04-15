@@ -2,38 +2,51 @@
 	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
 	"version": 1,
 	"newProjectRoot": "projects",
-	"projects": {
-		"frontend": {
+	"projects":
+	{
+		"frontend":
+		{
 			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:application": {
+			"schematics":
+			{
+				"@schematics/angular:application":
+				{
 					"strict": true
 				}
 			},
 			"root": "",
 			"sourceRoot": "src",
 			"prefix": "app",
-			"architect": {
-				"build": {
+			"architect":
+			{
+				"build":
+				{
 					"builder": "@angular-devkit/build-angular:browser",
-					"options": {
+					"options":
+					{
 						"outputPath": "dist/frontend",
 						"index": "src/index.html",
 						"main": "src/main.ts",
 						"polyfills": "src/polyfills.ts",
 						"tsConfig": "tsconfig.app.json",
-						"assets": [
+						"assets":
+						[
 							"src/favicon.ico",
 							"src/assets"
 						],
-						"styles": [
+						"styles":
+						[
 							"src/styles.css"
 						],
-						"scripts": []
+						"scripts":
+						[]
 					},
-					"configurations": {
-						"dev": {
-							"fileReplacements": [
+					"configurations":
+					{
+						"dev":
+						{
+							"fileReplacements":
+							[
 								{
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.dev.ts"
@@ -41,8 +54,10 @@
 							],
 							"outputHashing": "all"
 						},
-						"stage": {
-							"fileReplacements": [
+						"stage":
+						{
+							"fileReplacements":
+							[
 								{
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.stage.ts"
@@ -50,8 +65,10 @@
 							],
 							"outputHashing": "all"
 						},
-						"prod": {
-							"fileReplacements": [
+						"prod":
+						{
+							"fileReplacements":
+							[
 								{
 									"replace": "src/environments/environment.ts",
 									"with": "src/environments/environment.prod.ts"
@@ -62,53 +79,70 @@
 					},
 					"defaultConfiguration": "dev"
 				},
-				"serve": {
+				"serve":
+				{
 					"builder": "@angular-devkit/build-angular:dev-server",
-					"configurations": {
-						"dev": {
+					"configurations":
+					{
+						"dev":
+						{
 							"browserTarget": "frontend:build:dev"
 						},
-						"stage": {
+						"stage":
+						{
 							"browserTarget": "frontend:build:stage"
 						},
-						"prod": {
+						"prod":
+						{
 							"browserTarget": "frontend:build:prod"
 						}
 					},
 					"defaultConfiguration": "dev"
 				},
-				"extract-i18n": {
+				"extract-i18n":
+				{
 					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
+					"options":
+					{
 						"browserTarget": "frontend:build"
 					}
 				},
-				"test": {
+				"test":
+				{
 					"builder": "@angular-builders/jest:run",
-					"options": {
+					"options":
+					{
 						"tsConfig": "tsconfig.spec.json",
-						"assets": [
+						"assets":
+						[
 							"src/favicon.ico",
 							"src/assets"
 						],
-						"styles": [
+						"styles":
+						[
 							"src/styles.css"
 						],
-						"scripts": []
+						"scripts":
+						[]
 					}
 				},
-				"lint": {
+				"lint":
+				{
 					"builder": "@angular-eslint/builder:lint",
-					"options": {
-						"lintFilePatterns": [
+					"options":
+					{
+						"lintFilePatterns":
+						[
 							"src/**/*.ts",
 							"src/**/*.html"
 						]
 					}
 				},
-				"e2e": {
+				"e2e":
+				{
 					"builder": "@cypress/schematic:cypress",
-					"options": {
+					"options":
+					{
 						"watch": false,
 						"headless": true
 					}
@@ -117,7 +151,8 @@
 		}
 	},
 	"defaultProject": "frontend",
-	"cli": {
+	"cli":
+	{
 		"defaultCollection": "@angular-eslint/schematics"
 	}
 }
