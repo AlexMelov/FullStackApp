@@ -1,11 +1,4 @@
 {
-	"overrides":
-	[
-		{
-			"files": ["*.html", "**/*.html"],
-			"customSyntax": "postcss-html"
-		}
-	],
 	"extends":
 		[
 		"@isnotdefined/stylelint-config"
