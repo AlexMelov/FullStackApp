@@ -134,6 +134,9 @@
 						"lintFilePatterns":
 						[
 							"src/**/*.ts",
+							"cypress/**/*.ts",
+							"**/**/*.ts",
+							"**/**/*.js",
 							"src/**/*.html"
 						]
 					}
