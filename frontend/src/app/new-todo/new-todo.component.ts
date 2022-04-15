@@ -10,7 +10,7 @@ import { Todo } from '../../models/Todo';
 })
 export class NewTodoComponent implements OnInit
 {
-	todo_object : Todo = { title:'', _id:'' };
+	todo : Todo = { title:'', _id:'' };
 
 	constructor(private http : HttpClient)
 	{ }
@@ -21,8 +21,8 @@ export class NewTodoComponent implements OnInit
 
 	addNewTodo() : void
 	{
-		this.http.post(environment.apiUrl + environment.apiRoutes.todos, this.todo_object)
+		this.http.post(environment.apiUrl + environment.apiRoutes.todos, this.todo)
 			.subscribe(todo => ({ message:todo }));
-		this.todo_object.title = '';
+		this.todo.title = '';
 	}
 }
