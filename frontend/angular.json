@@ -136,7 +136,9 @@
 							"*.ts",
 							"cypress/**/**/*.ts",
 							"src/**/**/*.ts",
-							"src/**/**/*.html"
+							"src/**/**/*.html",
+							"*.json",
+							"src/**/**/*.json"
 						]
 					}
 				},

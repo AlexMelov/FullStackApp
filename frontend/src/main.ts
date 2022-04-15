@@ -8,5 +8,9 @@ if (environment.metadata.environment === 'prod')
 {
 	enableProdMode();
 }
+else
+{
+	console.table(environment.metadata);
+}
 
 platformBrowserDynamic().bootstrapModule(AppModule);
