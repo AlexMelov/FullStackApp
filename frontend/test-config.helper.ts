@@ -1,20 +1,20 @@
 import { TestBed, TestBedStatic } from '@angular/core/testing';
 
-type CompilerOptions = Partial<{
-  providers : any[];
-  useJit : boolean;
-  preserveWhitespaces : boolean;
+type CompilerOptions = Partial<
+{
+	providers : any[];
+	useJit : boolean;
+	preserveWhitespaces : boolean;
 }>;
 export type ConfigureFunction = (testBed : typeof TestBed) => void;
 
-export function configureTests(configure : ConfigureFunction, compilerOptions : CompilerOptions =
-	{}) : Promise<TestBedStatic>
+export function configureTests(configure : ConfigureFunction, compilerOptions : CompilerOptions = {}) : Promise<TestBedStatic>
 {
 	const compilerConfig : CompilerOptions =
 	{
-    preserveWhitespaces: false,
-    ...compilerOptions
- 	 };
+		preserveWhitespaces: false,
+		...compilerOptions
+	};
 
 	const configuredTestBed : TestBedStatic = TestBed.configureCompiler(compilerConfig);
 

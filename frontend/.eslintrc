@@ -1,49 +1,34 @@
 {
-  "root": true,
-  "ignorePatterns":
-  [
-    "projects/**/*"
-  ],
-  "overrides":
-  [
-    {
-      "files":
-	  [
-        "*.ts"
-      ],
-      "parserOptions":
-	  {
-        "project":
-		[
-          "tsconfig.json"
-        ],
-        "createDefaultProgram": true
-      },
-      "extends":
-	  [
-        "@isnotdefined/eslint-config"
-      ],
-      "rules":
-	  {
-        "@typescript-eslint/no-require-imports": "warn",
-        "jsdoc/require-jsdoc": "off",
-        "jsdoc/require-description": "off",
-		"@typescript-eslint/no-unsafe-member-access": "warn"
-	  }
-    },
-    {
-      "files":
-	  [
-        "*.html"
-      ],
-      "extends":
-	  [
-        "plugin:@angular-eslint/template/recommended"
-      ]
-    }
-  ],
-	"parserOptions":
-  {
-    "project": "./tsconfig.json"
-  }
+	"extends":
+	[
+		"@isnotdefined/eslint-config"
+	],
+	"rules":
+	{
+		"@typescript-eslint/no-unsafe-member-access": "off",
+		"jsdoc/require-jsdoc": "off"
+	},
+	"overrides":
+	[
+		{
+			"files":
+			[
+				"*.ts"
+			],
+			"extends":
+			[
+				"plugin:@angular-eslint/template/process-inline-templates"
+			]
+		},
+		{
+			"files":
+			[
+				"*.html"
+			],
+			"extends":
+			[
+				"plugin:@angular-eslint/template/recommended"
+			]
+		}
+	]
 }

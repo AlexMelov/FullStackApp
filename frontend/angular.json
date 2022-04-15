@@ -133,11 +133,10 @@
 					{
 						"lintFilePatterns":
 						[
-							"src/**/*.ts",
-							"cypress/**/*.ts",
-							"**/**/*.ts",
-							"**/**/*.js",
-							"src/**/*.html"
+							"*.ts",
+							"cypress/**/**/*.ts",
+							"src/**/**/*.ts",
+							"src/**/**/*.html"
 						]
 					}
 				},

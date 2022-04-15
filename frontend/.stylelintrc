@@ -1,6 +1,6 @@
 {
 	"extends":
-		[
+	[
 		"@isnotdefined/stylelint-config"
-		]
+	]
 }
