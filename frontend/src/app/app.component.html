@@ -1,0 +1,6 @@
+<div>
+	<ul>
+		<app-new-todo></app-new-todo>
+		<app-list *ngFor="let todo of todos" [todo]="todo"></app-list>
+	</ul>
+</div>

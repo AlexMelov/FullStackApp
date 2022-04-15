@@ -1,4 +1,4 @@
-import { Environment } from './evironment.interface';
+import { Environment } from './environment.interface';
 
 export const environment : Environment =
 {
@@ -15,5 +15,3 @@ export const environment : Environment =
 		todosWithId: '/todos/:todoId'
 	}
 };
-
-export default environment;

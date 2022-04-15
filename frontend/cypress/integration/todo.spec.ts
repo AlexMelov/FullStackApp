@@ -1,9 +1,9 @@
-import { environmentHelper } from '../../src/environments/environment';
-import { Environment } from '../../src/environments/evironment.interface';
+import { environmentHelper } from '../../src/environments/environment.helper';
+import { Environment } from '../../src/environments/environment.interface';
 
-const environment : Environment = environmentHelper(Cypress.env('APP_ENV')) as Environment;
+const environment : Environment = environmentHelper(Cypress.env('APP_ENV'));
 
-describe('todo', () =>
+describe.skip('todo', () =>
 {
 	beforeEach(() =>
 	{
