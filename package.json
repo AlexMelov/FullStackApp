@@ -1,16 +1,19 @@
 {
-	"workspaces": [
-		"frontend",
-		"backend"
-	],
 	"name": "root",
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
-	"scripts": {
+	"workspaces":
+	[
+		"frontend",
+		"backend"
+	],
+	"scripts":
+	{
 		"prepare": "husky install"
 	},
-	"devDependencies": {
+	"devDependencies":
+	{
 		"husky": "7.0.4"
 	}
 }
