@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Todo } from '../../models/Todo';
 
 @Component({
   	selector: 'app-new-todo',
@@ -9,7 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class NewTodoComponent implements OnInit
 {
-	todo_object : {title : string, _id : string} = { title:'', _id:'' };
+	todo_object : Todo = { title:'', _id:'' };
 
 	constructor(private http : HttpClient)
 	{ }

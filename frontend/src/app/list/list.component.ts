@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Todo } from '../../models/Todo';
 
 @Component({
   selector: 'app-list',
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListComponent implements OnInit
 {
-	@Input() single_todo : { title : string, _id : string } | any;
+	@Input() single_todo : Todo | any;
 
 	constructor(private http : HttpClient)
 	{
