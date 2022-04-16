@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+      - creating-app-with-input-output
 
 jobs:
     lint:
@@ -39,7 +40,7 @@ jobs:
             -   uses: actions/upload-artifact@v3
                 with:
                     name: build-frontend
-                    path: ./frontend/build
+                    path: ./frontend/dist/frontend
     test-unit:
         runs-on: ubuntu-latest
         steps:
@@ -87,7 +88,7 @@ jobs:
             -   uses: actions/download-artifact@v3
                 with:
                     name: build-frontend
-                    path: ./frontend/build
+                    path: ./frontend/dist/frontend
             -   uses: amondnet/vercel-action@v20.0.1
                 with:
                     vercel-token: ${{ secrets.VERCEL_TOKEN }}
