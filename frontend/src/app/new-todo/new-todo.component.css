@@ -36,9 +36,3 @@
 	justify-content: center;
 	margin: 5rem 0;
 }
-.form-text-input input:active,
-.form-text-input input:visited,
-.form-text-input input:focus
-{
-	border-bottom: 0.2rem solid #808080;
-}
