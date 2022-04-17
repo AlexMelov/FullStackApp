@@ -30,4 +30,16 @@ export class AppComponent
 		this.http.get<Todo[]>(environment.apiUrl + environment.apiRoutes.todos)
 			.subscribe(todos => this.todos = todos);
 	}
+
+	onTodoAdded(todo : Todo) : void
+	{
+		this.http.post(environment.apiUrl + environment.apiRoutes.todos, { title: todo.title })
+			.subscribe();
+	}
+
+	onRemoveTodo(id : string) : void
+	{
+		this.http.delete(environment.apiUrl + environment.apiRoutes.todos + '/' + id)
+			.subscribe();
+	}
 }
