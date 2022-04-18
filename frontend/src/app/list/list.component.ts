@@ -5,7 +5,7 @@ import { Todo } from '../todo.intercace';
 {
 	selector: 'app-list',
 	templateUrl: './list.component.html',
-	styleUrls:[ './list.component.scss' ]
+	styleUrls: [ './list.component.scss' ]
 })
 export class ListComponent
 {

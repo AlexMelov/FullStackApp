@@ -5,7 +5,7 @@ import { Todo } from '../todo.intercace';
 {
 	selector: 'app-new-todo',
 	templateUrl: './new-todo.component.html',
-	styleUrls:[ './new-todo.component.scss' ]
+	styleUrls: [ './new-todo.component.scss' ]
 })
 export class NewTodoComponent
 {
@@ -15,9 +15,9 @@ export class NewTodoComponent
 	addNewTodo() : void
 	{
 		this.todoCreated.emit(
-			{
-				title: this.todo.title
-			});
+		{
+			title: this.todo.title
+		});
 		this.todo.title = null;
 	}
 }
