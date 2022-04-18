@@ -1,5 +1,6 @@
 .list-item
 {
+	all: unset;
 	align-items: center;
 	border-radius: 0.3rem;
 	box-shadow: 0 0 0.5rem 0.1rem #b7b7d2;
@@ -28,7 +29,6 @@
 		border-radius: 0.3rem;
 		color: #ffffff;
 		height: 3vh;
-		outline: none;
 		transition: all 0.3s ease;
 		width: 8rem;
 	}

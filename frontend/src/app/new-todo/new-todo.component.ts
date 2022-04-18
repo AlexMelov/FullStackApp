@@ -5,7 +5,10 @@ import { Todo } from '../todo.intercace';
 	{
 		selector: 'app-new-todo',
 		templateUrl: './new-todo.component.html',
-		styleUrls: [ './new-todo.component.scss' ]
+		styleUrls:
+			[
+				'./new-todo.component.scss'
+			]
 	})
 export class NewTodoComponent
 {

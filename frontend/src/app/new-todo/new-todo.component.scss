@@ -1,31 +1,30 @@
 .form-text-input input
 {
-		border: none;
-		border-bottom: 0.1rem solid #000000;
-		font-family: sans-serif;
-		font-size: 1.125rem;
-		height: 3vh;
-		outline: none;
-		width: 20rem;
+	all: unset;
+	border-bottom: 0.1rem solid #000000;
+	font-family: sans-serif;
+	font-size: 1.125rem;
+	height: 3vh;
+	width: 20rem;
 }
 
 .form-container
 {
+	all: unset;
 	display: flex;
 	justify-content: center;
 	margin: 5rem 0;
 
 	button
 	{
+		border: unset;
 		background-color: transparent;
-		border: none;
 		border-radius: 5px;
 		box-shadow: 0 0 0.1rem 0.01rem #3057f1;
 		color: #000000;
 		cursor: pointer;
 		height: 3vh;
 		margin-left: 2rem;
-		outline: none;
 		transition: all 0.3s ease;
 		width: 10rem;
 	}

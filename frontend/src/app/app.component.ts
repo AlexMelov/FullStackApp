@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 		templateUrl: './app.component.html',
 		styleUrls:
 			[
-				'./app.component.css'
+				'./app.component.scss'
 			]
 	})
 export class AppComponent
