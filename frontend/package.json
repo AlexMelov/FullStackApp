@@ -2,7 +2,8 @@
 	"name": "frontend",
 	"version": "1.0.0",
 	"private": true,
-	"dependencies": {
+	"dependencies":
+	{
 		"@angular/animations": "13.3.0",
 		"@angular/common": "13.3.0",
 		"@angular/compiler": "13.3.0",
@@ -17,7 +18,8 @@
 		"wait-on": "6.0.1",
 		"zone.js": "0.11.4"
 	},
-	"devDependencies": {
+	"devDependencies":
+	{
 		"@angular-builders/jest": "13.0.3",
 		"@angular-devkit/build-angular": "13.3.2",
 		"@angular-eslint/builder": "13.2.0",
@@ -41,7 +43,8 @@
 		"stylelint": "14.6.1",
 		"typescript": "4.6.2"
 	},
-	"scripts": {
+	"scripts":
+	{
 		"ng": "ng",
 		"start": "ng serve",
 		"start:local": "npm run start",
@@ -61,7 +64,7 @@
 		"lint": "ng lint && stylelint src/**/*.css --cache",
 		"fix": "ng lint --fix",
 		"e2e": "ng e2e",
-		"e2e:local": "npm run e2e",
+		"e2e:local": "cross-env-shell CYPRESS_APP_ENV=local npm run e2e",
 		"e2e:dev": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
 		"e2e:stage": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
 		"e2e:prod": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
