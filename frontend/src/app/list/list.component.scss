@@ -14,28 +14,28 @@
 	min-width: 50%;
 	padding: 0.25rem 1rem 0.25rem 1rem;
 	transition: all 0.3s ease;
-}
 
-.list-item button
-{
-	background-color: #3057f1;
-	border: none;
-	border-radius: 0.3rem;
-	color: #ffffff;
-	height: 3vh;
-	outline: none;
-	transition: all 0.3s ease;
-	width: 8rem;
-}
+	&:hover
+	{
+		color: #3057f1;
+		cursor: auto;
+	}
 
-.list-item button:hover
-{
-	cursor: pointer;
-	transform: scale(1.1);
-}
+	button
+	{
+		background-color: #3057f1;
+		border: none;
+		border-radius: 0.3rem;
+		color: #ffffff;
+		height: 3vh;
+		outline: none;
+		transition: all 0.3s ease;
+		width: 8rem;
+	}
 
-.list-item:hover
-{
-	color: #3057f1;
-	cursor: auto;
+	button:hover
+	{
+		cursor: pointer;
+		transform: scale(1.1);
+	}
 }
