@@ -78,8 +78,8 @@ jobs:
             -   run: npm run build:stage --prefix ./frontend
             -   uses: amondnet/vercel-action@v20.0.1
                 with:
-                    vercel-token: ${{ secrets.VERCEL_TOKEN }}
-                    vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+                    vercel-token: ${{ secrets.VERCEL_TOKEN_STAGE }}
+                    vercel-org-id: ${{ secrets.VERCEL_ORG_ID_STAGE }}
                     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_STAGE }}
                     vercel-args: --confirm --prod
                     working-directory: ./

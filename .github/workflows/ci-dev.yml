@@ -89,8 +89,8 @@ jobs:
                     path: ./frontend/dist/frontend
             -   uses: amondnet/vercel-action@v20.0.1
                 with:
-                    vercel-token: ${{ secrets.VERCEL_TOKEN }}
-                    vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+                    vercel-token: ${{ secrets.VERCEL_TOKEN_DEV }}
+                    vercel-org-id: ${{ secrets.VERCEL_ORG_ID_DEV }}
                     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_DEV }}
                     vercel-args: --confirm --prod
                     working-directory: ./
