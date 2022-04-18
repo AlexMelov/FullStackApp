@@ -20,8 +20,7 @@ export class NewTodoComponent
 		this.todoCreated.emit(
 			{
 				title: this.todo.title
-			}
-		);
+			});
 		this.todo.title = null;
 	}
 }
