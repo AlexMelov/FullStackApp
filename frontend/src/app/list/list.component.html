@@ -1,4 +1,4 @@
 <li class="list-item">
 	<p>{{ todo.title }}</p>
-	<button *ngIf="todo._id" (click)="onRemove(todo._id)">Remove</button>
+	<button *ngIf="todo._id" (click)="onRemove(todo._id)" data-test=remove-button>Remove</button>
 </li>
