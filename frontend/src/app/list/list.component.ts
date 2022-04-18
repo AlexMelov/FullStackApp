@@ -1,24 +1,19 @@
-import { Component, Input } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo.intercace';
 
-@Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: [ './list.component.css' ]
+@Component(
+{
+	selector: 'app-list',
+	templateUrl: './list.component.html',
+	styleUrls: [ './list.component.scss' ]
 })
 export class ListComponent
 {
 	@Input() todo : Todo = {};
-
-	constructor(private http : HttpClient)
-	{
-	}
+	@Output() removeTodo : EventEmitter<string> = new EventEmitter<string>();
 
 	onRemove(id : string) : void
 	{
-		this.http.delete(environment.apiUrl + environment.apiRoutes.todos + '/' + id)
-			.subscribe();
+		this.removeTodo.emit(id);
 	}
 }

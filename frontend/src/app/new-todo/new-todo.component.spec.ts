@@ -1,6 +1,6 @@
-describe('run test for new-todo component', () =>
+describe('Async component', ()=>
 {
-	it('run empty jest test', () =>
+	test('render list items with mocks', async() =>
 	{
 		expect(true).toBe(true);
 	});

@@ -3,7 +3,7 @@ import { Environment } from '../../src/environments/environment.interface';
 
 const environment : Environment = environmentHelper(Cypress.env('APP_ENV'));
 
-describe.skip('todo', () =>
+describe('todo', () =>
 {
 	beforeEach(() =>
 	{

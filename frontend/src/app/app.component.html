@@ -1,6 +1,6 @@
 <div>
 	<ul>
-		<app-new-todo></app-new-todo>
-		<app-list *ngFor="let todo of todos" [todo]="todo"></app-list>
+		<app-new-todo (todoCreated)="onTodoAdded($event)"></app-new-todo>
+		<app-list *ngFor="let todo of todos" [todo]="todo" (removeTodo)="onRemoveTodo($event)" data-test="item"></app-list>
 	</ul>
 </div>

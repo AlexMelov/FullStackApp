@@ -43,6 +43,9 @@
 					},
 					"configurations":
 					{
+						"local":
+						{
+						},
 						"dev":
 						{
 							"fileReplacements":
@@ -76,14 +79,17 @@
 							],
 							"outputHashing": "all"
 						}
-					},
-					"defaultConfiguration": "dev"
+					}
 				},
 				"serve":
 				{
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations":
 					{
+						"local":
+						{
+							"browserTarget": "frontend:build:local"
+						},
 						"dev":
 						{
 							"browserTarget": "frontend:build:dev"
@@ -97,7 +103,7 @@
 							"browserTarget": "frontend:build:prod"
 						}
 					},
-					"defaultConfiguration": "dev"
+					"defaultConfiguration": "local"
 				},
 				"extract-i18n":
 				{

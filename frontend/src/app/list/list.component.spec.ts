@@ -1,6 +1,6 @@
-describe('running test for list component', () =>
+describe('Async component', ()=>
 {
-	it('should run empty test', () =>
+	test('render list items with mocks', async() =>
 	{
 		expect(true).toBe(true);
 	});

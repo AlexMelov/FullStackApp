@@ -7,7 +7,8 @@ import { ListComponent } from './list/list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewTodoComponent } from './new-todo/new-todo.component';
 
-@NgModule({
+@NgModule(
+{
 	declarations:
 	[
 		AppComponent,
@@ -21,11 +22,12 @@ import { NewTodoComponent } from './new-todo/new-todo.component';
 		HttpClientModule
 	],
 	providers:
-		[],
+	[],
 	bootstrap:
-		[
-			AppComponent
-		]
+	[
+		AppComponent
+	]
 })
 export class AppModule
-{}
+{
+}
