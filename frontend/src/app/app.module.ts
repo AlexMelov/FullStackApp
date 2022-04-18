@@ -9,17 +9,17 @@ import { NewTodoComponent } from './new-todo/new-todo.component';
 
 @NgModule({
 	declarations:
-	[
-		AppComponent,
-		ListComponent,
-		NewTodoComponent
-	],
+		[
+			AppComponent,
+			ListComponent,
+			NewTodoComponent
+		],
 	imports:
-	[
-		BrowserModule,
-		FormsModule,
-		HttpClientModule
-	],
+		[
+			BrowserModule,
+			FormsModule,
+			HttpClientModule
+		],
 	providers:
 		[],
 	bootstrap:
@@ -28,4 +28,5 @@ import { NewTodoComponent } from './new-todo/new-todo.component';
 		]
 })
 export class AppModule
-{}
+{
+}

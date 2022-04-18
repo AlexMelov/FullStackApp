@@ -15,6 +15,7 @@
 	padding: 0.25rem 1rem 0.25rem 1rem;
 	transition: all 0.3s ease;
 }
+
 .list-item button
 {
 	background-color: #3057f1;
@@ -26,11 +27,13 @@
 	transition: all 0.3s ease;
 	width: 8rem;
 }
+
 .list-item button:hover
 {
 	cursor: pointer;
 	transform: scale(1.1);
 }
+
 .list-item:hover
 {
 	color: #3057f1;
