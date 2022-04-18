@@ -1,10 +1,15 @@
 {
-	"extends": ["@isnotdefined/eslint-config"],
-	"rules": {
+	"extends":
+	[
+		"@isnotdefined/eslint-config"
+	],
+	"rules":
+	{
 		"@typescript-eslint/no-require-imports": "warn",
 		"jsdoc/require-jsdoc": "off"
 	},
-	"parserOptions": {
+	"parserOptions":
+	{
 		"project": "./tsconfig.json"
 	}
 }
