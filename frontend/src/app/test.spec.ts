@@ -1,7 +1,7 @@
-describe('todo', () =>
+describe('list component test for remove button and text', () =>
 {
-	it('should run empty', () =>
+	it('on initial render, button', () =>
 	{
-		expect(1 + 1).toBe(2);
+		expect(true).toBe(true);
 	});
 });

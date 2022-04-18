@@ -47,7 +47,7 @@
 	{
 		"ng": "ng",
 		"start": "ng serve",
-		"start:local": "npm run start",
+		"start:local": "npm run start --configuration=local",
 		"start:dev": "npm run start --configuration=dev",
 		"start:stage": "npm run start --configuration=stage",
 		"start:prod": "npm run start --configuration=prod",

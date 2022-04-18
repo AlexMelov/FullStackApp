@@ -1,7 +1,26 @@
-describe('run test for new-todo component', () =>
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NewTodoComponent } from './new-todo.component';
+
+describe('list component', () =>
 {
-	it('run empty jest test', () =>
+	let component : NewTodoComponent;
+	let fixture : ComponentFixture<NewTodoComponent>;
+
+	beforeEach( async() =>
 	{
-		expect(true).toBe(true);
+		await TestBed.configureTestingModule(
+			{
+				declarations:[ NewTodoComponent ]
+			}).compileComponents();
+	});
+	beforeEach(() =>
+	{
+		fixture = TestBed.createComponent(NewTodoComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+	it('should test', () =>
+	{
+		expect(component.todo.title).toBe(undefined);
 	});
 });

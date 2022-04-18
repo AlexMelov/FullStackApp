@@ -95,6 +95,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations":
 					{
+						"local":
+						{
+							"browserTarget": "frontend:build:local"
+						},
 						"dev":
 						{
 							"browserTarget": "frontend:build:dev"
