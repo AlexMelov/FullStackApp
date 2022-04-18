@@ -1,4 +1,4 @@
-import { environment as environmentLocal } from './environment.local';
+import { environment as environmentLocal } from './environment';
 import { environment as environmentDev } from './environment.dev';
 import { environment as environmentStage } from './environment.stage';
 import { environment as environmentProd } from './environment.prod';
