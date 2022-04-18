@@ -10,23 +10,23 @@ import { NewTodoComponent } from './new-todo/new-todo.component';
 @NgModule(
 {
 	declarations:
-		[
-			AppComponent,
-			ListComponent,
-			NewTodoComponent
-		],
+	[
+		AppComponent,
+		ListComponent,
+		NewTodoComponent
+	],
 	imports:
-		[
-			BrowserModule,
-			FormsModule,
-			HttpClientModule
-		],
+	[
+		BrowserModule,
+		FormsModule,
+		HttpClientModule
+	],
 	providers:
-		[],
+	[],
 	bootstrap:
-		[
-			AppComponent
-		]
+	[
+		AppComponent
+	]
 })
 export class AppModule
 {
