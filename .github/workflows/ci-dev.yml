@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+      - creating-app-with-input-output
 
 jobs:
     lint:
