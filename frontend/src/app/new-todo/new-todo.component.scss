@@ -23,11 +23,11 @@
 		margin-left: 2rem;
 		transition: all 0.3s ease;
 		width: 10rem;
-	}
 
-	button:hover
-	{
-		box-shadow: 0 0 0.3rem 0.01rem #3057f1;
-		transform: scale(1.05);
+		&:hover
+		{
+			box-shadow: 0 0 0.3rem 0.01rem #3057f1;
+			transform: scale(1.05);
+		}
 	}
 }
