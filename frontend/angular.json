@@ -43,6 +43,9 @@
 					},
 					"configurations":
 					{
+						"local":
+						{
+						},
 						"dev":
 						{
 							"fileReplacements":
