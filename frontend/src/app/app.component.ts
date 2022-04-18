@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Todo } from './todo.intercace';
 import { environment } from '../environments/environment';
@@ -10,7 +10,8 @@ import { environment } from '../environments/environment';
 		styleUrls:
 			[
 				'./app.component.scss'
-			]
+			],
+		encapsulation:ViewEncapsulation.None
 	})
 export class AppComponent
 {

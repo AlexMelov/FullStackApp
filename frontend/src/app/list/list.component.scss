@@ -1,6 +1,5 @@
 .list-item
 {
-	all: unset;
 	align-items: center;
 	border-radius: 0.3rem;
 	box-shadow: 0 0 0.5rem 0.1rem #b7b7d2;
@@ -13,7 +12,7 @@
 	list-style-type: none;
 	margin: 1rem 0;
 	min-width: 50%;
-	padding: 0.25rem 1rem 0.25rem 1rem;
+	padding: 1rem;
 	transition: all 0.3s ease;
 
 	&:hover
@@ -25,9 +24,9 @@
 	button
 	{
 		background-color: #3057f1;
-		border: none;
 		border-radius: 0.3rem;
 		color: #ffffff;
+		font-weight: 400;
 		height: 3vh;
 		transition: all 0.3s ease;
 		width: 8rem;
