@@ -67,6 +67,6 @@
 		"e2e:dev": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
 		"e2e:stage": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
 		"e2e:prod": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
-		"wait-for-serve": "wait-on tcp:8000"
+		"wait-for-serve": "wait-on tcp:4200 tcp:8000"
 	}
 }
