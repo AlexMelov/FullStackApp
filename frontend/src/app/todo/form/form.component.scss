@@ -2,9 +2,11 @@
 {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: start;
+	margin: 5rem 0;
+
 	mat-form-field
 	{
-		padding: 2rem;
+		padding-right: 2rem;
 	}
 }

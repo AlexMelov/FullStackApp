@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormComponent } from './form.component';
 
-describe.skip('FormComponent', () =>
+describe('FormComponent', () =>
 {
 	let component : FormComponent;
 	let fixture : ComponentFixture<FormComponent>;
@@ -10,20 +10,24 @@ describe.skip('FormComponent', () =>
 	beforeEach(async() =>
 	{
 		await TestBed.configureTestingModule({
-      declarations: [ FormComponent ]
-    })
-    .compileComponents();
+			declarations: [ FormComponent ]
+		})
+			.compileComponents();
 	});
 
 	beforeEach(() =>
 	{
 		fixture = TestBed.createComponent(FormComponent);
 		component = fixture.componentInstance;
-    fixture.detectChanges();
+		fixture.detectChanges();
 	});
 
-	it('should create', () =>
+	it('should test form', () =>
 	{
-    expect(component).toBeTruthy();
+		component.todoInput.title = 'Test From Jest';
+		component.addTodo.emit({ title: component.todoInput.title });
+		expect(component.todoInput.title).toBe('Test From Jest');
+		component.addNewTodo();
+		expect(component.todoInput.title).toBe(null);
 	});
 });
