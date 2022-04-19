@@ -2,8 +2,8 @@
 	<mat-form-field>
 		<mat-label>Add new todo</mat-label>
 		<label>
-			<input matInput [(ngModel)]="todoInput.title" >
+			<input matInput [(ngModel)]="todoInput.title" data-test="text-input" />
 		</label>
 	</mat-form-field>
-		<button matLine mat-raised-button (click)="addNewTodo()">Add Todo</button>
+		<button matLine mat-raised-button (click)="addNewTodo()" data-test="add-button">Add Todo</button>
 </form>
