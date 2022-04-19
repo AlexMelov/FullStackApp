@@ -1,5 +1,7 @@
-<ul>
-	<li *ngFor="let todo of todos">
-		{{todo.title}}
-	</li>
-</ul>
+<mat-list>
+	<mat-list-item *ngFor="let todo of todos">
+		<p matLine>{{todo.title}}</p>
+		<button mat-raised-button color="primary">Remove</button>
+	<mat-divider></mat-divider>
+	</mat-list-item>
+</mat-list>

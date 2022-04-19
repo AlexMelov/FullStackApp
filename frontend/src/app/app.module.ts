@@ -10,6 +10,8 @@ import { ListComponent } from './todo/list/list.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule(
 {
@@ -27,7 +29,9 @@ import { MatButtonModule } from '@angular/material/button';
 		HttpClientModule,
 		CommonModule,
 		BrowserAnimationsModule,
-		MatButtonModule
+		MatButtonModule,
+		MatListModule,
+		MatDividerModule
 	],
 	providers:
 	[],
