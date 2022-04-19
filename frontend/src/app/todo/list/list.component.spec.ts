@@ -1,29 +1,38 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import { ListComponent } from './list.component';
+import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
+import { TodoService } from '../todo.service';
+import { Todo } from '../todo.intercace';
 
-describe.skip('ListComponent', () =>
+describe('ListComponent', () =>
 {
-	let component : ListComponent;
-	let fixture : ComponentFixture<ListComponent>;
+	let service : TodoService;
 
 	beforeEach(async() =>
 	{
-		await TestBed.configureTestingModule({
-      declarations: [ ListComponent ]
-    })
-    .compileComponents();
+		await TestBed.configureTestingModule(
+		{
+			imports: [ HttpClientTestingModule ]
+		});
+		service = TestBed.inject(TodoService);
 	});
 
-	beforeEach(() =>
+	it('should mock', async() =>
 	{
-		fixture = TestBed.createComponent(ListComponent);
-		component = fixture.componentInstance;
-    fixture.detectChanges();
-	});
+		expect(service).toBeTruthy();
+		const httpMock : HttpTestingController = TestBed.inject(HttpTestingController);
 
-	it('should create', () =>
-	{
-    expect(component).toBeTruthy();
+		const todo : Todo =
+			{
+				title:'New Todo From Jest!'
+			};
+
+		service.create(todo).subscribe(todo =>
+		{
+			expect(todo.title).toBe('New Todo From Jest!');
+		});
+		const mockRequest : TestRequest = httpMock.expectOne('http://localhost:8000/todos');
+
+		mockRequest.flush(todo);
 	});
 });

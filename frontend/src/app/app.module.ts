@@ -13,32 +13,32 @@ import { Material } from '../material.module';
 import { CommonModule } from '@angular/common';
 
 @NgModule(
-	{
-		declarations:
-			[
-				AppComponent,
-				TodoComponent,
-				FormComponent,
-				ListComponent
-			],
-		imports:
-			[
-				BrowserAnimationsModule,
-				BrowserModule,
-				FormsModule,
-				CommonModule,
-				HttpClientModule,
-				MatNativeDateModule,
-				ReactiveFormsModule,
-				Material
-			],
-		providers:
-			[],
-		bootstrap:
-			[
-				AppComponent
-			]
-	})
+{
+	declarations:
+	[
+		AppComponent,
+		TodoComponent,
+		FormComponent,
+		ListComponent
+	],
+	imports:
+	[
+		BrowserAnimationsModule,
+		BrowserModule,
+		FormsModule,
+		CommonModule,
+		HttpClientModule,
+		MatNativeDateModule,
+		ReactiveFormsModule,
+		Material
+	],
+	providers:
+	[],
+	bootstrap:
+	[
+		AppComponent
+	]
+})
 export class AppModule
 {
 }
