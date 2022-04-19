@@ -10,6 +10,7 @@ import { ListComponent } from './todo/list/list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import { Material } from '../material.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule(
 	{
@@ -25,6 +26,7 @@ import { Material } from '../material.module';
 				BrowserAnimationsModule,
 				BrowserModule,
 				FormsModule,
+				CommonModule,
 				HttpClientModule,
 				MatNativeDateModule,
 				ReactiveFormsModule,

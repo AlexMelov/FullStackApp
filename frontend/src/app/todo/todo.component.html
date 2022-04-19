@@ -1,3 +1,2 @@
-<app-form></app-form>
-<app-list></app-list>
-<p>Some text</p>
+<app-form (addTodo)="createTodo($event)"></app-form>
+<app-list [todos]="todos" (onRemove)="removeTodo($event)"></app-list>

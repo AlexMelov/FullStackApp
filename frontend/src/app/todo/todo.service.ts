@@ -20,9 +20,9 @@ export class TodoService
 		return this.httpClient.get<Todo[]>(this.apiUrl);
 	}
 
-	create(title : string) : Observable<Todo>
+	create(todo : Todo) : Observable<Todo>
 	{
-		return this.httpClient.post<Todo>(this.apiUrl, { title });
+		return this.httpClient.post<Todo>(this.apiUrl, { title:todo.title });
 	}
 
 	delete(id : string) : Observable<void>
