@@ -1,45 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
-import { TodoService } from './todo.service';
-import { environment } from '../../environments/environment';
+import { TodoComponent } from './todo.component';
 
-describe.skip('ListComponent', () =>
+describe.skip('TodoComponent', () =>
 {
-	let service : TodoService;
+	let component : TodoComponent;
 
 	beforeEach(async() =>
 	{
-		await TestBed.configureTestingModule(
-			{
-				imports: [ HttpClientTestingModule ]
-			});
-		service = TestBed.inject(TodoService);
+		await TestBed.configureTestingModule({
+			declarations: [ TodoComponent ]
+		})
+			.compileComponents();
 	});
 
-	it('should mock the create', async() =>
+	it('should create', () =>
 	{
-		expect(service).toBeTruthy();
-		const httpMock : HttpTestingController = TestBed.inject(HttpTestingController);
-
-		const todo : { title : string, id : string } =
-			{
-				title: 'New Todo From Jest!',
-				id: '1'
-			};
-
-		service.create(todo).subscribe(todo =>
-		{
-			expect(todo.title).toBe('New Todo From Jest!');
-		});
-
-		service.delete(todo.id).subscribe(todo =>
-		{
-			expect(todo).toBe(null);
-		});
-
-		const mockRequest : TestRequest = httpMock.expectOne(environment.apiUrl + environment.apiRoutes.todos);
-
-		mockRequest.flush(todo);
+			expect(component).toBe(undefined);
 	});
 });

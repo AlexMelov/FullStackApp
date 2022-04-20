@@ -1,39 +1,39 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import { FormComponent } from './form.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TodoService } from '../todo.service';
+import { Todo } from '../todo.intercace';
 
-describe.skip('FormComponent', () =>
+describe('ListComponent', () =>
 {
-	let component : FormComponent;
-	let fixture : ComponentFixture<FormComponent>;
+	let service : TodoService;
 
 	beforeEach(async() =>
 	{
 		await TestBed.configureTestingModule(
 			{
-			declarations: [ FormComponent ],
-			imports:
-			[
-				MatButtonModule,
-				MatInputModule
-			] })
-			.compileComponents();
+				imports: [ HttpClientTestingModule ]
+			});
+		service = TestBed.inject(TodoService);
 	});
 
-	beforeEach(() =>
+	it('should mock the create', async() =>
 	{
-		fixture = TestBed.createComponent(FormComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	});
+		const todo : Todo =
+			{
+				title: 'New Todo From Jest!'
+			};
 
-	it('should test form', () =>
-	{
-		component.todoInput.title = 'Test From Jest';
-		component.addTodo.emit({ title: component.todoInput.title });
-		expect(component.todoInput.title).toBe('Test From Jest');
-		component.addNewTodo();
+		service.create(todo).subscribe(todoCreate =>
+		{
+			expect(todoCreate.title).toBe(todo.title);
+			expect(todoCreate.id).toBeTruthy();
+		});
+
+		service.getAll().subscribe(todos =>
+		{
+			expect(todos).not.toHaveLength(0);
+			expect(todos[0].id).toBeTruthy();
+		});
 	});
 });
