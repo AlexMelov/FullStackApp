@@ -22,10 +22,10 @@ describe('ListComponent', () =>
 		const httpMock : HttpTestingController = TestBed.inject(HttpTestingController);
 
 		const todo : {title : string, _id : string} =
-			{
-				title:'New Todo From Jest!',
-				_id: '1'
-			};
+		{
+			title:'New Todo From Jest!',
+			_id: '1'
+		};
 
 		service.create(todo).subscribe(todo =>
 		{
