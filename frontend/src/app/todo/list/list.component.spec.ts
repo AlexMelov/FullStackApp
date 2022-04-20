@@ -28,9 +28,6 @@ describe('ListComponent', () =>
 		{
 			expect(todoCreate.title).toBe(todo.title);
 			expect(todoCreate.id).toBeTruthy();
-			// service.delete(todoCreate.id).subscribe(todoDelete =>
-			// {
-			// })
 		});
 	});
 });
