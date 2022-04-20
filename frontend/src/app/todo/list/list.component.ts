@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Todo } from '../todo.intercace';
+import { Id, Todo } from '../todo.intercace';
 
 @Component(
 {
@@ -7,12 +7,13 @@ import { Todo } from '../todo.intercace';
 	templateUrl: './list.component.html',
 	styleUrls: [ './list.component.scss' ]
 })
+
 export class ListComponent
 {
 	@Input() todos : Todo[] = [];
 	@Output() onRemove : EventEmitter<string> = new EventEmitter<string>();
 
-	removeTodo(id ?: string | null) : void
+	removeTodo(id ?: Id) : void
 	{
 		if (id)
 		{
