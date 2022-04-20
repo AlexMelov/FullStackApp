@@ -4,7 +4,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 
 @NgModule({
-	exports: [
+	exports:
+	[
 		MatButtonModule,
 		MatListModule,
 		MatInputModule
