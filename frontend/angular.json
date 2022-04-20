@@ -131,7 +131,23 @@
 						],
 						"scripts":
 						[]
-					}
+					},
+					"configurations":
+					{
+						"local":
+						{
+						},
+						"dev":
+						{
+						},
+						"stage":
+						{
+						},
+						"prod":
+						{
+						}
+					},
+					"defaultConfiguration": "local"
 				},
 				"lint":
 				{

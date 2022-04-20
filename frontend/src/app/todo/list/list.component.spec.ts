@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 import { TodoService } from '../todo.service';
+import { environment } from '../../../environments/environment';
 
 describe('ListComponent', () =>
 {
@@ -32,7 +33,7 @@ describe('ListComponent', () =>
 			expect(todo.title).toBe('New Todo From Jest!');
 		});
 
-		const mockRequest : TestRequest = httpMock.expectOne('http://localhost:8000/todos');
+		const mockRequest : TestRequest = httpMock.expectOne(environment.apiUrl + environment.apiRoutes.todos);
 
 		mockRequest.flush(todo);
 	});
