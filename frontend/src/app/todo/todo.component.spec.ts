@@ -21,12 +21,11 @@ describe('ListComponent', () =>
 	{
 		expect(service).toBeTruthy();
 		const httpMock : HttpTestingController = TestBed.inject(HttpTestingController);
-		const mockRequest : TestRequest = httpMock.expectOne(environment.apiUrl + environment.apiRoutes.todos);
 
-		const todo : { title : string, _id : string } =
+		const todo : { title : string, id : string } =
 			{
 				title: 'New Todo From Jest!',
-				_id: '1'
+				id: '1'
 			};
 
 		service.create(todo).subscribe(todo =>
@@ -34,10 +33,12 @@ describe('ListComponent', () =>
 			expect(todo.title).toBe('New Todo From Jest!');
 		});
 
-		service.delete(todo._id).subscribe(todo =>
+		service.delete(todo.id).subscribe(todo =>
 		{
 			expect(todo).toBe(null);
 		});
+
+		const mockRequest : TestRequest = httpMock.expectOne(environment.apiUrl + environment.apiRoutes.todos);
 
 		mockRequest.flush(todo);
 	});

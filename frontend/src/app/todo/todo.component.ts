@@ -28,11 +28,11 @@ export class TodoComponent implements OnInit
 
 	createTodo(todo : Todo) : void
 	{
-		this.todoService.create(todo).subscribe(todo => this.todos.push(todo));
+		this.todoService.create(todo).subscribe(() => this.getTodos());
 	}
 
 	removeTodo(id : string) : void
 	{
-		this.todoService.delete(id).subscribe(() => this.todos = this.todos.filter(todo => todo._id !== id));
+		this.todoService.delete(id).subscribe(() => this.getTodos());
 	}
 }

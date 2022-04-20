@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TodoService } from '../todo.service';
-import { environment } from '../../../environments/environment';
+import { Todo } from '../todo.intercace';
 
 describe('ListComponent', () =>
 {
@@ -19,21 +19,18 @@ describe('ListComponent', () =>
 
 	it('should mock the create', async() =>
 	{
-		expect(service).toBeTruthy();
-		const httpMock : HttpTestingController = TestBed.inject(HttpTestingController);
-		const mockRequest : TestRequest = httpMock.expectOne(environment.apiUrl + environment.apiRoutes.todos);
-
-		const todo : {title : string, _id : string} =
+		const todo : Todo =
 		{
-			title:'New Todo From Jest!',
-			_id: '1'
+			title: 'New Todo From Jest!'
 		};
 
-		service.create(todo).subscribe(todo =>
+		service.create(todo).subscribe(todoCreate =>
 		{
-			expect(todo.title).toBe('New Todo From Jest!');
+			expect(todoCreate.title).toBe(todo.title);
+			expect(todoCreate.id).toBeTruthy();
+			// service.delete(todoCreate.id).subscribe(todoDelete =>
+			// {
+			// })
 		});
-
-		mockRequest.flush(todo);
 	});
 });

@@ -22,7 +22,7 @@ export class TodoService
 
 	create(todo : Todo) : Observable<Todo>
 	{
-		return this.httpClient.post<Todo>(this.apiUrl, { title:todo.title });
+		return this.httpClient.post<Todo>(this.apiUrl, { title: todo.title });
 	}
 
 	delete(id : string) : Observable<void>
