@@ -21,6 +21,7 @@ describe('ListComponent', () =>
 	{
 		expect(service).toBeTruthy();
 		const httpMock : HttpTestingController = TestBed.inject(HttpTestingController);
+		const mockRequest : TestRequest = httpMock.expectOne(environment.apiUrl + environment.apiRoutes.todos);
 
 		const todo : { title : string, _id : string } =
 			{
@@ -37,8 +38,6 @@ describe('ListComponent', () =>
 		{
 			expect(todo).toBe(null);
 		});
-
-		const mockRequest : TestRequest = httpMock.expectOne(environment.apiUrl + environment.apiRoutes.todos);
 
 		mockRequest.flush(todo);
 	});
