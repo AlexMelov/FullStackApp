@@ -18,7 +18,7 @@ describe('Server', () =>
 		const body : Body[] = await response.body;
 
 		expect(response.statusCode).toBe(200);
-		expect((body[0])._id).toBeDefined();
+		expect((body[0]).title).toBeDefined();
 	});
 
 	it('should CREATE a todo', async() =>
