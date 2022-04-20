@@ -16,10 +16,9 @@ export class FormComponent
 		if (this.todoInput.title)
 		{
 			this.addTodo.emit(
-				{
-					title: this.todoInput.title
-				}
-			);
+			{
+				title: this.todoInput.title
+			});
 		}
 		this.todoInput.title = null;
 	}
