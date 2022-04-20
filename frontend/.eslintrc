@@ -1,7 +1,7 @@
 {
 	"extends":
 	[
-		"@isnotdefined/eslint-config", "prettier"
+		"@isnotdefined/eslint-config"
 	],
 	"rules":
 	{
