@@ -104,6 +104,5 @@ jobs:
                 with:
                     node-version: 14
             -   run: npm install --prefix ./frontend
-            -   run: npm run start:dev --prefix ./frontend &
             -   run: npm run e2e:dev --prefix ./frontend
                 timeout-minutes: 10
