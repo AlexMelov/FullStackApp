@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Todo } from '../todo.intercace';
 
 @Component({
@@ -6,14 +6,10 @@ import { Todo } from '../todo.intercace';
 	templateUrl: './form.component.html',
 	styleUrls: [ './form.component.scss' ]
 })
-export class FormComponent implements OnInit
+export class FormComponent
 {
 	@Output() addTodo : EventEmitter<Todo> = new EventEmitter<Todo>();
 	todoInput : Todo = {};
-
-	ngOnInit() : void
-	{
-	}
 
 	addNewTodo() : void
 	{
