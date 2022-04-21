@@ -27,7 +27,10 @@ describe('Server', () =>
 
 	it('should CREATE a todo', async() =>
 	{
-		const response : Response = await supertest(server).post('/todos').send({ title : 'Todo from Jest!' });
+		const response : Response = await supertest(server).post('/todos').send(
+		{
+			title : 'Todo from Jest!'
+		});
 		const body : Body = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -37,7 +40,10 @@ describe('Server', () =>
 
 	it('should DELETE todo', async() =>
 	{
-		const response : Response = await supertest(server).post('/todos').send({ title : 'Todo for delete from Jest!' });
+		const response : Response = await supertest(server).post('/todos').send(
+		{
+			title : 'Todo for delete from Jest!'
+		});
 		const body : Body = await response.body;
 
 		expect(response.statusCode).toBe(200);
