@@ -5,9 +5,9 @@ const environment : Environment = environmentHelper(Cypress.env('APP_ENV'));
 
 describe('todo', () =>
 {
-	it('wait on', () =>
+	before('wait on', () =>
 	{
-		cy.wait(10000);
+		cy.wait(15000);
 	});
 
 	beforeEach(() =>
