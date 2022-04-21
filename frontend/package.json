@@ -40,14 +40,11 @@
 		"cross-env": "7.0.3",
 		"cypress": "9.5.4",
 		"eslint": "8.13.0",
-		"eslint-config-prettier": "^8.5.0",
 		"jest": "27.5.1",
 		"jest-preset-angular": "11.1.1",
 		"postcss": "^8.4.12",
 		"postcss-scss": "^4.0.3",
-		"prettier": "2.6.2",
 		"stylelint": "14.6.1",
-		"stylelint-config-prettier": "^9.0.3",
 		"typescript": "4.6.2"
 	},
 	"scripts":
@@ -69,7 +66,6 @@
 		"test:prod": "npm run test -- --configuration=prod",
 		"lint": "ng lint && stylelint src/**/**/*.scss --custom-syntax=postcss-scss --cache",
 		"fix": "ng lint --fix && stylelint src/**/**/*.scss --custom-syntax=postcss-scss --fix",
-		"stylelint-check": "stylelint-config-prettier-check",
 		"e2e": "ng e2e",
 		"e2e:local": "cross-env-shell CYPRESS_APP_ENV=local npm run e2e",
 		"e2e:dev": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
