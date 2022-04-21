@@ -3,7 +3,7 @@ export interface Todo
 	title : string
 }
 
-export interface TodoForMap
+export interface DirtyTodo
 {
 	title : {};
 	_id : {};

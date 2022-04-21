@@ -48,10 +48,10 @@ describe('Server', () =>
 
 		expect(deleteResponse.statusCode).toBe(200);
 		expect(deleteResponse.body).toEqual(
-			{
-				acknowledged:true,
-				deletedCount:1
-			});
+		{
+			acknowledged: true,
+			deletedCount: 1
+		});
 	});
 
 	afterAll(() => mongoose.connection.close());
