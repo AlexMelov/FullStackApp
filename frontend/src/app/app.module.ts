@@ -1,32 +1,42 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
-import { HttpClientModule } from '@angular/common/http';
-import { NewTodoComponent } from './new-todo/new-todo.component';
+import { TodoComponent } from './todo/todo.component';
+import { FormComponent } from './todo/form/form.component';
+import { ListComponent } from './todo/list/list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UiModule } from '../ui.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule(
 {
 	declarations:
 	[
 		AppComponent,
-		ListComponent,
-		NewTodoComponent
+		TodoComponent,
+		FormComponent,
+		ListComponent
 	],
 	imports:
 	[
+		BrowserAnimationsModule,
 		BrowserModule,
 		FormsModule,
-		HttpClientModule
+		CommonModule,
+		HttpClientModule,
+		ReactiveFormsModule,
+		UiModule
 	],
 	providers:
 	[],
 	bootstrap:
 	[
 		AppComponent
-	]
+	],
+	schemas:[ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule
 {

@@ -43,7 +43,7 @@ jobs:
                     node-version: 14
             -   run: npm install --prefix ./frontend
             -   run: npm install --prefix ./backend
-            -   run: npm run test:local --prefix ./frontend
+            -   run: npm run test --prefix ./frontend
             -   run: npm run test:local --prefix ./backend
                 env:
                     DB_URL: ${{ secrets.DB_URL_STAGE }}

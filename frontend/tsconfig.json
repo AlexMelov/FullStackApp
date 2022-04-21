@@ -19,6 +19,10 @@
 		"target": "es2017",
 		"module": "es2020",
 		"skipLibCheck": true,
+		"types":
+		[
+			"cypress"
+		],
 		"lib":
 		[
 			"es2020",

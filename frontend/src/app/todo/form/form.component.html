@@ -1,0 +1,7 @@
+<form class="todo-form">
+	<mat-form-field>
+		<mat-label for="todo_input">Add new todo</mat-label>
+			<input id="todo_input" matInput [(ngModel)]="todoInput.title" data-test="text-input" />
+	</mat-form-field>
+		<button matLine mat-raised-button (click)="addNewTodo()" data-test="add-button">Add Todo</button>
+</form>

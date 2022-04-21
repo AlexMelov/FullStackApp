@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import { todoModel } from './models/schema.js';
 import { HydratedDocument } from 'mongoose';
-import { Todo } from './models/todo';
+import { Todo, DirtyTodo } from './models/todo';
 import { Handler } from './models/express';
 
 export const getHandler : Handler = (request : Request, response : Response) : void =>
 {
 	todoModel.find()
-		.then(data => response.json(data))
+		.then(data => response.json(mapData(data)))
 		.catch(error => response.json({ message: error }));
 };
 
@@ -26,3 +26,8 @@ export const deleteHandler : Handler = (request : Request, response : Response) 
 		.then(data => response.json(data))
 		.catch(error => response.json({ message: error }));
 };
+
+function mapData(data : DirtyTodo[])
+{
+	return data.map(item =>({ id: item._id, title: item.title }));
+}
