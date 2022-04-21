@@ -8,8 +8,9 @@ describe.skip('TodoComponent', () =>
 
 	beforeEach(async() =>
 	{
-		await TestBed.configureTestingModule({
-			declarations: [ TodoComponent ]
+		await TestBed.configureTestingModule(
+		{
+		declarations: [ TodoComponent ]
 		})
 			.compileComponents();
 	});
