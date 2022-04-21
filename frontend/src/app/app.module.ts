@@ -8,7 +8,6 @@ import { TodoComponent } from './todo/todo.component';
 import { FormComponent } from './todo/form/form.component';
 import { ListComponent } from './todo/list/list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatNativeDateModule } from '@angular/material/core';
 import { UiModule } from '../material.module';
 import { CommonModule } from '@angular/common';
 
@@ -28,7 +27,6 @@ import { CommonModule } from '@angular/common';
 		FormsModule,
 		CommonModule,
 		HttpClientModule,
-		MatNativeDateModule,
 		ReactiveFormsModule,
 		UiModule
 	],
