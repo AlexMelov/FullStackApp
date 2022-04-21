@@ -56,7 +56,7 @@
 		"start:prod": "npm run start -- --configuration=prod",
 		"build": "ng build",
 		"build:local": "npm run build --configuration=local",
-		"build:dev": "npm run build --configuration=dev",
+		"build:dev": "ng build --configuration=dev",
 		"build:stage": "npm run build --configuration=stage",
 		"build:prod": "npm run build --configuration=prod",
 		"test": "ng test",
