@@ -12,5 +12,5 @@ import { MatListModule } from '@angular/material/list';
 		MatInputModule
 	]
 })
-export class Material
+export class UiModule
 {}

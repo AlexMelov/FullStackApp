@@ -9,7 +9,7 @@ import { FormComponent } from './todo/form/form.component';
 import { ListComponent } from './todo/list/list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
-import { Material } from '../material.module';
+import { UiModule } from '../material.module';
 import { CommonModule } from '@angular/common';
 
 @NgModule(
@@ -30,7 +30,7 @@ import { CommonModule } from '@angular/common';
 		HttpClientModule,
 		MatNativeDateModule,
 		ReactiveFormsModule,
-		Material
+		UiModule
 	],
 	providers:
 	[],
