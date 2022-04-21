@@ -1,7 +1,6 @@
 {
 	"extends":
 	[
-		"@isnotdefined/stylelint-config",
-		"stylelint-config-prettier"
+		"@isnotdefined/stylelint-config"
 	]
 }
