@@ -14,6 +14,8 @@ Install the dependencies:
 
 ```
  npm install --prefix ./backend
+```
+```
  npm install --prefix ./frontend
 ```
 
@@ -27,9 +29,23 @@ DB_URL=mongodb+srv://user:password@hostname
 
 ## Usage
 
-Start the application on `local` environment:
+Start the application with `local` environment:
 
 ```
 npm run start:local --prefix ./backend
+```
+```
 npm run start:local --prefix ./frontend
+```
+
+Check your application on:
+
+```frontend
+http://localhost:4200
+```
+
+You can check your backend api on:
+
+```backend
+http://localhost:8000/todos
 ```
