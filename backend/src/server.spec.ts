@@ -18,7 +18,11 @@ describe('Server', () =>
 		const body : Body[] = await response.body;
 
 		expect(response.statusCode).toBe(200);
-		expect((body[0]).title).toBeDefined();
+		expect(body).not.toHaveLength(0);
+		expect(body.forEach(todo =>
+		{
+			expect(todo.title).toBeTruthy();
+		}));
 	});
 
 	it('should CREATE a todo', async() =>
@@ -29,23 +33,24 @@ describe('Server', () =>
 		expect(response.statusCode).toBe(200);
 		expect(response.headers).toBeDefined();
 		expect(body.title).toContain('Todo from Jest!');
-		await supertest(server).delete('/todos/' + body._id);
 	});
 
-	it('should not DELETE todo', async() =>
+	it('should DELETE todo', async() =>
 	{
-		const responseCreate : Response = await supertest(server).post('/todos').send({ title : 'Todo from Jest!' });
-		const bodyCreate : Body = await responseCreate.body;
-		const responseDelete : Response = await supertest(server).delete('/todos/' + bodyCreate._id);
+		const response : Response = await supertest(server).post('/todos').send({ title : 'Todo for delete from Jest!' });
+		const body : Body = await response.body;
 
-		expect(responseDelete.statusCode).toEqual(200);
-	});
+		expect(response.statusCode).toBe(200);
+		expect(response.headers).toBeDefined();
+		expect(body.title).toContain('Todo for delete from Jest!');
 
-	it.skip('should not DELETE invalid todo', async() =>
-	{
-		const response : Response = await supertest(server).delete('/todos/123456');
+		const deleteResponse : Response = await supertest(server).delete('/todos/' + body._id);
 
-		expect(response.statusCode).toEqual(404);
+		expect(deleteResponse.statusCode).toBe(200);
+		expect(deleteResponse.body).toEqual(
+			{
+				acknowledged:true, deletedCount:1
+			});
 	});
 
 	afterAll(() => mongoose.connection.close());
