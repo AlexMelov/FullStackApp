@@ -1,6 +1,6 @@
 # FullstackApp
 
-> Simple todo application created in Express, MongoDb and React for posting sending and deleting todos.
+> Simple todo application created in Express, MongoDb and Angular for posting sending and deleting todos.
 
 ## Installation
 
@@ -34,18 +34,19 @@ Start the application with `local` environment:
 ```
 npm run start:local --prefix ./backend
 ```
+
 ```
 npm run start:local --prefix ./frontend
 ```
 
-Check your application on:
+Browse your application on:
 
-```frontend
+```
 http://localhost:4200
 ```
 
-You can check your backend api on:
+Browse your backend api on:
 
-```backend
+```
 http://localhost:8000/todos
 ```

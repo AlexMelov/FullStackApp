@@ -8,7 +8,7 @@ import { TodoComponent } from './todo/todo.component';
 import { FormComponent } from './todo/form/form.component';
 import { ListComponent } from './todo/list/list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UiModule } from '../material.module';
+import { UiModule } from '../ui.module';
 import { CommonModule } from '@angular/common';
 
 @NgModule(

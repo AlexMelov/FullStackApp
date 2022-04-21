@@ -10,9 +10,9 @@ describe.skip('TodoComponent', () =>
 	{
 		await TestBed.configureTestingModule(
 		{
-		declarations: [ TodoComponent ]
+			declarations: [ TodoComponent ]
 		})
-			.compileComponents();
+		.compileComponents();
 	});
 
 	it('should create', () =>
