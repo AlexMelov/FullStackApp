@@ -5,6 +5,11 @@ const environment : Environment = environmentHelper(Cypress.env('APP_ENV'));
 
 describe('todo', () =>
 {
+	it('wait on', () =>
+	{
+		cy.wait(10000);
+	});
+
 	beforeEach(() =>
 	{
 		cy.visit(environment.baseUrl);

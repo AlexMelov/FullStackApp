@@ -17,7 +17,6 @@
 		"harmonize.css": "^4.1.4",
 		"rxjs": "7.5.0",
 		"tslib": "2.3.0",
-		"wait-on": "6.0.1",
 		"zone.js": "0.11.4"
 	},
 	"devDependencies":
@@ -70,7 +69,6 @@
 		"e2e:local": "cross-env-shell CYPRESS_APP_ENV=local npm run e2e",
 		"e2e:dev": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
 		"e2e:stage": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
-		"e2e:prod": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
-		"wait-for-serve": "wait-on tcp:4200 tcp:8000"
+		"e2e:prod": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e"
 	}
 }
