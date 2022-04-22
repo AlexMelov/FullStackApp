@@ -16,13 +16,16 @@ describe('ListComponent', () =>
 		service = TestBed.inject(TodoService);
 	});
 
-	it('should mock the create', async() =>
+	it('should get all todos', async() =>
 	{
 		expect(service).toBeTruthy();
 
 		service.getAll().subscribe(todos =>
 		{
-			expect(todos).not.toHaveLength(0);
+			todos.forEach(todo =>
+			{
+				expect(todo.title).toBeTruthy();
+			});
 		});
 	});
 });
