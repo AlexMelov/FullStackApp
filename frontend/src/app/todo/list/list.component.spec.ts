@@ -16,7 +16,7 @@ describe('ListComponent', () =>
 		service = TestBed.inject(TodoService);
 	});
 
-	it('should mock the create', async() =>
+	it('should create todo', async() =>
 	{
 		const todo : Todo =
 		{

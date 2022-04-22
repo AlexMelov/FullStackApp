@@ -33,7 +33,11 @@ describe('ListComponent', () =>
 		service.getAll().subscribe(todos =>
 		{
 			expect(todos).not.toHaveLength(0);
-			expect(todos[0].id).toBeTruthy();
+			todos.forEach(todo =>
+			{
+				expect(todo.id).toBeTruthy();
+				expect(todo.title).toContain('New Todo From Jest!');
+			});
 		});
 	});
 });
