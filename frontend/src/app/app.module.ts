@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
@@ -10,7 +10,6 @@ import { ListComponent } from './todo/list/list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiModule } from '../ui.module';
 import { CommonModule } from '@angular/common';
-import { NetworkInterceptor } from './network.interceptor';
 
 @NgModule(
 {
@@ -33,11 +32,6 @@ import { NetworkInterceptor } from './network.interceptor';
 	],
 	providers:
 	[
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: NetworkInterceptor,
-			multi: true
-		}
 	],
 	bootstrap:
 	[
