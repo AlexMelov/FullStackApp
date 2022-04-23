@@ -1,3 +1,7 @@
 {
-	"addTodo": "Add new todo"
+	"form":
+	{
+		"placeholder": "Add new todo",
+		"button": "Add Todo"
+	}
 }

@@ -1,3 +1,7 @@
 {
-	"addTodo": "Neue Aufgabe hinzufügen"
+	"form":
+	{
+		"placeholder": "Neue Aufgabe hinzufügen",
+		"button": "Aufgabe hinzufügen"
+	}
 }
