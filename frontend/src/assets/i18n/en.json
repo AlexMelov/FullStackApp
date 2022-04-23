@@ -2,6 +2,7 @@
 	"form":
 	{
 		"placeholder": "Add new todo",
-		"button": "Add Todo"
+		"button": "Add Todo",
+		"removeButton": "Remove"
 	}
 }

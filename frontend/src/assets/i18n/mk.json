@@ -2,6 +2,7 @@
 	"form":
 	{
 		"placeholder": "Додадете нова цел",
-		"button": "Додади Цел"
+		"button": "Додади Цел",
+		"removeButton": "Избриши"
 	}
 }

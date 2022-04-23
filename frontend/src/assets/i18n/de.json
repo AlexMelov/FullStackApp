@@ -2,6 +2,7 @@
 	"form":
 	{
 		"placeholder": "Neue Aufgabe hinzufügen",
-		"button": "Aufgabe hinzufügen"
+		"button": "Aufgabe hinzufügen",
+		"removeButton": "Löschen"
 	}
 }
