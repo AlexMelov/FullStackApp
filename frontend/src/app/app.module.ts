@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiModule } from '../ui.module';
 import { CommonModule } from '@angular/common';
 import { NetworkInterceptor } from './network.interceptor';
+import { TranslocoRootModule } from './transloco-root.module';
 
 @NgModule(
 {
@@ -29,7 +30,8 @@ import { NetworkInterceptor } from './network.interceptor';
 		CommonModule,
 		HttpClientModule,
 		ReactiveFormsModule,
-		UiModule
+		UiModule,
+		TranslocoRootModule
 	],
 	providers:
 	[
