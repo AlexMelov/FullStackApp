@@ -124,6 +124,22 @@
 						"browserTarget": "frontend:build"
 					}
 				},
+				"lint":
+				{
+					"builder": "@angular-eslint/builder:lint",
+					"options":
+					{
+						"lintFilePatterns":
+						[
+							"*.ts",
+							"cypress/**/**/*.ts",
+							"src/**/**/*.ts",
+							"src/**/**/*.html",
+							"*.json",
+							"src/**/**/*.json"
+						]
+					}
+				},
 				"test":
 				{
 					"builder": "@angular-builders/jest:run",
@@ -141,22 +157,6 @@
 						],
 						"scripts":
 						[]
-					}
-				},
-				"lint":
-				{
-					"builder": "@angular-eslint/builder:lint",
-					"options":
-					{
-						"lintFilePatterns":
-						[
-							"*.ts",
-							"cypress/**/**/*.ts",
-							"src/**/**/*.ts",
-							"src/**/**/*.html",
-							"*.json",
-							"src/**/**/*.json"
-						]
 					}
 				},
 				"e2e":
