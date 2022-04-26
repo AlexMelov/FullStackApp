@@ -31,7 +31,8 @@ import { CommonModule } from '@angular/common';
 		UiModule
 	],
 	providers:
-	[],
+	[
+	],
 	bootstrap:
 	[
 		AppComponent

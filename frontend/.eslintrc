@@ -27,7 +27,14 @@
 			"extends":
 			[
 				"plugin:@angular-eslint/template/process-inline-templates"
-			]
+			],
+			"parserOptions":
+			{
+				"project":
+				[
+					"./tsconfig.lint.json"
+				]
+			}
 		},
 		{
 			"files":

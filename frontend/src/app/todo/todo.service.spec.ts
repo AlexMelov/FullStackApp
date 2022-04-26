@@ -10,9 +10,9 @@ describe('ListComponent', () =>
 	beforeEach(async() =>
 	{
 		await TestBed.configureTestingModule(
-		{
-			imports: [ HttpClientTestingModule ]
-		});
+			{
+				imports: [ HttpClientTestingModule ]
+			});
 		service = TestBed.inject(TodoService);
 	});
 

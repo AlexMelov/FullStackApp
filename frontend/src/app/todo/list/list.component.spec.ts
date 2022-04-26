@@ -10,18 +10,18 @@ describe('ListComponent', () =>
 	beforeEach(async() =>
 	{
 		await TestBed.configureTestingModule(
-		{
-			imports: [ HttpClientTestingModule ]
-		});
+			{
+				imports: [ HttpClientTestingModule ]
+			});
 		service = TestBed.inject(TodoService);
 	});
 
 	it('should mock the create', async() =>
 	{
 		const todo : Todo =
-		{
-			title: 'New Todo From Jest!'
-		};
+			{
+				title: 'New Todo From Jest!'
+			};
 
 		service.create(todo).subscribe(todoCreate =>
 		{
