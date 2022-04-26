@@ -19,10 +19,9 @@ export class SpinnerInterceptor implements HttpInterceptor
 	{
   	this.listService.show();
   	return next.handle(request).pipe(
-    	finalize(() =>
-    	{
+		finalize(() =>
+		{
 			this.listService.hide();
-    	})
-  	);
+		}));
 	}
 }
