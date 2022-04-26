@@ -20,7 +20,7 @@ export class TranslocoHttpLoader implements TranslocoLoader
 
 	getTranslation(lang : string) : Observable<Translation>
 	{
-		return this.http.get<Translation>(`${environment.baseUrl}/assets/i18n/${lang}.json`);
+		return this.http.get<Translation>(environment.baseUrl + '/assets/i18n/' + lang + '.json');
 	}
 }
 
