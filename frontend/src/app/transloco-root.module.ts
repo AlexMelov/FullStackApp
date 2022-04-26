@@ -5,7 +5,8 @@ import {
 	TranslocoLoader,
 	TRANSLOCO_CONFIG,
 	translocoConfig,
-	TranslocoModule
+	TranslocoModule,
+	getBrowserLang
 } from '@ngneat/transloco';
 import { Injectable, NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
@@ -32,7 +33,7 @@ export class TranslocoHttpLoader implements TranslocoLoader
       useValue: translocoConfig(
 		{
         availableLangs: [ 'en', 'de', 'mk' ],
-        defaultLang: 'en',
+        defaultLang: getBrowserLang() ? getBrowserLang() : 'en',
         reRenderOnLangChange: true,
         prodMode: environment.metadata.environment === 'prod'
       	})
