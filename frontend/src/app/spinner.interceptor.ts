@@ -7,12 +7,12 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { SpinnerService } from './todo/list/spinner.service';
+import { SpinnerStore } from './todo/list/spinner.store';
 
 @Injectable()
 export class SpinnerInterceptor implements HttpInterceptor
 {
-	constructor(private listService : SpinnerService)
+	constructor(private listService : SpinnerStore)
 	{}
 
 	intercept(request : HttpRequest<unknown>, next : HttpHandler) : Observable<HttpEvent<unknown>>
