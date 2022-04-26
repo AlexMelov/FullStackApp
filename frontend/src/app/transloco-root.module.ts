@@ -26,22 +26,23 @@ export class TranslocoHttpLoader implements TranslocoLoader
 
 @NgModule(
 {
-  exports: [ TranslocoModule ],
-  providers: [
+	exports: [ TranslocoModule ],
+	providers: [
     {
-      provide: TRANSLOCO_CONFIG,
-      useValue: translocoConfig(
+		provide: TRANSLOCO_CONFIG,
+		useValue: translocoConfig(
 		{
-        availableLangs: [ 'en', 'de', 'mk' ],
-        defaultLang: getBrowserLang() ? getBrowserLang() : 'en',
-        reRenderOnLangChange: true,
-        prodMode: environment.metadata.environment === 'prod'
+			availableLangs: [ 'en', 'de', 'mk' ],
+			defaultLang: getBrowserLang() ? getBrowserLang() : 'en',
+			reRenderOnLangChange: true,
+			prodMode: environment.metadata.environment === 'prod'
       	})
     },
     {
-    	provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoader
+		provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoader
     }
-  ]
+	]
 })
+
 export class TranslocoRootModule
 {}
