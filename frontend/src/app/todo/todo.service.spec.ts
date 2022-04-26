@@ -10,22 +10,19 @@ describe('ListComponent', () =>
 	beforeEach(async() =>
 	{
 		await TestBed.configureTestingModule(
-		{
-			imports: [ HttpClientTestingModule ]
-		});
+			{
+				imports: [ HttpClientTestingModule ]
+			});
 		service = TestBed.inject(TodoService);
 	});
 
-	it('should get all todos', async() =>
+	it('should mock the create', async() =>
 	{
 		expect(service).toBeTruthy();
 
 		service.getAll().subscribe(todos =>
 		{
-			todos.forEach(todo =>
-			{
-				expect(todo.title).toBeTruthy();
-			});
+			expect(todos).not.toHaveLength(0);
 		});
 	});
 });
