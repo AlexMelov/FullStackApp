@@ -1,8 +1,8 @@
 {
-	"form":
+	"todo":
 	{
 		"placeholder": "Neue Aufgabe hinzufügen",
-		"button": "Aufgabe hinzufügen",
+		"addButton": "Aufgabe hinzufügen",
 		"removeButton": "Löschen"
 	}
 }

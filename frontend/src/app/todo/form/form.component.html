@@ -1,7 +1,7 @@
 <form class="todo-form">
 	<mat-form-field>
-		<mat-label for="todo_input">{{"form.placeholder"|transloco}}</mat-label>
+		<mat-label for="todo_input">{{"todo.placeholder"|transloco}}</mat-label>
 		<input id="todo_input" matInput [(ngModel)]="todoInput.title" data-test="text-input" />
 	</mat-form-field>
-	<button matLine mat-raised-button (click)="addNewTodo()" data-test="add-button">{{"form.button"|transloco}}</button>
+	<button matLine mat-raised-button (click)="addNewTodo()" data-test="add-button">{{"todo.addButton"|transloco}}</button>
 </form>

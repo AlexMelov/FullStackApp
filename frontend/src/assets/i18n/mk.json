@@ -1,8 +1,8 @@
 {
-	"form":
+	"todo":
 	{
 		"placeholder": "Додадете нова цел",
-		"button": "Додади Цел",
+		"addButton": "Додади Цел",
 		"removeButton": "Избриши"
 	}
 }
