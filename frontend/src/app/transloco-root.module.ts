@@ -18,9 +18,9 @@ export class TranslocoHttpLoader implements TranslocoLoader
 	constructor(private http : HttpClient)
 	{}
 
-	getTranslation(lang : string) : Observable<Translation>
+	getTranslation(language : string) : Observable<Translation>
 	{
-		return this.http.get<Translation>(environment.baseUrl + '/assets/i18n/' + lang + '.json');
+		return this.http.get<Translation>(environment.baseUrl + '/assets/i18n/' + language + '.json');
 	}
 }
 
