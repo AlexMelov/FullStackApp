@@ -28,10 +28,11 @@
 			[
 				"plugin:@angular-eslint/template/process-inline-templates"
 			],
-			"parserOptions": {
+			"parserOptions":
+			{
 				"project":
 				[
-					"**/tsconfig.json","cypress/tsconfig.json"
+					"./tsconfig.lint.json"
 				]
 			}
 		},
