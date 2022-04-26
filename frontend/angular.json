@@ -124,6 +124,27 @@
 						"browserTarget": "frontend:build"
 					}
 				},
+				"lint":
+				{
+					"builder": "@krema/angular-eslint-stylelint-builder:lint",
+					"options":
+					{
+						"eslintFilePatterns":
+						[
+							"**/**/*.json",
+							"{cypress,src}/**/**/*.ts",
+							"src/**/**/*.html"
+						],
+						"stylelintFilePatterns":
+						[
+							"src/**/**/*.scss"
+						],
+						"eslintCache": true,
+						"stylelintCache": true,
+						"eslintCacheLocation": "./.angular/cache/.eslintcache",
+						"stylelintCacheLocation": "./.angular/cache/.stylelintcache"
+					}
+				},
 				"test":
 				{
 					"builder": "@angular-builders/jest:run",
@@ -141,22 +162,6 @@
 						],
 						"scripts":
 						[]
-					}
-				},
-				"lint":
-				{
-					"builder": "@angular-eslint/builder:lint",
-					"options":
-					{
-						"lintFilePatterns":
-						[
-							"*.ts",
-							"cypress/**/**/*.ts",
-							"src/**/**/*.ts",
-							"src/**/**/*.html",
-							"*.json",
-							"src/**/**/*.json"
-						]
 					}
 				},
 				"e2e":
