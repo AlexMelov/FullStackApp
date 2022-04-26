@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 {
 	providedIn: 'root'
 })
-export class ListService
+export class SpinnerService
 {
 	loadingBehaviors : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 	readonly loadingObservable : Observable<boolean> = this.loadingBehaviors.asObservable();

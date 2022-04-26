@@ -10,7 +10,7 @@ import { ListComponent } from './todo/list/list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiModule } from '../ui.module';
 import { CommonModule } from '@angular/common';
-import { NetworkInterceptor } from './network.interceptor';
+import { SpinnerInterceptor } from './spinner.interceptor';
 
 @NgModule(
 {
@@ -35,7 +35,7 @@ import { NetworkInterceptor } from './network.interceptor';
 	[
 		{
 			provide: HTTP_INTERCEPTORS,
-			useClass: NetworkInterceptor,
+			useClass: SpinnerInterceptor,
 			multi: true
 		}
 	],
