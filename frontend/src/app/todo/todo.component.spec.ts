@@ -1,22 +1,28 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TodoComponent } from './todo.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TodoService } from './todo.service';
 
-describe.skip('TodoComponent', () =>
+describe('ListComponent', () =>
 {
-	let component : TodoComponent;
+	let service : TodoService;
 
 	beforeEach(async() =>
 	{
 		await TestBed.configureTestingModule(
-		{
-			declarations: [ TodoComponent ]
-		})
-		.compileComponents();
+			{
+				imports: [ HttpClientTestingModule ]
+			});
+		service = TestBed.inject(TodoService);
 	});
 
-	it('should create', () =>
+	it('should mock the create', async() =>
 	{
-			expect(component).toBe(undefined);
+		expect(service).toBeTruthy();
+
+		service.getAll().subscribe(todos =>
+		{
+			expect(todos).not.toHaveLength(0);
+		});
 	});
 });
