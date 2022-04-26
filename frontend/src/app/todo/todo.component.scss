@@ -12,7 +12,8 @@
 	transform: translate(-50%, -50%);
 	z-index: 5;
 }
-.buttons
+
+.wrapper-button
 {
 	display: flex;
 	justify-content: flex-end;
@@ -22,7 +23,6 @@
 		background-size: cover;
 		color: #000d45;
 		margin: 0 0.125rem;
-		min-width: 0;
 	}
 	button:first-child
 	{
