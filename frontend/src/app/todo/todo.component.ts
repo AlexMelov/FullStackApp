@@ -14,7 +14,7 @@ export class TodoComponent implements OnInit
 {
 	todos : Todo[] = [];
 
-	loadingObservable : Observable<boolean> = this.listService.loadingObservable;
+	loaderObservable : Observable<boolean> = this.listService.loaderObservable;
 
 	constructor(private todoService : TodoService, public listService : SpinnerService)
 	{
