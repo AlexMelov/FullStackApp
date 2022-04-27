@@ -1,10 +1,10 @@
 name: ci-stage
 
 on:
-  push:
-    branches:
-      - master
-      - correcting-vercel-env
+    push:
+        branches:
+            - master
+            - correcting-env
 
 jobs:
     lint:
@@ -31,10 +31,19 @@ jobs:
                     node-version: 14
             -   run: npm install --prefix ./backend
             -   run: npm install --prefix ./frontend
-            -   run: npm run build:local --prefix ./backend
-            -   run: npm run build:local --prefix ./frontend
+            -   run: npm run build:stage --prefix ./backend
+            -   run: npm run build:stage --prefix ./frontend
+            -   uses: actions/upload-artifact@v3
+                with:
+                    name: build-backend
+                    path: ./backend/build
+            -   uses: actions/upload-artifact@v3
+                with:
+                    name: build-frontend
+                    path: ./frontend/dist/frontend
     test-unit:
         runs-on: ubuntu-latest
+        environment: STAGE
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2
@@ -47,7 +56,7 @@ jobs:
             -   run: npm run test --prefix ./frontend
             -   run: npm run test:local --prefix ./backend
                 env:
-                    DB_URL: ${{ secrets.DB_URL_STAGE }}
+                    DB_URL: ${{ secrets.DB_URL }}
     test-acceptance:
         runs-on: ubuntu-latest
         environment: STAGE
@@ -73,10 +82,14 @@ jobs:
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2
-            -   run: npm install --prefix ./frontend
-            -   run: npm install --prefix ./backend
-            -   run: npm run build:stage --prefix ./backend
-            -   run: npm run build:stage --prefix ./frontend
+            -   uses: actions/download-artifact@v3
+                with:
+                    name: build-backend
+                    path: ./backend/build
+            -   uses: actions/download-artifact@v3
+                with:
+                    name: build-frontend
+                    path: ./frontend/dist/frontend
             -   uses: amondnet/vercel-action@v20.0.1
                 with:
                     vercel-token: ${{ secrets.VERCEL_TOKEN }}
