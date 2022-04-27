@@ -30,8 +30,16 @@ jobs:
                     node-version: 14
             -   run: npm install --prefix ./backend
             -   run: npm install --prefix ./frontend
-            -   run: npm run build:local --prefix ./backend
-            -   run: npm run build:local --prefix ./frontend
+            -   run: npm run build:dev --prefix ./backend
+            -   run: npm run build:dev --prefix ./frontend
+            -   uses: actions/upload-artifact@v3
+                with:
+                    name: build-backend
+                    path: ./backend/build
+            -   uses: actions/upload-artifact@v3
+                with:
+                    name: build-frontend
+                    path: ./frontend/dist/frontend
     test-unit:
         runs-on: ubuntu-latest
         steps:
@@ -42,10 +50,13 @@ jobs:
                 with:
                     node-version: 14
             -   run: npm install --prefix ./frontend
-            -   run: npm run test:local --prefix ./frontend
+            -   run: npm install --prefix ./backend
+            -   run: npm run test --prefix ./frontend
+            -   run: npm run test:local --prefix ./backend
+                env:
+                    DB_URL: ${{ secrets.DB_URL_DEV }}
     test-acceptance:
         runs-on: ubuntu-latest
-        environment: DEV
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2
@@ -57,32 +68,34 @@ jobs:
             -   run: npm install --prefix ./backend
             -   run: npm run start:local --prefix ./backend &
                 env:
-                    DB_URL: ${{ secrets.DB_URL }}
+                    DB_URL: ${{ secrets.DB_URL_DEV }}
             -   run: npm run start:local --prefix ./frontend &
             -   run: npm run wait-for-serve --prefix ./frontend && npm run e2e:local --prefix ./frontend
                 timeout-minutes: 10
     deploy:
         runs-on: ubuntu-latest
-        environment: DEV
         needs: [ lint, build, test-unit, test-acceptance ]
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2
-            -   run: npm install --prefix ./frontend
-            -   run: npm install --prefix ./backend
-            -   run: npm run build:dev --prefix ./backend
-            -   run: npm run build:dev --prefix ./frontend
+            -   uses: actions/download-artifact@v3
+                with:
+                    name: build-backend
+                    path: ./backend/build
+            -   uses: actions/download-artifact@v3
+                with:
+                    name: build-frontend
+                    path: ./frontend/dist/frontend
             -   uses: amondnet/vercel-action@v20.0.1
                 with:
-                    vercel-token: ${{ secrets.VERCEL_TOKEN }}
-                    vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-                    vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+                    vercel-token: ${{ secrets.VERCEL_TOKEN_DEV }}
+                    vercel-org-id: ${{ secrets.VERCEL_ORG_ID_DEV }}
+                    vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_DEV }}
                     vercel-args: --confirm --prod
                     working-directory: ./
     test-smoke:
         runs-on: ubuntu-latest
         needs: deploy
-        environment: DEV
         steps:
             -   name: Checkout
                 uses: actions/checkout@v2

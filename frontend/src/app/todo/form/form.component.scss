@@ -1,0 +1,12 @@
+.todo-form
+{
+	align-items: start;
+	display: flex;
+	justify-content: center;
+	margin: 5rem 0;
+
+	mat-form-field
+	{
+		padding-right: 2rem;
+	}
+}

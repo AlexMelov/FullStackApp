@@ -1,27 +1,18 @@
-import { Environment } from './evironment.interface';
-import environmentLocal from './environment.local';
-import environmentDev from './environment.dev';
-import environmentStage from './environment.stage';
-import environmentProd from './environment.prod';
+import { Environment } from './environment.interface';
 
-export const environmentHelper : Function = (environment : string) : Environment =>
+export const environment : Environment =
 {
-	if (environment === 'local')
+	metadata:
 	{
-		return environmentLocal;
-	}
-	if (environment === 'dev')
+		branch: 'develop',
+		environment: 'local'
+	},
+	baseUrl : 'http://localhost:4200',
+	apiUrl: 'http://localhost:8000',
+	apiRoutes:
 	{
-		return environmentDev;
-	}
-	if (environment === 'stage')
-	{
-		return environmentStage;
-	}
-	if (environment === 'prod')
-	{
-		return environmentProd;
+		todos: '/todos',
+		todosWithId: '/todos/:todoId'
 	}
 };
 
-export default environmentHelper(process.env.REACT_APP_ENV) as Environment;

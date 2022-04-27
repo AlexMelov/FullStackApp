@@ -1,11 +1,50 @@
 {
-	"extends": ["eslint-config-redaxmedia"],
-	"rules": {
-		"@typescript-eslint/no-require-imports": "warn",
+	"extends":
+	[
+		"@isnotdefined/eslint-config"
+	],
+	"rules":
+	{
 		"jsdoc/require-jsdoc": "off",
-		"jsdoc/require-description": "off"
+		"no-console":
+		[
+			"error",
+			{
+				"allow":
+				[
+					"table"
+				]
+			}
+		]
 	},
-	"parserOptions": {
-		"project": "./tsconfig.json"
-	}
+	"overrides":
+	[
+		{
+			"files":
+			[
+				"*.ts"
+			],
+			"extends":
+			[
+				"plugin:@angular-eslint/template/process-inline-templates"
+			],
+			"parserOptions":
+			{
+				"project":
+				[
+					"./tsconfig.lint.json"
+				]
+			}
+		},
+		{
+			"files":
+			[
+				"*.html"
+			],
+			"extends":
+			[
+				"plugin:@angular-eslint/template/recommended"
+			]
+		}
+	]
 }

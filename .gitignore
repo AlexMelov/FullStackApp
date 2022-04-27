@@ -1,8 +1,10 @@
 .idea
+.vscode
 .env
 .eslintcache
 .stylelintcache
-build
-node_modules
-package-lock.json
+.angular
 .vercel
+build
+dist
+node_modules
