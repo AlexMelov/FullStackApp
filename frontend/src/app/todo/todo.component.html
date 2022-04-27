@@ -1,4 +1,5 @@
 <div class="todo-body">
 	<app-form (addTodo)="createTodo($event)"></app-form>
 	<app-list [todos]="todos" (onRemove)="removeTodo($event)"></app-list>
+	<mat-progress-spinner class="progress-bar" [mode]="'indeterminate'" *ngIf="loaderObservable | async"></mat-progress-spinner>
 </div>

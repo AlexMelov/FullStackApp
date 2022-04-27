@@ -3,3 +3,12 @@
 	margin: 0 auto;
 	max-width: 50rem;
 }
+
+.progress-bar
+{
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 5;
+}

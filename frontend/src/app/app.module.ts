@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
@@ -10,6 +10,7 @@ import { ListComponent } from './todo/list/list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiModule } from '../ui.module';
 import { CommonModule } from '@angular/common';
+import { SpinnerInterceptor } from './spinner.interceptor';
 
 @NgModule(
 {
@@ -32,6 +33,11 @@ import { CommonModule } from '@angular/common';
 	],
 	providers:
 	[
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: SpinnerInterceptor,
+			multi: true
+		}
 	],
 	bootstrap:
 	[

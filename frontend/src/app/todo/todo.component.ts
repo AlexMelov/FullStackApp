@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from './todo.service';
 import { Todo } from './todo.intercace';
+import { SpinnerStore } from './list/spinner.store';
+import { Observable } from 'rxjs';
 
 @Component(
 {
@@ -12,7 +14,9 @@ export class TodoComponent implements OnInit
 {
 	todos : Todo[] = [];
 
-	constructor(private todoService : TodoService)
+	loaderObservable : Observable<boolean> = this.spinnerStore.loaderObservable;
+
+	constructor(private todoService : TodoService, public spinnerStore : SpinnerStore)
 	{
 	}
 
