@@ -66,8 +66,8 @@
 		"e2e": "ng e2e",
 		"e2e:local": "cross-env-shell CYPRESS_APP_ENV=local npm run e2e",
 		"e2e:dev": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
-		"e2e:stage": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
-		"e2e:prod": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
+		"e2e:stage": "cross-env-shell CYPRESS_APP_ENV=stage npm run e2e",
+		"e2e:prod": "cross-env-shell CYPRESS_APP_ENV=prod npm run e2e",
 		"wait-for-serve": "wait-on tcp:4200 tcp:8000 && sleep 30"
 	}
 }
