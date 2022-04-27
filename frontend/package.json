@@ -31,7 +31,6 @@
 		"@angular/cli": "13.3.3",
 		"@angular/compiler-cli": "13.3.4",
 		"@briebug/jest-schematic": "4.0.0",
-		"@krema/angular-eslint-stylelint-builder": "1.0.0",
 		"@cypress/schematic": "1.6.0",
 		"@isnotdefined/eslint-config": "4.7.0",
 		"@isnotdefined/stylelint-config": "3.2.0",
