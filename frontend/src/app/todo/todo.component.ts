@@ -3,7 +3,6 @@ import { TodoService } from './todo.service';
 import { Todo } from './todo.intercace';
 import { SpinnerStore } from './list/spinner.store';
 import { Observable } from 'rxjs';
-import { TranslocoService } from '@ngneat/transloco';
 
 @Component(
 {
@@ -17,7 +16,7 @@ export class TodoComponent implements OnInit
 
 	loaderObservable : Observable<boolean> = this.spinnerStore.loaderObservable;
 
-	constructor(private todoService : TodoService, public spinnerStore : SpinnerStore, private translocoService : TranslocoService)
+	constructor(private todoService : TodoService, public spinnerStore : SpinnerStore)
 	{
 	}
 
@@ -39,10 +38,5 @@ export class TodoComponent implements OnInit
 	removeTodo(id : string) : void
 	{
 		this.todoService.delete(id).subscribe(() => this.getTodos());
-	}
-
-	setLanguage(language : string) : void
-	{
-		this.translocoService.setActiveLang(language);
 	}
 }

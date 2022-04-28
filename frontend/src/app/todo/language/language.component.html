@@ -1,11 +1,11 @@
 <form>
-	<mat-form-field class="select-body">
-		<mat-label class="field_icon">{{newValue}}</mat-label>
-		<mat-select [(ngModel)]="newValue">
-			<mat-option value="EN" selected="true">EN</mat-option>
-			<mat-option value="DE">DE</mat-option>
-			<mat-option value="MK">MK</mat-option>
+	<mat-form-field appearance="fill" class="mat-form-field-flex">
+		<mat-label>Selected Language</mat-label>
+		<mat-select name="language">
+			<mat-option>Select Language</mat-option>
+			<mat-option *ngFor="let language of languages" [value]="language.value" (click)="setLanguage(language.value)" class="{{language.value}}">
+				{{language.language}}
+			</mat-option>
 		</mat-select>
 	</mat-form-field>
-	<p *ngIf="newValue==='EN'">{{newValue}}</p>
 </form>

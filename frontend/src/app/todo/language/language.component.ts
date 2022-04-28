@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
+import { Languages } from './language.model';
 
 @Component(
 {
@@ -12,5 +14,18 @@ import { Component } from '@angular/core';
 
 export class LanguageComponent
 {
-	newValue : string = 'choose language';
+	languages : Languages[] = [
+		{ value: 'en', language: 'EN' },
+		{ value: 'de', language: 'DE' },
+		{ value: 'mk', language: 'MK' }
+	];
+
+	constructor(private translocoService : TranslocoService)
+	{
+	}
+
+	setLanguage(language : string) : void
+	{
+		this.translocoService.setActiveLang(language);
+	}
 }

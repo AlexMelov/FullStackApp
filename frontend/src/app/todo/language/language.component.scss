@@ -1,15 +1,20 @@
-.field_icon
+.en
 {
-	align-items: center;
-	display: flex;
-	justify-content: center;
+	background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg');
+	background-position: right;
+	background-repeat: no-repeat;
 }
 
-.select-body
+.de
 {
-	max-width: 5rem;
-	mat-select
-	{
-		height: 3vh;
-	}
+	background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg');
+	background-position: right;
+	background-repeat: no-repeat;
+}
+
+.mk
+{
+	background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/MK.svg');
+	background-position: right;
+	background-repeat: no-repeat;
 }

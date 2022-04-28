@@ -13,27 +13,15 @@
 	z-index: 5;
 }
 
-.wrapper-button
+.button-select-en
 {
-	display: flex;
-	justify-content: flex-end;
-	button
-	{
-		background-position: center;
-		background-size: cover;
-		color: #ffffff;
-		margin: 0 0.125rem;
-	}
-	.button-select-en
-	{
-		background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg');
-	}
-	.button-select-de
-	{
-		background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg');
-	}
-	.button-select-mk
-	{
-		background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/MK.svg');
-	}
+	background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg');
+}
+.button-select-de
+{
+	background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg');
+}
+.button-select-mk
+{
+	background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/MK.svg');
 }
