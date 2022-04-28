@@ -6,12 +6,11 @@ import { Component } from '@angular/core';
 	templateUrl: './language.component.html',
 	styleUrls:
 	[
-		'./language.component.scss',
-		'../../../../../node_modules/font-awesome/scss/font-awesome.scss'
+		'./language.component.scss'
 	]
 })
 
 export class LanguageComponent
 {
-	newValue : string = 'submit answer';
+	newValue : string = 'choose language';
 }
