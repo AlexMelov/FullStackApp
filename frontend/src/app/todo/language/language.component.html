@@ -1,10 +1,10 @@
 <form>
-	<mat-form-field appearance="fill" class="mat-form-field-flex">
+	<mat-form-field appearance="fill" class="select-container">
 		<mat-label>Selected Language</mat-label>
 		<mat-select name="language">
 			<mat-option>Select Language</mat-option>
-			<mat-option *ngFor="let language of languages" [value]="language.value" (click)="setLanguage(language.value)" class="{{language.value}}">
-				{{language.language}}
+			<mat-option *ngFor="let language of languages" [value]="language.value" (click)="setLanguage(language.value)" class="{{ language.value }}">
+				{{ language.language }}
 			</mat-option>
 		</mat-select>
 	</mat-form-field>

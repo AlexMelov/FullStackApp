@@ -1,4 +1,5 @@
-export interface Languages {
+export interface Languages
+{
 	value : string;
 	language : string;
 }
