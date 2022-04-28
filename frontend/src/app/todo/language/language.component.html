@@ -1,10 +1,11 @@
 <form>
 	<mat-form-field class="select-body">
-		<mat-label class="field_icon"><i class="fa fa-language"> </i></mat-label>
+		<mat-label class="field_icon"></mat-label>
 		<mat-select [(ngModel)]="newValue">
 			<mat-option value="language-english">EN</mat-option>
 			<mat-option value="language-german">DE</mat-option>
 			<mat-option value="language-macedonian">MK</mat-option>
 		</mat-select>
 	</mat-form-field>
+	<p *ngIf="newValue==='language-english'">{{newValue}}</p>
 </form>
