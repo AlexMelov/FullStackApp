@@ -1,0 +1,21 @@
+.field_icon
+{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+
+	i
+	{
+		color: #0000ff;
+		font-size: 2rem;
+	}
+}
+
+.select-body
+{
+	max-width: 5rem;
+	mat-select
+	{
+		height: 3vh;
+	}
+}

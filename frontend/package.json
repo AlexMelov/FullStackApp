@@ -2,11 +2,10 @@
 	"name": "frontend",
 	"version": "1.0.0",
 	"private": true,
-	"dependencies":
-	{
+	"dependencies": {
 		"@angular/animations": "13.3.4",
-		"@angular/common": "13.3.4",
 		"@angular/cdk": "13.3.4",
+		"@angular/common": "13.3.4",
 		"@angular/compiler": "13.3.4",
 		"@angular/core": "13.3.4",
 		"@angular/forms": "13.3.4",
@@ -15,13 +14,13 @@
 		"@angular/platform-browser-dynamic": "13.3.4",
 		"@angular/router": "13.3.4",
 		"@ngneat/transloco": "4.0.0",
+		"font-awesome": "^4.7.0",
 		"harmonize.css": "4.1.4",
 		"rxjs": "7.5.5",
 		"tslib": "2.4.0",
 		"zone.js": "0.11.5"
 	},
-	"devDependencies":
-	{
+	"devDependencies": {
 		"@angular-builders/jest": "13.0.4-beta.0",
 		"@angular-devkit/build-angular": "13.3.3",
 		"@angular-eslint/builder": "13.2.1",
@@ -48,8 +47,7 @@
 		"typescript": "4.6.3",
 		"wait-on": "6.0.1"
 	},
-	"scripts":
-	{
+	"scripts": {
 		"start": "ng serve",
 		"start:local": "npm run start -- --configuration=local",
 		"start:dev": "npm run start -- --configuration=dev",

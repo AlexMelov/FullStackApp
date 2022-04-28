@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { TranslocoRootModule } from './transloco-root.module';
 import { SpinnerInterceptor } from './spinner.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LanguageComponent } from './todo/language/language.component';
 
 @NgModule(
 {
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		AppComponent,
 		TodoComponent,
 		FormComponent,
-		ListComponent
+		ListComponent,
+		LanguageComponent
 	],
 	imports:
 	[

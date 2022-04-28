@@ -5,6 +5,7 @@
 		<button class="button-select-de" mat-raised-button (click)="setLanguage('de')">de</button>
 		<button class="button-select-mk" mat-raised-button (click)="setLanguage('mk')">mk</button>
 	</div>
+	<app-language></app-language>
 	<app-form (addTodo)="createTodo($event)"></app-form>
 	<app-list [todos]="todos" (onRemove)="removeTodo($event)"></app-list>
 	<mat-progress-spinner class="progress-bar" [mode]="'indeterminate'" *ngIf="loaderObservable | async"></mat-progress-spinner>
