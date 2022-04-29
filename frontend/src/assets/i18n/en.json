@@ -1,0 +1,9 @@
+{
+	"todo":
+	{
+		"placeholder": "Add new todo",
+		"addButton": "Add Todo",
+		"removeButton": "Remove",
+		"selectLanguage": "Select Language"
+	}
+}

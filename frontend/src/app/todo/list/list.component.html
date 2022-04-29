@@ -1,7 +1,7 @@
 <mat-list data-test="item">
 	<mat-list-item *ngFor="let todo of todos">
 		<p matLine>{{ todo.title }}</p>
-		<button mat-raised-button color="primary" (click)="removeTodo(todo.id)" data-test=remove-button>Remove</button>
+		<button mat-raised-button color="primary" (click)="removeTodo(todo.id)" data-test=remove-button>{{ 'todo.removeButton' | transloco }}</button>
 		<mat-divider></mat-divider>
 	</mat-list-item>
 </mat-list>

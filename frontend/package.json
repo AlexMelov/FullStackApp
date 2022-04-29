@@ -5,8 +5,8 @@
 	"dependencies":
 	{
 		"@angular/animations": "13.3.4",
-		"@angular/common": "13.3.4",
 		"@angular/cdk": "13.3.4",
+		"@angular/common": "13.3.4",
 		"@angular/compiler": "13.3.4",
 		"@angular/core": "13.3.4",
 		"@angular/forms": "13.3.4",
@@ -14,6 +14,7 @@
 		"@angular/platform-browser": "13.3.4",
 		"@angular/platform-browser-dynamic": "13.3.4",
 		"@angular/router": "13.3.4",
+		"@ngneat/transloco": "4.0.0",
 		"harmonize.css": "4.1.4",
 		"rxjs": "7.5.5",
 		"tslib": "2.4.0",
@@ -60,13 +61,13 @@
 		"build:stage": "npm run build -- --configuration=stage",
 		"build:prod": "npm run build -- --configuration=prod",
 		"test": "ng test",
-		"lint": "ng lint && stylelint src/**/**/*.scss --custom-syntax=postcss-scss --cache",
-		"fix": "ng lint --fix && stylelint src/**/**/*.scss --custom-syntax=postcss-scss --fix",
+		"lint": "ng lint && stylelint src/**/**/*.scss --cache",
+		"fix": "ng lint --fix && stylelint src/**/**/*.scss --fix",
 		"e2e": "ng e2e",
 		"e2e:local": "cross-env-shell CYPRESS_APP_ENV=local npm run e2e",
 		"e2e:dev": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
-		"e2e:stage": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
-		"e2e:prod": "cross-env-shell CYPRESS_APP_ENV=dev npm run e2e",
+		"e2e:stage": "cross-env-shell CYPRESS_APP_ENV=stage npm run e2e",
+		"e2e:prod": "cross-env-shell CYPRESS_APP_ENV=prod npm run e2e",
 		"wait-for-serve": "wait-on tcp:4200 tcp:8000 && sleep 30"
 	}
 }

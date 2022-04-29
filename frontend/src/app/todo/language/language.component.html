@@ -1,0 +1,16 @@
+<form>
+	<mat-form-field appearance="fill" class="select-language">
+		<mat-label>{{ 'todo.selectLanguage' | transloco }}</mat-label>
+		<mat-select [(value)]="activeLanguage">
+			<mat-option
+				*ngFor="let language of languages"
+				[value]="language.value"
+				(click)="setLanguage(language)">
+				<div class="{{language.value}}">
+					<p>{{ language.label }}</p>
+					<img src="./assets/flags/{{ language.value }}.svg" alt="{{ language.label }}" />
+				</div>
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+</form>

@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
 import { FormComponent } from './todo/form/form.component';
 import { ListComponent } from './todo/list/list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiModule } from '../ui.module';
 import { CommonModule } from '@angular/common';
+import { TranslocoRootModule } from './transloco-root.module';
 import { SpinnerInterceptor } from './spinner.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LanguageComponent } from './todo/language/language.component';
 
 @NgModule(
 {
@@ -19,7 +21,8 @@ import { SpinnerInterceptor } from './spinner.interceptor';
 		AppComponent,
 		TodoComponent,
 		FormComponent,
-		ListComponent
+		ListComponent,
+		LanguageComponent
 	],
 	imports:
 	[
@@ -29,7 +32,8 @@ import { SpinnerInterceptor } from './spinner.interceptor';
 		CommonModule,
 		HttpClientModule,
 		ReactiveFormsModule,
-		UiModule
+		UiModule,
+		TranslocoRootModule
 	],
 	providers:
 	[
