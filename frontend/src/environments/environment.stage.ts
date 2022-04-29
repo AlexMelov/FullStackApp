@@ -7,6 +7,11 @@ export const environment : Environment =
 		branch: 'master',
 		environment: 'stage'
 	},
+	language:
+	{
+		availableLanguages: [ 'en', 'de', 'mk' ],
+		defaultLanguages: 'en'
+	},
 	baseUrl : 'https://todos-stage.vercel.app',
 	apiUrl: 'https://todos-stage.vercel.app/api',
 	apiRoutes:

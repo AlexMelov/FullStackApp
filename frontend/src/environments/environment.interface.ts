@@ -1,3 +1,4 @@
+
 export interface Environment
 {
 	metadata :
@@ -5,6 +6,11 @@ export interface Environment
 		branch : string;
 		environment : string
 	};
+	language :
+	{
+		availableLanguages : string[],
+		defaultLanguages : string
+	}
 	baseUrl : string;
 	apiUrl : string;
 	apiRoutes :

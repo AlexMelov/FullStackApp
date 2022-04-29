@@ -1,14 +1,14 @@
-import { Languages } from './language.model';
+import { Languages } from './language.interface';
 
 export const languages : Languages[] =
-	[
-		{
-			type: 'en', label: 'EN'
-		},
-		{
-			type: 'de', label: 'DE'
-		},
-		{
-			type: 'mk', label: 'MK'
-		}
-	];
+[
+	{
+		value: 'en', label: 'EN'
+	},
+	{
+		value: 'de', label: 'DE'
+	},
+	{
+		value: 'mk', label: 'MK'
+	}
+];
