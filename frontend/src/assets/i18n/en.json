@@ -3,6 +3,7 @@
 	{
 		"placeholder": "Add new todo",
 		"addButton": "Add Todo",
-		"removeButton": "Remove"
+		"removeButton": "Remove",
+		"selectLanguage": "Select Language"
 	}
 }

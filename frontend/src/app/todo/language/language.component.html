@@ -1,8 +1,8 @@
 <form>
 	<mat-form-field appearance="fill" class="select-container">
-		<mat-label>Selected Language</mat-label>
+		<mat-label>{{ 'todo.selectLanguage' | transloco }}</mat-label>
 		<mat-select name="language">
-			<mat-option>Select Language</mat-option>
+			<mat-option>{{ 'todo.selectLanguage' | transloco }}</mat-option>
 			<mat-option
 				*ngFor="let language of languages"
 				[value]="language.value"

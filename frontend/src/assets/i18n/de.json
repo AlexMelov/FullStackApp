@@ -3,6 +3,7 @@
 	{
 		"placeholder": "Neue Aufgabe hinzufügen",
 		"addButton": "Aufgabe hinzufügen",
-		"removeButton": "Löschen"
+		"removeButton": "Löschen",
+		"selectLanguage": "Sprache auswählen"
 	}
 }

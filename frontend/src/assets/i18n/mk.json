@@ -3,6 +3,7 @@
 	{
 		"placeholder": "Додадете нова цел",
 		"addButton": "Додади Цел",
-		"removeButton": "Избриши"
+		"removeButton": "Избриши",
+		"selectLanguage": "Избери Јазик"
 	}
 }
