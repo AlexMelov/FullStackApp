@@ -23,6 +23,6 @@ export class LanguageComponent
 
 	setLanguage(language : Languages) : void
 	{
-		this.translocoService.setActiveLang(language.language);
+		this.translocoService.setActiveLang(language.value);
 	}
 }
