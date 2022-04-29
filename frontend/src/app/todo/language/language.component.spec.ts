@@ -9,9 +9,10 @@ describe.skip('LanguageComponent', () =>
 
 	beforeEach(async() =>
 	{
-		await TestBed.configureTestingModule({
-      declarations: [ LanguageComponent ]
-    })
+		await TestBed.configureTestingModule(
+		{
+      		declarations: [ LanguageComponent ]
+    	})
     .compileComponents();
 	});
 
