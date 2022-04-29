@@ -5,23 +5,16 @@
 	top: 0;
 }
 
-.en
-{
-	background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/GB.svg');
-	background-position: right;
-	background-repeat: no-repeat;
-}
-
-.de
-{
-	background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg');
-	background-position: right;
-	background-repeat: no-repeat;
-}
-
+.en,
+.de,
 .mk
 {
-	background-image: url('https://purecatamphetamine.github.io/country-flag-icons/3x2/MK.svg');
-	background-position: right;
-	background-repeat: no-repeat;
+	display: flex;
+	justify-content: space-between;
+
+	img
+	{
+		display: block;
+		width: 20%;
+	}
 }

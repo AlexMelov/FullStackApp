@@ -3,8 +3,14 @@
 		<mat-label>Selected Language</mat-label>
 		<mat-select name="language">
 			<mat-option>Select Language</mat-option>
-			<mat-option *ngFor="let language of languages" [value]="language.value" (click)="setLanguage(language.value)" class="{{ language.value }}">
-				{{ language.language }}
+			<mat-option
+				*ngFor="let language of languages"
+				[value]="language.value"
+				(click)="setLanguage(language.value)">
+				<div class="{{language.value}}">
+					<p>{{ language.language }}</p>
+					<img src="./assets/flags/{{language.value}}.svg" alt="{{language.language}}" />
+				</div>
 			</mat-option>
 		</mat-select>
 	</mat-form-field>
