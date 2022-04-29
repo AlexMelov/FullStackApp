@@ -21,8 +21,8 @@ export class LanguageComponent
 	{
 	}
 
-	setLanguage(language : string) : void
+	setLanguage(language : Languages) : void
 	{
-		this.translocoService.setActiveLang(language);
+		this.translocoService.setActiveLang(language.language);
 	}
 }
