@@ -7,9 +7,9 @@ import {
 	TranslocoService
 } from '@ngneat/transloco';
 import { NgModule } from '@angular/core';
-import { environment } from '../environments/environment';
-import { TranslocoHttpLoader } from '../../transloco.http.loader';
+import { TranslateLoader } from './translate.loader';
 import { Language } from './todo/language/language.type';
+import { environment } from '../environments/environment';
 
 @NgModule(
 {
@@ -27,7 +27,8 @@ import { Language } from './todo/language/language.type';
 			})
 		},
 		{
-			provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoader
+			provide: TRANSLOCO_LOADER,
+			useClass: TranslateLoader
 		}
 	]
 })
