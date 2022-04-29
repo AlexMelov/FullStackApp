@@ -5,11 +5,11 @@
 			<mat-option>{{ 'todo.selectLanguage' | transloco }}</mat-option>
 			<mat-option
 				*ngFor="let language of languages"
-				[value]="language.value"
+				[value]="language.type"
 				(click)="setLanguage(language)">
-				<div class="{{language.value}}">
-					<p>{{ language.language }}</p>
-					<img src="./assets/flags/{{language.value}}.svg" alt="{{language.language}}" />
+				<div class="{{language.type}}">
+					<p>{{ language.label }}</p>
+					<img src="./assets/flags/{{language.type}}.svg" alt="{{language.label}}" />
 				</div>
 			</mat-option>
 		</mat-select>

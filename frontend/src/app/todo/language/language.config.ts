@@ -3,12 +3,12 @@ import { Languages } from './language.model';
 export const languages : Languages[] =
 	[
 		{
-			value: 'en', language: 'EN'
+			type: 'en', label: 'EN'
 		},
 		{
-			value: 'de', language: 'DE'
+			type: 'de', label: 'DE'
 		},
 		{
-			value: 'mk', language: 'MK'
+			type: 'mk', label: 'MK'
 		}
 	];
