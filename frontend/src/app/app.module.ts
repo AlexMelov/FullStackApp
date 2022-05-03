@@ -13,6 +13,7 @@ import { TranslocoRootModule } from './transloco-root.module';
 import { SpinnerInterceptor } from './spinner.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LanguageComponent } from './todo/language/language.component';
+import { RegisterComponent } from './todo/register/register.component';
 
 @NgModule(
 {
@@ -22,7 +23,8 @@ import { LanguageComponent } from './todo/language/language.component';
 		TodoComponent,
 		FormComponent,
 		ListComponent,
-		LanguageComponent
+		LanguageComponent,
+		RegisterComponent
 	],
 	imports:
 	[

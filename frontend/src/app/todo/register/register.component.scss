@@ -1,0 +1,13 @@
+.register-form
+{
+	align-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 1em auto;
+	width: 25em;
+	.signUp-button
+	{
+		background-color: #fd7a7a;
+	}
+}

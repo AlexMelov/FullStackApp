@@ -4,7 +4,8 @@ import { environment } from '../../environments/environment';
 import { Todo } from './todo.intercace';
 import { Observable } from 'rxjs';
 
-@Injectable({
+@Injectable(
+{
 	providedIn: 'root'
 })
 export class TodoService

@@ -4,6 +4,9 @@
 		"placeholder": "Додадете нова цел",
 		"addButton": "Додади Цел",
 		"removeButton": "Избриши",
-		"selectLanguage": "Избери Јазик"
+		"selectLanguage": "Избери Јазик",
+		"email": "Внесете ја вашата е-пошта",
+		"password": "Внесете ја вашата лозинка",
+		"register": "Најави се"
 	}
 }
