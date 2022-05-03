@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
 import { FormComponent } from './todo/form/form.component';
 import { ListComponent } from './todo/list/list.component';
-import { UiModule } from '../ui.module';
+import { UiModule } from './ui.module';
 import { CommonModule } from '@angular/common';
 import { TranslocoRootModule } from './transloco-root.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,9 +35,6 @@ import { CrudModule } from 'ngx-crud';
 		UiModule,
 		TranslocoRootModule,
 		CrudModule
-	],
-	providers:
-	[
 	],
 	bootstrap:
 	[
