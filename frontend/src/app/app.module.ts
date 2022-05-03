@@ -13,6 +13,7 @@ import { TranslocoRootModule } from './transloco-root.module';
 import { SpinnerInterceptor } from './spinner.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LanguageComponent } from './todo/language/language.component';
+import { CrudModule } from 'ngx-crud';
 import { RegisterComponent } from './todo/register/register.component';
 
 @NgModule(
@@ -35,7 +36,8 @@ import { RegisterComponent } from './todo/register/register.component';
 		HttpClientModule,
 		ReactiveFormsModule,
 		UiModule,
-		TranslocoRootModule
+		TranslocoRootModule,
+		CrudModule
 	],
 	providers:
 	[
