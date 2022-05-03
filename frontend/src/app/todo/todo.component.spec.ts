@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TodoService } from './todo.service';
 
-describe('ListComponent', () =>
+describe.skip('ListComponent', () =>
 {
 	let service : TodoService;
 
