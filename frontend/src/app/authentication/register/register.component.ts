@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component(
 	{
@@ -13,18 +14,9 @@ export class RegisterComponent
 	@Output() onRegister : EventEmitter<object> = new EventEmitter<object>();
 
 	hide : boolean = true;
-	user_email : string | null = null;
-	user_password : string | null = null;
 
-	sendRegister() : void
+	sendRegister(form : NgForm) : void
 	{
-		this.onRegister.emit(
-		{
-			email: this.user_email,
-			password: this.user_password
-		}
-		);
-	this.user_password = null;
-	this.user_email = null;
+		this.onRegister.emit(form.value);
 	}
 }

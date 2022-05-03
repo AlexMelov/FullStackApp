@@ -27,4 +27,14 @@ export class AuthenticationComponent
 	{
 		this.register = type;
 	}
+
+	getRegister(event : object) : object
+	{
+		return event;
+	}
+
+	getLogin(event : object) : object
+	{
+		return event;
+	}
 }

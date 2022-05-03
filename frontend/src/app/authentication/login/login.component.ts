@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component(
 {
@@ -9,21 +10,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 export class LoginComponent
 {
-	@Output() onRegister : EventEmitter<object> = new EventEmitter<object>();
+	@Output() onLogin : EventEmitter<object> = new EventEmitter<object>();
 
 	hide : boolean = true;
-	user_email : string | null = null;
-	user_password : string | null = null;
 
-	sendLogin() : void
+	sendLogin(form : NgForm) : void
 	{
-		this.onRegister.emit(
-			{
-				email: this.user_email,
-				password: this.user_password
-			}
-		);
-		this.user_password = null;
-		this.user_email = null;
+		this.onLogin.emit(form.value);
 	}
 }
