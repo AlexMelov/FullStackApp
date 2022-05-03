@@ -1,0 +1,9 @@
+<app-language></app-language>
+<div class="registration-body">
+	<nav class="menu-button-wrapper">
+		<button matLine mat-raised-button (click)="toggleRegistration('register')">Register</button>
+		<button matLine mat-raised-button (click)="toggleRegistration('login')">Login</button>
+	</nav>
+	<app-register *ngIf="showRegister"></app-register>
+	<app-login *ngIf="showLogin"></app-login>
+</div>

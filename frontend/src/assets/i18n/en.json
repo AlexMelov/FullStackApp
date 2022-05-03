@@ -7,6 +7,7 @@
 		"selectLanguage": "Select Language",
 		"email": "Enter your email",
 		"password": "Enter your password",
-		"register": "Sign Up"
+		"register": "Sign Up",
+		"login": "Login"
 	}
 }

@@ -1,13 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
 import { TodoComponent } from './todo/todo.component';
 import { NgModule } from '@angular/core';
-import { RegisterComponent } from './register/register.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes : Routes =
 [
 	{
 		path: '',
-		component:RegisterComponent
+		component:RegistrationComponent
 	},
 	{
 		path: 'todos',

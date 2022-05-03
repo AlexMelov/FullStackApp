@@ -1,27 +1,23 @@
-.register-form
+.registration-body
 {
 	align-content: center;
 	display: flex;
+	justify-content: space-between;
 	flex-direction: column;
-	justify-content: center;
 	left: 50%;
 	position: fixed;
 	top: 50%;
 	transform: translate(-50%,-50%);
-	width: 25em;
-
-	.signUp-button
-	{
-		background-color: #fd7a7a;
-	}
 }
 .menu-button-wrapper
 {
 	align-content: center;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	button
 	{
-		margin: 1em 1em;
+		margin: 1em 0;
+		background-color: #4f77cd;
+		color: #ffffff;
 	}
 }
