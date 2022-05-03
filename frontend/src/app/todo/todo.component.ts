@@ -27,7 +27,7 @@ export class TodoComponent implements OnInit
 
 	getTodos() : void
 	{
-		this.todoService.getAll().subscribe(todos => this.todos = todos);
+		this.todoService.find().subscribe(todos => this.todos = todos);
 	}
 
 	createTodo(todo : Todo) : void

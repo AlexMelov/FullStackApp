@@ -20,7 +20,7 @@ describe('ListComponent', () =>
 	{
 		expect(service).toBeTruthy();
 
-		service.getAll().subscribe(todos =>
+		service.find().subscribe(todos =>
 		{
 			expect(todos).not.toHaveLength(0);
 		});
