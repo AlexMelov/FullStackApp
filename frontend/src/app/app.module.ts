@@ -14,10 +14,10 @@ import { TodoComponent } from './todo/todo.component';
 import { FormComponent } from './todo/form/form.component';
 import { ListComponent } from './todo/list/list.component';
 import { LanguageComponent } from './todo/language/language.component';
-import { RegisterComponent } from "./register/register.component";
-import {AppRoutingModule} from "./app-routing.module";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {RouterModule} from "@angular/router";
+import { RegisterComponent } from './register/register.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 @NgModule(
 {

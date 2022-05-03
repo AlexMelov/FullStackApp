@@ -7,7 +7,7 @@ describe('todo', () =>
 {
 	beforeEach(() =>
 	{
-		cy.visit(environment.baseUrl);
+		cy.visit(environment.baseUrl + '/todos');
 	});
 
 	it('todo list is working', () =>
