@@ -20,9 +20,9 @@ export class TodoComponent implements OnInit
 
 	ngOnInit() : void
 	{
-		this.getTodos();
-		this.observeService.observeAll().subscribe(observeStatus => this.observeStatus = observeStatus);
 		this.todoService.enableObserve();
+		this.observeService.observeAll().subscribe(observeStatus => this.observeStatus = observeStatus);
+		this.getTodos();
 	}
 
 	getTodos() : void
