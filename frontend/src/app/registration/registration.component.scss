@@ -2,8 +2,8 @@
 {
 	align-content: center;
 	display: flex;
-	justify-content: space-between;
 	flex-direction: column;
+	justify-content: space-between;
 	left: 50%;
 	position: fixed;
 	top: 50%;
@@ -16,8 +16,8 @@
 	justify-content: space-between;
 	button
 	{
-		margin: 1em 0;
 		background-color: #4f77cd;
 		color: #ffffff;
+		margin: 1em 0;
 	}
 }

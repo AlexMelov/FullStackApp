@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-export type RegistrationType = 'register' | 'login'
+import { RegistrationType } from './registration.type';
 
 @Component(
 	{
