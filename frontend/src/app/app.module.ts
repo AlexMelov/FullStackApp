@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LanguageComponent } from './todo/language/language.component';
 import { CrudModule } from 'ngx-crud';
 import { RegisterComponent } from './todo/register/register.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule(
 {
@@ -37,7 +38,8 @@ import { RegisterComponent } from './todo/register/register.component';
 		ReactiveFormsModule,
 		UiModule,
 		TranslocoRootModule,
-		CrudModule
+		CrudModule,
+		RouterModule
 	],
 	providers:
 	[
