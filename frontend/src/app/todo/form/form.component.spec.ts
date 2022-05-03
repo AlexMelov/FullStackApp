@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TodoService } from '../todo.service';
 import { Todo } from '../todo.intercace';
+import { CrudModule } from 'ngx-crud';
 
 describe('ListComponent', () =>
 {
@@ -12,7 +13,7 @@ describe('ListComponent', () =>
 	{
 		await TestBed.configureTestingModule(
 			{
-				imports: [ HttpClientTestingModule ]
+				imports: [ HttpClientTestingModule, CrudModule ]
 			});
 		service = TestBed.inject(TodoService);
 	});
@@ -30,7 +31,7 @@ describe('ListComponent', () =>
 			expect(todoCreate.id).toBeTruthy();
 		});
 
-		service.getAll().subscribe(todos =>
+		service.find().subscribe(todos =>
 		{
 			expect(todos).not.toHaveLength(0);
 			todos.forEach(todo =>
