@@ -1,7 +1,7 @@
-<form class="register-form" (submit)="sendLogin()">
+<form class="register-form" (submit)="sendLogin()" #loginForm="ngForm">
 	<mat-form-field appearance="fill">
 		<mat-label for="user_input_email">{{ 'todo.email' | transloco }}</mat-label>
-		<input type="email" id="user_input_email" matInput [(ngModel)]="user_email" required email />
+		<input type="email" id="user_input_email" matInput ngModel #emailInput required email />
 	</mat-form-field>
 	<mat-form-field appearance="fill">
 		<mat-label>{{ 'todo.password' | transloco }}</mat-label>
