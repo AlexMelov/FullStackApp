@@ -22,7 +22,7 @@ export class TodoComponent implements OnInit
 	{
 		this.getTodos();
 		this.observeService.observeAll().subscribe(observeStatus => this.observeStatus = observeStatus);
-		this.todoService.enableObserve();
+		this.todoService.enableObserve('ANY', 100);
 	}
 
 	getTodos() : void

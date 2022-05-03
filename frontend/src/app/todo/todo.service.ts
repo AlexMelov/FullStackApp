@@ -3,11 +3,14 @@ import { environment } from '../../environments/environment';
 import { Todo } from './todo.intercace';
 import { ApiRoute, ApiUrl, CrudService } from 'ngx-crud';
 
-@Injectable({
+@Injectable(
+{
 	providedIn: 'root'
 })
+
 @ApiUrl(environment.apiUrl)
 @ApiRoute(environment.apiRoutes.todos)
+
 export class TodoService extends CrudService<Todo, Todo>
 {
 
