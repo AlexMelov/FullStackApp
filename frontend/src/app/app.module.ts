@@ -41,9 +41,9 @@ import { CrudModule } from 'ngx-crud';
 		AppComponent
 	],
 	schemas:
-  [
-    CUSTOM_ELEMENTS_SCHEMA
-  ]
+	[
+		CUSTOM_ELEMENTS_SCHEMA
+	]
 })
 export class AppModule
 {
