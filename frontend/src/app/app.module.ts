@@ -14,12 +14,12 @@ import { TodoComponent } from './todo/todo.component';
 import { FormComponent } from './todo/form/form.component';
 import { ListComponent } from './todo/list/list.component';
 import { LanguageComponent } from './todo/language/language.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { RegisterComponent } from './registration/register/register.component';
-import { LoginComponent } from './registration/login/login.component';
+import { RegisterComponent } from './authentication/register/register.component';
+import { LoginComponent } from './authentication/login/login.component';
 
 @NgModule(
 {
@@ -30,7 +30,7 @@ import { LoginComponent } from './registration/login/login.component';
 		FormComponent,
 		ListComponent,
 		LanguageComponent,
-		RegistrationComponent,
+		AuthenticationComponent,
 		RegisterComponent,
 		LoginComponent
 	],

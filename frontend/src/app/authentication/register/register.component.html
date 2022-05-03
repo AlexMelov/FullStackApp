@@ -1,4 +1,4 @@
-<form class="register-form" (submit)="userCredentials()">
+<form class="register-form" (submit)="sendRegister()">
 	<mat-form-field appearance="fill">
 		<mat-label for="user_input_email">{{ 'todo.email' | transloco }}</mat-label>
 		<input type="email" id="user_input_email" matInput [(ngModel)]="user_email" required email />
@@ -10,5 +10,6 @@
 			<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 		</button>
 	</mat-form-field>
-	<button type="submit" matLine mat-raised-button class="signUp-button">{{ 'todo.register' | transloco }}</button>
+	<button type="submit" matLine mat-raised-button class="signUp-button" routerLink="/todos">{{ 'todo.register' | transloco }}
+	</button>
 </form>

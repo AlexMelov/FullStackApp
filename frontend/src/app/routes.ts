@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { RegistrationComponent } from './registration/registration.component';
 import { TodoComponent } from './todo/todo.component';
+import { AuthenticationComponent } from "./authentication/authentication.component";
 
 export const routes : Routes =
 	[
 		{
 			path: '',
-			component:RegistrationComponent
+			component:AuthenticationComponent
 		},
 		{
 			path: 'todos',

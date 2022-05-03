@@ -16,7 +16,7 @@ export class RegisterComponent
 	user_email : string | null = null;
 	user_password : string | null = null;
 
-	userCredentials() : void
+	sendRegister() : void
 	{
 		this.onRegister.emit(
 		{
