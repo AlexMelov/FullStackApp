@@ -4,6 +4,9 @@
 		"placeholder": "Neue Aufgabe hinzufügen",
 		"addButton": "Aufgabe hinzufügen",
 		"removeButton": "Löschen",
-		"selectLanguage": "Sprache auswählen"
+		"selectLanguage": "Sprache auswählen",
+		"email": "Geben sie ihre E-Mail Adresse ein",
+		"password": "Geben Sie Ihr Passwort ein",
+		"register": "Anmeldung"
 	}
 }

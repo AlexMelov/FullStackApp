@@ -1,4 +1,6 @@
+<app-language></app-language>
 <form class="register-form" (submit)="userCredentials()">
+	<h1>Register</h1>
 	<mat-form-field appearance="fill">
 		<mat-label for="user_input_email">{{ 'todo.email' | transloco }}</mat-label>
 		<input type="email" id="user_input_email" matInput [(ngModel)]="user_email" required email />

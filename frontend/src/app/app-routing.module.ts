@@ -1,19 +1,20 @@
-import {RouterModule, Routes} from "@angular/router";
-import { TodoComponent } from "./todo/todo.component";
-import {RegisterComponent} from "./todo/register/register.component";
-import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from '@angular/router';
+import { TodoComponent } from './todo/todo.component';
+import { NgModule } from '@angular/core';
+import { RegisterComponent } from "./register/register.component";
+
 
 const routes : Routes =
 [
 	{
-		path:'',
-		component:TodoComponent
+		path: '',
+		component:RegisterComponent
 	},
 	{
-		path: '/register',
-		component: RegisterComponent
+		path: 'todos',
+		component: TodoComponent
 	}
-]
+];
 
 @NgModule(
 {

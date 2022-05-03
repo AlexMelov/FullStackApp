@@ -3,18 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-import { TodoComponent } from './todo/todo.component';
-import { FormComponent } from './todo/form/form.component';
-import { ListComponent } from './todo/list/list.component';
 import { UiModule } from '../ui.module';
 import { CommonModule } from '@angular/common';
 import { TranslocoRootModule } from './transloco-root.module';
 import { SpinnerInterceptor } from './spinner.interceptor';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LanguageComponent } from './todo/language/language.component';
 import { CrudModule } from 'ngx-crud';
-import { RegisterComponent } from './todo/register/register.component';
+
+import { AppComponent } from './app.component';
+import { TodoComponent } from './todo/todo.component';
+import { FormComponent } from './todo/form/form.component';
+import { ListComponent } from './todo/list/list.component';
+import { LanguageComponent } from './todo/language/language.component';
+import { RegisterComponent } from "./register/register.component";
+import {AppRoutingModule} from "./app-routing.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {RouterModule} from "@angular/router";
 
 @NgModule(
@@ -39,7 +41,8 @@ import {RouterModule} from "@angular/router";
 		UiModule,
 		TranslocoRootModule,
 		CrudModule,
-		RouterModule
+		RouterModule,
+		AppRoutingModule
 	],
 	providers:
 	[

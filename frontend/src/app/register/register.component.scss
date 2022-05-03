@@ -4,8 +4,12 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	margin: 1em auto;
+	left: 50%;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%,-50%);
 	width: 25em;
+
 	.signUp-button
 	{
 		background-color: #fd7a7a;
