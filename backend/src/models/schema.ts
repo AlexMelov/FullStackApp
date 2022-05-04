@@ -1,6 +1,7 @@
 import mongoose, { Schema, Model } from 'mongoose';
 import { Todo } from './todo';
 import { User } from './user.interface';
+import mongooseUniqueValidator from 'mongoose-unique-validator';
 
 export const todoSchema : Schema = new mongoose.Schema(
 {
@@ -18,7 +19,8 @@ export const userSchema : Schema = new mongoose.Schema(
 		email:
 			{
 				type: String,
-				required: true
+				required: true,
+				unique : true
 			},
 		password:
 			{
@@ -27,4 +29,5 @@ export const userSchema : Schema = new mongoose.Schema(
 			}
 	});
 
+userSchema.plugin(mongooseUniqueValidator);
 export const userModel : Model<User> = mongoose.model('Users', userSchema);
