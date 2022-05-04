@@ -9,7 +9,7 @@ import { ApiRoute, ApiUrl, CrudService } from 'ngx-crud';
 })
 @ApiUrl(environment.apiUrl)
 @ApiRoute(environment.apiRoutes.todos)
-export class TodoService extends CrudService<Todo, Todo>
+export class TodoService extends CrudService<Todo, Todo, Todo, Todo, Todo, Todo, Todo, Todo, Todo, Todo, void>
 {
 
 }
