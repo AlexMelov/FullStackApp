@@ -15,19 +15,19 @@ export const todoSchema : Schema = new mongoose.Schema(
 export const todoModel : Model<Todo> = mongoose.model('Todos', todoSchema);
 
 export const userSchema : Schema = new mongoose.Schema(
+{
+	email:
 	{
-		email:
-			{
-				type: String,
-				required: true,
-				unique : true
-			},
-		password:
-			{
-				type: String,
-				required: true
-			}
-	});
+		type: String,
+		required: true,
+		unique : true
+	},
+	password:
+	{
+		type: String,
+		required: true
+	}
+});
 
 userSchema.plugin(mongooseUniqueValidator);
 export const userModel : Model<User> = mongoose.model('Users', userSchema);

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { User } from '../authentication.model';
 
 @Component(
 {
@@ -10,7 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 export class LoginComponent
 {
-	@Output() onLogin : EventEmitter<object> = new EventEmitter<object>();
+	@Output() onLogin : EventEmitter<User> = new EventEmitter<User>();
 
 	hide : boolean = true;
 	loginObject : FormGroup = this.formBuilder.group(

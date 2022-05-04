@@ -4,12 +4,23 @@ import { environment } from '../../environments/environment';
 import { User } from './authentication.model';
 
 @Injectable(
-	{
-		providedIn: 'root'
-	})
+{
+	providedIn: 'root'
+})
 @ApiUrl(environment.apiUrl)
 @ApiRoute('/register')
 export class AuthenticationService extends CrudService<User, User, User, User, User, User[], User, User, User, User, void>
+{
+
+}
+
+@Injectable(
+{
+	providedIn: 'root'
+})
+@ApiUrl(environment.apiUrl)
+@ApiRoute('/login')
+export class LoginServices extends CrudService<User, User, User, User, User, User[], User, User, User, User, void>
 {
 
 }

@@ -4,7 +4,10 @@ import { HydratedDocument } from 'mongoose';
 import { Todo, DirtyTodo } from './models/todo';
 import { Handler } from './models/express';
 import { User } from './models/user.interface';
-import { hash } from 'bcrypt';
+import { compare, hash } from 'bcrypt';
+import * as jwt from 'jsonwebtoken';
+import { AST } from 'eslint';
+import Token = AST.Token;
 
 export const getHandler : Handler = (request : Request, response : Response) : void =>
 {
@@ -45,6 +48,52 @@ export const userCreateHandler : Handler = (request : Request, response : Respon
 				.catch(error => response.json({ message:error }));
 		})
 		.catch(error => response.json({ message : error }));
+};
+
+export const userLoginHandler : Handler = (request : Request, response : Response) : void =>
+{
+	let userData : User & {_id : {}};
+
+	userModel.findOne(
+	{
+		email: request.body.email
+	})
+	.then(user =>
+	{
+		userData = user;
+		return compare(request.body.password, user.password);
+	})
+	.then(result =>
+	{
+		if(!result)
+		{
+			return response.status(401).json(
+				{
+					message: 'Authentication failed on user'
+				}
+			);
+		}
+		const token : Token = jwt.sign(
+		{
+			email: userData.email,
+			userId: userData._id
+		},
+		'secret_this_should_be_long',
+		{ expiresIn: '1h' });
+
+		response.status(200).json(
+			{
+				token
+			});
+	})
+	.catch(() =>
+	{
+		return response.status(401).json(
+			{
+				message: 'Authentication failed on entire'
+			}
+		);
+	});
 };
 
 function mapData(data : DirtyTodo[])
