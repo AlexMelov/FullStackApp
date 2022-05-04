@@ -27,6 +27,11 @@ export const deleteHandler : Handler = (request : Request, response : Response) 
 		.catch(error => response.json({ message: error }));
 };
 
+export const userCreateHandler : Handler = () : void =>
+{
+
+};
+
 function mapData(data : DirtyTodo[])
 {
 	return data.map(item =>({ id: item._id, title: item.title }));
