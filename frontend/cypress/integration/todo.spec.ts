@@ -31,6 +31,7 @@ describe('todo', () =>
 
 	it('removing todo from list', () =>
 	{
+		cy.reload();
 		cy.get('[data-test="item"]').should('contain.text', 'My new Todo from Cypress');
 		cy.get('[data-test=remove-button]').last().click();
 		cy.wait(2000);

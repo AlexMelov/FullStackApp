@@ -2,5 +2,5 @@
 . "$(dirname "$0")/_/husky.sh"
 
 
-npm --prefix backend run lint
-npm --prefix frontend run lint
+npm run lint --prefix ./backend
+npm run lint --prefix ./frontend

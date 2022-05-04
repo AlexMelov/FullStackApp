@@ -7,6 +7,11 @@ export const environment : Environment =
 		branch: 'develop',
 		environment: 'local'
 	},
+	language:
+	{
+		availableLanguages: [ 'en', 'de', 'mk' ],
+		defaultLanguages: 'en'
+	},
 	baseUrl : 'http://localhost:4200',
 	apiUrl: 'http://localhost:8000',
 	apiRoutes:

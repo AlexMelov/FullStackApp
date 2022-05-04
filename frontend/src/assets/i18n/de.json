@@ -1,0 +1,9 @@
+{
+	"todo":
+	{
+		"placeholder": "Neue Aufgabe hinzufügen",
+		"addButton": "Aufgabe hinzufügen",
+		"removeButton": "Löschen",
+		"selectLanguage": "Sprache auswählen"
+	}
+}

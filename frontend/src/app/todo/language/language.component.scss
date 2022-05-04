@@ -1,0 +1,20 @@
+.select-language
+{
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
+.en,
+.de,
+.mk
+{
+	display: flex;
+	justify-content: space-between;
+
+	img
+	{
+		display: block;
+		width: 1.25em;
+	}
+}

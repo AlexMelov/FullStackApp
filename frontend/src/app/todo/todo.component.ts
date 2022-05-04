@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from './todo.service';
 import { Todo } from './todo.intercace';
-import { SpinnerStore } from './list/spinner.store';
-import { Observable } from 'rxjs';
+import { ObserveService, ObserveStatus } from 'ngx-crud';
 
 @Component(
 {
@@ -13,21 +12,22 @@ import { Observable } from 'rxjs';
 export class TodoComponent implements OnInit
 {
 	todos : Todo[] = [];
+	observeStatus : ObserveStatus | undefined;
 
-	loaderObservable : Observable<boolean> = this.spinnerStore.loaderObservable;
-
-	constructor(private todoService : TodoService, public spinnerStore : SpinnerStore)
+	constructor(private todoService : TodoService, protected observeService : ObserveService)
 	{
 	}
 
 	ngOnInit() : void
 	{
 		this.getTodos();
+		this.observeService.observeAll().subscribe(observeStatus => this.observeStatus = observeStatus);
+		this.todoService.enableObserve('ANY', 100);
 	}
 
 	getTodos() : void
 	{
-		this.todoService.getAll().subscribe(todos => this.todos = todos);
+		this.todoService.find().subscribe(todos => this.todos = todos);
 	}
 
 	createTodo(todo : Todo) : void
