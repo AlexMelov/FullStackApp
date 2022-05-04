@@ -7,10 +7,8 @@ import { ApiRoute, ApiUrl, CrudService } from 'ngx-crud';
 {
 	providedIn: 'root'
 })
-
 @ApiUrl(environment.apiUrl)
 @ApiRoute(environment.apiRoutes.todos)
-
 export class TodoService extends CrudService<Todo, Todo>
 {
 
