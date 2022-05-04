@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component(
 	{
@@ -14,9 +14,18 @@ export class RegisterComponent
 	@Output() onRegister : EventEmitter<object> = new EventEmitter<object>();
 
 	hide : boolean = true;
-
-	sendRegister(form : NgForm) : void
+	registerObject : FormGroup = this.formBuilder.group(
 	{
-		this.onRegister.emit(form.value);
+		emailRegister: [ '', Validators.required ],
+		passwordRegister: [ '', Validators.required ]
+	});
+
+	constructor(private formBuilder : FormBuilder)
+	{
+	}
+
+	sendRegister() : void
+	{
+		this.onRegister.emit(this.registerObject.value);
 	}
 }

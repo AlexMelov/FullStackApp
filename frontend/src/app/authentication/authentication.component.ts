@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationType } from './authentication.type';
+import { TodoService } from '../todo/todo.service';
 
 @Component(
 	{
@@ -13,6 +14,10 @@ export class AuthenticationComponent
 {
 	register : AuthenticationType = 'login';
 
+	constructor( private todoService : TodoService )
+	{
+	}
+
 	get showRegister() : boolean
 	{
 		return this.register === 'register';
@@ -23,18 +28,18 @@ export class AuthenticationComponent
 		return this.register === 'login';
 	}
 
-	toggleRegistration(type : AuthenticationType) : void
+	toggleAuthentication(type : AuthenticationType) : void
 	{
 		this.register = type;
 	}
 
-	getRegister(event : object) : object
+	getRegister(event : object) : void
 	{
-		return event;
+		this.todoService.create(event).subscribe();
 	}
 
-	getLogin(event : object) : object
+	getLogin(event : object) : void
 	{
-		return event;
+		this.todoService.find(event).subscribe();
 	}
 }
