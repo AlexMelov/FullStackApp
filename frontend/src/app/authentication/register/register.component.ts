@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../authentication.model';
 
 @Component(
 	{
@@ -11,13 +12,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export class RegisterComponent
 {
-	@Output() onRegister : EventEmitter<object> = new EventEmitter<object>();
+	@Output() onRegister : EventEmitter<User> = new EventEmitter<User>();
 
 	hide : boolean = true;
 	registerObject : FormGroup = this.formBuilder.group(
 	{
-		emailRegister: [ '', Validators.required ],
-		passwordRegister: [ '', Validators.required ]
+		email: [ '', Validators.required ],
+		password: [ '', Validators.required ]
 	});
 
 	constructor(private formBuilder : FormBuilder)

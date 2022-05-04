@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthenticationType } from './authentication.type';
 import { TodoService } from '../todo/todo.service';
+import { AuthenticationService } from './authentication.service';
+import { User } from './authentication.model';
 
 @Component(
 	{
@@ -14,7 +16,7 @@ export class AuthenticationComponent
 {
 	register : AuthenticationType = 'login';
 
-	constructor( private todoService : TodoService )
+	constructor( private todoService : TodoService, private authenticationService : AuthenticationService)
 	{
 	}
 
@@ -33,13 +35,13 @@ export class AuthenticationComponent
 		this.register = type;
 	}
 
-	getRegister(event : object) : void
+	getRegister(event : User) : void
 	{
-		this.todoService.create(event).subscribe();
+		this.authenticationService.create(event).subscribe();
 	}
 
-	getLogin(event : object) : void
+	getLogin() : void
 	{
-		this.todoService.find(event).subscribe();
+		this.authenticationService.find().subscribe();
 	}
 }

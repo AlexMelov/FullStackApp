@@ -5,5 +5,5 @@
 		<button matLine mat-raised-button (click)="toggleAuthentication('register')">Register</button>
 	</nav>
 	<app-register *ngIf="showRegister" (onRegister)="getRegister($event)"></app-register>
-	<app-login *ngIf="showLogin" (onLogin)="getLogin($event)"></app-login>
+	<app-login *ngIf="showLogin" (onLogin)="getLogin()"></app-login>
 </div>
