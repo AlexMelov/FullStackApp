@@ -1,11 +1,11 @@
-<form class="login-form" (submit)="sendLogin(loginForm)" #loginForm="ngForm">
+<form class="login-form" (submit)="sendLogin()" [formGroup]="loginObject">
 	<mat-form-field appearance="fill">
 		<mat-label for="user_input_email">{{ 'todo.email' | transloco }}</mat-label>
-		<input type="email" name="email" id="user_input_email" ngModel #emailInput="ngModel" matInput required />
+		<input type="email" id="user_input_email" formControlName="loginEmail" matInput required email/>
 	</mat-form-field>
 	<mat-form-field appearance="fill">
 		<mat-label>{{ 'todo.password' | transloco }}</mat-label>
-		<input matInput [type]="hide ? 'password' : 'text'" name="password" ngModel #passwordInput="ngModel" required />
+		<input matInput [type]="hide ? 'password' : 'text'" formControlName="loginPassword" required />
 		<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
 			<mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
 		</button>

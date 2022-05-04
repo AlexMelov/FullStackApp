@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component(
 {
@@ -13,9 +13,18 @@ export class LoginComponent
 	@Output() onLogin : EventEmitter<object> = new EventEmitter<object>();
 
 	hide : boolean = true;
-
-	sendLogin(form : NgForm) : void
+	loginObject : FormGroup = this.formBuilder.group(
 	{
-		this.onLogin.emit(form.value);
+		email: [ String, Validators.required ],
+		password: [ String, Validators.required ]
+	});
+
+	constructor(private formBuilder : FormBuilder)
+	{
+	}
+
+	sendLogin() : void
+	{
+
 	}
 }
