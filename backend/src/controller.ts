@@ -4,6 +4,7 @@ import { HydratedDocument } from 'mongoose';
 import { Todo, DirtyTodo } from './models/todo';
 import { Handler } from './models/express';
 import { User } from './models/user.interface';
+import { hash } from 'bcrypt';
 
 export const getHandler : Handler = (request : Request, response : Response) : void =>
 {
@@ -30,11 +31,20 @@ export const deleteHandler : Handler = (request : Request, response : Response) 
 
 export const userCreateHandler : Handler = (request : Request, response : Response) : void =>
 {
-	const user : HydratedDocument<User> = new userModel(request.body);
+	hash(request.body.password, 10)
+		.then(hash =>
+		{
+			const user : HydratedDocument<User> = new userModel(
+				{
+					email: request.body.email,
+					password : hash
+				});
 
-	user.save()
-		.then(credentials =>response.json(credentials))
-		.catch(error => response.json({ message:error }));
+			user.save()
+				.then(credentials =>response.json(credentials))
+				.catch(error => response.json({ message:error }));
+		})
+		.catch(error => response.json({ message : error }));
 };
 
 function mapData(data : DirtyTodo[])
