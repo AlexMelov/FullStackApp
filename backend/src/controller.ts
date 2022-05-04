@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
-import { todoModel } from './models/schema.js';
+import { todoModel, userModel } from './models/schema.js';
 import { HydratedDocument } from 'mongoose';
 import { Todo, DirtyTodo } from './models/todo';
 import { Handler } from './models/express';
+import { User } from './models/user.interface';
 
 export const getHandler : Handler = (request : Request, response : Response) : void =>
 {
@@ -27,9 +28,13 @@ export const deleteHandler : Handler = (request : Request, response : Response) 
 		.catch(error => response.json({ message: error }));
 };
 
-export const userCreateHandler : Handler = () : void =>
+export const userCreateHandler : Handler = (request : Request, response : Response) : void =>
 {
+	const user : HydratedDocument<User> = new userModel(request.body);
 
+	user.save()
+		.then(credentials =>response.json(credentials))
+		.catch(error => response.json({ message:error }));
 };
 
 function mapData(data : DirtyTodo[])
