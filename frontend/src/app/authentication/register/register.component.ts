@@ -1,6 +1,8 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Login } from '../login/login.interface';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
+import { RegisterService } from './register.service';
 
 @Component(
 	{
@@ -9,24 +11,30 @@ import { Login } from '../login/login.interface';
 		styleUrls: [ './register.component.scss' ]
 	}
 )
-
 export class RegisterComponent
 {
-	@Output() onRegister : EventEmitter<Login> = new EventEmitter<Login>();
+	unmask : boolean = true;
+	form : FormGroup;
 
-	hide : boolean = true;
-	registerObject : FormGroup = this.formBuilder.group(
+	constructor(private formBuilder : FormBuilder, private registerService : RegisterService, private router : Router)
 	{
-		email: [ '', Validators.required ],
-		password: [ '', Validators.required ]
-	});
-
-	constructor(private formBuilder : FormBuilder)
-	{
+		this.form = this.createForm();
 	}
 
-	sendRegister() : void
+	sendRegistration() : void
 	{
-		this.onRegister.emit(this.registerObject.value);
+		const { email, password } = this.form.value;
+
+		this.registerService.register(email, password)
+			.subscribe(() => this.router.navigate([ environment.pageRoutes.todos ]));
+	}
+
+	createForm() : FormGroup
+	{
+		return this.formBuilder.group(
+			{
+				email: '',
+				password: ''
+			});
 	}
 }
