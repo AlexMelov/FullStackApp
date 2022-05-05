@@ -53,8 +53,8 @@ export const registerHandler : Handler = (request : Request, response : Response
 							{
 								from: '"Sender Name" <theExpressApp@example.net>',
 								to: credentials.email,
-								subject: 'Hello from express nodemailer',
-								text: 'Hello world2?'
+								subject: 'Registration',
+								text: 'Your registration is done!'
 							};
 
 						createTransport(

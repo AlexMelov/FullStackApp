@@ -1,7 +1,7 @@
 <form [formGroup]="form" class="register-form" (submit)="sendRegistration()">
 	<mat-form-field appearance="fill">
 		<mat-label for="email">{{ 'authentication.email' | transloco }}</mat-label>
-		<input type="email" formControlName="email" id="email" matInput required />
+		<input type="email" formControlName="email" id="email" matInput required email />
 	</mat-form-field>
 	<mat-form-field appearance="fill">
 		<mat-label>{{ 'authentication.password' | transloco }}</mat-label>
