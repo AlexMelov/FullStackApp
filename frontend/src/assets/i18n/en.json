@@ -4,7 +4,10 @@
 		"placeholder": "Add new todo",
 		"addButton": "Add Todo",
 		"removeButton": "Remove",
-		"selectLanguage": "Select Language",
+		"selectLanguage": "Select Language"
+	},
+	"authentication":
+	{
 		"email": "Enter your email",
 		"password": "Enter your password",
 		"register": "Sign Up",

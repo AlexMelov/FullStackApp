@@ -17,11 +17,14 @@ export const environment : Environment =
 	apiRoutes:
 	{
 		todos: '/todos',
-		todosWithId: '/todos/:todoId'
+		todosWithId: '/todos/:todoId',
+		register: '/register',
+		login: '/login'
 	},
 	pageRoutes:
 	{
-		register: '/register',
-		login: '/login'
+		todos: 'todos',
+		register: 'register',
+		login: 'login'
 	}
 };

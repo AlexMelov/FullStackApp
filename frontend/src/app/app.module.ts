@@ -12,7 +12,6 @@ import { TranslocoRootModule } from './transloco-root.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LanguageComponent } from './todo/language/language.component';
 import { CrudModule } from 'ngx-crud';
-import { AuthenticationComponent } from './authentication/authentication.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RouterModule } from '@angular/router';
@@ -28,7 +27,6 @@ import { UiModule } from '../ui.module';
 		FormComponent,
 		ListComponent,
 		LanguageComponent,
-		AuthenticationComponent,
 		RegisterComponent,
 		LoginComponent
 	],

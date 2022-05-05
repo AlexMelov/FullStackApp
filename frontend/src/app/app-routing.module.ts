@@ -13,7 +13,6 @@ import { routes } from './routes';
 		RouterModule
 	]
 })
-
 export class AppRoutingModule
 {
 

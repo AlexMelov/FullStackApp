@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { User } from '../authentication.model';
+import { LoginService } from './login.service';
+import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component(
 {
@@ -8,24 +10,30 @@ import { User } from '../authentication.model';
 	templateUrl: './login.component.html',
 	styleUrls: [ './login.component.scss' ]
 })
-
 export class LoginComponent
 {
-	@Output() onLogin : EventEmitter<User> = new EventEmitter<User>();
+	unmask : boolean = true;
+	form : FormGroup;
 
-	hide : boolean = true;
-	loginObject : FormGroup = this.formBuilder.group(
+	constructor(private formBuilder : FormBuilder, private loginServices : LoginService, private router : Router)
 	{
-		emailLogin: '',
-		passwordLogin: ''
-	});
-
-	constructor(private formBuilder : FormBuilder)
-	{
+		this.form = this.createForm();
 	}
 
 	sendLogin() : void
 	{
-		this.onLogin.emit(this.loginObject.value);
+		const { email, password } = this.form.value;
+
+		this.loginServices.login(email, password)
+			.subscribe(() => this.router.navigate([ environment.pageRoutes.todos ]));
+	}
+
+	createForm() : FormGroup
+	{
+		return this.formBuilder.group(
+		{
+			email: '',
+			password: ''
+		});
 	}
 }

@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from '../authentication.model';
+import { Login } from '../login/login.interface';
 
 @Component(
 	{
@@ -12,7 +12,7 @@ import { User } from '../authentication.model';
 
 export class RegisterComponent
 {
-	@Output() onRegister : EventEmitter<User> = new EventEmitter<User>();
+	@Output() onRegister : EventEmitter<Login> = new EventEmitter<Login>();
 
 	hide : boolean = true;
 	registerObject : FormGroup = this.formBuilder.group(

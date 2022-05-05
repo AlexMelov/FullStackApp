@@ -11,10 +11,7 @@ export interface Environment
 	{
 		todos : string;
 		todosWithId : string;
-	}
-	pageRoutes :
-	{
-		register : string,
-		login : string
+		register : string;
+		login : string;
 	}
 }

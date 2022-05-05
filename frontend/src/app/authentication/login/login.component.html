@@ -1,14 +1,14 @@
-<form [formGroup]="loginObject" class="login-form" (submit)="sendLogin()">
+<form [formGroup]="form" class="login-form" (submit)="sendLogin()">
 	<mat-form-field appearance="fill">
-		<mat-label for="user_input_email">{{ 'todo.email' | transloco }}</mat-label>
-		<input type="email" formControlName="emailLogin" id="user_input_email" matInput required email/>
+		<mat-label for="email">{{ 'authentication.email' | transloco }}</mat-label>
+		<input type="email" formControlName="email" id="email" matInput required email/>
 	</mat-form-field>
 	<mat-form-field appearance="fill">
-		<mat-label>{{ 'todo.password' | transloco }}</mat-label>
-		<input formControlName="passwordLogin" matInput [type]="hide ? 'password' : 'text'" required />
-		<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-			<mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+		<mat-label>{{ 'authentication.password' | transloco }}</mat-label>
+		<input formControlName="password" matInput [type]="unmask ? 'password' : 'text'" required />
+		<button mat-icon-button matSuffix (click)="unmask = !unmask">
+			<mat-icon>{{ unmask ? 'visibility_off' : 'visibility' }}</mat-icon>
 		</button>
 	</mat-form-field>
-	<button type="submit" matLine mat-raised-button class="signUp-button">{{ 'todo.login' | transloco }}</button>
+	<button type="submit" matLine mat-raised-button class="signUp-button">{{ 'authentication.login' | transloco }}</button>
 </form>
