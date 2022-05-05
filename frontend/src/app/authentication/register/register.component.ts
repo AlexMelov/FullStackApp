@@ -26,7 +26,12 @@ export class RegisterComponent
 		const { email, password } = this.form.value;
 
 		this.registerService.register(email, password)
-			.subscribe(() => this.router.navigate([ environment.pageRoutes.todos ]));
+			.subscribe(
+				{
+					next: () => this.router.navigate([ environment.pageRoutes.todos ]),
+					error: () => alert('Not working!')
+				}
+			);
 	}
 
 	createForm() : FormGroup
