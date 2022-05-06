@@ -75,11 +75,17 @@ describe('Server', () =>
 		expect(response.headers).toBeDefined();
 		expect(body.email).toContain('jest.email@mail.com');
 		expect(body.password).not.toHaveLength(0);
-		const { id } = response.body;
 
-		await supertest(server).delete('/register/' + id).then(user =>
+		const { _id } = response.body;
+
+		await supertest(server).delete('/register/' + _id).then(user =>
 		{
 			expect(user.statusCode).toBe(200);
+			expect(user.body).toEqual(
+				{
+					acknowledged: true,
+					deletedCount: 1
+				});
 		});
 	});
 
