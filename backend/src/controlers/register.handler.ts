@@ -12,10 +12,10 @@ export function registerUser(request : Request, response : Response, userModel :
 		.then(hash =>
 		{
 			const user : HydratedDocument<User> = new userModel(
-				{
-					email,
-					password: hash
-				});
+			{
+				email,
+				password: hash
+			});
 
 			user.save()
 				.then(user =>

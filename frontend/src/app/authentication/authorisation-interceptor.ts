@@ -19,8 +19,7 @@ export class AuthorisationInterceptor implements HttpInterceptor
 		const authorisationRequest : HttpRequest<any> = request.clone(
 		{
 			headers: request.headers.set('Authorization', authorisationToken)
-		}
-		);
+		});
 
 		return next.handle(authorisationRequest);
 	}

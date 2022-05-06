@@ -11,9 +11,9 @@ export function loginUserHandler(request : Request, response : Response, userMod
 	let userData : User & {_id : {}};
 
 	userModel.findOne(
-		{
-			email
-		})
+	{
+		email
+	})
 		.then(user =>
 		{
 			userData = user;
@@ -24,31 +24,29 @@ export function loginUserHandler(request : Request, response : Response, userMod
 			if(!result)
 			{
 				return response.status(401).json(
-					{
-						message: 'Authentication failed on user'
-					}
-				);
+				{
+					message: 'Authentication failed on user'
+				});
 			}
 			const { sign } = pkg;
 			const token : Token = sign(
-				{
-					email: userData.email,
-					userId: userData._id
-				},
+			{
+				email: userData.email,
+				userId: userData._id
+			},
 				'secret_this_should_be_long',
 				{ expiresIn: '1h' });
 
 			response.status(200).json(
-				{
-					token
-				});
+			{
+				token
+			});
 		})
 		.catch(error =>
 		{
 			return response.status(401).json(
-				{
-					message: 'Authentication failed on entire', error
-				}
-			);
+			{
+				message: 'Authentication failed on entire', error
+			});
 		});
 }
