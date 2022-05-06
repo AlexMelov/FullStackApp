@@ -1,5 +1,5 @@
 import mongoose, { Schema, Model } from 'mongoose';
-import { Todo } from './todo.js';
+import { Todo } from './todo';
 
 export const todoSchema : Schema = new mongoose.Schema(
 {
@@ -11,4 +11,3 @@ export const todoSchema : Schema = new mongoose.Schema(
 });
 
 export const todoModel : Model<Todo> = mongoose.model('Todos', todoSchema);
-
