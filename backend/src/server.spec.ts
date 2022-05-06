@@ -41,7 +41,31 @@ describe('Server', () =>
 		expect(body.title).toContain('Todo from Jest!');
 	});
 
-	it('should DELETE todo', async() =>
+	it('Should GET last added todo from list and delete it', async() =>
+	{
+		const response : Response = await supertest(server).get('/todos');
+		const body : {title : string, id : string}[] = await response.body;
+
+		expect(response.statusCode).toBe(200);
+		expect(body).not.toHaveLength(0);
+		const todoArray : {title : string, id : string}[] = body.filter(todo => todo.title === 'Todo from Jest!' );
+
+		expect(body.forEach(todo =>
+		{
+			expect(todo.title).toBeTruthy();
+		}));
+		await supertest(server).delete('/todos/' + todoArray[0].id).then(user =>
+		{
+			expect(user.statusCode).toBe(200);
+			expect(user.body).toEqual(
+				{
+					acknowledged: true,
+					deletedCount: 1
+				});
+		});
+	});
+
+	it('should create and DELETE same todo', async() =>
 	{
 		const response : Response = await supertest(server).post('/todos').send(
 		{
@@ -65,10 +89,10 @@ describe('Server', () =>
 	it('Should register new user and delete it', async() =>
 	{
 		const response : Response = await supertest(server).post('/register').send(
-			{
-				email : 'jest.email@mail.com',
-				password : '123456'
-			});
+		{
+			email : 'jest.email@mail.com',
+			password : '123456'
+		});
 		const body : User = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -82,19 +106,19 @@ describe('Server', () =>
 		{
 			expect(user.statusCode).toBe(200);
 			expect(user.body).toEqual(
-				{
-					acknowledged: true,
-					deletedCount: 1
-				});
+			{
+				acknowledged: true,
+				deletedCount: 1
+			});
 		});
 	});
 	it('Should get token from login', async() =>
 	{
 		const response : Response = await supertest(server).post('/register').send(
-			{
-				email : 'jestForLogin.email@mail.com',
-				password : '123456'
-			});
+		{
+			email : 'jestForLogin.email@mail.com',
+			password : '123456'
+		});
 		const body : User = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -103,10 +127,10 @@ describe('Server', () =>
 		expect(body.password).not.toHaveLength(0);
 
 		const loginResponse : Response = await supertest(server).post('/login').send(
-			{
-				email : 'jestForLogin.email@mail.com',
-				password : '123456'
-			});
+		{
+			email : 'jestForLogin.email@mail.com',
+			password : '123456'
+		});
 		const { token } = loginResponse.body;
 
 		expect(token).toBeTruthy();
@@ -118,10 +142,10 @@ describe('Server', () =>
 		{
 			expect(user.statusCode).toBe(200);
 			expect(user.body).toEqual(
-				{
-					acknowledged: true,
-					deletedCount: 1
-				});
+			{
+				acknowledged: true,
+				deletedCount: 1
+			});
 		});
 	});
 
