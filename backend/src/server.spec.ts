@@ -88,6 +88,42 @@ describe('Server', () =>
 				});
 		});
 	});
+	it('Should get token from login', async() =>
+	{
+		const response : Response = await supertest(server).post('/register').send(
+			{
+				email : 'jestForLogin.email@mail.com',
+				password : '123456'
+			});
+		const body : User = await response.body;
+
+		expect(response.statusCode).toBe(200);
+		expect(response.headers).toBeDefined();
+		expect(body.email).toContain('jestForLogin.email@mail.com');
+		expect(body.password).not.toHaveLength(0);
+
+		const loginResponse : Response = await supertest(server).post('/login').send(
+			{
+				email : 'jestForLogin.email@mail.com',
+				password : '123456'
+			});
+		const { token } = loginResponse.body;
+
+		expect(token).toBeTruthy();
+		expect(token).not.toHaveLength(0);
+
+		const { _id } = response.body;
+
+		await supertest(server).delete('/register/' + _id).then(user =>
+		{
+			expect(user.statusCode).toBe(200);
+			expect(user.body).toEqual(
+				{
+					acknowledged: true,
+					deletedCount: 1
+				});
+		});
+	});
 
 	afterAll(() => mongoose.connection.close(true));
 });
