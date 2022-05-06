@@ -13,5 +13,6 @@ export interface Environment
 		todosWithId : string;
 		register : string;
 		login : string;
+		apiWithId : string;
 	}
 }

@@ -14,7 +14,8 @@ export const environment : Environment =
 		todos: '/todos',
 		todosWithId: '/todos/:todoId',
 		register: '/register',
-		login: '/login'
+		login: '/login',
+		apiWithId: '/register/:userId'
 	}
 };
 

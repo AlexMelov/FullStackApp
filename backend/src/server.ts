@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import
 {
+	deleteEmailHandler,
 	deleteHandler,
 	findHandler,
 	loginHandler,
@@ -24,5 +25,6 @@ server.post(environment.apiRoutes.todos, saveHandler);
 server.delete(environment.apiRoutes.todosWithId, deleteHandler);
 server.post(environment.apiRoutes.register, registerHandler);
 server.post(environment.apiRoutes.login, loginHandler);
+server.delete(environment.apiRoutes.apiWithId, deleteEmailHandler);
 
 export { server, db };
