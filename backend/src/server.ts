@@ -3,10 +3,10 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import 'dotenv/config';
-import environment from './environments/environment.js';
 import { createHandler, deleteHandler, findHandler } from './controlers/todos.js';
 import { registerHandler } from './controlers/register.js';
 import { loginHandler } from './controlers/login.js';
+import environment from './environments/environment.js';
 
 const server : Express = express();
 const db : Promise<typeof mongoose> = mongoose.connect(process.env.DB_URL);
