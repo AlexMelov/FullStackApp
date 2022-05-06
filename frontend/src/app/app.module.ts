@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
@@ -17,6 +17,9 @@ import { LoginComponent } from './authentication/login/login.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { UiModule } from '../ui.module';
+import { AuthorisationInterceptor } from './authentication/authorisation-interceptor';
+import { TRANSLOCO_LOADER } from '@ngneat/transloco';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule(
 {
@@ -28,7 +31,8 @@ import { UiModule } from '../ui.module';
 		ListComponent,
 		LanguageComponent,
 		RegisterComponent,
-		LoginComponent
+		LoginComponent,
+		HeaderComponent
 	],
 	imports:
 	[
@@ -43,6 +47,14 @@ import { UiModule } from '../ui.module';
 		CrudModule,
 		RouterModule,
 		AppRoutingModule
+	],
+	providers:
+	[
+		{
+			provide: [ HTTP_INTERCEPTORS, TRANSLOCO_LOADER ],
+			useClass: AuthorisationInterceptor,
+			multi: true
+		}
 	],
 	bootstrap:
 	[

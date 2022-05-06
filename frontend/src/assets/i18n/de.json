@@ -12,5 +12,12 @@
 		"password": "Geben Sie Ihr Passwort ein",
 		"register": "Registrieren",
 		"login": "Anmeldung"
+	},
+	"navigation":
+	{
+		"login": "Anmeldung",
+		"logout": "Ausloggen",
+		"register": "Registrieren",
+		"todos": "Todos"
 	}
 }

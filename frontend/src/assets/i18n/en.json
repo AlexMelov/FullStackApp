@@ -12,5 +12,12 @@
 		"password": "Enter your password",
 		"register": "Sign Up",
 		"login": "Login"
+	},
+	"navigation":
+	{
+		"login": "Login",
+		"logout": "Logout",
+		"register": "Register",
+		"todos": "Todos"
 	}
 }

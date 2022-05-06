@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
-import { Router } from '@angular/router';
 
 @Component(
 {
@@ -13,8 +12,9 @@ export class LoginComponent
 {
 	unmask : boolean = true;
 	form : FormGroup;
+	private token : string | null = null;
 
-	constructor(private formBuilder : FormBuilder, private loginServices : LoginService, private router : Router)
+	constructor(private formBuilder : FormBuilder, private loginServices : LoginService)
 	{
 		this.form = this.createForm();
 	}
@@ -24,7 +24,10 @@ export class LoginComponent
 		const { email, password } = this.form.value;
 
 		this.loginServices.login(email, password)
-			.subscribe(response => response);
+			.subscribe(response =>
+			{
+				this.token = response.token;
+			});
 	}
 
 	createForm() : FormGroup
@@ -42,5 +45,14 @@ export class LoginComponent
 				Validators.required
 			]
 		});
+	}
+
+	getToken() : string
+	{
+		if(!this.token)
+		{
+			return '';
+		}
+		return this.token;
 	}
 }
