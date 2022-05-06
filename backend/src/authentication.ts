@@ -34,10 +34,10 @@ export const registerHandler : Handler = (request : Request, response : Response
 		.then(hash =>
 		{
 			const user : HydratedDocument<User> = new userModel(
-				{
-					email,
-					password: hash
-				});
+			{
+				email,
+				password: hash
+			});
 
 			user.save()
 				.then(user =>
@@ -76,24 +76,24 @@ export const loginHandler : Handler = (request : Request, response : Response) :
 			}
 			const { sign } = pkg;
 			const token : Token = sign(
-				{
-					email: userData.email,
-					userId: userData._id
-				},
+			{
+				email: userData.email,
+				userId: userData._id
+			},
 				'secret_this_should_be_long',
-				{ expiresIn: '1h' });
+			{ expiresIn: '1h' });
 
 			response.status(200).json(
-				{
-					token
-				});
+			{
+				token
+			});
 		})
 		.catch(error =>
 		{
 			return response.status(401).json(
-				{
-					message: 'Authentication failed on entire', error
-				}
+			{
+				message: 'Authentication failed on entire', error
+			}
 			);
 		});
 };

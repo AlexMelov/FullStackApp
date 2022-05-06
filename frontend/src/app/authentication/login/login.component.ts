@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
 
 @Component(
 {
@@ -25,7 +24,7 @@ export class LoginComponent
 		const { email, password } = this.form.value;
 
 		this.loginServices.login(email, password)
-			.subscribe(() => this.router.navigate([ environment.pageRoutes.todos ]));
+			.subscribe(response => response);
 	}
 
 	createForm() : FormGroup
@@ -35,14 +34,12 @@ export class LoginComponent
 			email:
 			[
 				'',
-				Validators.required,
-				Validators.email
+				Validators.required
 			],
 			password:
 			[
 				'',
-				Validators.required,
-				Validators.minLength(6)
+				Validators.required
 			]
 		});
 	}
