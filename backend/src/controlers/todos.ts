@@ -1,8 +1,8 @@
 import { Handler } from '../models/express';
 import { Request, Response } from 'express';
-import { todoModel } from '../models/schema.js';
 import { DirtyTodo, Todo } from '../models/todo';
 import { HydratedDocument } from 'mongoose';
+import { todoModel } from '../models/schema.js';
 
 export const findHandler : Handler = (request : Request, response : Response) : void =>
 {
