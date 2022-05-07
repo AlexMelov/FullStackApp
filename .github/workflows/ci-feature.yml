@@ -16,9 +16,9 @@ jobs:
                 uses: actions/setup-node@v1
                 with:
                     node-version: 14
-            -   run: npm install --prefix ./backend
+            #-   run: npm install --prefix ./backend
             -   run: npm install --prefix ./frontend
-            -   run: npm run lint --prefix ./backend
+            #-   run: npm run lint --prefix ./backend
             -   run: npm run lint --prefix ./frontend
     build:
         runs-on: ubuntu-latest
