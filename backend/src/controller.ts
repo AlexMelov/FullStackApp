@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { todoModel } from './models/schema.js';
 import { Handler } from './models/express';
 import { deleteOneTodo, getAllTodos, postTodo } from './controlers/todos.js';
-import { registerUser } from './controlers/register.handler.js';
+import { registerUser } from './controlers/register.js';
 import { userModel } from './models/user.schema.js';
 import { loginUserHandler } from './controlers/authentication.handler.js';
 import { deleteUsersHandler } from './controlers/delete.users.handler.js';
