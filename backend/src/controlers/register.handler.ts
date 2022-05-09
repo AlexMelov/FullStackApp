@@ -25,5 +25,5 @@ export function registerUser(request : Request, response : Response, userModel :
 				})
 				.catch(error => response.status(403).json({ message: error }));
 		})
-		.catch(error => response.json({ message: 'Failed to hash the password', error }));
+		.catch(error => response.status(403).json({ message: 'Failed to hash the password', error }));
 }
