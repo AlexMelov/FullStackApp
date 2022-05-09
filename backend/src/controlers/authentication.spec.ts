@@ -27,11 +27,10 @@ describe('Should test login', () =>
 			password : '123456'
 		});
 		const { token } = loginResponse.body;
+		const { _id } = response.body;
 
 		expect(token).toBeTruthy();
 		expect(token).not.toHaveLength(0);
-
-		const { _id } = response.body;
 
 		await supertest(server).delete('/register/' + _id).then(user =>
 		{

@@ -56,9 +56,9 @@ describe('Should test user registration', ()=>
 				password : '123456'
 			});
 
-		expect(repeatedUserResponse.statusCode).toBe(403);
-
 		const { _id } = response.body;
+
+		expect(repeatedUserResponse.statusCode).toBe(403);
 
 		await supertest(server).delete('/register/' + _id).then(user =>
 		{

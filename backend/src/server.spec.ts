@@ -57,10 +57,10 @@ describe('Server', () =>
 		{
 			expect(user.statusCode).toBe(200);
 			expect(user.body).toEqual(
-				{
-					acknowledged: true,
-					deletedCount: 1
-				});
+			{
+				acknowledged: true,
+				deletedCount: 1
+			});
 		});
 	});
 
