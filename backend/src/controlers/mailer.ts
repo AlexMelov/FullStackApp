@@ -4,7 +4,6 @@ import { User } from '../models/user.interface';
 import { Message } from './mailer.interface';
 import { response } from 'express';
 import wording from './wording.js';
-import environment from '../environments/environment.js';
 
 export function sendRegisterMail(user : User) : void
 {
@@ -47,8 +46,8 @@ function transport() : Transporter<SMTPTransport.SentMessageInfo>
 {
 	return createTransport(
 	{
-		host: environment.mailer.host,
-		port: environment.mailer.port,
+		host: 'smtp.ethereal.email',
+		port: 587,
 		auth:
 		{
 			user: process.env.MAIL_USER,

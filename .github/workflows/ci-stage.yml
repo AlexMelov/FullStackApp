@@ -55,6 +55,9 @@ jobs:
             -   run: npm run test:local --prefix ./backend
                 env:
                     DB_URL: ${{ secrets.DB_URL_STAGE }}
+                    MAIL_USER: ${{ secrets.MAIL_USER_STAGE }}
+                    MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD_STAGE }}
+                    JWT_SECRET: ${{ secrets.JWT_SECRET_STAGE }}
     test-acceptance:
         runs-on: ubuntu-latest
         steps:
@@ -69,6 +72,9 @@ jobs:
             -   run: npm run start:local --prefix ./backend &
                 env:
                     DB_URL: ${{ secrets.DB_URL_STAGE }}
+                    MAIL_USER: ${{ secrets.MAIL_USER_STAGE }}
+                    MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD_STAGE }}
+                    JWT_SECRET: ${{ secrets.JWT_SECRET_STAGE }}
             -   run: npm run start:local --prefix ./frontend &
             -   run: npm run wait-for-serve --prefix ./frontend && npm run e2e:local --prefix ./frontend
                 timeout-minutes: 10

@@ -3,7 +3,7 @@ import { server } from '../server';
 import { User } from '../models/user.interface.js';
 import mongoose from 'mongoose';
 
-describe.skip('Should test login', () =>
+describe('Should test login', () =>
 {
 	beforeAll(async() => await mongoose.connect(process.env.DB_URL));
 
@@ -32,7 +32,7 @@ describe.skip('Should test login', () =>
 		expect(token).toBeTruthy();
 		expect(token).not.toHaveLength(0);
 
-		await supertest(server).delete('/register/' + _id).then(user =>
+		await supertest(server).delete('/users/' + _id).then(user =>
 		{
 			expect(user.statusCode).toBe(200);
 			expect(user.body).toEqual(
