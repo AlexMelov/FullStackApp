@@ -3,7 +3,7 @@ import { server } from '../server';
 import { User } from '../models/user.interface.js';
 import mongoose from 'mongoose';
 
-describe('Should test login', () =>
+describe.skip('Should test login', () =>
 {
 	beforeAll(async() => await mongoose.connect(process.env.DB_URL));
 
