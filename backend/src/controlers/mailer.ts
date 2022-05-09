@@ -3,25 +3,20 @@ import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { User } from '../models/user.interface';
 import { MessageModel } from './message.model';
 import { response } from 'express';
-import { MessageContext } from './wording';
+import { MessageContext } from './wording.js';
 
 export function sendRegisterMail(user : User) : void
 {
 	//todo add multi-language support
 	//todo separate register message into other
-	const registerMessage : MessageModel =
-	{
-		from: '"Sender Name" <theExpressApp@example.net>',
-		to: user.email,
-		subject: 'Registration',
-		text: 'Your registration is done!'
-	};
+	const registerMessage : MessageModel = MessageContext(user);
 
 	transport()
 		.sendMail(registerMessage)
 		.then(result => result)
 		.catch(error => ({ message: error }));
 }
+
 export function sendLoginMail(user : User) : void
 {
 	//todo separate message and add multi language
@@ -40,7 +35,7 @@ function transport() : Transporter<SMTPTransport.SentMessageInfo>
 	return createTransport(
 	{
 		host: process.env.MAIL_HOST,
-		port: JSON.parse(process.env.MAIL_PORT),
+		port: parseInt(process.env.MAIL_PORT),
 		auth:
 		{
 			user: process.env.MAIL_USER,

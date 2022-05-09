@@ -4,6 +4,7 @@ import { server } from './server.js';
 import { Body } from './server.interface.js';
 import { User } from './models/user.interface';
 import { TestTodo } from './models/todo';
+import environment from './environments/environment';
 
 describe('Server', () =>
 {
@@ -90,7 +91,7 @@ describe('Server', () =>
 
 	it('Should register new user and delete it', async() =>
 	{
-		const response : Response = await supertest(server).post('/register').send(
+		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
 		{
 			email : 'jest.email@mail.com',
 			password : '123456'

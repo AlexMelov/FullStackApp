@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { hash } from 'bcrypt';
 import { HydratedDocument, Model } from 'mongoose';
-import { User } from '../models/user.interface';
+import { User } from '../models/user.interface.js';
 import { sendRegisterMail } from './mailer.js';
 
 export function registerUser(request : Request, response : Response, userModel : Model<User>) : void

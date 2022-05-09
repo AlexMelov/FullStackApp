@@ -4,7 +4,7 @@ import { Handler } from './models/express';
 import { deleteOneTodo, getAllTodos, postTodo } from './controlers/todos.js';
 import { registerUser } from './controlers/register.handler.js';
 import { userModel } from './models/user.schema.js';
-import { loginUserHandler } from './controlers/login.handler.js';
+import { loginUserHandler } from './controlers/authentication.handler.js';
 import { deleteUsersHandler } from './controlers/delete.users.handler.js';
 
 export const findHandler : Handler = (request : Request, response : Response) : void =>

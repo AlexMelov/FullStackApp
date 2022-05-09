@@ -4,11 +4,12 @@ import { compare } from 'bcrypt';
 import pkg from 'jsonwebtoken';
 import { Token } from 'nodemailer/lib/xoauth2';
 import { Model } from 'mongoose';
+import { tokenHelper } from './token.helper.js';
 
 export function loginUserHandler(request : Request, response : Response, userModel : Model<User>) : void
 {
 	const { email, password } = request.body;
-	let userData : User & {_id : {}};
+	let userData : User & {_id : string | {}};
 
 	userModel.findOne(
 	{
@@ -30,10 +31,7 @@ export function loginUserHandler(request : Request, response : Response, userMod
 			}
 			const { sign } = pkg;
 			const token : Token = sign(
-			{
-				email: userData.email,
-				userId: userData._id
-			},
+				tokenHelper(userData),
 				'secret_this_should_be_long',
 				{ expiresIn: '1h' });
 
@@ -42,11 +40,6 @@ export function loginUserHandler(request : Request, response : Response, userMod
 				token
 			});
 		})
-		.catch(error =>
-		{
-			return response.status(401).json(
-			{
-				message: 'Authentication failed on entire', error
-			});
-		});
+		.catch(error => response.status(401)
+			.json({ message: 'Authentication failed on entire', error }));
 }
