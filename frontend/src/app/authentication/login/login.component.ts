@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 })
 export class LoginComponent
 {
-	unmask : boolean = true;
+	unmask : boolean = false;
 	form : FormGroup;
 	private token : string | null = null;
 

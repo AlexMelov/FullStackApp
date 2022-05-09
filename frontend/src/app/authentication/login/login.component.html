@@ -6,10 +6,10 @@
 	</mat-form-field>
 	<mat-form-field appearance="fill">
 		<mat-label>{{ 'authentication.password' | transloco }}</mat-label>
-		<input formControlName="password" matInput [type]="unmask ? 'password' : 'text'" required />
+		<input formControlName="password" matInput [type]="!unmask ? 'password' : 'text'" required />
 		<button mat-icon-button matSuffix (click)="unmask = !unmask">
 			<mat-icon>{{ unmask ? 'visibility_off' : 'visibility' }}</mat-icon>
 		</button>
 	</mat-form-field>
-	<button type="submit" matLine mat-raised-button class="sign-up-button">{{ 'authentication.login' | transloco }}</button>
+	<button type="submit" matLine mat-raised-button class="button-login">{{ 'authentication.login' | transloco }}</button>
 </form>
