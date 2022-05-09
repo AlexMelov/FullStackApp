@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Todo } from './todo.intercace';
-import { ApiRoute, ApiUrl, CrudService } from 'ngx-crud';
+
+import { ApiRoute, ApiUrl } from 'ngx-crud';
+import { CrudServiceCustom } from './crud-custom.service';
 
 @Injectable(
 {
@@ -9,7 +11,7 @@ import { ApiRoute, ApiUrl, CrudService } from 'ngx-crud';
 })
 @ApiUrl(environment.apiUrl)
 @ApiRoute(environment.apiRoutes.todos)
-export class TodoService extends CrudService<Todo, Todo, Todo, Todo, Todo, Todo[], Todo, Todo, Todo, Todo, void>
+export class TodoService extends CrudServiceCustom<Todo, Todo>
 {
 
 }
