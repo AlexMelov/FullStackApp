@@ -23,7 +23,9 @@ export function registerUser(request : Request, response : Response, userModel :
 					sendRegisterMail(user);
 					response.json(user);
 				})
+				//todo add message:  from wording file
 				.catch(error => response.status(403).json({ message: error }));
 		})
+		//todo add message:  from wording file
 		.catch(error => response.status(403).json({ message: 'Failed to hash the password', error }));
 }

@@ -13,6 +13,11 @@ export interface Environment
 		todosWithId : string;
 		register : string;
 		login : string;
-		apiWithId : string;
+		userWithId : string;
+	}
+	mailer :
+	{
+		host : string,
+		port : number
 	}
 }

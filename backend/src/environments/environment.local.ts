@@ -15,7 +15,12 @@ export const environment : Environment =
 		todosWithId: '/todos/:todoId',
 		register: '/register',
 		login: '/login',
-		apiWithId: '/register/:userId'
+		userWithId: '/users/:userId'
+	},
+	mailer:
+	{
+		host: 'smtp.ethereal.email',
+		port: 587
 	}
 };
 

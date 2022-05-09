@@ -4,8 +4,8 @@ import { Handler } from './models/express';
 import { deleteOneTodo, getAllTodos, postTodo } from './controlers/todos.js';
 import { registerUser } from './controlers/register.js';
 import { userModel } from './models/user.schema.js';
-import { loginUserHandler } from './controlers/authentication.handler.js';
-import { deleteUsersHandler } from './controlers/delete.users.handler.js';
+import { loginUserHandler } from './controlers/authentication.js';
+import { deleteUser } from './controlers/users.js';
 
 export const findHandler : Handler = (request : Request, response : Response) : void =>
 {
@@ -31,7 +31,7 @@ export const loginHandler : Handler = (request : Request, response : Response) :
 {
 	loginUserHandler(request, response, userModel);
 };
-export const deleteEmailHandler : Handler = (request : Request, response : Response) : void =>
+export const deleteUserHandler : Handler = (request : Request, response : Response) : void =>
 {
-	deleteUsersHandler(request, response, userModel);
+	deleteUser(request, response, userModel);
 };

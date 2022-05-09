@@ -1,16 +1,17 @@
 import { createTransport, Transporter } from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { User } from '../models/user.interface';
-import { MessageModel } from './message.model';
+import { Message } from './mailer.interface';
 import { response } from 'express';
 import wording from './wording.js';
+import environment from '../environments/environment.js';
 
 export function sendRegisterMail(user : User) : void
 {
 	//todo add multi-language support
 	//todo separate register message into other
 	const { subject, message } = wording.register;
-	const registerMessage : MessageModel =
+	const registerMessage : Message =
 	{
 		//todo set from into environmental files
 		from: '"Sender Name" <theExpressApp@example.net>',
@@ -21,35 +22,33 @@ export function sendRegisterMail(user : User) : void
 
 	transport()
 		.sendMail(registerMessage)
-		.then(result => result)
 		.catch(error => ({ message: error }));
 }
 
 export function sendLoginMail(user : User) : void
 {
 	//todo separate message and add multi language
-	const loginMessage : MessageModel =
+	const { subject, text } = wording.login;
+	const loginMessage : Message =
 	{
+		//todo set from into environment file
 		from: '"Sender Name" <theExpressApp@example.net>',
 		to: user.email,
-		subject: 'Registration',
-		text: 'Your registration is done!'
+		subject,
+		text
 	};
 
 	transport()
 		.sendMail(loginMessage)
-		.then(result => result)
-		.catch(error => response.json({ message: error }));
+		.catch(error => response.status(404).json({ message: error }));
 }
-
-//todo add environment variables
 
 function transport() : Transporter<SMTPTransport.SentMessageInfo>
 {
 	return createTransport(
 	{
-		host: process.env.MAIL_HOST,
-		port: parseInt(process.env.MAIL_PORT),
+		host: environment.mailer.host,
+		port: environment.mailer.port,
 		auth:
 		{
 			user: process.env.MAIL_USER,
@@ -57,4 +56,3 @@ function transport() : Transporter<SMTPTransport.SentMessageInfo>
 		}
 	});
 }
-
