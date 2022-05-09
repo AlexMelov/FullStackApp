@@ -6,7 +6,7 @@ export function getAllTodos(request : Request, response : Response, todoModel : 
 {
 	todoModel.find()
 		.then(data => response.json(mapData(data)))
-		.catch(error => response.json({ message: error }));
+		.catch(error => response.status(403).json({ message: 'Failed to find todos', error }));
 }
 
 export function postTodo(request : Request, response : Response, todoModel : Model<Todo>) : void
@@ -15,14 +15,14 @@ export function postTodo(request : Request, response : Response, todoModel : Mod
 
 	todo.save()
 		.then(data => response.json(data))
-		.catch(error => response.json({ message: error }));
+		.catch(error => response.status(403).json({ message: 'Failed to post todo', error }));
 }
 
 export function deleteOneTodo(request : Request, response : Response, todoModel : Model<Todo>) : void
 {
 	todoModel.deleteOne({ _id: request.params.todoId })
 		.then(data => response.json(data))
-		.catch(error => response.json({ message: error }));
+		.catch(error => response.status(403).json({ message: 'Failed to delete todo', error }));
 }
 
 function mapData(data : DirtyTodo[])
