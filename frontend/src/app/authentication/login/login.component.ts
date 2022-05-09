@@ -46,4 +46,13 @@ export class LoginComponent
 			]
 		});
 	}
+
+	getToken() : string
+	{
+		if(!this.token)
+		{
+			return '';
+		}
+		return this.token;
+	}
 }
