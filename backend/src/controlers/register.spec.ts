@@ -2,9 +2,11 @@ import supertest, { Response } from 'supertest';
 import { server } from '../server';
 import environment from '../environments/environment';
 import { User } from '../models/user.interface';
+import mongoose from 'mongoose';
 
 describe('Should test user registration', ()=>
 {
+	beforeAll(async() => await mongoose.connect(process.env.DB_URL));
 
 	it('Should register new user and delete it', async() =>
 	{
@@ -70,4 +72,6 @@ describe('Should test user registration', ()=>
 			});
 		});
 	});
+
+	afterAll(() => mongoose.connection.close(true));
 });

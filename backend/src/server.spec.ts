@@ -45,7 +45,7 @@ describe('Server', () =>
 	{
 		const response : Response = await supertest(server).get('/todos');
 		const body : TestTodo[] = await response.body;
-		const todoArray : TestTodo[] = body.filter(todo => todo.title === 'Todo from Jest!' );
+		const todoArray : TestTodo[] = await body.filter(todo => todo.title === 'Todo from Jest!' );
 
 		expect(response.statusCode).toBe(200);
 		expect(body).not.toHaveLength(0);
