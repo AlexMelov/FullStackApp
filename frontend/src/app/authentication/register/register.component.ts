@@ -13,7 +13,7 @@ import { RegisterService } from './register.service';
 )
 export class RegisterComponent
 {
-	unmask : boolean = true;
+	unmask : boolean = false;
 	form : FormGroup;
 
 	constructor(private formBuilder : FormBuilder, private registerService : RegisterService, private router : Router)
