@@ -40,7 +40,7 @@ function transport() : Transporter<SMTPTransport.SentMessageInfo>
 	return createTransport(
 	{
 		host: process.env.MAIL_HOST,
-		port: process.env.MAIL_PORT,
+		port: JSON.parse(process.env.MAIL_PORT),
 		auth:
 		{
 			user: process.env.MAIL_USER,

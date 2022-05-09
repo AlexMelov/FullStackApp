@@ -5,7 +5,7 @@ import { deleteOneTodo, getAllTodos, postTodo } from './controlers/todos.js';
 import { registerUser } from './controlers/register.handler.js';
 import { userModel } from './models/user.schema.js';
 import { loginUserHandler } from './controlers/login.handler.js';
-import { deleteUserHandler } from './controlers/delete.user.handler.js';
+import { deleteUsersHandler } from './controlers/delete.users.handler.js';
 
 export const findHandler : Handler = (request : Request, response : Response) : void =>
 {
@@ -34,5 +34,5 @@ export const loginHandler : Handler = (request : Request, response : Response) :
 
 export const deleteEmailHandler : Handler = (request : Request, response : Response) : void =>
 {
-	deleteUserHandler(request, response, userModel);
+	deleteUsersHandler(request, response, userModel);
 };
