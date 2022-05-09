@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
 import { User } from '../models/user.interface';
 import { compare } from 'bcrypt';
-import pkg from 'jsonwebtoken';
-import { Token } from 'nodemailer/lib/xoauth2';
 import { Model } from 'mongoose';
 import { tokenHelper } from './token.helper.js';
 
@@ -15,6 +13,7 @@ export function loginUserHandler(request : Request, response : Response, userMod
 	{
 		email
 	})
+		//todo put everything in one then unify user and user data
 		.then(user =>
 		{
 			userData = user;
@@ -29,15 +28,9 @@ export function loginUserHandler(request : Request, response : Response, userMod
 					message: 'Authentication failed on user'
 				});
 			}
-			const { sign } = pkg;
-			const token : Token = sign(
-				tokenHelper(userData),
-				'secret_this_should_be_long',
-				{ expiresIn: '1h' });
-
 			response.status(200).json(
 			{
-				token
+				token : tokenHelper(userData)
 			});
 		})
 		.catch(error => response.status(401)

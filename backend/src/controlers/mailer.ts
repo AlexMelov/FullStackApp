@@ -3,13 +3,21 @@ import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { User } from '../models/user.interface';
 import { MessageModel } from './message.model';
 import { response } from 'express';
-import { MessageContext } from './wording.js';
+import wording from './wording.js';
 
 export function sendRegisterMail(user : User) : void
 {
 	//todo add multi-language support
 	//todo separate register message into other
-	const registerMessage : MessageModel = MessageContext(user);
+	const { subject, message } = wording.register;
+	const registerMessage : MessageModel =
+	{
+		//todo set from into environmental files
+		from: '"Sender Name" <theExpressApp@example.net>',
+		to: user.email,
+		subject,
+		text: message
+	};
 
 	transport()
 		.sendMail(registerMessage)
@@ -20,7 +28,13 @@ export function sendRegisterMail(user : User) : void
 export function sendLoginMail(user : User) : void
 {
 	//todo separate message and add multi language
-	const loginMessage : MessageModel = MessageContext(user);
+	const loginMessage : MessageModel =
+	{
+		from: '"Sender Name" <theExpressApp@example.net>',
+		to: user.email,
+		subject: 'Registration',
+		text: 'Your registration is done!'
+	};
 
 	transport()
 		.sendMail(loginMessage)

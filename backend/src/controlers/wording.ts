@@ -11,3 +11,13 @@ export function MessageContext(user : User) : MessageModel
 	};
 }
 
+const wording : Record<string, any> =
+{
+	register:
+	{
+		subject: 'Registration',
+		message: 'Your registration is done!'
+	}
+};
+
+export default wording;

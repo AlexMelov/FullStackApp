@@ -1,9 +1,17 @@
 import { Token, User } from '../models/user.interface';
+import jwt from 'jsonwebtoken';
 
-export function tokenHelper(userData : User & {_id : string | {}}) : Token
+export function tokenHelper(user : User) : Token
 {
-	return{
-		email: userData.email,
-		userId: userData._id
-	};
+	const { sign } = jwt;
+
+	return sign(
+	{
+		email: user.email,
+		userId: user._id
+	},
+	process.env.JWT_SECRET,
+	{
+		expiresIn: '1h'
+	});
 }
