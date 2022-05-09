@@ -6,5 +6,5 @@ export function deleteUsersHandler(request : Request, response : Response, userM
 {
 	userModel.deleteOne({ _id: request.params.userId })
 		.then(data => response.json(data))
-		.catch(error => response.json({ message: error }));
+		.catch(error => response.status(403).json({ message: 'Failed to delete user', error }));
 }
