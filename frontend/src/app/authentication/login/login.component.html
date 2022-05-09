@@ -1,5 +1,5 @@
 <app-header></app-header>
-<form [formGroup]="form" class="login-form" (submit)="sendLogin()">
+<form [formGroup]="form" class="form-login" (submit)="sendLogin()">
 	<mat-form-field appearance="fill">
 		<mat-label for="email">{{ 'authentication.email' | transloco }}</mat-label>
 		<input type="email" formControlName="email" id="email" matInput required email/>
@@ -11,5 +11,5 @@
 			<mat-icon>{{ unmask ? 'visibility_off' : 'visibility' }}</mat-icon>
 		</button>
 	</mat-form-field>
-	<button type="submit" matLine mat-raised-button class="signUp-button">{{ 'authentication.login' | transloco }}</button>
+	<button type="submit" matLine mat-raised-button class="sign-up-button">{{ 'authentication.login' | transloco }}</button>
 </form>
