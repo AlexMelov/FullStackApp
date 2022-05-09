@@ -31,7 +31,6 @@ export const loginHandler : Handler = (request : Request, response : Response) :
 {
 	loginUserHandler(request, response, userModel);
 };
-
 export const deleteEmailHandler : Handler = (request : Request, response : Response) : void =>
 {
 	deleteUsersHandler(request, response, userModel);
