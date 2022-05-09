@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import { RegisterService } from './register.service';
 
 @Component(
-	{
-		selector: 'app-register',
-		templateUrl: './register.component.html',
-		styleUrls: [ './register.component.scss' ]
-	}
+{
+	selector: 'app-register',
+	templateUrl: './register.component.html',
+	styleUrls: [ './register.component.scss' ]
+}
 )
 export class RegisterComponent
 {
@@ -27,19 +27,18 @@ export class RegisterComponent
 
 		this.registerService.register(email, password)
 			.subscribe(
-				{
-					next: () => this.router.navigate([ environment.pageRoutes.todos ]),
-					error: () => alert('Not working!')
-				}
-			);
+			{
+				next: () => this.router.navigate([ environment.pageRoutes.todos ]),
+				error: () => alert('Not working!')
+			});
 	}
 
 	createForm() : FormGroup
 	{
 		return this.formBuilder.group(
-			{
-				email: [ '', Validators.required ],
-				password: [ '', Validators.required ]
-			});
+		{
+			email: [ '', Validators.required ],
+			password: [ '', Validators.required ]
+		});
 	}
 }

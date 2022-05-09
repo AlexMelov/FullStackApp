@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiRoute, ApiUrl, CommonService } from 'ngx-crud';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
+import { Token } from './token.interface';
 
 @Injectable(
 {
@@ -11,8 +12,8 @@ import { Observable } from 'rxjs';
 @ApiRoute(environment.apiRoutes.login)
 export class LoginService extends CommonService
 {
-	login(email : string, password : string) : Observable<{token : string}>
+	login(email : string, password : string) : Observable<Token>
 	{
-		return this.getHttpClient().post<{token : string}>(this.getApiUrl() + this.getApiRoute(), { email, password });
+		return this.getHttpClient().post<Token>(this.getApiUrl() + this.getApiRoute(), { email, password });
 	}
 }

@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { server } from './server.js';
 import { Body } from './server.interface.js';
 import { User } from './models/user.interface';
+import { TestTodo } from './models/todo';
 
 describe('Server', () =>
 {
@@ -44,11 +45,11 @@ describe('Server', () =>
 	it('Should GET last added todo from list and delete it', async() =>
 	{
 		const response : Response = await supertest(server).get('/todos');
-		const body : {title : string, id : string}[] = await response.body;
+		const body : TestTodo[] = await response.body;
 
 		expect(response.statusCode).toBe(200);
 		expect(body).not.toHaveLength(0);
-		const todoArray : {title : string, id : string}[] = body.filter(todo => todo.title === 'Todo from Jest!' );
+		const todoArray : TestTodo[] = body.filter(todo => todo.title === 'Todo from Jest!' );
 
 		expect(body.forEach(todo =>
 		{
@@ -129,7 +130,7 @@ describe('Server', () =>
 		expect(body.email).toContain('jest_repeat.email@mail.com');
 		expect(body.password).not.toHaveLength(0);
 
-		const secondResponse : Response = await supertest(server)
+		const repeatedUserResponse : Response = await supertest(server)
 			.post('/register')
 			.send(
 			{
@@ -137,7 +138,7 @@ describe('Server', () =>
 				password : '123456'
 			});
 
-		expect(secondResponse.statusCode).toBe(403);
+		expect(repeatedUserResponse.statusCode).toBe(403);
 
 		const { _id } = response.body;
 

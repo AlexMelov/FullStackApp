@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 import { Register } from './register.interface';
 
 @Injectable(
-	{
-		providedIn: 'root'
-	})
+{
+	providedIn: 'root'
+})
 @ApiUrl(environment.apiUrl)
 @ApiRoute(environment.apiRoutes.register)
 export class RegisterService extends CommonService
