@@ -16,7 +16,7 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { LoginComponent } from './authentication/login/login.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { UiModule } from '../ui.module';
+import { UiModule } from './ui.module';
 import { AuthorisationInterceptor } from './authentication/authorisation-interceptor';
 import { TRANSLOCO_LOADER } from '@ngneat/transloco';
 import { HeaderComponent } from './header/header.component';
