@@ -4,6 +4,7 @@ import { User } from '../models/user.interface';
 import { Message } from './mailer.interface';
 import { response } from 'express';
 import wording from './wording.js';
+import environment from '../environments/environment.js';
 
 export function sendRegisterMail(user : User) : void
 {
@@ -11,8 +12,7 @@ export function sendRegisterMail(user : User) : void
 	const { subject, message } = wording.register;
 	const registerMessage : Message =
 	{
-		//todo set from into environmental files
-		from: '"Sender Name" <theExpressApp@example.net>',
+		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
 		to: user.email,
 		subject,
 		text: message
@@ -20,7 +20,7 @@ export function sendRegisterMail(user : User) : void
 
 	transport()
 		.sendMail(registerMessage)
-		.catch(error => ({ message: error }));
+		.catch((error : Error) => ({ message: error.message }));
 }
 
 export function sendLoginMail(user : User) : void
@@ -29,8 +29,7 @@ export function sendLoginMail(user : User) : void
 	const { subject, text } = wording.login;
 	const loginMessage : Message =
 	{
-		//todo set from into environment file
-		from: '"Sender Name" <theExpressApp@example.net>',
+		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
 		to: user.email,
 		subject,
 		text
@@ -38,16 +37,15 @@ export function sendLoginMail(user : User) : void
 
 	transport()
 		.sendMail(loginMessage)
-		.catch(error => response.status(404).json({ message: error }));
+		.catch((error : Error) => response.status(404).json({ message: error.message }));
 }
 
 function transport() : Transporter<SMTPTransport.SentMessageInfo>
 {
 	return createTransport(
 	{
-		//todo this host and port should be inside environment.mailer.port/host
-		host: 'smtp.ethereal.email',
-		port: 587,
+		host: environment.mailer.host,
+		port: environment.mailer.port,
 		auth:
 		{
 			user: process.env.MAIL_USER,

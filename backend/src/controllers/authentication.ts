@@ -8,7 +8,7 @@ import wording from './wording.js';
 export function loginUserHandler(request : Request, response : Response, userModel : Model<User>) : void
 {
 	const { email, password } = request.body;
-	const { tokenCompareErrorMessage, authenticationErrorMessage } = wording.login;
+	const { tokenCompareErrorMessage } = wording.login;
 
 	userModel.findOne(
 	{
@@ -33,6 +33,6 @@ export function loginUserHandler(request : Request, response : Response, userMod
 		});
 
 	})
-	.catch(error => response.status(401)
-		.json({ message: authenticationErrorMessage, error }));
+	.catch((error : Error) => response.status(401)
+		.json({ message: error.message }));
 }

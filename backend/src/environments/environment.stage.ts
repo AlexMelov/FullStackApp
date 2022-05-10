@@ -20,7 +20,12 @@ export const environment : Environment =
 	mailer:
 	{
 		host: 'smtp.ethereal.email',
-		port: 587
+		port: 587,
+		from :
+		{
+			name: 'Todo Application',
+			email: 'info@todo-application.com'
+		}
 	}
 };
 

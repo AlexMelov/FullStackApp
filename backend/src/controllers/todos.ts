@@ -1,15 +1,12 @@
 import { Request, Response } from 'express';
 import { HydratedDocument, Model } from 'mongoose';
 import { DirtyTodo, Todo } from '../models/todo';
-import wording from './wording.js';
-
-const { findErrorMessage, postErrorMessage, deleteErrorMessage } = wording.todos;
 
 export function getAllTodos(request : Request, response : Response, todoModel : Model<Todo>) : void
 {
 	todoModel.find()
 		.then(data => response.json(mapData(data)))
-		.catch(error => response.status(403).json({ message: findErrorMessage, error }));
+		.catch((error : Error) => response.status(403).json({ message: error.message }));
 }
 
 export function postTodo(request : Request, response : Response, todoModel : Model<Todo>) : void
@@ -18,14 +15,14 @@ export function postTodo(request : Request, response : Response, todoModel : Mod
 
 	todo.save()
 		.then(data => response.json(data))
-		.catch(error => response.status(403).json({ message: postErrorMessage, error }));
+		.catch((error : Error) => response.status(403).json({ message: error.message }));
 }
 
 export function deleteOneTodo(request : Request, response : Response, todoModel : Model<Todo>) : void
 {
 	todoModel.deleteOne({ _id: request.params.todoId })
 		.then(data => response.json(data))
-		.catch(error => response.status(403).json({ message: deleteErrorMessage, error }));
+		.catch((error : Error) => response.status(403).json({ message: error.message }));
 }
 
 function mapData(data : DirtyTodo[])

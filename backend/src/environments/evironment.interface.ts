@@ -17,7 +17,12 @@ export interface Environment
 	}
 	mailer :
 	{
-		host : string,
-		port : number
+		host : string;
+		port : number;
+		from :
+		{
+			name : string;
+			email : string;
+		}
 	}
 }
