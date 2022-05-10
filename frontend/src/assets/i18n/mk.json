@@ -5,5 +5,19 @@
 		"addButton": "Додади Цел",
 		"removeButton": "Избриши",
 		"selectLanguage": "Избери Јазик"
+	},
+	"authentication":
+	{
+		"email": "Внесете ја вашата е-пошта",
+		"password": "Внесете ја вашата лозинка",
+		"register": "Регистрирај се",
+		"login": "Најави се"
+	},
+	"navigation":
+	{
+		"login": "Најави се",
+		"logout": "Одјави се",
+		"register": "Регистрија се",
+		"todos": "Цели"
 	}
 }

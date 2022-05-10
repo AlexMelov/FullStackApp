@@ -11,5 +11,18 @@ export interface Environment
 	{
 		todos : string;
 		todosWithId : string;
+		register : string;
+		login : string;
+		userWithId : string;
+	}
+	mailer :
+	{
+		host : string;
+		port : number;
+		from :
+		{
+			name : string;
+			email : string;
+		}
 	}
 }

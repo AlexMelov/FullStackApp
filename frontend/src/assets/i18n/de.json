@@ -5,5 +5,19 @@
 		"addButton": "Aufgabe hinzufügen",
 		"removeButton": "Löschen",
 		"selectLanguage": "Sprache auswählen"
+	},
+	"authentication":
+	{
+		"email": "Geben sie ihre E-Mail Adresse ein",
+		"password": "Geben Sie Ihr Passwort ein",
+		"register": "Registrieren",
+		"login": "Anmeldung"
+	},
+	"navigation":
+	{
+		"login": "Anmeldung",
+		"logout": "Ausloggen",
+		"register": "Registrieren",
+		"todos": "Todos"
 	}
 }

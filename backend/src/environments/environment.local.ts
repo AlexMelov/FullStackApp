@@ -12,7 +12,20 @@ export const environment : Environment =
 	apiRoutes:
 	{
 		todos: '/todos',
-		todosWithId: '/todos/:todoId'
+		todosWithId: '/todos/:todoId',
+		register: '/register',
+		login: '/login',
+		userWithId: '/users/:userId'
+	},
+	mailer:
+	{
+		host: 'smtp.ethereal.email',
+		port: 587,
+		from :
+		{
+			name: 'Todo Application',
+			email: 'info@todo-application.com'
+		}
 	}
 };
 

@@ -129,6 +129,7 @@
 					"builder": "@krema/angular-eslint-stylelint-builder:lint",
 					"options":
 					{
+						"fix": true,
 						"eslintFilePatterns":
 						[
 							"**/**/*.json",

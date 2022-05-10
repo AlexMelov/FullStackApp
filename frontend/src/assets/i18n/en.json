@@ -5,5 +5,19 @@
 		"addButton": "Add Todo",
 		"removeButton": "Remove",
 		"selectLanguage": "Select Language"
+	},
+	"authentication":
+	{
+		"email": "Enter your email",
+		"password": "Enter your password",
+		"register": "Sign Up",
+		"login": "Login"
+	},
+	"navigation":
+	{
+		"login": "Login",
+		"logout": "Logout",
+		"register": "Register",
+		"todos": "Todos"
 	}
 }
