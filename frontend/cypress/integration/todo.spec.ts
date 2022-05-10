@@ -13,7 +13,6 @@ describe('it should test todos on the todos route', () =>
 	it('todo list is working', () =>
 	{
 		cy.wait(2000);
-		cy.reload();
 		cy.get('[data-test="item"]').should('have.length.above', 0);
 		cy.get('[data-test="item"]').should('have.length.below', 30);
 	});
