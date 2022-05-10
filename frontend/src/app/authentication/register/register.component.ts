@@ -9,8 +9,7 @@ import { RegisterService } from './register.service';
 	selector: 'app-register',
 	templateUrl: './register.component.html',
 	styleUrls: [ './register.component.scss' ]
-}
-)
+})
 export class RegisterComponent
 {
 	unmask : boolean = false;
