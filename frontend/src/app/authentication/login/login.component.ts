@@ -14,7 +14,6 @@ export class LoginComponent
 {
 	unmask : boolean = false;
 	form : FormGroup;
-	private token : string | null = null;
 
 	constructor(private formBuilder : FormBuilder, private loginServices : LoginService, private router : Router)
 	{
@@ -26,14 +25,15 @@ export class LoginComponent
 		const { email, password } = this.form.value;
 
 		this.loginServices.login(email, password)
-			.subscribe(response =>
+			.subscribe(
+			//todo save token in a authentication.service.ts
 			{
-				this.token = response.token;
-				this.router.navigate([ environment.pageRoutes.todos ]);
+				next: () => this.router.navigate([ environment.pageRoutes.todos ]),
+				error: (error : Error) => this.form.setErrors({ message: error.message })
 			});
 	}
 
-	createForm() : FormGroup
+	private createForm() : FormGroup
 	{
 		return this.formBuilder.group(
 		{
@@ -48,14 +48,5 @@ export class LoginComponent
 				Validators.required
 			]
 		});
-	}
-
-	getToken() : string
-	{
-		if(!this.token)
-		{
-			return '';
-		}
-		return this.token;
 	}
 }

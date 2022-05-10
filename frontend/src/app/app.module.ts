@@ -17,7 +17,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { UiModule } from './ui.module';
-import { AuthorisationInterceptor } from './authentication/authorisation-interceptor';
+import { AuthenticationInterceptor } from './authentication/authentication-interceptor';
 import { TRANSLOCO_LOADER } from '@ngneat/transloco';
 import { HeaderComponent } from './header/header.component';
 
@@ -52,7 +52,7 @@ import { HeaderComponent } from './header/header.component';
 	[
 		{
 			provide: [ HTTP_INTERCEPTORS, TRANSLOCO_LOADER ],
-			useClass: AuthorisationInterceptor,
+			useClass: AuthenticationInterceptor,
 			multi: true
 		}
 	],

@@ -28,11 +28,11 @@ export class RegisterComponent
 			.subscribe(
 			{
 				next: () => this.router.navigate([ environment.pageRoutes.todos ]),
-				error: () => alert('Not working!')
+				error: (error : Error) => this.form.setErrors({ message: error.message })
 			});
 	}
 
-	createForm() : FormGroup
+	private createForm() : FormGroup
 	{
 		return this.formBuilder.group(
 		{

@@ -17,7 +17,6 @@
 		"@ngneat/transloco": "4.0.0",
 		"harmonize.css": "4.1.4",
 		"ngx-crud": "10.1.2",
-		"root": "file:..",
 		"rxjs": "7.5.5",
 		"tslib": "2.4.0",
 		"zone.js": "0.11.5"
