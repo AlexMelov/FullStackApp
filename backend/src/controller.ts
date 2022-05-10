@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { todoModel } from './models/schema.js';
 import { Handler } from './models/express';
-import { deleteOneTodo, getAllTodos, postTodo } from './controlers/todos.js';
-import { registerUser } from './controlers/register.js';
+import { deleteOneTodo, getAllTodos, postTodo } from './controllers/todos.js';
+import { registerUser } from './controllers/register.js';
 import { userModel } from './models/user.schema.js';
-import { loginUserHandler } from './controlers/authentication.js';
-import { deleteUser } from './controlers/users.js';
+import { loginUserHandler } from './controllers/authentication.js';
+import { deleteUser } from './controllers/users.js';
 
 export const findHandler : Handler = (request : Request, response : Response) : void =>
 {
