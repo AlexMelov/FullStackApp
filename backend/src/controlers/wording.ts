@@ -9,6 +9,11 @@ const wording : Record<string, any> =
 	{
 		subject: 'Registration',
 		text: 'Your registration is done!'
+	},
+	error:
+	{
+		tokenCompareMessage: 'Authentication failed on user',
+		authenticationMessage: 'Authentication failed on entire authentication'
 	}
 };
 

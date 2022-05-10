@@ -8,7 +8,6 @@ import wording from './wording.js';
 export function sendRegisterMail(user : User) : void
 {
 	//todo add multi-language support
-	//todo separate register message into other
 	const { subject, message } = wording.register;
 	const registerMessage : Message =
 	{

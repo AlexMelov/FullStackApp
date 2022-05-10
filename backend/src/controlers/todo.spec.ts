@@ -23,9 +23,9 @@ describe('Todos', () =>
 	it('should CREATE a todo', async() =>
 	{
 		const response : Response = await supertest(server).post('/todos').send(
-			{
-				title : 'Todo from Jest!'
-			});
+		{
+			title : 'Todo from Jest!'
+		});
 		const body : DirtyTodo = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -49,19 +49,19 @@ describe('Todos', () =>
 		{
 			expect(user.statusCode).toBe(200);
 			expect(user.body).toEqual(
-				{
-					acknowledged: true,
-					deletedCount: 1
-				});
+			{
+				acknowledged: true,
+				deletedCount: 1
+			});
 		});
 	});
 
 	it('should create and DELETE same todo', async() =>
 	{
 		const response : Response = await supertest(server).post('/todos').send(
-			{
-				title : 'Todo for delete from Jest!'
-			});
+		{
+			title : 'Todo for delete from Jest!'
+		});
 		const body : DirtyTodo = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -72,10 +72,10 @@ describe('Todos', () =>
 
 		expect(deleteResponse.statusCode).toBe(200);
 		expect(deleteResponse.body).toEqual(
-			{
-				acknowledged: true,
-				deletedCount: 1
-			});
+		{
+			acknowledged: true,
+			deletedCount: 1
+		});
 	});
 
 	afterAll(() => mongoose.connection.close(true));

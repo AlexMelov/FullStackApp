@@ -3,10 +3,12 @@ import { User } from '../models/user.interface';
 import { compareSync } from 'bcrypt';
 import { Model } from 'mongoose';
 import { tokenHelper } from './token.helper.js';
+import wording from './wording.js';
 
 export function loginUserHandler(request : Request, response : Response, userModel : Model<User>) : void
 {
 	const { email, password } = request.body;
+	const { tokenCompareMessage, authenticationMessage } = wording.error;
 
 	userModel.findOne(
 	{
@@ -28,11 +30,11 @@ export function loginUserHandler(request : Request, response : Response, userMod
 		return response.status(401).json(
 		{
 			//todo add message:  from wording file
-			message: 'Authentication failed on user'
+			message: tokenCompareMessage
 		});
 
 	})
 	//todo add message:  from wording file
 	.catch(error => response.status(401)
-		.json({ message: 'Authentication failed on entire', error }));
+		.json({ message: authenticationMessage, error }));
 }
