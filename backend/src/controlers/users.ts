@@ -1,11 +1,13 @@
 import { Request, Response } from 'express';
 import { Model } from 'mongoose';
 import { User } from '../models/user.interface';
+import wording from './wording.js';
 
 export function deleteUser(request : Request, response : Response, userModel : Model<User>) : void
 {
+	const { deleteUserErrorMessage } = wording.deleteUser;
+
 	userModel.deleteOne({ _id: request.params.userId })
 		.then(data => response.json(data))
-		//todo add message:  from wording file
-		.catch(error => response.status(403).json({ message: 'Failed to delete user', error }));
+		.catch(error => response.status(403).json({ message: deleteUserErrorMessage, error }));
 }

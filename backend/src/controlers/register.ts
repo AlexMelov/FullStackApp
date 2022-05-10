@@ -3,10 +3,12 @@ import { hash } from 'bcrypt';
 import { HydratedDocument, Model } from 'mongoose';
 import { User } from '../models/user.interface.js';
 import { sendRegisterMail } from './mailer.js';
+import wording from './wording.js';
 
 export function registerUser(request : Request, response : Response, userModel : Model<User>) : void
 {
 	const { email, password } = request.body;
+	const { registrationErrorMessage, userRegisterErrorMessage } = wording.register;
 
 	hash(password, 10)
 		.then(hash =>
@@ -23,9 +25,7 @@ export function registerUser(request : Request, response : Response, userModel :
 					sendRegisterMail(user);
 					response.json(user);
 				})
-				//todo add message:  from wording file
-				.catch(error => response.status(403).json({ message: error }));
+				.catch(error => response.status(403).json({ message: userRegisterErrorMessage, error }));
 		})
-		//todo add message:  from wording file
-		.catch(error => response.status(403).json({ message: 'Failed to hash the password', error }));
+		.catch(error => response.status(403).json({ message:registrationErrorMessage, error }));
 }

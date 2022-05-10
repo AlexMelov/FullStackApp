@@ -45,6 +45,7 @@ function transport() : Transporter<SMTPTransport.SentMessageInfo>
 {
 	return createTransport(
 	{
+		//todo this host and port should be inside environment.mailer.port/host
 		host: 'smtp.ethereal.email',
 		port: 587,
 		auth:
