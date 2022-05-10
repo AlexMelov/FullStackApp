@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslocoModule } from '@ngneat/transloco'
 
 import { LanguageComponent } from './language.component';
 
-describe.skip('LanguageComponent', () =>
+describe('LanguageComponent', () =>
 {
 	let component : LanguageComponent;
 	let fixture : ComponentFixture<LanguageComponent>;
@@ -11,20 +12,21 @@ describe.skip('LanguageComponent', () =>
 	{
 		await TestBed.configureTestingModule(
 		{
-      		declarations: [ LanguageComponent ]
+			imports: [ TranslocoModule ],
+			declarations: [ LanguageComponent ]
     	})
-    .compileComponents();
+		.compileComponents();
 	});
 
 	beforeEach(() =>
 	{
 		fixture = TestBed.createComponent(LanguageComponent);
 		component = fixture.componentInstance;
-    fixture.detectChanges();
+    	fixture.detectChanges();
 	});
 
 	it('should create', () =>
 	{
-    expect(component).toBeTruthy();
+    	expect(component).toBeTruthy();
 	});
 });

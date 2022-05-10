@@ -1,28 +1,34 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TodoComponent } from './todo.component';
+import { CrudModule } from 'ngx-crud';
+import { HttpClientModule } from '@angular/common/http';
 
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { TodoService } from './todo.service';
 
-describe.skip('ListComponent', () =>
+
+describe('LanguageComponent', () =>
 {
-	let service : TodoService;
+	let component : TodoComponent;
+	let fixture : ComponentFixture<TodoComponent>;
 
 	beforeEach(async() =>
 	{
 		await TestBed.configureTestingModule(
 			{
-				imports: [ HttpClientTestingModule ]
-			});
-		service = TestBed.inject(TodoService);
+				imports: [ CrudModule, HttpClientModule ],
+				declarations: [ TodoComponent ]
+			})
+			.compileComponents();
 	});
 
-	it('should mock the create', async() =>	
+	beforeEach(() =>
 	{
-		expect(service).toBeTruthy();
+		fixture = TestBed.createComponent(TodoComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-		service.find().subscribe(todos =>
-		{
-			expect(todos).not.toHaveLength(0);
-		});
+	it('should create', () =>
+	{
+		expect(component).toBeTruthy();
 	});
 });
