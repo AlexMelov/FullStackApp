@@ -1,7 +1,7 @@
 <nav>
 	<ul>
 		<li><a matLine mat-raised-button routerLink="{{loginRoute}}">{{ 'navigation.login' | transloco }}</a></li>
-		<li><a matLine mat-raised-button>{{ 'navigation.logout' | transloco }}</a></li>
+		<li><a matLine mat-raised-button (click)="logout()">{{ 'navigation.logout' | transloco }}</a></li>
 		<li><a matLine mat-raised-button routerLink="{{registerRoute}}">{{ 'navigation.register' | transloco }}</a></li>
 		<li><a matLine mat-raised-button routerLink="{{todosRoute}}">{{ 'navigation.todos' | transloco }}</a></li>
 	</ul>

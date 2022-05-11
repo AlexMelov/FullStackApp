@@ -51,7 +51,7 @@ import { HeaderComponent } from './header/header.component';
 	providers:
 	[
 		{
-			provide: [ HTTP_INTERCEPTORS, TRANSLOCO_LOADER ],
+			provide: HTTP_INTERCEPTORS,
 			useClass: AuthenticationInterceptor,
 			multi: true
 		}

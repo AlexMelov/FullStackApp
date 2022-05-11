@@ -12,6 +12,6 @@ export function tokenHelper(user : User) : Token
 	},
 	process.env.JWT_SECRET,
 	{
-		expiresIn: '1h'
+		expiresIn: 3600
 	});
 }

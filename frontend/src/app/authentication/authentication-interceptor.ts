@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {AuthenticationService} from "./authentication.service";
+import { AuthenticationService } from "./authentication.service";
 
 @Injectable(
 {
@@ -13,15 +13,20 @@ export class AuthenticationInterceptor implements HttpInterceptor
 	{
 	}
 
-	//todo inject authentication.service to get token
-	//todo replace <any> with other type
-	intercept(request : HttpRequest<any>, next : HttpHandler) : Observable<HttpEvent<any>>
+	intercept<T>(request : HttpRequest<T>, next : HttpHandler) : Observable<HttpEvent<T>>
 	{
-		const authorisationRequest : HttpRequest<any> = request.clone(
+		if (this.authenticationService.getToken())
 		{
-			headers: request.headers.set('Authorization', 'null')
-		});
+			return next.handle(this.appendHeader<T>(request));
+		}
+		return next.handle(request);
+	}
 
-		return next.handle(authorisationRequest);
+	appendHeader<T>(request : HttpRequest<T>) : HttpRequest<T>
+	{
+		return request.clone(
+		{
+			headers: request.headers.set('Authorization', 'Bearer ' + this.authenticationService.getToken().token)
+		});
 	}
 }
