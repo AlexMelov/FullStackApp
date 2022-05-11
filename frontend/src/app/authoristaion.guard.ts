@@ -5,12 +5,11 @@ import { Observable } from 'rxjs';
 @Injectable(
 {
 	providedIn:'root'
-}
-)
+})
 export class AuthoristaionGuard implements CanActivate
 {
 	canActivate() : Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree
 	{
-		return false;
+		return !!localStorage.getItem('token');
 	}
 }

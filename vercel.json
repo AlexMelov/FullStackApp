@@ -29,6 +29,18 @@
 			"dest": "frontend/dist/frontend/index.html"
 		},
 		{
+			"src": "/todos",
+			"dest": "frontend/dist/frontend/index.html"
+		},
+		{
+			"src": "/login",
+			"dest": "frontend/dist/frontend/index.html"
+		},
+		{
+			"src": "/register",
+			"dest": "frontend/dist/frontend/index.html"
+		},
+		{
 			"src": "/(.+)",
 			"dest": "frontend/dist/frontend/$1"
 		}
