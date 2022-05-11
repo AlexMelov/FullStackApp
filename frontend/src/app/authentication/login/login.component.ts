@@ -29,7 +29,7 @@ export class LoginComponent
 			//todo save token in a authentication.service.ts
 			{
 				next: () => this.router.navigate([ environment.pageRoutes.todos ]),
-				error: (error : Error) => this.form.setErrors({ message: error.message })
+				error: (error : Error) => this.form.setErrors({ message: error.message }),
 			});
 	}
 

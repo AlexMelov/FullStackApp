@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { routes } from './routes';
+import { AuthoristaionGuard } from "./authoristaion.guard";
 
 @NgModule(
 {
@@ -11,6 +12,10 @@ import { routes } from './routes';
 	exports:
 	[
 		RouterModule
+	],
+	providers:
+	[
+		AuthoristaionGuard
 	]
 })
 export class AppRoutingModule
