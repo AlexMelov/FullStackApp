@@ -23,12 +23,12 @@ export class AuthenticationService extends CommonService
 
 	getToken() : Token
 	{
-		return this.token;
+		return JSON.parse(sessionStorage.getItem('token') || '{}');
 	}
 
 	setToken(token : Token) : void
 	{
-		this.token = token;
+		sessionStorage.setItem('token', JSON.stringify(token));
 	}
 
 	isLoggedIn() : boolean

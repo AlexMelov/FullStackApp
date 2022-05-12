@@ -10,6 +10,10 @@ const wording : Record<string, any> =
 		subject: 'Registration',
 		text: 'Your registration is done!',
 		tokenCompareErrorMessage: 'Authentication failed on user'
+	},
+	middleware:
+	{
+		error: 'Authentication failed'
 	}
 };
 
