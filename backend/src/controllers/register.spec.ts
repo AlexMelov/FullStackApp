@@ -38,7 +38,7 @@ describe('Should test user registration', ()=>
 	it('Should register new user, try to register with same user, ' +
 		'return 403 status code and delete the created one', async() =>
 	{
-		const response : Response = await supertest(server).post('/register').send(
+		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
 		{
 			email : 'jest_repeat.email@mail.com',
 			password : '123456'
@@ -51,7 +51,7 @@ describe('Should test user registration', ()=>
 		expect(body.password).not.toHaveLength(0);
 
 		const repeatedUserResponse : Response = await supertest(server)
-			.post('/register')
+			.post(environment.apiRoutes.register)
 			.send(
 			{
 				email : 'jest_repeat.email@mail.com',

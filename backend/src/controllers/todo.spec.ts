@@ -2,36 +2,37 @@ import supertest, { Response } from 'supertest';
 import mongoose from 'mongoose';
 import { server } from '../server';
 import { DirtyTodo, TestTodo } from '../models/todo';
+import environment from '../environments/environment';
 
 describe('Todos', () =>
 {
-	let loginToken : string;
+	let recievedToken : string;
 
 	beforeAll(async() =>
 	{
 		await mongoose.connect(process.env.DB_URL);
-		const loginResponse : Response = await supertest(server).post('/login').send(
-			{
-				email : 'jest.test.user@express.com',
-				password : '123456789'
-			});
+		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
+		{
+			email : process.env.TEST_EMAIL,
+			password : process.env.TEST_PASSWORD
+		});
 		const { token } = loginResponse.body;
 
-		loginToken = token;
+		recievedToken = token;
 	});
 
 	it('Should Test if the routes are protected', async() =>
 	{
-		const response : Response = await supertest(server).get('/todos');
+		const response : Response = await supertest(server).get(environment.apiRoutes.login);
 		const { Authorization } = response.headers;
 
-		expect(response.statusCode).toBe(401);
+		expect(response.statusCode).toBe(404);
 		expect(Authorization).not.toBeDefined();
 	});
 
 	it('should GET all todos', async() =>
 	{
-		const response : Response = await supertest(server).get('/todos').set('Authorization', 'Bearer ' + loginToken);
+		const response : Response = await supertest(server).get(environment.apiRoutes.todos).set('Authorization', 'Bearer ' + recievedToken);
 		const body : DirtyTodo[] = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -44,15 +45,15 @@ describe('Todos', () =>
 
 	it('should CREATE a todo', async() =>
 	{
-		await supertest(server).post('/login').send(
-			{
-				email : 'jest.test.user@express.com',
-				password : '123456789'
-			});
-		const response : Response = await supertest(server).post('/todos').send(
+		await supertest(server).post(environment.apiRoutes.login).send(
+		{
+			email : 'jest.test.user@express.com',
+			password : '123456789'
+		});
+		const response : Response = await supertest(server).post(environment.apiRoutes.todos).send(
 		{
 			title : 'Todo from Jest!'
-		}).set('Authorization', 'Bearer ' + loginToken);
+		}).set('Authorization', 'Bearer ' + recievedToken);
 		const body : DirtyTodo = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -62,7 +63,7 @@ describe('Todos', () =>
 
 	it('Should GET last added todo from list and delete it', async() =>
 	{
-		const response : Response = await supertest(server).get('/todos').set('Authorization', 'Bearer ' + loginToken);
+		const response : Response = await supertest(server).get(environment.apiRoutes.todos).set('Authorization', 'Bearer ' + recievedToken);
 		const body : TestTodo[] = await response.body;
 		const todoArray : TestTodo[] = await body.filter(todo => todo.title === 'Todo from Jest!' );
 
@@ -72,7 +73,7 @@ describe('Todos', () =>
 		{
 			expect(todo.title).toBeTruthy();
 		}));
-		await supertest(server).delete('/todos/' + todoArray[0].id).set('Authorization', 'Bearer ' + loginToken).then(user =>
+		await supertest(server).delete(environment.apiRoutes.todos + '/' + todoArray[0].id).set('Authorization', 'Bearer ' + recievedToken).then(user =>
 		{
 			expect(user.statusCode).toBe(200);
 			expect(user.body).toEqual(
@@ -85,17 +86,17 @@ describe('Todos', () =>
 
 	it('should create and DELETE same todo', async() =>
 	{
-		const response : Response = await supertest(server).post('/todos').send(
+		const response : Response = await supertest(server).post(environment.apiRoutes.todos).send(
 		{
 			title : 'Todo for delete from Jest!'
-		}).set('Authorization', 'Bearer ' + loginToken);
+		}).set('Authorization', 'Bearer ' + recievedToken);
 		const body : DirtyTodo = await response.body;
 
 		expect(response.statusCode).toBe(200);
 		expect(response.headers).toBeDefined();
 		expect(body.title).toContain('Todo for delete from Jest!');
 
-		const deleteResponse : Response = await supertest(server).delete('/todos/' + body._id).set('Authorization', 'Bearer ' + loginToken);
+		const deleteResponse : Response = await supertest(server).delete(environment.apiRoutes.todos + '/' + body._id).set('Authorization', 'Bearer ' + recievedToken);
 
 		expect(deleteResponse.statusCode).toBe(200);
 		expect(deleteResponse.body).toEqual(
