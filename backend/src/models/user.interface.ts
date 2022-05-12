@@ -5,9 +5,3 @@ export interface User
 	password : string;
 }
 
-export type Token =
-{
-	email : string;
-	userId : string;
-	token : string;
-}

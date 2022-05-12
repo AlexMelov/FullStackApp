@@ -1,5 +1,6 @@
-import { Token, User } from '../models/user.interface';
+import { User } from '../models/user.interface';
 import jwt from 'jsonwebtoken';
+import { Token } from '../models/token.type';
 
 export function tokenHelper(user : User) : Token
 {
