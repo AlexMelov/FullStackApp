@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
-import {AuthenticationService} from "../authentication/authentication.service";
+import { AuthenticationService } from '../authentication/authentication.service';
 
 @Component(
 {
@@ -15,7 +15,7 @@ export class HeaderComponent
 	registerRoute : string = '/' + environment.pageRoutes.register;
 	todosRoute : string = '/' + environment.pageRoutes.todos;
 
-	constructor(private router : Router, private authenticationService: AuthenticationService)
+	constructor(private router : Router, private authenticationService : AuthenticationService)
 	{
 	}
 
