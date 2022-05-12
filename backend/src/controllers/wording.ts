@@ -13,7 +13,7 @@ const wording : Record<string, any> =
 	},
 	middleware:
 	{
-		error: 'Authentication failed'
+		error: 'Access is forbidden'
 	}
 };
 
