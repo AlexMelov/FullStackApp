@@ -2,11 +2,11 @@ import jwt from 'jsonwebtoken';
 import wording from '../controllers/wording.js';
 import { NextFunction, Response, Request } from 'express';
 
-export function middlewareHandler(request : Request, response : Response, next : NextFunction) : void
+export function middleware(request : Request, response : Response, next : NextFunction) : void
 {
 	try
 	{
-		const token : string = request.headers.authorization.split(' ')[1];
+		const token : string = request.headers.authorization.split('Bearer ')[1];
 		const { verify } = jwt;
 
 		verify(token, process.env.JWT_SECRET);
