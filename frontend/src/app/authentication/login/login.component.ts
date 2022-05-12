@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { AuthenticationService } from '../authentication.service';
 
 @Component(
 {
@@ -15,7 +15,7 @@ export class LoginComponent
 	unmask : boolean = false;
 	form : FormGroup;
 
-	constructor(private formBuilder : FormBuilder, private loginServices : LoginService, private router : Router)
+	constructor(private formBuilder : FormBuilder, private authenticationService : AuthenticationService, private router : Router)
 	{
 		this.form = this.createForm();
 	}
@@ -24,11 +24,14 @@ export class LoginComponent
 	{
 		const { email, password } = this.form.value;
 
-		this.loginServices.login(email, password)
+		this.authenticationService.login(email, password)
 			.subscribe(
-			//todo save token in a authentication.service.ts
 			{
-				next: () => this.router.navigate([ environment.pageRoutes.todos ]),
+				next: token =>
+				{
+					this.authenticationService.setToken(token);
+					this.router.navigate([ environment.pageRoutes.todos ]);
+				},
 				error: (error : Error) => this.form.setErrors({ message: error.message })
 			});
 	}

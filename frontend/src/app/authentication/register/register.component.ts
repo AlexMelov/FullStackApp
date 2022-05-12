@@ -27,7 +27,7 @@ export class RegisterComponent
 		this.registerService.register(email, password)
 			.subscribe(
 			{
-				next: () => this.router.navigate([ environment.pageRoutes.todos ]),
+				next: () => this.router.navigate([ environment.pageRoutes.login ]),
 				error: (error : Error) => this.form.setErrors({ message: error.message })
 			});
 	}

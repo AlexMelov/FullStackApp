@@ -1,5 +1,6 @@
-import { Token, User } from '../models/user.interface';
+import { User } from '../models/user.interface';
 import jwt from 'jsonwebtoken';
+import { Token } from '../models/token.type';
 
 export function tokenHelper(user : User) : Token
 {
@@ -12,6 +13,6 @@ export function tokenHelper(user : User) : Token
 	},
 	process.env.JWT_SECRET,
 	{
-		expiresIn: '1h'
+		expiresIn: 3600
 	});
 }

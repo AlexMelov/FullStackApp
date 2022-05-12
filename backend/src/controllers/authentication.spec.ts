@@ -2,6 +2,7 @@ import supertest, { Response } from 'supertest';
 import { server } from '../server';
 import { User } from '../models/user.interface.js';
 import mongoose from 'mongoose';
+import environment from '../environments/environment';
 
 describe('Should test login', () =>
 {
@@ -9,7 +10,7 @@ describe('Should test login', () =>
 
 	it('Should get token from login', async() =>
 	{
-		const response : Response = await supertest(server).post('/register').send(
+		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
 		{
 			email : 'jestForLogin.email@mail.com',
 			password : '123456'
@@ -21,7 +22,7 @@ describe('Should test login', () =>
 		expect(body.email).toContain('jestForLogin.email@mail.com');
 		expect(body.password).not.toHaveLength(0);
 
-		const loginResponse : Response = await supertest(server).post('/login').send(
+		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
 			email : 'jestForLogin.email@mail.com',
 			password : '123456'
