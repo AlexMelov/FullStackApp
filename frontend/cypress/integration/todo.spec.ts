@@ -38,4 +38,9 @@ describe('it should test todos on the todos route', () =>
 		cy.reload();
 		cy.get('[data-test="item"]').should('not.contain.text', 'My new Todo from Cypress');
 	});
+
+	after(() =>
+	{
+		cy.logout();
+	});
 });
