@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { HydratedDocument, Model } from 'mongoose';
 import { DirtyTodo, Todo } from '../models/todo';
 
-//todo get todos only for authenticated user
 export function getAllTodos(request : Request, response : Response, todoModel : Model<Todo>) : void
 {
 	todoModel.find()
@@ -10,7 +9,6 @@ export function getAllTodos(request : Request, response : Response, todoModel : 
 		.catch((error : Error) => response.status(403).json({ message: error.message }));
 }
 
-//todo get todos only for authenticated user
 export function postTodo(request : Request, response : Response, todoModel : Model<Todo>) : void
 {
 	const todo : HydratedDocument<Todo> = new todoModel(request.body);
@@ -20,7 +18,6 @@ export function postTodo(request : Request, response : Response, todoModel : Mod
 		.catch((error : Error) => response.status(403).json({ message: error.message }));
 }
 
-//todo get todos only for authenticated user
 export function deleteOneTodo(request : Request, response : Response, todoModel : Model<Todo>) : void
 {
 	todoModel.deleteOne({ _id: request.params.todoId })

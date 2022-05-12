@@ -20,6 +20,15 @@ describe('Todos', () =>
 		loginToken = token;
 	});
 
+	it('Should Test if the routes are protected', async() =>
+	{
+		const response : Response = await supertest(server).get('/todos');
+		const { Authorization } = response.headers;
+
+		expect(response.statusCode).toBe(401);
+		expect(Authorization).not.toBeDefined();
+	});
+
 	it('should GET all todos', async() =>
 	{
 		const response : Response = await supertest(server).get('/todos').set('Authorization', 'Bearer ' + loginToken);
