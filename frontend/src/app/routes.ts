@@ -5,6 +5,7 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { LoginComponent } from './authentication/login/login.component';
 import { AuthenticationGuard } from "./authentication/authentication.guard";
 
+
 export const routes : Routes =
 [
 	{
