@@ -3,11 +3,11 @@ import { Environment } from '../../src/environments/environment.interface';
 
 const environment : Environment = environmentHelper(Cypress.env('APP_ENV'));
 
-//todo set test to login fix the tests
-describe.skip('it should test todos on the todos route', () =>
+describe('it should test todos on the todos route', () =>
 {
 	beforeEach(() =>
 	{
+		cy.login();
 		cy.visit(environment.baseUrl + '/' + environment.pageRoutes.todos);
 	});
 
