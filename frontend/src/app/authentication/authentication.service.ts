@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiRoute, ApiUrl, CommonService } from "ngx-crud";
-import { environment } from "../../environments/environment";
-import {Token} from "./authentication.interface";
+import { ApiRoute, ApiUrl, CommonService } from 'ngx-crud';
+import { environment } from '../../environments/environment';
+import { Token } from './authentication.interface';
 
 @Injectable({ providedIn: 'root' })
 @ApiUrl(environment.apiUrl)
@@ -11,7 +11,7 @@ export class AuthenticationService extends CommonService
 {
 	token : Token = {};
 
-	login(email: string, password: string) : Observable<Token>
+	login(email : string, password : string) : Observable<Token>
 	{
 		return this.getHttpClient().post<Token>(this.getApiUrl() + this.getApiRoute(), { email, password });
 	}

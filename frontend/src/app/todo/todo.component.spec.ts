@@ -3,8 +3,6 @@ import { TodoComponent } from './todo.component';
 import { CrudModule } from 'ngx-crud';
 import { HttpClientModule } from '@angular/common/http';
 
-
-
 describe('LanguageComponent', () =>
 {
 	let component : TodoComponent;
