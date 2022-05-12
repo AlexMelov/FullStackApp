@@ -13,8 +13,8 @@ describe('Todos', () =>
 		await mongoose.connect(process.env.DB_URL);
 		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
-			email : process.env.TEST_EMAIL,
-			password : process.env.TEST_PASSWORD
+			email : 'jest.test.user@express.com',
+			password : '123456789'
 		});
 		const { token } = loginResponse.body;
 
@@ -66,6 +66,7 @@ describe('Todos', () =>
 		const response : Response = await supertest(server).get(environment.apiRoutes.todos).set('Authorization', 'Bearer ' + recievedToken);
 		const body : TestTodo[] = await response.body;
 		const todoArray : TestTodo[] = await body.filter(todo => todo.title === 'Todo from Jest!' );
+		const todoId : string = todoArray[0].id;
 
 		expect(response.statusCode).toBe(200);
 		expect(body).not.toHaveLength(0);
@@ -73,7 +74,7 @@ describe('Todos', () =>
 		{
 			expect(todo.title).toBeTruthy();
 		}));
-		await supertest(server).delete(environment.apiRoutes.todos + '/' + todoArray[0].id).set('Authorization', 'Bearer ' + recievedToken).then(user =>
+		await supertest(server).delete(environment.apiRoutes.todos + '/' + todoId).set('Authorization', 'Bearer ' + recievedToken).then(user =>
 		{
 			expect(user.statusCode).toBe(200);
 			expect(user.body).toEqual(

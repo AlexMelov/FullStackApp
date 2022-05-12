@@ -51,8 +51,6 @@ jobs:
                     MAIL_USER: ${{ secrets.MAIL_USER_DEV }}
                     MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD_DEV }}
                     JWT_SECRET: ${{ secrets.JWT_SECRET_DEV }}
-                    JEST_TEST_EMAIL: ${{secret.TEST_EMAIL_DEV}}
-                    JEST_TEST_PASSWORD: ${{secret.TEST_PASSWORD_DEV}}
     test-acceptance:
         runs-on: ubuntu-latest
         steps:
