@@ -24,10 +24,8 @@ describe('Todos', () =>
 	it('Should Test if the routes are protected', async() =>
 	{
 		const response : Response = await supertest(server).get(environment.apiRoutes.login);
-		const { Authorization } = response.headers;
 
 		expect(response.statusCode).toBe(404);
-		expect(Authorization).not.toBeDefined();
 	});
 
 	it('should GET all todos', async() =>
