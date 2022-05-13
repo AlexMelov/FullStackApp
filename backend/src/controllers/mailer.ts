@@ -23,16 +23,16 @@ export function sendRegisterMail(user : User) : void
 		.catch((error : Error) => ({ message: error.message }));
 }
 
-export function sendLoginMail(user : User) : void
+export function sendLoginMail(email : string, challenge : number) : void
 {
 	//todo separate message and add multi language
 	const { subject, text } = wording.login;
 	const loginMessage : Message =
 	{
 		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
-		to: user.email,
+		to: email,
 		subject,
-		text
+		text: text + challenge
 	};
 
 	transport()

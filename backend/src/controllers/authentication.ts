@@ -7,7 +7,7 @@ import wording from './wording.js';
 
 export function loginUserHandler(request : Request, response : Response, userModel : Model<User>) : void
 {
-	const { email, password } = request.body;
+	const { email, password, challenge } = request.body;
 	const { tokenCompareErrorMessage } = wording.login;
 
 	userModel.findOne(
@@ -24,7 +24,8 @@ export function loginUserHandler(request : Request, response : Response, userMod
 		{
 			return response.status(200).json(
 			{
-				token: tokenHelper(result.user)
+				token: tokenHelper(result.user),
+				challenge: challenge as string
 			});
 		}
 		return response.status(401).json(
