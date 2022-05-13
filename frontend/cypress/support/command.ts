@@ -1,4 +1,7 @@
-import { environment } from '../../src/environments/environment';
+import { environmentHelper } from '../../src/environments/environment.helper';
+import { Environment } from '../../src/environments/environment.interface';
+
+const environment : Environment = environmentHelper(Cypress.env('APP_ENV'));
 
 Cypress.Commands.add('login', () =>
 {
