@@ -5,7 +5,6 @@
 	],
 	"rules":
 	{
-		"jsdoc/require-jsdoc": "off",
 		"no-console":
 		[
 			"error",

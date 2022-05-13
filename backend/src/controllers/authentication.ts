@@ -32,7 +32,6 @@ export function loginUserHandler(request : Request, response : Response, userMod
 		{
 			message: tokenCompareErrorMessage
 		});
-
 	})
 	.catch((error : Error) => response.status(401)
 		.json({ message: error.message }));
