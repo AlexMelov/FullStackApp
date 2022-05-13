@@ -6,6 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule(
 {
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
 		MatProgressSpinnerModule,
 		MatSelectModule,
 		MatIconModule,
-		FormsModule
+		FormsModule,
+		MatTooltipModule
 	]
 })
 export class UiModule

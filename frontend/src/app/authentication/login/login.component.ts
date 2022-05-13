@@ -22,9 +22,9 @@ export class LoginComponent
 
 	sendLogin() : void
 	{
-		const { email, password } = this.form.value;
+		const { email, password, challenge } = this.form.value;
 
-		this.authenticationService.login(email, password)
+		this.authenticationService.login(email, password, challenge)
 			.subscribe(
 			{
 				next: token =>
@@ -46,6 +46,11 @@ export class LoginComponent
 				Validators.required
 			],
 			password:
+			[
+				'',
+				Validators.required
+			],
+			challenge:
 			[
 				'',
 				Validators.required
