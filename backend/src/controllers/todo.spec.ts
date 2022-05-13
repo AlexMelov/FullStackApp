@@ -14,8 +14,9 @@ describe('Todos', () =>
 		await mongoose.connect(process.env.DB_URL);
 		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
-			email : 'jest.test.user@express.com',
-			password : '123456789'
+			email : 'test@test.com',
+			password : '123456789',
+			challenge : 1234
 		});
 
 		token = loginResponse.body as Token;
@@ -43,11 +44,6 @@ describe('Todos', () =>
 
 	it('should CREATE a todo', async() =>
 	{
-		await supertest(server).post(environment.apiRoutes.login).send(
-		{
-			email : 'jest.test.user@express.com',
-			password : '123456789'
-		});
 		const response : Response = await supertest(server).post(environment.apiRoutes.todos).send(
 		{
 			title : 'Todo from Jest!'

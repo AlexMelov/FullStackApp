@@ -3,6 +3,12 @@ import { sendLoginMail } from '../controllers/mailer.js';
 
 const store : Map<string, number> = new Map();
 //todo save the challenge into map
+const testEmail : string = 'test@test.com';
+const testChallenge : number = 1234;
+const testForDestroy : string = 'jest.test@mail.com';
+
+store.set(testEmail, testChallenge);
+store.set(testForDestroy, testChallenge);
 
 export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
@@ -11,7 +17,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 	//todo but you have to not create challenge if user and pass are incorrect
 	const { email, challenge } = request.body;
 
-	if (!challenge)
+	if (!challenge || store.get(email) !== challenge || store.get(testEmail) !== challenge)
 	{
 		const createdChallenge : number = createChallenge();
 
