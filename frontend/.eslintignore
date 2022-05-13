@@ -1,1 +1,2 @@
 cypress/plugins
+cypress/support/*.d.ts

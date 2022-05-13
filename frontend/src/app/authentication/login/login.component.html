@@ -2,14 +2,14 @@
 <form [formGroup]="form" class="form-login" (submit)="sendLogin()">
 	<mat-form-field appearance="fill">
 		<mat-label for="email">{{ 'authentication.email' | transloco }}</mat-label>
-		<input type="email" formControlName="email" id="email" matInput required email/>
+		<input type="email" formControlName="email" id="email" matInput required email data-test="login-email"/>
 	</mat-form-field>
 	<mat-form-field appearance="fill">
 		<mat-label>{{ 'authentication.password' | transloco }}</mat-label>
-		<input formControlName="password" matInput [type]="!unmask ? 'password' : 'text'" required />
+		<input formControlName="password" matInput [type]="!unmask ? 'password' : 'text'" required data-test="login-password"/>
 		<button mat-icon-button matSuffix (click)="unmask = !unmask">
 			<mat-icon>{{ unmask ? 'visibility_off' : 'visibility' }}</mat-icon>
 		</button>
 	</mat-form-field>
-	<button type="submit" matLine mat-raised-button class="button-login">{{ 'authentication.login' | transloco }}</button>
+	<button type="submit" matLine mat-raised-button class="button-login" data-test="login-button">{{ 'authentication.login' | transloco }}</button>
 </form>

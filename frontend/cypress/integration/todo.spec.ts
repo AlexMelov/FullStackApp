@@ -3,11 +3,11 @@ import { Environment } from '../../src/environments/environment.interface';
 
 const environment : Environment = environmentHelper(Cypress.env('APP_ENV'));
 
-//todo set test to login fix the tests
-describe.skip('it should test todos on the todos route', () =>
+describe('it should test todos on the todos route', () =>
 {
 	beforeEach(() =>
 	{
+		cy.login();
 		cy.visit(environment.baseUrl + '/' + environment.pageRoutes.todos);
 	});
 
@@ -37,5 +37,10 @@ describe.skip('it should test todos on the todos route', () =>
 		cy.wait(2000);
 		cy.reload();
 		cy.get('[data-test="item"]').should('not.contain.text', 'My new Todo from Cypress');
+	});
+
+	after(() =>
+	{
+		cy.logout();
 	});
 });
