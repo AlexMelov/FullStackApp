@@ -57,8 +57,7 @@ export class LoginComponent
 			],
 			challenge:
 			[
-				'',
-				Validators.required
+				''
 			]
 		});
 	}
