@@ -9,6 +9,8 @@ const testForDestroy : string = 'jest.test@mail.com';
 store.set(testEmail, testChallenge);
 store.set(testForDestroy, testChallenge);
 
+//todo set error handling if user and pass are not correct not to send mails
+
 export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
 	const { email, challenge } = request.body;

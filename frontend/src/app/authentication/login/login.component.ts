@@ -14,6 +14,8 @@ export class LoginComponent
 {
 	unmask : boolean = false;
 	form : FormGroup;
+	email : 'email' | 'hidden' = 'email';
+	password : 'password' | 'hidden' = 'password';
 
 	constructor(private formBuilder : FormBuilder, private authenticationService : AuthenticationService, private router : Router)
 	{
@@ -23,6 +25,9 @@ export class LoginComponent
 	sendLogin() : void
 	{
 		const { email, password, challenge } = this.form.value;
+
+		this.email = 'hidden';
+		this.password = 'hidden';
 
 		this.authenticationService.login(email, password, challenge)
 			.subscribe(
