@@ -11,7 +11,7 @@ export class AuthenticationService extends CommonService
 {
 	token : Token = {};
 
-	login(email : string, password : string, challenge : number | null) : Observable<Token>
+	login(email : string, password : string, challenge : number | string) : Observable<Token>
 	{
 		return this.getHttpClient().post<Token>(this.getApiUrl() + this.getApiRoute(), { email, password, challenge });
 	}

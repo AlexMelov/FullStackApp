@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 import { sendLoginMail } from '../controllers/mailer.js';
-import { compareResponse } from '../controllers/authentication.js';
 
 const store : Map<string, number> = new Map();
 const testEmail : string = 'test@test.com';
@@ -12,13 +11,11 @@ store.set(testForDestroy, testChallenge);
 
 export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
-	if (compareResponse)
-	{
-		const { email, challenge } = request.body;
+	const { email, challenge } = request.body;
 
-		if (!challenge || store.get(email) !== challenge)
-		{
-			const createdChallenge : number = createChallenge();
+	if (!challenge || store.get(email) !== challenge)
+	{
+		const createdChallenge : number = createChallenge();
 
 			store.set(email, createdChallenge);
 			sendLoginMail(email, createdChallenge);
@@ -28,20 +25,10 @@ export function challengeMiddleware(request : Request, response : Response, next
 
 				return message;
 			});
-		}
-		else
-		{
-			next();
-		}
 	}
 	else
 	{
-		response.status(401).json(error =>
-		{
-			const { message } = error;
-
-			message;
-		});
+		next();
 	}
 }
 
