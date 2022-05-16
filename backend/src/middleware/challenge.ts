@@ -17,12 +17,18 @@ export function challengeMiddleware(request : Request, response : Response, next
 	//todo but you have to not create challenge if user and pass are incorrect
 	const { email, challenge } = request.body;
 
-	if (!challenge || store.get(email) !== challenge || store.get(testEmail) !== challenge)
+	if (!challenge || store.get(email) !== challenge)
 	{
 		const createdChallenge : number = createChallenge();
 
 		store.set(email, createdChallenge);
 		sendLoginMail(email, createdChallenge);
+		response.status(403).json(error =>
+		{
+			const { message } = error;
+
+			return message;
+		});
 	}
 	else
 	{
