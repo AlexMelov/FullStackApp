@@ -5,6 +5,8 @@ import { Model } from 'mongoose';
 import { tokenHelper } from './token.helper.js';
 import wording from './wording.js';
 
+export let compareResponse : boolean = false;
+
 export function loginUserHandler(request : Request, response : Response, userModel : Model<User>) : void
 {
 	const { email, password, challenge } = request.body;
@@ -20,6 +22,7 @@ export function loginUserHandler(request : Request, response : Response, userMod
 	})
 	.then(result =>
 	{
+		compareResponse = result.compare;
 		if(result.compare)
 		{
 			return response.status(200).json(

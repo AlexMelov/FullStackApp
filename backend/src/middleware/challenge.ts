@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { sendLoginMail } from '../controllers/mailer.js';
+import { compareResponse } from '../controllers/authentication.js';
 
 const store : Map<string, number> = new Map();
-//todo save the challenge into map
 const testEmail : string = 'test@test.com';
 const testChallenge : number = 1234;
 const testForDestroy : string = 'jest.test@mail.com';
@@ -12,27 +12,36 @@ store.set(testForDestroy, testChallenge);
 
 export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
-	//todo middleware procced when there is challenge in the request body
-	//todo if there is no challenge you create new challenge and send the email
-	//todo but you have to not create challenge if user and pass are incorrect
-	const { email, challenge } = request.body;
-
-	if (!challenge || store.get(email) !== challenge)
+	if (compareResponse)
 	{
-		const createdChallenge : number = createChallenge();
+		const { email, challenge } = request.body;
 
-		store.set(email, createdChallenge);
-		sendLoginMail(email, createdChallenge);
-		response.status(403).json(error =>
+		if (!challenge || store.get(email) !== challenge)
 		{
-			const { message } = error;
+			const createdChallenge : number = createChallenge();
 
-			return message;
-		});
+			store.set(email, createdChallenge);
+			sendLoginMail(email, createdChallenge);
+			response.status(403).json(error =>
+			{
+				const { message } = error;
+
+				return message;
+			});
+		}
+		else
+		{
+			next();
+		}
 	}
 	else
 	{
-		next();
+		response.status(401).json(error =>
+		{
+			const { message } = error;
+
+			message;
+		});
 	}
 }
 

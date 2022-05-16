@@ -8,7 +8,7 @@ const wording : Record<string, any> =
 	login:
 	{
 		subject: 'Registration',
-		text: 'Your secret is ',
+		text: 'Your challenge is ',
 		tokenCompareErrorMessage: 'Authentication failed on user'
 	},
 	middleware:
