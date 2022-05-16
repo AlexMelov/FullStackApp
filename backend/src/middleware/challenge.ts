@@ -21,12 +21,8 @@ export function challengeMiddleware(request : Request, response : Response, next
 
 			store.set(email, createdChallenge);
 			sendLoginMail(email, createdChallenge);
-			response.status(403).json(error =>
-			{
-				const { message } = error;
 
-				return message;
-			});
+			response.status(403).json((error : Error) => error.message);
 	}
 	else
 	{
