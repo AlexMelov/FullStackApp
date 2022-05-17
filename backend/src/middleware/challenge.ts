@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { sendLoginMail } from '../controllers/mailer.js';
 
 const store : Map<string, number> = new Map();
+// todo: move this to spec file
 const testEmail : string = 'test@test.com';
 const testChallenge : number = 1234;
 const testForDestroy : string = 'jest.test@mail.com';
@@ -15,14 +16,18 @@ export function challengeMiddleware(request : Request, response : Response, next
 {
 	const { email, challenge } = request.body;
 
-	if (!challenge || store.get(email) !== challenge)
+	// todo: validate email and password against database
+	if (!challenge)
 	{
 		const createdChallenge : number = createChallenge();
 
-			store.set(email, createdChallenge);
-			sendLoginMail(email, createdChallenge);
+		store.set(email, createdChallenge);
+		sendLoginMail(email, createdChallenge);
 
-			response.status(403).json((error : Error) => error.message);
+		response.status(200).json(
+		{
+			name: 'request-challenge'
+		});
 	}
 	else
 	{
@@ -32,8 +37,5 @@ export function challengeMiddleware(request : Request, response : Response, next
 
 function createChallenge() : number
 {
-	//todo create unique challenge per user per scope
 	return Math.floor(Math.random() * (10000 - 1001) + 1001);
 }
-//todo invalidate method challenge
-//todo get the current challenge
