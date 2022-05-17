@@ -34,7 +34,7 @@ export class LoginComponent
 				// todo: return proper typing here
 				next: (token : Token) =>
 				{
-					if (token.name === 'request-challenge')
+					if (token.action === 'request-challenge')
 					{
 						this.email = 'hidden';
 						this.password = 'hidden';

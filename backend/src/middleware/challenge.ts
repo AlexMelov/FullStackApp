@@ -26,7 +26,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 
 		response.status(200).json(
 		{
-			name: 'request-challenge'
+			action: 'request-challenge'
 		});
 	}
 	else

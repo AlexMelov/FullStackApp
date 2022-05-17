@@ -1,3 +1,4 @@
+// todo: rename to todo.interface.ts
 export interface Todo
 {
 	title : string

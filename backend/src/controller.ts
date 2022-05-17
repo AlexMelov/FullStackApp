@@ -7,9 +7,10 @@ import { userModel } from './models/user.schema.js';
 import { loginUserHandler } from './controllers/authentication.js';
 import { deleteUser } from './controllers/users.js';
 
+// todo: make this file disappear - move the user and todo models to the controller files
 export const findHandler : Handler = (request : Request, response : Response) : void =>
 {
-	getAllTodos(request, response, todoModel);
+	getAllTodos(request, response);
 };
 
 export const saveHandler : Handler = (request : Request, response : Response) : void =>

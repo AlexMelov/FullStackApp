@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { HydratedDocument, Model } from 'mongoose';
 import { DirtyTodo, Todo } from '../models/todo';
+import { todoModel } from '../models/schema.js';
 
-export function getAllTodos(request : Request, response : Response, todoModel : Model<Todo>) : void
+export function getAllTodos(request : Request, response : Response) : void
 {
 	todoModel.find()
 		.then(data => response.json(mapData(data)))
