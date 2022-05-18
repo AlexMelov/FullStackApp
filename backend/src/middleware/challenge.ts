@@ -16,30 +16,31 @@ export function challengeMiddleware(request : Request, response : Response, next
 	.then(user =>
 	{
 		return { compare: compareSync(password, user.password), user };
-	}).then(result =>
+	})
+	.then(result =>
 	{
-		if (result.compare && !challenge)
+		if (result.compare && challenge && store.has(email) && store.get(email) === challenge)
+		{
+			store.delete(email);
+			next();
+		}
+		else if (result.compare && !challenge)
 		{
 			const createdChallenge : number = createChallenge();
 
 			store.set(email, createdChallenge);
 			sendLoginMail(email, createdChallenge);
-
 			response.status(200).json(
 			{
 				action: 'request-challenge'
 			});
 		}
-		else if (challenge && store.get(email) === challenge)
-		{
-			store.delete(email);
-			next();
-		}
 		else
 		{
 			response.status(401);
 		}
-	}).catch((error : Error) => response.status(401).json(error.message));
+	})
+	.catch((error : Error) => response.status(401).json(error.message));
 }
 
 function createChallenge() : number
