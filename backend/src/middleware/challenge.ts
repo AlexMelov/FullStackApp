@@ -26,9 +26,9 @@ export function challengeMiddleware(request : Request, response : Response, next
 			sendLoginMail(email, createdChallenge);
 
 			response.status(200).json(
-				{
-					action: 'request-challenge'
-				});
+			{
+				action: 'request-challenge'
+			});
 		}
 		else if (store.get('email') === challenge)
 		{
