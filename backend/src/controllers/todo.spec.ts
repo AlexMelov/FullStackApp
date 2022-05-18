@@ -5,7 +5,6 @@ import { DirtyTodo, TestTodo } from '../models/todo.interface';
 import { Token } from '../models/token.type';
 import { store } from '../middleware/challenge';
 import environment from '../environments/environment';
-import {User} from "../models/user.interface";
 
 describe('Todos', () =>
 {
