@@ -2,23 +2,21 @@ import supertest, { Response } from 'supertest';
 import { server } from '../server';
 import mongoose from 'mongoose';
 import environment from '../environments/environment';
+import { store } from '../middleware/challenge.js';
 
-describe.skip('Should test login', () =>
+describe('Should test login', () =>
 {
 	beforeAll(async() => await mongoose.connect(process.env.DB_URL));
 
 	it('Should get token from login', async() =>
 	{
-		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
+		const response : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
 			email : 'test@test.com',
-			password : '123456789',
-			challenge : 1234
+			password : '123456789'
 		});
-		const { token } = loginResponse.body;
 
-		expect(token).toBeTruthy();
-		expect(token).not.toHaveLength(0);
+		expect(response.statusCode).toBe(200);
 	});
 
 	it('Should check login with wrong challenge', async() =>
@@ -27,11 +25,11 @@ describe.skip('Should test login', () =>
 		{
 			email : 'test@test.com',
 			password : '123456789',
-			challenge: 1233
+			challenge: store.get('test@test.com')
 		});
+		const { token } = loginResponse.body;
 
-		// todo: prove there is token and not a action response
-		//expect(loginResponse.body.action).toBe('request-challenge');
+		expect(token).toBeTruthy();
 		expect(loginResponse.statusCode).toBe(200);
 	});
 
@@ -44,7 +42,11 @@ describe.skip('Should test login', () =>
 		});
 
 		// todo: prove there is action and not a token response
-		expect(loginResponse.statusCode).toBe(200);
+		const { token, action } = loginResponse.body;
+
+		await expect(token).not.toBeTruthy();
+		await expect(action).toBe( 'request-challenge');
+		await expect(loginResponse.statusCode).toBe(200);
 	});
 
 	afterAll(() => mongoose.connection.close(true));

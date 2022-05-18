@@ -3,14 +3,7 @@ import { sendLoginMail } from '../controllers/mailer.js';
 import { userModel } from '../models/user.schema.js';
 import { compareSync } from 'bcrypt';
 
-const store : Map<string, number> = new Map();
-// todo: move this to spec file
-const testEmail : string = 'test@test.com';
-const testChallenge : number = 1234;
-const testForDestroy : string = 'jest.test@mail.com';
-
-store.set(testEmail, testChallenge);
-store.set(testForDestroy, testChallenge);
+export const store : Map<string, number> = new Map();
 
 export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
