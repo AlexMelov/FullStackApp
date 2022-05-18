@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { sendLoginMail } from '../controllers/mailer.js';
+import { userModel } from '../models/user.schema.js';
+import { compareSync } from 'bcrypt';
 
 const store : Map<string, number> = new Map();
 // todo: move this to spec file
@@ -10,29 +12,43 @@ const testForDestroy : string = 'jest.test@mail.com';
 store.set(testEmail, testChallenge);
 store.set(testForDestroy, testChallenge);
 
-//todo set error handling if user and pass are not correct not to send mails
-
 export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
-	const { email, challenge } = request.body;
+	const { email, challenge, password } = request.body;
 
-	// todo: validate email and password against database
-	if (!challenge)
-	{
-		const createdChallenge : number = createChallenge();
-
-		store.set(email, createdChallenge);
-		sendLoginMail(email, createdChallenge);
-
-		response.status(200).json(
+	userModel.findOne(
 		{
-			action: 'request-challenge'
-		});
-	}
-	else
-	{
-		next();
-	}
+			email
+		})
+		.then(user =>
+		{
+			return { compare: compareSync(password, user.password), user };
+		}).then(result =>
+		{
+			if (result.compare)
+			{
+				if (!challenge)
+				{
+					const createdChallenge : number = createChallenge();
+
+					store.set(email, createdChallenge);
+					sendLoginMail(email, createdChallenge);
+
+					response.status(200).json(
+						{
+							action: 'request-challenge'
+						});
+				}
+				else
+				{
+					next();
+				}
+			}
+			else
+			{
+				response.status(401).json((error : Error) =>error.message);
+			}
+		}).catch((error : Error) => error.message);
 }
 
 function createChallenge() : number
