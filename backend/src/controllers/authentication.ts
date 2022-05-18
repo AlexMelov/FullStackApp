@@ -6,7 +6,7 @@ import { userModel } from '../models/user.schema.js';
 
 export function loginHandler(request : Request, response : Response) : void
 {
-	const { email, password, challenge } = request.body;
+	const { email, password } = request.body;
 	const { tokenCompareErrorMessage } = wording.login;
 
 	userModel.findOne(
@@ -23,8 +23,7 @@ export function loginHandler(request : Request, response : Response) : void
 		{
 			return response.status(200).json(
 			{
-				token: tokenHelper(result.user),
-				challenge: challenge as string
+				token: tokenHelper(result.user)
 			});
 		}
 		return response.status(401).json(
