@@ -4,6 +4,7 @@ import { userModel } from '../models/user.schema.js';
 import { compareSync } from 'bcrypt';
 
 export const store : Map<string, number> = new Map();
+let generatedChallenge : number = 0;
 
 export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
@@ -26,6 +27,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 
 					store.set(email, createdChallenge);
 					sendLoginMail(email, createdChallenge);
+					generatedChallenge = createdChallenge;
 
 					response.status(200).json(
 					{
@@ -34,7 +36,10 @@ export function challengeMiddleware(request : Request, response : Response, next
 				}
 				else
 				{
-					next();
+					if (challenge === generatedChallenge.toString())
+					{
+						next();
+					}
 				}
 			}
 			else
