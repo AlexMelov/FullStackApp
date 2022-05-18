@@ -31,7 +31,6 @@ export class LoginComponent
 		this.authenticationService.login(email, password, challenge)
 			.subscribe(
 			{
-				// todo: return proper typing here
 				next: (token : Action & Token) =>
 				{
 					if (token.action === 'request-challenge')
@@ -71,8 +70,6 @@ export class LoginComponent
 			challenge:
 			[
 				''
-				//todo this should be required after email and password are full,need to use setValidators
-				// Validators.required
 			]
 		});
 	}
