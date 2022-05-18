@@ -4,19 +4,25 @@ import { server } from '../server';
 import { DirtyTodo, TestTodo } from '../models/todo';
 import environment from '../environments/environment';
 import { Token } from '../models/token.type';
+import { store } from '../middleware/challenge.js';
 
-describe.skip('Todos', () =>
+describe('Todos', () =>
 {
 	let token : Token;
 
 	beforeAll(async() =>
 	{
 		await mongoose.connect(process.env.DB_URL);
+		await supertest(server).post(environment.apiRoutes.login).send(
+		{
+			email : 'test@test.com',
+			password : '123456789'
+		});
 		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
 			email : 'test@test.com',
 			password : '123456789',
-			challenge : 1234
+			challenge : store.get('test@test.com')
 		});
 
 		token = loginResponse.body as Token;
