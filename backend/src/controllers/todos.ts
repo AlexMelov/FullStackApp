@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { HydratedDocument } from 'mongoose';
-import { DirtyTodo, Todo } from '../models/todo';
+import { DirtyTodo, Todo } from '../models/todo.interface';
 import { todoModel } from '../models/schema.js';
 
 export function findHandler(request : Request, response : Response) : void

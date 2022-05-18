@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { AuthenticationService } from '../authentication.service';
-import { Token } from '../authentication.interface';
+import { Action, Token } from '../authentication.interface';
 
 @Component(
 {
@@ -32,7 +32,7 @@ export class LoginComponent
 			.subscribe(
 			{
 				// todo: return proper typing here
-				next: (token : Token) =>
+				next: (token : Action & Token) =>
 				{
 					if (token.action === 'request-challenge')
 					{

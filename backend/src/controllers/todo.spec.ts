@@ -1,7 +1,7 @@
 import supertest, { Response } from 'supertest';
 import mongoose from 'mongoose';
 import { server } from '../server';
-import { DirtyTodo, TestTodo } from '../models/todo';
+import { DirtyTodo, TestTodo } from '../models/todo.interface';
 import environment from '../environments/environment';
 import { Token } from '../models/token.type';
 import { store } from '../middleware/challenge.js';

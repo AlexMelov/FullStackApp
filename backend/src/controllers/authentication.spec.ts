@@ -40,8 +40,6 @@ describe('Should test login', () =>
 			email : 'test@test.com',
 			password : '123456789'
 		});
-
-		// todo: prove there is action and not a token response
 		const { token, action } = loginResponse.body;
 
 		await expect(token).not.toBeTruthy();
