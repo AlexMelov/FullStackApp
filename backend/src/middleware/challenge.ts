@@ -18,7 +18,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 		return { compare: compareSync(password, user.password), user };
 	}).then(result =>
 	{
-		if (result.compare || !challenge)
+		if (result.compare && !challenge)
 		{
 			const createdChallenge : number = createChallenge();
 
@@ -33,6 +33,10 @@ export function challengeMiddleware(request : Request, response : Response, next
 		else if (challenge && store.get('email') === challenge)
 		{
 			next();
+		}
+		else
+		{
+			response.status(401);
 		}
 	}).catch((error : Error) => response.status(401).json(error.message));
 }
