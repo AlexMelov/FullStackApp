@@ -19,7 +19,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 	})
 	.then(result =>
 	{
-		if (result.compare && challenge && store.has(email) && store.get(email) === challenge)
+		if (result.compare && store.has(email) && store.get(email) === challenge)
 		{
 			store.delete(email);
 			next();
@@ -37,7 +37,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 		}
 		else
 		{
-			response.status(401);
+			response.status(401).send();
 		}
 	})
 	.catch((error : Error) => response.status(401).json(error.message));

@@ -4,27 +4,30 @@ import mongoose from 'mongoose';
 import environment from '../environments/environment';
 import { store } from '../middleware/challenge.js';
 
-describe.skip('Should test login', () =>
+describe('Should test login', () =>
 {
 	beforeAll(async() => await mongoose.connect(process.env.DB_URL));
 
-	it('Should get token from login', async() =>
-	{
-		const response : Response = await supertest(server).post(environment.apiRoutes.login).send(
-		{
-			email : 'test@test.com',
-			password : '123456789'
-		});
-
-		expect(response.statusCode).toBe(200);
-	});
-
-	it('Should check login with wrong challenge', async() =>
+	it('Should check login without challenge', async() =>
 	{
 		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
-			email : 'test@test.com',
-			password : '123456789',
+			email: 'test@test.com',
+			password: '123456789'
+		});
+		const { token, action } = loginResponse.body;
+
+		expect(token).not.toBeTruthy();
+		expect(action).toBe('request-challenge');
+		expect(loginResponse.statusCode).toBe(200);
+	});
+
+	it('Should check login with valid challenge', async() =>
+	{
+		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
+		{
+			email: 'test@test.com',
+			password: '123456789',
 			challenge: store.get('test@test.com')
 		});
 		const { token } = loginResponse.body;
@@ -33,18 +36,19 @@ describe.skip('Should test login', () =>
 		expect(loginResponse.statusCode).toBe(200);
 	});
 
-	it('Should check login without challenge', async() =>
+	it('Should check login with invalid challenge', async() =>
 	{
 		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
-			email : 'test@test.com',
-			password : '123456789'
+			email: 'test@test.com',
+			password: '123456789',
+			challenge: 9999
 		});
 		const { token, action } = loginResponse.body;
 
-		await expect(token).not.toBeTruthy();
-		await expect(action).toBe( 'request-challenge');
-		await expect(loginResponse.statusCode).toBe(200);
+		expect(token).not.toBeTruthy();
+		expect(action).not.toBeTruthy();
+		expect(loginResponse.statusCode).toBe(401);
 	});
 
 	afterAll(() => mongoose.connection.close(true));
