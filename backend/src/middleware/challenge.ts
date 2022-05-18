@@ -3,7 +3,7 @@ import { sendLoginMail } from '../controllers/mailer.js';
 import { userModel } from '../models/user.schema.js';
 import { compareSync } from 'bcrypt';
 
-const store : Map<string, number> = new Map();
+export const store : Map<string, number> = new Map();
 
 export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
@@ -30,8 +30,9 @@ export function challengeMiddleware(request : Request, response : Response, next
 				action: 'request-challenge'
 			});
 		}
-		else if (challenge && store.get('email') === challenge)
+		else if (challenge && store.get(email) === challenge)
 		{
+			store.delete(email);
 			next();
 		}
 		else
