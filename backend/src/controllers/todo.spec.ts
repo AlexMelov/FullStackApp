@@ -2,15 +2,30 @@ import supertest, { Response } from 'supertest';
 import mongoose from 'mongoose';
 import { server } from '../server';
 import { DirtyTodo, TestTodo } from '../models/todo.interface';
-import environment from '../environments/environment';
 import { Token } from '../models/token.type';
+import { store } from '../middleware/challenge';
+import environment from '../environments/environment';
+import {User} from "../models/user.interface";
 
-describe.skip('Todos', () =>
+describe('Todos', () =>
 {
 	let token : Token;
 
 	beforeAll(async() =>
 	{
+		await supertest(server).post(environment.apiRoutes.login).send(
+		{
+			email: 'test@test.com',
+			password: '123456789'
+		});
+		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
+		{
+			email: 'test@test.com',
+			password: '123456789',
+			challenge: store.get('test@test.com')
+		});
+
+		token = await loginResponse.body;
 		await mongoose.connect(process.env.DB_URL);
 	});
 
@@ -23,30 +38,24 @@ describe.skip('Todos', () =>
 
 	it('should GET all todos', async() =>
 	{
-		await supertest(server).post(environment.apiRoutes.login).send(
-		{
-			email : 'test@test.com',
-			password : '123456789',
-			challenge : 1234
-		});
-
 		const response : Response = await supertest(server).get(environment.apiRoutes.todos).set('Authorization', 'Bearer ' + token.token);
 		const body : DirtyTodo[] = await response.body;
 
 		expect(response.statusCode).toBe(200);
 		expect(body).not.toHaveLength(0);
-		expect(body.forEach(todo =>
+		body.forEach(todo =>
 		{
 			expect(todo.title).toBeTruthy();
-		}));
+		});
 	});
 
-	it.skip('should CREATE a todo', async() =>
+	it('should CREATE a todo', async() =>
 	{
 		const response : Response = await supertest(server).post(environment.apiRoutes.todos).send(
 		{
 			title : 'Todo from Jest!'
-		}).set('Authorization', 'Bearer ' + token.token);
+		})
+		.set('Authorization', 'Bearer ' + token.token);
 		const body : DirtyTodo = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -54,7 +63,7 @@ describe.skip('Todos', () =>
 		expect(body.title).toContain('Todo from Jest!');
 	});
 
-	it.skip('Should GET last added todo from list and delete it', async() =>
+	it('Should GET last added todo from list and delete it', async() =>
 	{
 		const response : Response = await supertest(server).get(environment.apiRoutes.todos).set('Authorization', 'Bearer ' + token.token);
 		const body : TestTodo[] = await response.body;
@@ -63,10 +72,10 @@ describe.skip('Todos', () =>
 
 		expect(response.statusCode).toBe(200);
 		expect(body).not.toHaveLength(0);
-		expect(body.forEach(todo =>
+		body.forEach(todo =>
 		{
 			expect(todo.title).toBeTruthy();
-		}));
+		});
 		await supertest(server).delete(environment.apiRoutes.todos + '/' + todoId).set('Authorization', 'Bearer ' + token.token).then(user =>
 		{
 			expect(user.statusCode).toBe(200);
@@ -78,12 +87,13 @@ describe.skip('Todos', () =>
 		});
 	});
 
-	it.skip('should create and DELETE same todo', async() =>
+	it('should create and DELETE same todo', async() =>
 	{
 		const response : Response = await supertest(server).post(environment.apiRoutes.todos).send(
 		{
 			title : 'Todo for delete from Jest!'
-		}).set('Authorization', 'Bearer ' + token.token);
+		})
+		.set('Authorization', 'Bearer ' + token.token);
 		const body : DirtyTodo = await response.body;
 
 		expect(response.statusCode).toBe(200);
