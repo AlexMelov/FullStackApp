@@ -1,20 +1,16 @@
 import express, { Express, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-import
-{
-	deleteUserHandler,
-	deleteHandler,
-	findHandler,
-	loginHandler,
-	registerHandler,
-	saveHandler
-} from './controller.js';
 import cors from 'cors';
 import 'dotenv/config';
 import environment from './environments/environment.js';
+
 import { authenticationMiddleware } from './middleware/authentication.js';
 import { challengeMiddleware } from './middleware/challenge.js';
+import { deleteHandler, findHandler, saveHandler } from './controllers/todos.js';
+import { registerHandler } from './controllers/register.js';
+import { loginHandler } from './controllers/authentication.js';
+import { deleteUserHandler } from './controllers/users.js';
 
 const server : Express = express();
 const db : Promise<typeof mongoose> = mongoose.connect(process.env.DB_URL);

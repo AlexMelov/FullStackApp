@@ -71,6 +71,8 @@ export class LoginComponent
 			challenge:
 			[
 				''
+				//todo this should be required after email and password are full,need to use setValidators
+				// Validators.required
 			]
 		});
 	}

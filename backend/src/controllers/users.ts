@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import { Model } from 'mongoose';
-import { User } from '../models/user.interface';
+import { userModel } from '../models/user.schema.js';
 
-export function deleteUser(request : Request, response : Response, userModel : Model<User>) : void
+export function deleteUserHandler(request : Request, response : Response) : void
 {
 	userModel.deleteOne({ _id: request.params.userId })
 		.then(data => response.json(data))

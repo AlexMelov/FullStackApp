@@ -1,16 +1,16 @@
 import { Request, Response } from 'express';
-import { HydratedDocument, Model } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 import { DirtyTodo, Todo } from '../models/todo';
 import { todoModel } from '../models/schema.js';
 
-export function getAllTodos(request : Request, response : Response) : void
+export function findHandler(request : Request, response : Response) : void
 {
 	todoModel.find()
 		.then(data => response.json(mapData(data)))
 		.catch((error : Error) => response.status(403).json({ message: error.message }));
 }
 
-export function postTodo(request : Request, response : Response, todoModel : Model<Todo>) : void
+export function saveHandler(request : Request, response : Response) : void
 {
 	const todo : HydratedDocument<Todo> = new todoModel(request.body);
 
@@ -19,7 +19,7 @@ export function postTodo(request : Request, response : Response, todoModel : Mod
 		.catch((error : Error) => response.status(403).json({ message: error.message }));
 }
 
-export function deleteOneTodo(request : Request, response : Response, todoModel : Model<Todo>) : void
+export function deleteHandler(request : Request, response : Response) : void
 {
 	todoModel.deleteOne({ _id: request.params.todoId })
 		.then(data => response.json(data))
