@@ -18,7 +18,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 		return { compare: compareSync(password, user.password), user };
 	}).then(result =>
 	{
-		if (result.compare && !challenge)
+		if (result.compare || !challenge)
 		{
 			const createdChallenge : number = createChallenge();
 
@@ -30,7 +30,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 				action: 'request-challenge'
 			});
 		}
-		else if (store.get('email') === challenge)
+		else if (challenge && store.get('email') === challenge)
 		{
 			next();
 		}
