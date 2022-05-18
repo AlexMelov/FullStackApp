@@ -6,11 +6,6 @@ import { compareSync } from 'bcrypt';
 export const store : Map<string, number> = new Map();
 export let generatedChallenge : number = 0;
 
-const testPassword : number = 1234;
-const testMail : string = 'test@test.com';
-
-store.set(testMail, testPassword);
-
 export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
 	const { email, challenge, password } = request.body;
@@ -41,7 +36,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 				}
 				else
 				{
-					if (challenge === generatedChallenge.toString() || challenge === testPassword.toString())
+					if (challenge === generatedChallenge.toString())
 					{
 						next();
 					}
