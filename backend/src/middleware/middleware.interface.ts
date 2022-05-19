@@ -1,4 +1,4 @@
-export interface RequestInterface
+export interface RequestBody
 {
 	email : string,
 	password : string,

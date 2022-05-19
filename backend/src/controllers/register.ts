@@ -4,10 +4,11 @@ import { HydratedDocument } from 'mongoose';
 import { User } from '../models/user.interface.js';
 import { sendRegisterMail } from './mailer.js';
 import { userModel } from '../models/user.schema.js';
+import { RequestBody } from '../middleware/middleware.interface';
 
 export function registerHandler(request : Request, response : Response) : void
 {
-	const { email, password } = request.body;
+	const { email, password } = (request.body as RequestBody);
 
 	hash(password, 10)
 		.then(hash =>

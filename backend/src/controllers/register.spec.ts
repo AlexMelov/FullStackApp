@@ -3,6 +3,7 @@ import { server } from '../server';
 import environment from '../environments/environment';
 import { User } from '../models/user.interface';
 import mongoose from 'mongoose';
+import { store } from '../middleware/register.middleware';
 
 describe('Should test user registration', ()=>
 {
@@ -10,11 +11,17 @@ describe('Should test user registration', ()=>
 
 	it('Should register new user and delete it', async() =>
 	{
-		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
+		await supertest(server).post(environment.apiRoutes.register).send(
 		{
 			email : 'jest.email@mail.com',
 			password : '123456'
 		});
+		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
+			{
+				email : 'jest.email@mail.com',
+				password : '123456',
+				challenge : store.get('jest.email@mail.com')
+			});
 		const body : User = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -38,11 +45,17 @@ describe('Should test user registration', ()=>
 	it('Should register new user, try to register with same user, ' +
 		'return 403 status code and delete the created one', async() =>
 	{
-		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
+		await supertest(server).post(environment.apiRoutes.register).send(
 		{
 			email : 'jest_repeat.email@mail.com',
 			password : '123456'
 		});
+		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
+			{
+				email : 'jest_repeat.email@mail.com',
+				password : '123456',
+				challenge : store.get('jest_repeat.email@mail.com')
+			});
 		const body : User = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -55,7 +68,8 @@ describe('Should test user registration', ()=>
 			.send(
 			{
 				email : 'jest_repeat.email@mail.com',
-				password : '123456'
+				password : '123456',
+				challenge : store.get('jest_repeat.email@mail.com')
 			});
 
 		const { _id } = response.body;
