@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { AuthenticationService } from '../authentication.service';
+import { Action, Token } from '../authentication.interface';
+import { loginConfig } from './login.config';
+import { LoginConfig } from './login.interface';
 
 @Component(
 {
@@ -14,6 +17,7 @@ export class LoginComponent
 {
 	unmask : boolean = false;
 	form : FormGroup;
+	loginConfig : LoginConfig = loginConfig;
 
 	constructor(private formBuilder : FormBuilder, private authenticationService : AuthenticationService, private router : Router)
 	{
@@ -22,17 +26,30 @@ export class LoginComponent
 
 	sendLogin() : void
 	{
-		const { email, password } = this.form.value;
+		const { email, password, challenge } = this.form.value;
 
-		this.authenticationService.login(email, password)
+		this.authenticationService.login(email, password, challenge)
 			.subscribe(
 			{
-				next: token =>
+				next: (token : Action & Token) =>
 				{
-					this.authenticationService.setToken(token);
-					this.router.navigate([ environment.pageRoutes.todos ]);
+					if (token.action === 'request-challenge')
+					{
+						this.loginConfig.email = 'hidden';
+						this.loginConfig.password = 'hidden';
+						this.loginConfig.challenge = 'number';
+						this.form?.get('challenge')?.setValidators([ Validators.required ]);
+					}
+					else
+					{
+						this.authenticationService.setToken(token);
+						this.router.navigate([ environment.pageRoutes.todos ]);
+					}
 				},
-				error: (error : Error) => this.form.setErrors({ message: error.message })
+				error: (error : Error) =>
+				{
+					this.form.setErrors({ message: error.message });
+				}
 			});
 	}
 
@@ -49,6 +66,10 @@ export class LoginComponent
 			[
 				'',
 				Validators.required
+			],
+			challenge:
+			[
+				''
 			]
 		});
 	}

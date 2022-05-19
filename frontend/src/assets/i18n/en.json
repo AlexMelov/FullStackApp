@@ -11,7 +11,9 @@
 		"email": "Enter your email",
 		"password": "Enter your password",
 		"register": "Sign Up",
-		"login": "Login"
+		"login": "Login",
+		"challenge": "Enter Your Challenge",
+		"tooltip": "If you don't have challenge click login and check your email for challenge"
 	},
 	"navigation":
 	{

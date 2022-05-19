@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
-import { User } from '../models/user.interface';
 import { compareSync } from 'bcrypt';
-import { Model } from 'mongoose';
 import { tokenHelper } from './token.helper.js';
 import wording from './wording.js';
+import { userModel } from '../models/user.schema.js';
 
-export function loginUserHandler(request : Request, response : Response, userModel : Model<User>) : void
+export function loginHandler(request : Request, response : Response) : void
 {
 	const { email, password } = request.body;
 	const { tokenCompareErrorMessage } = wording.login;
@@ -31,8 +30,6 @@ export function loginUserHandler(request : Request, response : Response, userMod
 		{
 			message: tokenCompareErrorMessage
 		});
-
 	})
-	.catch((error : Error) => response.status(401)
-		.json({ message: error.message }));
+	.catch((error : Error) => response.status(401).json({ message: error.message }));
 }

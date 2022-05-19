@@ -1,9 +1,10 @@
 import supertest, { Response } from 'supertest';
 import mongoose from 'mongoose';
 import { server } from '../server';
-import { DirtyTodo, TestTodo } from '../models/todo';
-import environment from '../environments/environment';
+import { DirtyTodo, TestTodo } from '../models/todo.interface';
 import { Token } from '../models/token.type';
+import { store } from '../middleware/challenge';
+import environment from '../environments/environment';
 
 describe('Todos', () =>
 {
@@ -11,21 +12,27 @@ describe('Todos', () =>
 
 	beforeAll(async() =>
 	{
-		await mongoose.connect(process.env.DB_URL);
+		await supertest(server).post(environment.apiRoutes.login).send(
+		{
+			email: 'test@test.com',
+			password: '123456789'
+		});
 		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
-			email : 'jest.test.user@express.com',
-			password : '123456789'
+			email: 'test@test.com',
+			password: '123456789',
+			challenge: store.get('test@test.com')
 		});
 
-		token = loginResponse.body as Token;
+		token = await loginResponse.body;
+		await mongoose.connect(process.env.DB_URL);
 	});
 
 	it('Should Test if the routes are protected', async() =>
 	{
-		const response : Response = await supertest(server).get(environment.apiRoutes.login);
+		const response : Response = await supertest(server).get(environment.apiRoutes.todos);
 
-		expect(response.statusCode).toBe(404);
+		expect(response.statusCode).toBe(401);
 	});
 
 	it('should GET all todos', async() =>
@@ -35,23 +42,19 @@ describe('Todos', () =>
 
 		expect(response.statusCode).toBe(200);
 		expect(body).not.toHaveLength(0);
-		expect(body.forEach(todo =>
+		body.forEach(todo =>
 		{
 			expect(todo.title).toBeTruthy();
-		}));
+		});
 	});
 
 	it('should CREATE a todo', async() =>
 	{
-		await supertest(server).post(environment.apiRoutes.login).send(
-		{
-			email : 'jest.test.user@express.com',
-			password : '123456789'
-		});
 		const response : Response = await supertest(server).post(environment.apiRoutes.todos).send(
 		{
 			title : 'Todo from Jest!'
-		}).set('Authorization', 'Bearer ' + token.token);
+		})
+		.set('Authorization', 'Bearer ' + token.token);
 		const body : DirtyTodo = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -68,10 +71,10 @@ describe('Todos', () =>
 
 		expect(response.statusCode).toBe(200);
 		expect(body).not.toHaveLength(0);
-		expect(body.forEach(todo =>
+		body.forEach(todo =>
 		{
 			expect(todo.title).toBeTruthy();
-		}));
+		});
 		await supertest(server).delete(environment.apiRoutes.todos + '/' + todoId).set('Authorization', 'Bearer ' + token.token).then(user =>
 		{
 			expect(user.statusCode).toBe(200);
@@ -88,7 +91,8 @@ describe('Todos', () =>
 		const response : Response = await supertest(server).post(environment.apiRoutes.todos).send(
 		{
 			title : 'Todo for delete from Jest!'
-		}).set('Authorization', 'Bearer ' + token.token);
+		})
+		.set('Authorization', 'Bearer ' + token.token);
 		const body : DirtyTodo = await response.body;
 
 		expect(response.statusCode).toBe(200);

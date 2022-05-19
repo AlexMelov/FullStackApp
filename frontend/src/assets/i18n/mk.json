@@ -11,7 +11,9 @@
 		"email": "Внесете ја вашата е-пошта",
 		"password": "Внесете ја вашата лозинка",
 		"register": "Регистрирај се",
-		"login": "Најави се"
+		"login": "Најави се",
+		"challenge": "Внесете го вашиот челенџ",
+		"tooltip": "If you don't have challenge click login and check your email for challenge"
 	},
 	"navigation":
 	{

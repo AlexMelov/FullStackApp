@@ -9,12 +9,11 @@ Cypress.Commands.add('login', () =>
 	cy.get('[data-test="login-email"]').type('test@test.com');
 	cy.get('[data-test="login-password"]').type('123456789');
 	cy.get('[data-test="login-button"]').click();
-	cy.wait(2000);
+	cy.get('[data-test="login-challenge"]').type('1234');
 });
 
 Cypress.Commands.add('logout', () =>
 {
 	cy.visit(environment.baseUrl + '/' + environment.pageRoutes.login);
 	cy.get('[data-test="logout-button"]').click();
-	cy.wait(2000);
 });

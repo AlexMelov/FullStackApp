@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import wording from '../controllers/wording.js';
 import { NextFunction, Response, Request } from 'express';
 
-export function middleware(request : Request, response : Response, next : NextFunction) : void
+export function authenticationMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
 	try
 	{
