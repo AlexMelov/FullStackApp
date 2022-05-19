@@ -13,20 +13,20 @@ describe('Should test user registration', ()=>
 	{
 		await supertest(server).post(environment.apiRoutes.register).send(
 		{
-			email : 'jest.email@mail.com',
+			email : 'new@test.com',
 			password : '123456'
 		});
 		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
 			{
-				email : 'jest.email@mail.com',
+				email : 'new@test.com',
 				password : '123456',
-				challenge : store.get('jest.email@mail.com')
+				challenge : store.get('new@test.com')
 			});
 		const body : User = await response.body;
 
 		expect(response.statusCode).toBe(200);
 		expect(response.headers).toBeDefined();
-		expect(body.email).toContain('jest.email@mail.com');
+		expect(body.email).toContain('new@test.com');
 		expect(body.password).not.toHaveLength(0);
 
 		const { _id } = response.body;
