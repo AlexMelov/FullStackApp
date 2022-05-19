@@ -68,13 +68,12 @@ describe('Should test user registration', ()=>
 			.send(
 			{
 				email : 'jest_repeat.email@mail.com',
-				password : '123456',
-				challenge : store.get('jest_repeat.email@mail.com')
+				password : '123456'
 			});
 
 		const { _id } = response.body;
 
-		expect(repeatedUserResponse.statusCode).toBe(403);
+		expect(repeatedUserResponse.statusCode).toBe(401);
 
 		await supertest(server).delete('/users/' + _id).then(user =>
 		{
