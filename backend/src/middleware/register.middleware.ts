@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { sendLoginMail } from '../controllers/mailer.js';
 import { Register } from './middleware.interface';
 import { userModel } from '../models/user.schema.js';
-import { validateEmail } from './middleware.helper';
+import { validateEmail } from './middleware.helper.js';
 
 export const store : Map<string, number> = new Map();
 

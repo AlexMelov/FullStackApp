@@ -1,4 +1,4 @@
-import { store } from './register.middleware';
+import { store } from './register.middleware.js';
 
 export function validateEmail(email : string, password : string, challenge : number) : boolean
 {
