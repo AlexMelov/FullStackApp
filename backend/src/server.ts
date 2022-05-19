@@ -11,6 +11,7 @@ import { deleteHandler, findHandler, saveHandler } from './controllers/todos.js'
 import { registerHandler } from './controllers/register.js';
 import { loginHandler } from './controllers/authentication.js';
 import { deleteUserHandler } from './controllers/users.js';
+import { challengeRegisterMiddleware } from './middleware/register.middleware.js';
 
 const server : Express = express();
 const db : Promise<typeof mongoose> = mongoose.connect(process.env.DB_URL);
@@ -21,7 +22,7 @@ server.get('/', (request : Request, response : Response) => response.sendStatus(
 server.get(environment.apiRoutes.todos, authenticationMiddleware, findHandler);
 server.post(environment.apiRoutes.todos, authenticationMiddleware, saveHandler);
 server.delete(environment.apiRoutes.todosWithId, authenticationMiddleware, deleteHandler);
-server.post(environment.apiRoutes.register, registerHandler);
+server.post(environment.apiRoutes.register, challengeRegisterMiddleware, registerHandler);
 server.post(environment.apiRoutes.login, challengeMiddleware, loginHandler);
 server.delete(environment.apiRoutes.userWithId, deleteUserHandler);
 
