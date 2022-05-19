@@ -13,7 +13,6 @@ export class AuthenticationService extends CommonService
 
 	login(email : string, password : string, challenge : number | string) : Observable<Token>
 	{
-		// todo: fix return type... token or challenge command
 		return this.getHttpClient().post<Token & { name : string } & Action>(this.getApiUrl() + this.getApiRoute(), { email, password, challenge });
 	}
 
