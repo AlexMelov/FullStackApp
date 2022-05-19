@@ -19,7 +19,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 	})
 	.then(result =>
 	{
-		if (result.compare && store.has(email) && store.get(email) === challenge)
+		if (result.compare && store.has(email) && store.get(email) === parseInt(challenge))
 		{
 			store.delete(email);
 			next();
