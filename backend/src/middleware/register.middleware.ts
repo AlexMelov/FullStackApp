@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
 import { sendLoginMail } from '../controllers/mailer.js';
-import { RequestBody } from './middleware.interface';
+import { Register } from './middleware.interface';
 import { userModel } from '../models/user.schema.js';
 
 export const store : Map<string, number> = new Map();
 
 export function challengeRegisterMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
-	const { email, password, challenge } = (request.body as RequestBody);
+	const { email, password, challenge } = (request.body as Register);
 
 	userModel.findOne(
 		{

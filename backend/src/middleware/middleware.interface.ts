@@ -1,4 +1,4 @@
-export interface RequestBody
+export interface Register
 {
 	email : string,
 	password : string,
