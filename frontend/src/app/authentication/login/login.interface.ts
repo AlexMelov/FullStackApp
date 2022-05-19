@@ -1,4 +1,4 @@
-export interface Login
+export interface LoginConfig
 {
 	email : 'email' | 'hidden',
 	password : 'password' | 'hidden',

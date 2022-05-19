@@ -1,19 +1,19 @@
 <app-header></app-header>
 <form [formGroup]="form" class="form-login" (submit)="sendLogin()">
-	<mat-form-field appearance="fill" *ngIf="Login.email !== 'hidden'">
+	<mat-form-field appearance="fill" *ngIf="loginConfig.email !== 'hidden'">
 		<mat-label for="email">{{ 'authentication.email' | transloco }}</mat-label>
-		<input type="{{ Login.email }}" formControlName="email" id="email" matInput required email data-test="login-email"/>
+		<input type="{{ loginConfig.email }}" formControlName="email" id="email" matInput required email data-test="login-email"/>
 	</mat-form-field>
-	<mat-form-field appearance="fill" *ngIf="Login.password !== 'hidden'">
+	<mat-form-field appearance="fill" *ngIf="loginConfig.password !== 'hidden'">
 		<mat-label>{{ 'authentication.password' | transloco }}</mat-label>
-		<input formControlName="password" matInput [type]="!unmask ? 'password' : 'text'" type="{{ Login.password }}" required data-test="login-password"/>
+		<input formControlName="password" matInput [type]="!unmask ? 'password' : 'text'" type="{{ loginConfig.password }}" required data-test="login-password"/>
 		<button mat-icon-button matSuffix (click)="unmask = !unmask">
 			<mat-icon>{{ unmask ? 'visibility_off' : 'visibility' }}</mat-icon>
 		</button>
 	</mat-form-field>
-	<mat-form-field appearance="fill" *ngIf="Login.challenge !== 'hidden'">
+	<mat-form-field appearance="fill" *ngIf="loginConfig.challenge !== 'hidden'">
 		<mat-label for="challenge">{{ 'authentication.challenge' | transloco }}</mat-label>
-		<input [type]="Login.challenge" formControlName="challenge" id="challenge" matInput data-test="login-challenge"/>
+		<input [type]="loginConfig.challenge" formControlName="challenge" id="challenge" matInput data-test="login-challenge"/>
 		<button mat-icon-button matSuffix>
 			<mat-icon matTooltip="{{ 'authentication.tooltip' | transloco }}">info</mat-icon>
 		</button>
