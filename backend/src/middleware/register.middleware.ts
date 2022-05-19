@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { sendLoginMail } from '../controllers/mailer.js';
 import { Register } from './middleware.interface';
 import { userModel } from '../models/user.schema.js';
+import { validateEmail } from './middleware.helper';
 
 export const store : Map<string, number> = new Map();
 
@@ -21,7 +22,7 @@ export function challengeRegisterMiddleware(request : Request, response : Respon
 			}
 			else
 			{
-				if (email && email.includes('@') && password && password.length > 5 && challenge && store.get(email) === Number(challenge))
+				if (validateEmail(email, password, challenge))
 				{
 					next();
 				}
@@ -44,3 +45,4 @@ function createChallenge() : number
 {
 	return Math.floor(Math.random() * (10000 - 1001) + 1001);
 }
+
