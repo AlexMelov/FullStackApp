@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { AuthenticationService } from '../authentication.service';
 import { Action, Token } from '../authentication.interface';
+import { Login } from './login.config';
 
 @Component(
 {
@@ -15,9 +16,6 @@ export class LoginComponent
 {
 	unmask : boolean = false;
 	form : FormGroup;
-	email : 'email' | 'hidden' = 'email';
-	password : 'password' | 'hidden' = 'password';
-	challenge : 'number' | 'hidden' = 'hidden';
 
 	constructor(private formBuilder : FormBuilder, private authenticationService : AuthenticationService, private router : Router)
 	{
@@ -35,9 +33,9 @@ export class LoginComponent
 				{
 					if (token.action === 'request-challenge')
 					{
-						this.email = 'hidden';
-						this.password = 'hidden';
-						this.challenge = 'number';
+						Login.email = 'hidden';
+						Login.password = 'hidden';
+						Login.challenge = 'number';
 						this.form?.get('challenge')?.setValidators([ Validators.required ]);
 					}
 					else
