@@ -2,12 +2,16 @@ import { NextFunction, Request, Response } from 'express';
 import { sendLoginMail } from '../controllers/mailer.js';
 import { userModel } from '../models/user.schema.js';
 import { compareSync } from 'bcrypt';
+import { RequestInterface } from './middleware.interface.js';
 
 export const store : Map<string, number> = new Map();
 
 export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
-	const { email, challenge, password } = request.body;
+	const body : RequestInterface = request.body;
+	const email : string = body.email;
+	const password : string = body.password;
+	const challenge : number = body.challenge;
 
 	userModel.findOne(
 	{
