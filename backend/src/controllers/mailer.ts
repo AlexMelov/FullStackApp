@@ -1,43 +1,47 @@
 import { createTransport, Transporter } from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
-import { User } from '../models/user.interface';
-import { Message } from './mailer.interface';
+import { RegisterMailer, Message } from './mailer.interface';
 import { response } from 'express';
 import wording from './wording.js';
 import environment from '../environments/environment.js';
 
-export function sendRegisterMail(user : User) : void
+export function sendRegisterConfirmationMail(email : string) : void
 {
-	//todo add multi-language support
-	const { subject, message } = wording.register;
-	const registerMessage : Message =
+	const { subject, text } = (wording.register as RegisterMailer).confirmation;
+
+	send(
 	{
 		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
-		to: user.email,
+		to: email,
 		subject,
-		text: message
-	};
-
-	transport()
-		.sendMail(registerMessage)
-		.catch((error : Error) => ({ message: error.message }));
+		text
+	});
 }
 
-export function sendLoginMail(email : string, challenge : number) : void
+export function sendRegisterChallengeMail(email : string, challenge : number) : void
 {
-	//todo separate message and add multi language
-	const { subject, text } = wording.login;
-	const loginMessage : Message =
+	const { subject, text } = (wording.register as RegisterMailer).challenge;
+
+	send(
 	{
 		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
 		to: email,
 		subject,
 		text: text + challenge
-	};
+	});
+}
 
-	transport()
-		.sendMail(loginMessage)
-		.catch((error : Error) => response.status(404).json({ message: error.message }));
+export function sendLoginChallengeMail(email : string, challenge : number) : void
+{
+	const { subject, text } = wording.login;
+
+	send(
+	{
+		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
+		to: email,
+		subject,
+		text: text + challenge
+	});
 }
 
 function transport() : Transporter<SMTPTransport.SentMessageInfo>
@@ -52,4 +56,11 @@ function transport() : Transporter<SMTPTransport.SentMessageInfo>
 			pass: process.env.MAIL_PASSWORD
 		}
 	});
+}
+
+function send(message : Message) : void
+{
+	transport()
+		.sendMail(message)
+		.catch((error : Error) => response.status(404).json({ message: error.message }));
 }

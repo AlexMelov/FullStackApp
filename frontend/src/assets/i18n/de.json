@@ -13,7 +13,8 @@
 		"register": "Registrieren",
 		"login": "Anmeldung",
 		"challenge": "Geben Sie Ihr Challenge ein",
-		"tooltip": "If you don't have challenge click login and check your email for challenge"
+		"tooltip": "If you don't have challenge click login and check your email for challenge",
+		"error": "Falscher Eingang"
 	},
 	"navigation":
 	{

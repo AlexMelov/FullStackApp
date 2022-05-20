@@ -2,12 +2,21 @@ const wording : Record<string, any> =
 {
 	register:
 	{
-		subject: 'Registration',
-		message: 'Your registration is done!'
+		confirmation:
+		{
+			subject: 'Registration',
+			text: 'Your registration is done!'
+		},
+		challenge:
+		{
+			subject:'Registration Challenge',
+			text: 'Your challenge is '
+		},
+		error: 'Wrong Challenge!'
 	},
 	login:
 	{
-		subject: 'Registration',
+		subject: 'Login Challenge',
 		text: 'Your challenge is ',
 		tokenCompareErrorMessage: 'Authentication failed on user'
 	},

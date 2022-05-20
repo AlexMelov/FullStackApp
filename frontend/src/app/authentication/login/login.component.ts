@@ -18,6 +18,7 @@ export class LoginComponent
 	unmask : boolean = false;
 	form : FormGroup;
 	loginConfig : LoginConfig = loginConfig;
+	errorMessage : boolean = false;
 
 	constructor(private formBuilder : FormBuilder, private authenticationService : AuthenticationService, private router : Router)
 	{
@@ -35,6 +36,7 @@ export class LoginComponent
 				{
 					if (token.action === 'request-challenge')
 					{
+						this.errorMessage = false;
 						this.loginConfig.email = 'hidden';
 						this.loginConfig.password = 'hidden';
 						this.loginConfig.challenge = 'number';
@@ -44,10 +46,14 @@ export class LoginComponent
 					{
 						this.authenticationService.setToken(token);
 						this.router.navigate([ environment.pageRoutes.todos ]);
+						this.loginConfig.email = 'email';
+						this.loginConfig.password = 'password';
+						this.loginConfig.challenge = 'hidden';
 					}
 				},
 				error: (error : Error) =>
 				{
+					this.errorMessage = true;
 					this.form.setErrors({ message: error.message });
 				}
 			});

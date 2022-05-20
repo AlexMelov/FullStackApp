@@ -13,7 +13,8 @@
 		"register": "Регистрирај се",
 		"login": "Најави се",
 		"challenge": "Внесете го вашиот челенџ",
-		"tooltip": "If you don't have challenge click login and check your email for challenge"
+		"tooltip": "If you don't have challenge click login and check your email for challenge",
+		"error": "погрешен внес"
 	},
 	"navigation":
 	{

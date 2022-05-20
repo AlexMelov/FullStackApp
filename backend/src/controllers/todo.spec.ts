@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import { server } from '../server';
 import { DirtyTodo, TestTodo } from '../models/todo.interface';
 import { Token } from '../models/token.type';
-import { store } from '../middleware/challenge';
+import { store } from '../middleware/login';
 import environment from '../environments/environment';
 
 describe('Todos', () =>

@@ -1,16 +1,24 @@
 <app-header></app-header>
 <form [formGroup]="form" class="form-register" (submit)="sendRegistration()">
-	<mat-form-field appearance="fill">
+	<mat-form-field appearance="fill" *ngIf="registerConfig.email !== 'hidden'">
 		<mat-label for="email">{{ 'authentication.email' | transloco }}</mat-label>
-		<input type="email" formControlName="email" id="email" matInput required email />
+		<input [type]="registerConfig.email" formControlName="email" id="email" matInput required email />
 	</mat-form-field>
-	<mat-form-field appearance="fill">
+	<mat-form-field appearance="fill" *ngIf="registerConfig.password !== 'hidden'">
 		<mat-label>{{ 'authentication.password' | transloco }}</mat-label>
 		<input formControlName="password" matInput [type]="!unmask ? 'password' : 'text'" required />
 		<button mat-icon-button matSuffix (click)="unmask = !unmask">
 			<mat-icon>{{ unmask ? 'visibility_off' : 'visibility' }}</mat-icon>
 		</button>
 	</mat-form-field>
+	<mat-form-field appearance="fill" *ngIf="registerConfig.challenge !== 'hidden'">
+		<mat-label for="challenge">{{ 'authentication.challenge' | transloco }}</mat-label>
+		<input [type]="registerConfig.challenge" formControlName="challenge" id="challenge" matInput data-test="register-challenge"/>
+		<button mat-icon-button matSuffix>
+			<mat-icon matTooltip="{{ 'authentication.tooltip' | transloco }}">info</mat-icon>
+		</button>
+	</mat-form-field>
+	<p *ngIf="errorMessage">{{ 'authentication.error' | transloco }}</p>
 	<button type="submit" matLine mat-raised-button class="register-button">{{ 'authentication.register' | transloco }}
 	</button>
 </form>

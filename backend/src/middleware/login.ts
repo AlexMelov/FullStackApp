@@ -1,13 +1,15 @@
 import { NextFunction, Request, Response } from 'express';
-import { sendLoginMail } from '../controllers/mailer.js';
+import { sendLoginChallengeMail } from '../controllers/mailer.js';
 import { userModel } from '../models/user.schema.js';
 import { compareSync } from 'bcrypt';
+import { Login } from './login.interface';
+import { validateChallenge } from './middleware.helper.js';
 
 export const store : Map<string, number> = new Map();
 
-export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
+export function loginMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
-	const { email, challenge, password } = request.body;
+	const { email, password, challenge } = (request.body as Login);
 
 	userModel.findOne(
 	{
@@ -19,7 +21,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 	})
 	.then(result =>
 	{
-		if (result.compare && store.has(email) && store.get(email) === Number(challenge))
+		if (result.compare && validateChallenge(challenge, email, store))
 		{
 			store.delete(email);
 			next();
@@ -29,7 +31,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 			const createdChallenge : number = createChallenge();
 
 			store.set(email, createdChallenge);
-			sendLoginMail(email, createdChallenge);
+			sendLoginChallengeMail(email, createdChallenge);
 			response.status(200).json(
 			{
 				action: 'request-challenge'

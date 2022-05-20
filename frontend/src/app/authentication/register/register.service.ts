@@ -12,8 +12,8 @@ import { Register } from './register.interface';
 @ApiRoute(environment.apiRoutes.register)
 export class RegisterService extends CommonService
 {
-	register(email : string, password : string) : Observable<Register>
+	register(email : string, password : string, challenge : number) : Observable<Register>
 	{
-		return this.getHttpClient().post<Register>(this.getApiUrl() + this.getApiRoute(), { email, password });
+		return this.getHttpClient().post<Register>(this.getApiUrl() + this.getApiRoute(), { email, password, challenge });
 	}
 }
