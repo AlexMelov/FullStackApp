@@ -1,11 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
+import { sendRegisterChallengeMail } from '../controllers/mailer.js';
 import { Register } from './register.interface';
 import { userModel } from '../models/user.schema.js';
 import { validateChallenge, validateEmail, validatePassword } from './middleware.helper.js';
-import { sendChallenge } from '../controllers/mailer.js';
 import wording from '../controllers/wording.js';
-import { Mailer } from '../controllers/wording.interface.js';
-import { RegisterMailer } from '../controllers/mailer.interface.js';
 
 export const store : Map<string, number> = new Map();
 
@@ -37,14 +35,11 @@ export function registerMiddleware(request : Request, response : Response, next 
 		else if(validateEmail(email) && validatePassword(password))
 		{
 			const createdChallenge : number = createChallenge();
-			const register : RegisterMailer = (wording.register as RegisterMailer);
-			const { subject, text } = (register.challenge as Mailer);
 
 			store.set(email, createdChallenge);
-			sendChallenge(email, createdChallenge, subject, text);
+			sendRegisterChallengeMail(email, createdChallenge);
 			response.status(200).json(
 			{
-
 				action: 'request-challenge'
 			});
 		}

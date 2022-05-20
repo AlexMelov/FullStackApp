@@ -1,42 +1,58 @@
 import { createTransport, Transporter } from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
+import { RegisterMailer, Message } from './mailer.interface';
 import { response } from 'express';
-
-import { Message, RegisterMailer } from './mailer.interface.js';
-import environment from '../environments/environment.js';
-import { User } from '../models/user.interface.js';
 import wording from './wording.js';
+import environment from '../environments/environment.js';
 
-export function sendChallenge(email : string, challenge : number, subject : string, text : string) : void
-{
-	const message : Message =
-		{
-			from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
-			to: email,
-			subject,
-			text: text + challenge
-		};
-
-	transport()
-		.sendMail(message)
-		.catch((error : Error) => response.status(404).json({ message: error.message }));
-}
-
-export function sendConfirmation(user : User) : void
+export function sendRegisterConfirmationMail(email : string) : void
 {
 	const register : RegisterMailer = (wording.register as RegisterMailer);
 	const { subject, text } = register.confirmation;
 	const registerMessage : Message =
-		{
-			from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
-			to: user.email,
-			subject,
-			text
-		};
+	{
+		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
+		to: email,
+		subject,
+		text
+	};
 
 	transport()
 		.sendMail(registerMessage)
 		.catch((error : Error) => ({ message: error.message }));
+}
+
+export function sendRegisterChallengeMail(email : string, challenge : number) : void
+{
+	const register : RegisterMailer = (wording.register as RegisterMailer);
+	const { subject, text } = register.challenge;
+	const loginMessage : Message =
+	{
+		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
+		to: email,
+		subject,
+		text: text + challenge
+	};
+
+	transport()
+		.sendMail(loginMessage)
+		.catch((error : Error) => response.status(404).json({ message: error.message }));
+}
+
+export function sendLoginChallengeMail(email : string, challenge : number) : void
+{
+	const { subject, text } = wording.login;
+	const loginMessage : Message =
+	{
+		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
+		to: email,
+		subject,
+		text: text + challenge
+	};
+
+	transport()
+		.sendMail(loginMessage)
+		.catch((error : Error) => response.status(404).json({ message: error.message }));
 }
 
 function transport() : Transporter<SMTPTransport.SentMessageInfo>
