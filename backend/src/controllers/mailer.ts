@@ -26,7 +26,7 @@ export function sendRegisterChallengeMail(email : string, challenge : number) : 
 {
 	const register : RegisterMailer = (wording.register as RegisterMailer);
 	const { subject, text } = register.challenge;
-	const loginMessage : Message =
+	const registerMessage : Message =
 	{
 		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
 		to: email,
@@ -35,7 +35,7 @@ export function sendRegisterChallengeMail(email : string, challenge : number) : 
 	};
 
 	transport()
-		.sendMail(loginMessage)
+		.sendMail(registerMessage)
 		.catch((error : Error) => response.status(404).json({ message: error.message }));
 }
 
@@ -50,9 +50,7 @@ export function sendLoginChallengeMail(email : string, challenge : number) : voi
 		text: text + challenge
 	};
 
-	transport()
-		.sendMail(loginMessage)
-		.catch((error : Error) => response.status(404).json({ message: error.message }));
+	send(loginMessage);
 }
 
 function transport() : Transporter<SMTPTransport.SentMessageInfo>
@@ -67,4 +65,11 @@ function transport() : Transporter<SMTPTransport.SentMessageInfo>
 			pass: process.env.MAIL_PASSWORD
 		}
 	});
+}
+
+function send(message : Message) : void
+{
+	transport()
+		.sendMail(message)
+		.catch((error : Error) => response.status(404).json({ message: error.message }));
 }
