@@ -40,6 +40,9 @@ export class RegisterComponent
 					if (challenge)
 					{
 						this.router.navigate([ environment.pageRoutes.login ]);
+						this.registerConfig.email = 'email';
+						this.registerConfig.password = 'password';
+						this.registerConfig.challenge = 'hidden';
 					}
 				},
 				error: (error : Error) =>

@@ -46,6 +46,9 @@ export class LoginComponent
 					{
 						this.authenticationService.setToken(token);
 						this.router.navigate([ environment.pageRoutes.todos ]);
+						this.loginConfig.email = 'email';
+						this.loginConfig.password = 'password';
+						this.loginConfig.challenge = 'hidden';
 					}
 				},
 				error: (error : Error) =>
