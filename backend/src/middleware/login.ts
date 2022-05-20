@@ -1,8 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
-import { sendLoginChallengeMail } from '../controllers/mailer.js';
+import { sendChallenge } from '../controllers/mailer.js';
 import { userModel } from '../models/user.schema.js';
 import { compareSync } from 'bcrypt';
 import { Login } from './login.interface';
+import wording from '../controllers/wording.js';
+import { Mailer } from '../controllers/wording.interface.js';
 
 export const store : Map<string, number> = new Map();
 
@@ -28,9 +30,10 @@ export function loginMiddleware(request : Request, response : Response, next : N
 		else if (result.compare && !challenge)
 		{
 			const createdChallenge : number = createChallenge();
+			const { subject, text } = (wording.login as Mailer );
 
 			store.set(email, createdChallenge);
-			sendLoginChallengeMail(email, createdChallenge);
+			sendChallenge(email, createdChallenge, subject, text);
 			response.status(200).json(
 			{
 				action: 'request-challenge'
