@@ -7,46 +7,41 @@ import environment from '../environments/environment.js';
 
 export function sendRegisterConfirmationMail(email : string) : void
 {
-	const register : RegisterMailer = (wording.register as RegisterMailer);
-	const { subject, text } = register.confirmation;
-	const registerMessage : Message =
+	const { subject, text } = (wording.register as RegisterMailer).confirmation;
+
+	send(
 	{
 		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
 		to: email,
 		subject,
 		text
-	};
-
-	send(registerMessage);
+	});
 }
 
 export function sendRegisterChallengeMail(email : string, challenge : number) : void
 {
-	const register : RegisterMailer = (wording.register as RegisterMailer);
-	const { subject, text } = register.challenge;
-	const registerMessage : Message =
+	const { subject, text } = (wording.register as RegisterMailer).challenge;
+
+	send(
 	{
 		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
 		to: email,
 		subject,
 		text: text + challenge
-	};
-
-	send(registerMessage);
+	});
 }
 
 export function sendLoginChallengeMail(email : string, challenge : number) : void
 {
 	const { subject, text } = wording.login;
-	const loginMessage : Message =
+
+	send(
 	{
 		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
 		to: email,
 		subject,
 		text: text + challenge
-	};
-
-	send(loginMessage);
+	});
 }
 
 function transport() : Transporter<SMTPTransport.SentMessageInfo>
