@@ -18,6 +18,7 @@ export class LoginComponent
 	unmask : boolean = false;
 	form : FormGroup;
 	loginConfig : LoginConfig = loginConfig;
+	errorMessage : string | null = null;
 
 	constructor(private formBuilder : FormBuilder, private authenticationService : AuthenticationService, private router : Router)
 	{
@@ -48,6 +49,7 @@ export class LoginComponent
 				},
 				error: (error : Error) =>
 				{
+					this.errorMessage = 'Wrong Challenge!';
 					this.form.setErrors({ message: error.message });
 				}
 			});
