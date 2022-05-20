@@ -6,7 +6,7 @@ import { validateEmail, validatePassword } from './middleware.helper.js';
 
 export const store : Map<string, number> = new Map();
 
-export function challengeRegisterMiddleware(request : Request, response : Response, next : NextFunction) : void
+export function registerMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
 	const { email, password, challenge } = (request.body as Register);
 

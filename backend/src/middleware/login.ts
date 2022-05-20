@@ -6,7 +6,7 @@ import { Login } from './login.interface';
 
 export const store : Map<string, number> = new Map();
 
-export function challengeMiddleware(request : Request, response : Response, next : NextFunction) : void
+export function loginMiddleware(request : Request, response : Response, next : NextFunction) : void
 {
 	const { email, password, challenge } = (request.body as Login);
 
