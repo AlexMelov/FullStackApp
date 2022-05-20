@@ -17,6 +17,7 @@ export class RegisterComponent
 	unmask : boolean = false;
 	form : FormGroup;
 	registerConfig : RegisterConfig = registerConfig;
+	errorMessage : string | null = null;
 
 	constructor(private formBuilder : FormBuilder, private registerService : RegisterService, private router : Router)
 	{
@@ -41,7 +42,11 @@ export class RegisterComponent
 						this.router.navigate([ environment.pageRoutes.login ]);
 					}
 				},
-				error: (error : Error) => this.form.setErrors({ message: error.message })
+				error: (error : Error) =>
+				{
+					this.errorMessage = error.message;
+					this.form.setErrors({ message: error.message });
+				}
 			});
 	}
 
