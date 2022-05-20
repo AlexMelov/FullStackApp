@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { sendLoginChallengeMail } from '../controllers/mailer.js';
 import { userModel } from '../models/user.schema.js';
 import { compareSync } from 'bcrypt';
-import { Register } from './register.middleware.interface.js';
+import { Register } from './register.interface.js';
 
 export const store : Map<string, number> = new Map();
 

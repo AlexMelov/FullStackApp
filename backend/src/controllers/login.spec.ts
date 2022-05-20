@@ -2,7 +2,7 @@ import supertest, { Response } from 'supertest';
 import { server } from '../server';
 import mongoose from 'mongoose';
 import environment from '../environments/environment';
-import { store } from '../middleware/challenge.js';
+import { store } from '../middleware/login.js';
 
 describe('Should test login', () =>
 {

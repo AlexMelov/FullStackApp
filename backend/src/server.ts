@@ -6,12 +6,12 @@ import 'dotenv/config';
 import environment from './environments/environment.js';
 
 import { authenticationMiddleware } from './middleware/authentication.js';
-import { challengeMiddleware } from './middleware/challenge.js';
+import { challengeMiddleware } from './middleware/login.js';
 import { deleteHandler, findHandler, saveHandler } from './controllers/todos.js';
 import { registerHandler } from './controllers/register.js';
-import { loginHandler } from './controllers/authentication.js';
+import { loginHandler } from './controllers/login.js';
 import { deleteUserHandler } from './controllers/users.js';
-import { challengeRegisterMiddleware } from './middleware/register.middleware.js';
+import { challengeRegisterMiddleware } from './middleware/register.js';
 
 const server : Express = express();
 const db : Promise<typeof mongoose> = mongoose.connect(process.env.DB_URL);

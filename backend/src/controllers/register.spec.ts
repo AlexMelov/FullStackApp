@@ -3,19 +3,27 @@ import { server } from '../server';
 import environment from '../environments/environment';
 import { User } from '../models/user.interface';
 import mongoose from 'mongoose';
-import { store } from '../middleware/register.middleware';
+import { store } from '../middleware/register';
 
 describe('Should test user registration', ()=>
 {
 	beforeAll(async() => await mongoose.connect(process.env.DB_URL));
 
+	it('Should create challenge', async() =>
+	{
+		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
+			{
+				email : 'new@test.com',
+				password : '123456'
+			});
+		const { action } = response.body;
+
+		expect(response.statusCode).toBe(200);
+		expect(action).toBe('request-challenge');
+	});
+
 	it('Should register new user and delete it', async() =>
 	{
-		await supertest(server).post(environment.apiRoutes.register).send(
-		{
-			email : 'new@test.com',
-			password : '123456'
-		});
 		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
 		{
 			email : 'new@test.com',
@@ -41,15 +49,21 @@ describe('Should test user registration', ()=>
 			});
 		});
 	});
-	//todo too much text
-	it('Should register new user, try to register with same user, ' +
-		'return 403 status code and delete the created one', async() =>
+	it ('Should create challenge for new user', async() =>
 	{
-		await supertest(server).post(environment.apiRoutes.register).send(
+		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
 		{
 			email : 'jest_repeat.email@mail.com',
 			password : '123456'
 		});
+		const { action } = response.body;
+
+		expect(response.statusCode).toBe(200);
+		expect(action).toBe('request-challenge');
+	});
+
+	it('Should try to register with the same user', async() =>
+	{
 		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
 		{
 			email : 'jest_repeat.email@mail.com',

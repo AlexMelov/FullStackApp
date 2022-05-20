@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { sendRegisterChallengeMail } from '../controllers/mailer.js';
-import { Register } from './register.middleware.interface';
+import { Register } from './register.interface';
 import { userModel } from '../models/user.schema.js';
 import { validateEmail, validatePassword } from './middleware.helper.js';
 

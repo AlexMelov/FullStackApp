@@ -4,7 +4,7 @@ import { HydratedDocument } from 'mongoose';
 import { User } from '../models/user.interface.js';
 import { sendRegisterConfirmationMail } from './mailer.js';
 import { userModel } from '../models/user.schema.js';
-import { Register } from '../middleware/register.middleware.interface';
+import { Register } from '../middleware/register.interface';
 
 export function registerHandler(request : Request, response : Response) : void
 {
