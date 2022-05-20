@@ -10,10 +10,12 @@ export interface RegisterMailer
 {
 	confirmation :
 	{
-		subject : string, text : string
+		subject : string,
+		text : string
 	},
 	challenge :
 	{
-		subject : string, text : string
+		subject : string,
+		text : string
 	}
 }
