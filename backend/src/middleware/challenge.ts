@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { sendLoginMail } from '../controllers/mailer.js';
+import { sendLoginChallengeMail } from '../controllers/mailer.js';
 import { userModel } from '../models/user.schema.js';
 import { compareSync } from 'bcrypt';
 import { Register } from './register.middleware.interface.js';
@@ -30,7 +30,7 @@ export function challengeMiddleware(request : Request, response : Response, next
 			const createdChallenge : number = createChallenge();
 
 			store.set(email, createdChallenge);
-			sendLoginMail(email, createdChallenge);
+			sendLoginChallengeMail(email, createdChallenge);
 			response.status(200).json(
 			{
 				action: 'request-challenge'

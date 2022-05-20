@@ -1,21 +1,23 @@
 import { createTransport, Transporter } from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { User } from '../models/user.interface';
-import { Message } from './mailer.interface';
+import { Register, Message } from './mailer.interface';
 import { response } from 'express';
 import wording from './wording.js';
 import environment from '../environments/environment.js';
 
-export function sendRegisterMail(user : User) : void
+export function sendRegisterConfirmationMail(user : User) : void
 {
 	//todo add multi-language support
-	const { subject, message } = wording.register;
+	const register : Register = (wording.register as Register);
+
+	const { subject, text } = register.confirmation;
 	const registerMessage : Message =
 	{
 		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
 		to: user.email,
 		subject,
-		text: message
+		text
 	};
 
 	transport()
@@ -23,7 +25,24 @@ export function sendRegisterMail(user : User) : void
 		.catch((error : Error) => ({ message: error.message }));
 }
 
-export function sendLoginMail(email : string, challenge : number) : void
+export function sendRegisterChallengeMail(email : string, challenge : number) : void
+{
+	//todo add multi-language support
+	const { challengeSubject, challengeMessage } = wording.register;
+	const loginMessage : Message =
+		{
+			from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
+			to: email,
+			subject: challengeSubject,
+			text: challengeMessage + challenge
+		};
+
+	transport()
+		.sendMail(loginMessage)
+		.catch((error : Error) => response.status(404).json({ message: error.message }));
+}
+
+export function sendLoginChallengeMail(email : string, challenge : number) : void
 {
 	//todo separate message and add multi language
 	const { subject, text } = wording.login;

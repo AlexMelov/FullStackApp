@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { hash } from 'bcrypt';
 import { HydratedDocument } from 'mongoose';
 import { User } from '../models/user.interface.js';
-import { sendRegisterMail } from './mailer.js';
+import { sendRegisterConfirmationMail } from './mailer.js';
 import { userModel } from '../models/user.schema.js';
 import { Register } from '../middleware/register.middleware.interface';
 
@@ -22,7 +22,7 @@ export function registerHandler(request : Request, response : Response) : void
 			user.save()
 				.then(user =>
 				{
-					sendRegisterMail(user);
+					sendRegisterConfirmationMail(user);
 					response.json(user);
 				})
 				.catch((error : Error) => response.status(403).json({ message: error.message }));

@@ -7,7 +7,6 @@ export function validatePassword(password : string) : boolean
 {
 	return password && password.length > 5;
 }
-//todo separete this into single functions validate email validate password and validate challenge
 
 // todo error handling for register when the challenge is incorrect login/register on the frontend
 
