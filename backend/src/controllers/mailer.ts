@@ -6,11 +6,21 @@ import { response } from 'express';
 import wording from './wording.js';
 import environment from '../environments/environment.js';
 
+//todo: get rid of the destructing here and reduce the overhead be introducing a common send method
+
+/*
+send(
+{
+	from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
+	to: 'replace this',
+	subject: wording.register.confirmation.subject,
+	text: wording.register.confirmation.subject
+});
+ */
+
 export function sendRegisterConfirmationMail(user : User) : void
 {
-	//todo add multi-language support
 	const register : RegisterMailer = (wording.register as RegisterMailer);
-
 	const { subject, text } = register.confirmation;
 	const registerMessage : Message =
 	{
@@ -27,16 +37,15 @@ export function sendRegisterConfirmationMail(user : User) : void
 
 export function sendRegisterChallengeMail(email : string, challenge : number) : void
 {
-	//todo add multi-language support
 	const register : RegisterMailer = (wording.register as RegisterMailer);
 	const { subject, text } = register.challenge;
 	const loginMessage : Message =
-		{
-			from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
-			to: email,
-			subject,
-			text: text + challenge
-		};
+	{
+		from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
+		to: email,
+		subject,
+		text: text + challenge
+	};
 
 	transport()
 		.sendMail(loginMessage)
@@ -45,7 +54,6 @@ export function sendRegisterChallengeMail(email : string, challenge : number) : 
 
 export function sendLoginChallengeMail(email : string, challenge : number) : void
 {
-	//todo separate message and add multi language
 	const { subject, text } = wording.login;
 	const loginMessage : Message =
 	{
