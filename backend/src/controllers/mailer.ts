@@ -17,9 +17,7 @@ export function sendRegisterConfirmationMail(email : string) : void
 		text
 	};
 
-	transport()
-		.sendMail(registerMessage)
-		.catch((error : Error) => ({ message: error.message }));
+	send(registerMessage);
 }
 
 export function sendRegisterChallengeMail(email : string, challenge : number) : void
@@ -34,9 +32,7 @@ export function sendRegisterChallengeMail(email : string, challenge : number) : 
 		text: text + challenge
 	};
 
-	transport()
-		.sendMail(registerMessage)
-		.catch((error : Error) => response.status(404).json({ message: error.message }));
+	send(registerMessage);
 }
 
 export function sendLoginChallengeMail(email : string, challenge : number) : void
