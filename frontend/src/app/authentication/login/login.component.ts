@@ -18,7 +18,7 @@ export class LoginComponent
 	unmask : boolean = false;
 	form : FormGroup;
 	loginConfig : LoginConfig = loginConfig;
-	errorMessage : string | null = null;
+	errorMessage : boolean = false;
 
 	constructor(private formBuilder : FormBuilder, private authenticationService : AuthenticationService, private router : Router)
 	{
@@ -36,6 +36,7 @@ export class LoginComponent
 				{
 					if (token.action === 'request-challenge')
 					{
+						this.errorMessage = false;
 						this.loginConfig.email = 'hidden';
 						this.loginConfig.password = 'hidden';
 						this.loginConfig.challenge = 'number';
@@ -49,7 +50,7 @@ export class LoginComponent
 				},
 				error: (error : Error) =>
 				{
-					this.errorMessage = 'Wrong Challenge!';
+					this.errorMessage = true;
 					this.form.setErrors({ message: error.message });
 				}
 			});

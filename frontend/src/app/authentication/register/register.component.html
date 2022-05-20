@@ -18,7 +18,7 @@
 			<mat-icon matTooltip="{{ 'authentication.tooltip' | transloco }}">info</mat-icon>
 		</button>
 	</mat-form-field>
-	<p *ngIf="errorMessage">Wrong Challenge</p>
+	<p *ngIf="errorMessage">{{ 'authentication.error' | transloco }}</p>
 	<button type="submit" matLine mat-raised-button class="register-button">{{ 'authentication.register' | transloco }}
 	</button>
 </form>
