@@ -25,6 +25,10 @@ export function challengeRegisterMiddleware(request : Request, response : Respon
 				store.delete(email);
 				next();
 			}
+			else if(validateEmail(email) && validatePassword(password) && store.has(email) && challenge && store.get(email) !== Number(challenge))
+			{
+				response.status(401).json({ message: 'Wrong challenge' }).send();
+			}
 			else if(validateEmail(email) && validatePassword(password))
 			{
 				const createdChallenge : number = createChallenge();
