@@ -3,11 +3,11 @@ import { compareSync } from 'bcrypt';
 import { tokenHelper } from './token.helper.js';
 import wording from './wording.js';
 import { userModel } from '../models/user.schema.js';
-import { Register } from '../middleware/register.middleware.interface';
+import { Login } from '../middleware/login.middleware.interface';
 
 export function loginHandler(request : Request, response : Response) : void
 {
-	const { email, password } = (request.body as Register);
+	const { email, password } = (request.body as Login);
 	const { tokenCompareErrorMessage } = wording.login;
 
 	userModel.findOne(
