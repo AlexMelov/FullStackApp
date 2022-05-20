@@ -6,19 +6,7 @@ export interface Message
 	text : string;
 }
 
-export interface Register
-{
-	confirmation :
-	{
-		subject : string, text : string
-	},
-	challenge :
-	{
-		subject : string, text : string
-	}
-}
-
-export interface Challenge
+export interface RegisterMailer
 {
 	confirmation :
 	{

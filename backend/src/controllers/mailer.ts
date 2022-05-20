@@ -1,7 +1,7 @@
 import { createTransport, Transporter } from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { User } from '../models/user.interface';
-import { Register, Message } from './mailer.interface';
+import { RegisterMailer, Message } from './mailer.interface';
 import { response } from 'express';
 import wording from './wording.js';
 import environment from '../environments/environment.js';
@@ -9,7 +9,7 @@ import environment from '../environments/environment.js';
 export function sendRegisterConfirmationMail(user : User) : void
 {
 	//todo add multi-language support
-	const register : Register = (wording.register as Register);
+	const register : RegisterMailer = (wording.register as RegisterMailer);
 
 	const { subject, text } = register.confirmation;
 	const registerMessage : Message =
@@ -28,13 +28,14 @@ export function sendRegisterConfirmationMail(user : User) : void
 export function sendRegisterChallengeMail(email : string, challenge : number) : void
 {
 	//todo add multi-language support
-	const { challengeSubject, challengeMessage } = wording.register;
+	const register : RegisterMailer = (wording.register as RegisterMailer);
+	const { subject, text } = register.challenge;
 	const loginMessage : Message =
 		{
 			from: '"' + environment.mailer.from.name + '" <' + environment.mailer.from.email + '>',
 			to: email,
-			subject: challengeSubject,
-			text: challengeMessage + challenge
+			subject,
+			text: text + challenge
 		};
 
 	transport()
