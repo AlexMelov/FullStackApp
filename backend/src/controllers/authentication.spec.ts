@@ -8,7 +8,7 @@ describe('Should test login', () =>
 {
 	beforeAll(async() => await mongoose.connect(process.env.DB_URL));
 
-	it('Should check login without challenge', async() =>
+	it('Should create challenge', async() =>
 	{
 		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{

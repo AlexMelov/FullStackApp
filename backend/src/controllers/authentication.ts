@@ -3,7 +3,7 @@ import { compareSync } from 'bcrypt';
 import { tokenHelper } from './token.helper.js';
 import wording from './wording.js';
 import { userModel } from '../models/user.schema.js';
-import { Register } from '../middleware/middleware.interface';
+import { Register } from '../middleware/register.middleware.interface';
 
 export function loginHandler(request : Request, response : Response) : void
 {

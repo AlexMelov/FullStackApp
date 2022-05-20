@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { sendLoginMail } from '../controllers/mailer.js';
-import { Register } from './middleware.interface';
+import { Register } from './register.middleware.interface';
 import { userModel } from '../models/user.schema.js';
 import { validateEmail } from './middleware.helper.js';
 
@@ -20,12 +20,17 @@ export function challengeRegisterMiddleware(request : Request, response : Respon
 			{
 				response.status(401).send();
 			}
+			//todo set else if instead of else and inside if
+			// else if (validateEmail(email) && validatePassword(password) && store.has(email) && store.get(email) === Number(challenge))
 			else
 			{
 				if (validateEmail(email, password, challenge))
 				{
+					store.delete(email);
 					next();
 				}
+				//todo add if conditions to check if the email is correct and the password is correct
+				// else if(validateEmail(email) && validatePassword(password))
 				else
 				{
 					const createdChallenge : number = createChallenge();

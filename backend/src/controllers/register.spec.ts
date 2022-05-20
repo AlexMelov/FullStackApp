@@ -17,11 +17,11 @@ describe('Should test user registration', ()=>
 			password : '123456'
 		});
 		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
-			{
-				email : 'new@test.com',
-				password : '123456',
-				challenge : store.get('new@test.com')
-			});
+		{
+			email : 'new@test.com',
+			password : '123456',
+			challenge : store.get('new@test.com')
+		});
 		const body : User = await response.body;
 
 		expect(response.statusCode).toBe(200);
@@ -41,7 +41,7 @@ describe('Should test user registration', ()=>
 			});
 		});
 	});
-
+	//todo too much text
 	it('Should register new user, try to register with same user, ' +
 		'return 403 status code and delete the created one', async() =>
 	{
@@ -51,11 +51,11 @@ describe('Should test user registration', ()=>
 			password : '123456'
 		});
 		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
-			{
-				email : 'jest_repeat.email@mail.com',
-				password : '123456',
-				challenge : store.get('jest_repeat.email@mail.com')
-			});
+		{
+			email : 'jest_repeat.email@mail.com',
+			password : '123456',
+			challenge : store.get('jest_repeat.email@mail.com')
+		});
 		const body : User = await response.body;
 
 		expect(response.statusCode).toBe(200);
