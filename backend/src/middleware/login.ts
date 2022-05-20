@@ -5,6 +5,7 @@ import { compareSync } from 'bcrypt';
 import { Login } from './login.interface';
 import wording from '../controllers/wording.js';
 import { Mailer } from '../controllers/wording.interface.js';
+import { validateChallenge } from './middleware.helper.js';
 
 export const store : Map<string, number> = new Map();
 
@@ -22,7 +23,7 @@ export function loginMiddleware(request : Request, response : Response, next : N
 	})
 	.then(result =>
 	{
-		if (result.compare && store.has(email) && store.get(email) === Number(challenge))
+		if (result.compare && validateChallenge(challenge, email, store))
 		{
 			store.delete(email);
 			next();

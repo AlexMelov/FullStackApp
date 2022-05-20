@@ -11,7 +11,8 @@ const wording : Record<string, any> =
 		{
 			subject:'Registration Challenge',
 			text: 'Your challenge is '
-		}
+		},
+		error: 'Wrong Challenge!'
 	},
 	login:
 	{

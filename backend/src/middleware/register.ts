@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { Register } from './register.interface';
 import { userModel } from '../models/user.schema.js';
-import { validateEmail, validatePassword } from './middleware.helper.js';
+import { validateChallenge, validateEmail, validatePassword } from './middleware.helper.js';
 import { sendChallenge } from '../controllers/mailer.js';
 import wording from '../controllers/wording.js';
 import { Mailer } from '../controllers/wording.interface.js';
@@ -23,17 +23,16 @@ export function registerMiddleware(request : Request, response : Response, next 
 		{
 			response.status(403).send();
 		}
-		// todo: as you are using store validation mutiple time introduce validateChallenge in helper
-		// could be used in login middleware too - not a pure function but useful
-		else if (validateEmail(email) && validatePassword(password) && store.has(email) && store.get(email) === Number(challenge))
+		else if (validateEmail(email) && validatePassword(password) && validateChallenge(challenge, email, store))
 		{
 			store.delete(email);
 			next();
 		}
-		else if(validateEmail(email) && validatePassword(password) && store.has(email) && challenge && store.get(email) !== Number(challenge))
+		else if(validateEmail(email) && validatePassword(password) && validateChallenge(challenge, email, store))
 		{
-			// todo: meesage not from translation
-			response.status(401).json({ message: 'Wrong challenge' }).send();
+			const { error } = wording.register;
+
+			response.status(401).json({ message: error }).send();
 		}
 		else if(validateEmail(email) && validatePassword(password))
 		{
