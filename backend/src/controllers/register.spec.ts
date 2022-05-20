@@ -12,10 +12,10 @@ describe('Should test user registration', ()=>
 	it('Should create challenge', async() =>
 	{
 		const response : Response = await supertest(server).post(environment.apiRoutes.register).send(
-			{
-				email : 'new@test.com',
-				password : '123456'
-			});
+		{
+			email : 'new@test.com',
+			password : '123456'
+		});
 		const { action } = response.body;
 
 		expect(response.statusCode).toBe(200);

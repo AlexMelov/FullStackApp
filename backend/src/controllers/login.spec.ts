@@ -10,45 +10,60 @@ describe('Should test login', () =>
 
 	it('Should create challenge', async() =>
 	{
-		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
+		const response : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
 			email: 'test@test.com',
 			password: '123456789'
 		});
-		const { token, action } = loginResponse.body;
+		const { token, action } = response.body;
 
 		expect(token).not.toBeTruthy();
 		expect(action).toBe('request-challenge');
-		expect(loginResponse.statusCode).toBe(200);
+		expect(response.statusCode).toBe(200);
 	});
 
 	it('Should check login with valid challenge', async() =>
 	{
-		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
+		const response : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
 			email: 'test@test.com',
 			password: '123456789',
 			challenge: store.get('test@test.com')
 		});
-		const { token } = loginResponse.body;
+		const { token } = response.body;
 
 		expect(token).toBeTruthy();
-		expect(loginResponse.statusCode).toBe(200);
+		expect(response.statusCode).toBe(200);
 	});
 
-	it('Should check login with invalid challenge', async() =>
+	it('Should check login with invalid challenge #1', async() =>
 	{
-		const loginResponse : Response = await supertest(server).post(environment.apiRoutes.login).send(
+		const response : Response = await supertest(server).post(environment.apiRoutes.login).send(
 		{
 			email: 'test@test.com',
 			password: '123456789',
 			challenge: 9999
 		});
-		const { token, action } = loginResponse.body;
+		const { token, action } = response.body;
 
 		expect(token).not.toBeTruthy();
 		expect(action).not.toBeTruthy();
-		expect(loginResponse.statusCode).toBe(401);
+		expect(response.statusCode).toBe(401);
+	});
+
+	it('Should check login with invalid challenge #2', async() =>
+	{
+		const response : Response = await supertest(server).post(environment.apiRoutes.login).send(
+		{
+			email: 'test@test.com',
+			password: '123456789',
+			challenge: '9999'
+		});
+		const { token, action } = response.body;
+
+		expect(token).not.toBeTruthy();
+		expect(action).not.toBeTruthy();
+		expect(response.statusCode).toBe(401);
 	});
 
 	afterAll(() => mongoose.connection.close(true));
