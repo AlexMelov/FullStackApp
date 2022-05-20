@@ -18,7 +18,7 @@ export function challengeRegisterMiddleware(request : Request, response : Respon
 		{
 			if (result)
 			{
-				response.status(401).send();
+				response.status(403).send();
 			}
 			else if (validateEmail(email) && validatePassword(password) && store.has(email) && store.get(email) === Number(challenge))
 			{

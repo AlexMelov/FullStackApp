@@ -87,7 +87,7 @@ describe('Should test user registration', ()=>
 
 		const { _id } = response.body;
 
-		expect(repeatedUserResponse.statusCode).toBe(401);
+		expect(repeatedUserResponse.statusCode).toBe(403);
 
 		await supertest(server).delete('/users/' + _id).then(user =>
 		{
